@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.databaseApp.mapper.myMapper">
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        insert into app_user(id,user_name,user_type)
+            values (#{id},#{user_name},#{user_type})
+    </insert>
+  <select id="find_by_username" resultType="com.spring.databaseApp.entity.User">
+    select * from app_user where user_name = #{username}
+  </select>
+</mapper>

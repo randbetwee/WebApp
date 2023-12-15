@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://8.134.198.180:8888/postgres?currentSchema=the_great_project&amp;
+    username: guan  
+    password: Chong@123
+    driver-class-name: org.postgresql.Driver
+
+
+mybatis:
+  # 配置XML映射文件中指定的实体类别名路径
+  type-aliases-package: com.spring.databaseApp.mapper
+  # 配置MyBatis的xml配置文件路径
+  mapper-locations: classpath:mapper/*.xml
