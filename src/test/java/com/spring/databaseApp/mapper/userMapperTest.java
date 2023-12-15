@@ -9,13 +9,13 @@ import com.spring.databaseApp.entity.User;
 @SpringBootTest
 public class userMapperTest {
     @Autowired
-    private myMapper testmapper;
+    private UserMapper testmapper;
 
     @Test
     public void test_mapper(){
         User user = new User();
-        user.setId(0);
-        user.setUser_name("guan");
+        user.setId(1);
+        user.setUser_name("Luo");
         user.setUser_type(false);
         Integer rows=testmapper.insert(user);
         System.out.println(rows);

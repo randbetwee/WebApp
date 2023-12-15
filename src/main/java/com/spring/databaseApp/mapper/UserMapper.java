@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import com.spring.databaseApp.entity.*;;
 
 @Mapper
-public interface myMapper {
+public interface UserMapper {
     Integer insert(User userdata);
 
 
