@@ -6,9 +6,11 @@ import java.io.Serializable;
 public class User implements Serializable{
     private int id;
 	private String user_name;
-	private boolean user_type;
-
-
+	private boolean user_type;  //0为管理员，1为普通用户
+    private String password;
+    private String salt;
+    private String email;
+    
     public int getId() {
         return id;
     }
@@ -28,5 +30,23 @@ public class User implements Serializable{
         this.user_type = user_type;
     }
     
-    
+    public String getSalt() {
+        return salt;
+    }
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    public String getEmail() {
+        return email;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }
