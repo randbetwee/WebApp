@@ -11,7 +11,7 @@ project
                   |-controller         # 控制层，调用业务层完成相应操作并处理异常
                         |-exception    # 处理异常
                         |-implement    # 业务实际操作过程与接口
-                  |-util               # 接受来自网页的数据进行响应处理
+                  |-util               # 控制层，接受来自网页的数据进行响应处理
           |-resource
                   |-mapper             # 实际SQL语句存在的地方，通过mapper与上面的接口组成映射
  |-test                                # 各个模块测试的程序
