@@ -2,6 +2,8 @@ package com.spring.databaseApp.service.implement;
 
 import com.spring.databaseApp.mapper.UserMapper;
 import com.spring.databaseApp.service.exception.InsertException;
+import com.spring.databaseApp.service.exception.PasswordMatchFailure;
+import com.spring.databaseApp.service.exception.UserNotFound;
 
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.Service;
@@ -13,7 +15,7 @@ import com.spring.databaseApp.entity.*;
 
 //业务层的功能，管理数据的存储方式
 
-@Transactional
+
 @Service
 public class UserService {
     
@@ -25,7 +27,6 @@ public class UserService {
     
     public UserService() {
     }
-
 
 
     public int register(String name,String password,String email){
@@ -41,6 +42,24 @@ public class UserService {
             throw new InsertException("插入产生未知错误");
         }
     }
+
+    public User login(int userID ,String password){
+        User user=user_mapper.find_by_id(userID);
+        if(user==null){
+            throw new UserNotFound("用户信息不存在");
+        }
+        
+        String correctPassword=user.getPassword();
+        String salt=user.getSalt();
+        String md5Form=getMD5Password(password, salt);
+        if(!md5Form.equals(correctPassword)){
+            throw new PasswordMatchFailure("密码错误");
+        }
+        
+        //将当前用户返回是为了上层可以对该用户信息进行调用
+        return user;
+    }
+
 
     private String getMD5Password(String password,String salt) {
         for (int i = 0; i < 3; i++) {

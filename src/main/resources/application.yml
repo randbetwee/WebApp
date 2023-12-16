@@ -5,6 +5,9 @@ spring:
     password: Chong@123
     driver-class-name: org.postgresql.Driver
 
+server:
+  port: 8080
+  
 
 mybatis:
   # 配置XML映射文件中指定的实体类别名路径

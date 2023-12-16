@@ -21,4 +21,5 @@ public class DatabaseAppApplication {
       return String.format("Hello %s!", name);
     }
 
+	
 }
