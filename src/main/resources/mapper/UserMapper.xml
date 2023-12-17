@@ -12,6 +12,9 @@
     select * from app_user where user_name = #{user_name}
   </select>
 
+  <select id="find_by_email" resultType="com.spring.databaseApp.entity.User">
+    select * from app_user where email_address = #{email}
+  </select>
   <select id="find_by_id" resultType="com.spring.databaseApp.entity.User">
     select * from app_user where id = #{id}
   </select>

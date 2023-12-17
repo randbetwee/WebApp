@@ -1,26 +1,22 @@
 package com.spring.databaseApp.controller;
 
-import org.apache.catalina.connector.Request;
+
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.databaseApp.service.exception.DuplicatedEmail;
 import com.spring.databaseApp.service.exception.InsertException;
 import com.spring.databaseApp.service.exception.ServiceException;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import com.spring.databaseApp.service.exception.InsertException;
-import com.spring.databaseApp.service.exception.ServiceException;
 import com.spring.databaseApp.service.exception.PasswordMatchFailure;
 import com.spring.databaseApp.service.exception.UserNotFound;
 import com.spring.databaseApp.util.JsonResult;
 
-@RestController
-@RequestMapping("error")
+import jakarta.servlet.http.HttpSession;
+
+
 public class BaseController {
     
-    @ExceptionHandler(ServiceException.class)
+    @ExceptionHandler({ServiceException.class})
     public JsonResult<Void> handler(Throwable exception){
         JsonResult<Void> result=new JsonResult<Void>(exception);
         
@@ -43,4 +39,14 @@ public class BaseController {
         return result;
     }
     
+
+    public final Integer getUidFromSession(HttpSession session) {
+        //getAttribute返回的是Object对象,需要转换为字符串再转换为包装类
+        return Integer.valueOf(session.getAttribute("id").toString());
+    }
+
+    public final String getUsernameFromSession(HttpSession session) {
+        return session.getAttribute("username").toString();
+    }
+
 }

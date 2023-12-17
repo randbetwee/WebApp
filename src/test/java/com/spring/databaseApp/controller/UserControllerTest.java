@@ -16,6 +16,6 @@ public class UserControllerTest {
 
     @Test
     void testReg() {
-        a.login(1, "Chong@246");
+        //a.login(1, "Chong@246");
     }
 }

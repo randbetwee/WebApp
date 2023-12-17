@@ -13,7 +13,7 @@ public class UserServiceTest {
     @Test
     void testRegister() {
         
-        userService.register("user001","6296393",null);
+        userService.register("user001","6296393","169@qq.com");
     }
 
     @Test

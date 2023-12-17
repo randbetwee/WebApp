@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.spring.databaseApp.service.implement.UserService;
 import com.spring.databaseApp.util.JsonResult;
 import com.spring.databaseApp.entity.User;
-import com.spring.databaseApp.controller.BaseController;
+import jakarta.servlet.http.HttpSession;
 
 @RestController
 @RequestMapping("users")
@@ -25,8 +25,10 @@ public class UserController extends BaseController{
     }
 
     @RequestMapping("login")
-    public JsonResult<User> login(int UserID,String password){
+    public JsonResult<User> login(int UserID,String password,HttpSession session){
         User user=userService.login(UserID, password);
+        session.setAttribute("id",user.getId());
+        session.setAttribute("username",user.getUser_name());
         return new JsonResult<User>(200, user);
     }
 

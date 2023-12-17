@@ -6,9 +6,10 @@ import java.io.Serializable;
 //对JSON格式的数据进行响应,返回给前端浏览器
 public class JsonResult<E> implements Serializable {
     private Integer state;   //响应状态码
-    private String message;   //状态码描述信息
+    private String Message;   //状态码描述信息
     private E data;
 
+    
     public JsonResult() {
         
     }
@@ -21,7 +22,7 @@ public class JsonResult<E> implements Serializable {
     }
 
     public JsonResult(Throwable exception) {
-        this.message = exception.getMessage();
+        this.Message = exception.getMessage();
     }
 
     public Integer getState() {
@@ -31,12 +32,18 @@ public class JsonResult<E> implements Serializable {
         this.state = state;
     }
     public void setMessage(String message) {
-        this.message = message;
+        this.Message = message;
     }
     public void setData(E data) {
         this.data = data;
     }
 
-    
-    
+    public E getData() {
+        return data;
+    }
+
+    public String getMessage() {
+        return Message;
+    }
+
 }

@@ -1,13 +1,13 @@
 package com.spring.databaseApp.service.implement;
 
 import com.spring.databaseApp.mapper.UserMapper;
+import com.spring.databaseApp.service.exception.DuplicatedEmail;
 import com.spring.databaseApp.service.exception.InsertException;
 import com.spring.databaseApp.service.exception.PasswordMatchFailure;
 import com.spring.databaseApp.service.exception.UserNotFound;
 
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 
 import java.util.UUID;
@@ -30,12 +30,18 @@ public class UserService {
 
 
     public int register(String name,String password,String email){
+        User find_email=user_mapper.find_by_email(email);
+        if(find_email!=null){
+            throw new DuplicatedEmail("邮箱被占用");
+        }
+
         User user=new User();
         user.setUser_type(true);
         user.setUser_name(name);
         user.setEmail(email);
         user.setSalt(UUID.randomUUID().toString().toUpperCase());
         user.setPassword(getMD5Password(password, user.getSalt()));
+
         int count=user_mapper.insert(user);
         if(count==1)return user.getId();
         else{ 

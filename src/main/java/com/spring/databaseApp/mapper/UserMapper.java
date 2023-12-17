@@ -14,6 +14,8 @@ public interface UserMapper {
 
     User find_by_id(int id);
 
+    User find_by_email(String email);
+
     @Select("select * from app_user")
     public List<User> find_all(); 
 
