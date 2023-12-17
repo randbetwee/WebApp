@@ -3,8 +3,9 @@
 ```
 project
  |-src-- main
-          |-DatabaseApplication.java   #主函数入口
           |-databaseApp 
+                  |-config             # 拦截器的控制
+                  |-intercepter        # 拦截器
                   |-entity             # 表格的模式
                   |-mapper             # 映射数据库操作方式，用于在程序中直接操作的接口
                   |-service            # 业务层，用于组织mapper中的操作的用法
@@ -12,6 +13,7 @@ project
                         |-exception    # 处理异常
                         |-implement    # 业务实际操作过程与接口
                   |-util               # 控制层，接受来自网页的数据进行响应处理
+                  |-DatabaseApplication.java   #主函数入口
           |-resource
                   |-mapper             # 实际SQL语句存在的地方，通过mapper与上面的接口组成映射
  |-test                                # 各个模块测试的程序

@@ -1,0 +1,214 @@
+name,Type,Crew,Min Speed,Max Speed,Wingspan,Height,Length,Max Payload,Empty Weight,Max Weight,Operator,Commissioned,Propulsion
+AG-600 [Kunlong], Naval Utility, 3, 210 kt, 302 kt, 38.8 m, 12.1 m, 36.9 m, 0 kg, 33600 kg, 53500 kg, Navy, 2021, 4x WJ-6C
+AS.565SA Panther, Anti-Submarine Warfare (ASW), 2, 55 kt, 155 kt, 3.0 m, 4.1 m, 11.3 m, 1600 kg, 2300 kg, 4300 kg, Navy, 1988, 2x Arriel 2C
+An-24B Coke, Transport, 5, 160 kt, 270 kt, 29.2 m, 8.3 m, 23.5 m, 5500 kg, 13300 kg, 21000 kg, Air Force, 1971, 2x AI-24A
+An-24RV Coke, Transport, 5, 160 kt, 270 kt, 29.2 m, 8.3 m, 23.5 m, 5500 kg, 13300 kg, 21000 kg, Air Force, 0, 2x AI-24A
+An-26 Curl A, Transport, 5, 180 kt, 300 kt, 29.2 m, 8.3 m, 23.8 m, 5500 kg, 16300 kg, 24000 kg, Air Force, 1979, 2x AI-24T
+BZK-005 Sea Eagle UAV, Unmanned Aerial Vehicle (UAV), 0, 70 kt, 115 kt, 15.0 m, 2.5 m, 9.0 m, 0 kg, 600 kg, 1200 kg, Navy, 2009, 1x Piston
+BZK-005 Sky Eagle UAV, Unmanned Aerial Vehicle (UAV), 0, 70 kt, 115 kt, 15.0 m, 2.5 m, 9.0 m, 0 kg, 600 kg, 1200 kg, Army, 2020, 1x Piston
+"CH-4B [Rainbow, Predator Copy] UAV", Unmanned Combat Aerial Vehicle (UCAV), 0, 70 kt, 115 kt, 18.0 m, 2.1 m, 9.0 m, 345 kg, 550 kg, 1330 kg, Army, 2014, 1x Piston
+CH-5 [Rainbow] UCAV, Unmanned Combat Aerial Vehicle (UCAV), 0, 55 kt, 120 kt, 21.0 m, 4.1 m, 11.0 m, 1200 kg, 1200 kg, 3300 kg, Air Force, 2018, 1x Turbo-charged Piston
+CH-500 UCAV, Unmanned Combat Aerial Vehicle (UCAV), 0, 35 kt, 65 kt, 0.8 m, 0.8 m, 1.8 m, 55 kg, 100 kg, 200 kg, Army, 2019, 1x Gas Turboshaft
+CH-6 UAV [Recon Type], Unmanned Aerial Vehicle (UAV), 0, 200 kt, 430 kt, 20.5 m, 5.0 m, 15.0 m, 300 kg, 5261 kg, 7076 kg, People's Liberation Army Air Force, 2021, 2x Turbofans
+CH-6 UAV [Recon/Attack Type], Unmanned Combat Aerial Vehicle (UCAV), 0, 200 kt, 430 kt, 20.5 m, 5.0 m, 15.0 m, 2000 kg, 5261 kg, 7076 kg, People's Liberation Army Air Force, 2021, 2x Turbofans
+CSA-003 [Diamond DA42 Twin Star], Electronic Intelligence (ELINT), 2, 110 kt, 180 kt, 13.42 m, 2.5 m, 8.9 m, 403 kg, 1596 kg, 2000 kg, Army, 2016, 2x Austro Engine E4 AE-300
+CSA-004 [Diamond DA42 Twin Star], Area Surveillance, 2, 110 kt, 180 kt, 13.42 m, 2.5 m, 8.9 m, 403 kg, 1596 kg, 2000 kg, Army, 2016, 2x Austro Engine E4 AE-300
+Camcopter S-100 UAV, Unmanned Aerial Vehicle (UAV), 0, 55 kt, 115 kt, 1.24 m, 1.12 m, 3.11 m, 50 kg, 110 kg, 200 kg, Navy, 2012, 1x AE50R Wankel
+Divine Eagle UAV, Unmanned Aerial Vehicle (UAV), 0, 150 kt, 405 kt, 40.23 m, 4.7 m, 15.25 m, 0 kg, 6781 kg, 15000 kg, Air Force, 2020, 1x WP-13 Turbojet
+FC-31 Gyrfalcon, Multirole (Fighter/Attack), 1, 350 kt, 900 kt, 11.5 m, 4.8 m, 16.8 m, 7000 kg, 13500 kg, 25000 kg, Air Force, 2022, 2x WS-13E
+FC-31 Gyrfalcon [Carrier Variant], Multirole (Fighter/Attack), 1, 350 kt, 900 kt, 11.5 m, 4.8 m, 16.8 m, 7000 kg, 13500 kg, 25000 kg, Air Force, 2022, 2x WS-13E
+FTC-2000 Mountain Eagle [JL-9G], Trainer, 2, 350 kt, 920 kt, 8.32 m, 4.1 m, 14.5 m, 0 kg, 7800 kg, 9800 kg, Navy, 2013, 1x Guizhou Liyang WP-13F
+FTC-2000 Mountain Eagle [JL-9], Trainer, 2, 350 kt, 920 kt, 8.32 m, 4.1 m, 14.5 m, 0 kg, 7800 kg, 9800 kg, Air Force, 2013, 1x Guizhou Liyang WP-13F
+GJ-1 Wing Loong I UAV, Unmanned Aerial Vehicle (UAV), 0, 70 kt, 115 kt, 14.0 m, 2.77 m, 9.05 m, 0 kg, 600 kg, 1100 kg, Air Force, 2013, 1x Piston
+GJ-11 Sharp Sword UAV, Unmanned Aerial Vehicle (UAV), 0, 180 kt, 600 kt, 14.0 m, 3.1 m, 11.63 m, 2000 kg, 6350 kg, 20215 kg, Navy, 2020, 1x Turbofan
+GJ-11 Sharp Sword UAV, Unmanned Aerial Vehicle (UAV), 0, 180 kt, 600 kt, 14.0 m, 3.1 m, 11.63 m, 2000 kg, 6350 kg, 20215 kg, Navy, 2019, 1x Turbofan
+GJ-11 Sharp Sword UCAV, Unmanned Combat Aerial Vehicle (UCAV), 0, 180 kt, 600 kt, 14.0 m, 3.1 m, 11.63 m, 2000 kg, 6350 kg, 20215 kg, Navy, 2020, 1x Turbofan
+GJ-2 Wing Loong II UCAV, Unmanned Combat Aerial Vehicle (UCAV), 0, 120 kt, 200 kt, 20.5 m, 4.1 m, 11.0 m, 480 kg, 1500 kg, 4200 kg, Air Force, 2018, 1x Turboprop
+GJ-2 Wing Loong II UCAV, Unmanned Combat Aerial Vehicle (UCAV), 0, 120 kt, 200 kt, 20.5 m, 4.1 m, 11.0 m, 480 kg, 1500 kg, 4200 kg, Air Force, 2019, 1x Turboprop
+GJ-3 Wing Loong III UCAV, Unmanned Combat Aerial Vehicle (UCAV), 0, 120 kt, 200 kt, 24.0 m, 4.3 m, 12.2 m, 2300 kg, 1500 kg, 6200 kg, Air Force, 2022, 1x Turboprop
+H-5 Beagle, Bomber, 3, 250 kt, 510 kt, 21.5 m, 6.2 m, 17.7 m, 3000 kg, 12890 kg, 21200 kg, Navy, 1967, 2x WJ-SA
+H-5 Beagle, Bomber, 3, 250 kt, 510 kt, 21.5 m, 6.2 m, 17.7 m, 3000 kg, 12890 kg, 21200 kg, Navy, 1984, 2x WJ-SA
+H-6A Badger, Bomber, 6, 300 kt, 550 kt, 33.0 m, 10.4 m, 34.8 m, 13000 kg, 38500 kg, 79000 kg, Air Force, 1973, 2x RD-3M
+H-6A Badger, Bomber, 6, 300 kt, 550 kt, 33.0 m, 10.4 m, 34.8 m, 13000 kg, 38500 kg, 79000 kg, Air Force, 1995, 2x RD-3M
+H-6A Badger, Bomber, 6, 300 kt, 550 kt, 33.0 m, 10.4 m, 34.8 m, 13000 kg, 38500 kg, 79000 kg, Air Force, 1984, 2x RD-3M
+H-6C Badger, Bomber, 6, 300 kt, 550 kt, 33.0 m, 10.4 m, 34.8 m, 13000 kg, 38500 kg, 79000 kg, Air Force, 1984, 2x RD-3M
+H-6C Badger, Bomber, 6, 300 kt, 550 kt, 33.0 m, 10.4 m, 34.8 m, 13000 kg, 38500 kg, 79000 kg, Air Force, 1995, 2x RD-3M
+H-6D Badger, Bomber, 6, 300 kt, 550 kt, 33.0 m, 10.4 m, 34.8 m, 13000 kg, 38500 kg, 79000 kg, Navy, 1987, 2x RD-3M
+H-6D Badger, Bomber, 6, 300 kt, 550 kt, 33.0 m, 10.4 m, 34.8 m, 13000 kg, 38500 kg, 79000 kg, Navy, 2000, 2x RD-3M
+H-6E Badger, Bomber, 6, 300 kt, 550 kt, 33.0 m, 10.4 m, 34.8 m, 13000 kg, 38500 kg, 79000 kg, Air Force, 2000, 2x RD-3M
+H-6G Badger, Bomber, 6, 300 kt, 550 kt, 33.0 m, 10.4 m, 34.8 m, 13000 kg, 38500 kg, 79000 kg, Navy, 2006, 2x RD-3M
+H-6G Badger [H-6M], Bomber, 6, 300 kt, 550 kt, 33.0 m, 10.4 m, 34.8 m, 13000 kg, 38500 kg, 79000 kg, Navy, 2015, 2x RD-3M
+H-6H Badger, Bomber, 6, 300 kt, 550 kt, 33.0 m, 10.4 m, 34.8 m, 13000 kg, 38500 kg, 79000 kg, Air Force, 2006, 2x RD-3M
+H-6J Badger, Bomber, 3, 300 kt, 550 kt, 33.0 m, 10.4 m, 34.8 m, 13000 kg, 38500 kg, 79000 kg, Navy, 2018, 2x WS-18 [D-30KP-2 Copy]
+H-6K Badger, Bomber, 3, 300 kt, 550 kt, 33.0 m, 10.4 m, 34.8 m, 13000 kg, 38500 kg, 79000 kg, Air Force, 2011, 2x WS-18 [D-30KP-2 Copy]
+H-6M Badger, Bomber, 6, 300 kt, 550 kt, 33.0 m, 10.4 m, 34.8 m, 13000 kg, 38500 kg, 79000 kg, Air Force, 2008, 2x RD-3M
+H-6N Badger, Bomber, 3, 300 kt, 550 kt, 33.0 m, 10.4 m, 34.8 m, 13000 kg, 38500 kg, 79000 kg, Air Force, 2018, 2x WS-18 [D-30KP-2 Copy]
+H-6N Badger, Bomber, 3, 300 kt, 550 kt, 33.0 m, 10.4 m, 34.8 m, 13000 kg, 38500 kg, 79000 kg, Air Force, 2018, 2x WS-18 [D-30KP-2 Copy]
+HD-5 Beagle, Electronic Warfare, 3, 250 kt, 510 kt, 21.5 m, 6.2 m, 17.7 m, 0 kg, 12890 kg, 21200 kg, Air Force, 1987, 2x WJ-SA
+HY-6D Badger [H-6DU], Tanker (Air Refueling), 6, 300 kt, 550 kt, 33.0 m, 10.4 m, 34.8 m, 13000 kg, 38500 kg, 79000 kg, Navy, 2000, 2x RD-3M
+HY-6U Badger [H-6U], Tanker (Air Refueling), 6, 300 kt, 550 kt, 33.0 m, 10.4 m, 34.8 m, 0 kg, 38500 kg, 79000 kg, Air Force, 1997, 2x RD-3M
+HZ-5 Beagle, Recon, 3, 250 kt, 510 kt, 21.5 m, 6.2 m, 17.7 m, 0 kg, 12890 kg, 21200 kg, Air Force, 1979, 2x WJ-SA
+HZ-6A Badger, Electronic Intelligence (ELINT), 6, 300 kt, 550 kt, 33.0 m, 10.4 m, 34.8 m, 0 kg, 38500 kg, 79000 kg, Air Force, 1990, 2x RD-3M
+Il-76MD Candid B, Transport, 7, 250 kt, 470 kt, 50.5 m, 14.8 m, 46.6 m, 50000 kg, 88000 kg, 195000 kg, Air Force, 1992, 4x D-30KP
+Il-78M Midas, Tanker (Air Refueling), 6, 250 kt, 470 kt, 50.5 m, 14.8 m, 46.6 m, 50000 kg, 88000 kg, 195000 kg, Air Force, 2015, 4x D-30KP-2
+J-10A Firebird, Fighter, 1, 350 kt, 920 kt, 9.7 m, 4.8 m, 15.5 m, 4500 kg, 9750 kg, 19277 kg, Air Force, 2008, 1x AL-31F
+J-10A Firebird, Fighter, 1, 350 kt, 920 kt, 9.7 m, 4.8 m, 15.5 m, 4500 kg, 9750 kg, 19277 kg, Air Force, 2018, 1x AL-31F
+J-10AH Firebird, Fighter, 1, 350 kt, 920 kt, 9.7 m, 4.8 m, 15.5 m, 4500 kg, 9750 kg, 19277 kg, Navy, 2011, 1x AL-31F
+J-10B Firebird, Fighter, 1, 350 kt, 920 kt, 9.7 m, 4.8 m, 15.5 m, 4500 kg, 9750 kg, 19277 kg, Air Force, 2014, 1x AL-31FN
+J-10B Firebird, Fighter, 1, 350 kt, 920 kt, 9.7 m, 4.8 m, 15.5 m, 4500 kg, 9750 kg, 19277 kg, Air Force, 2018, 1x AL-31FN
+J-10C Firebird, Fighter, 1, 350 kt, 920 kt, 9.7 m, 4.8 m, 15.5 m, 4500 kg, 9750 kg, 19277 kg, Air Force, 2018, 1x AL-31FN
+J-10C Firebird, Fighter, 1, 350 kt, 920 kt, 9.7 m, 4.8 m, 15.5 m, 4500 kg, 9750 kg, 19277 kg, Air Force, 2019, 1x WS-10B
+J-11 Flanker B [Su-27SK], Fighter, 1, 350 kt, 920 kt, 14.7 m, 5.9 m, 21.9 m, 8000 kg, 16380 kg, 30450 kg, Air Force, 1994, 2x AL-31F
+J-11 Flanker B [Su-27SK], Fighter, 1, 350 kt, 920 kt, 14.7 m, 5.9 m, 21.9 m, 8000 kg, 16380 kg, 30450 kg, Air Force, 2015, 2x AL-31F
+J-11B Flanker B [Su-27SK Copy], Fighter, 1, 350 kt, 920 kt, 14.7 m, 5.9 m, 21.9 m, 8000 kg, 16380 kg, 30450 kg, Air Force, 2009, 2x WS-10B
+J-11B Flanker B [Su-27SK Copy], Fighter, 1, 350 kt, 920 kt, 14.7 m, 5.9 m, 21.9 m, 8000 kg, 16380 kg, 30450 kg, Air Force, 2012, 2x WS-10B
+J-11B Flanker B [Su-27SK Copy], Fighter, 1, 350 kt, 920 kt, 14.7 m, 5.9 m, 21.9 m, 8000 kg, 16380 kg, 30450 kg, Air Force, 2018, 2x WS-10B
+J-11BG, Fighter, 1, 350 kt, 920 kt, 14.7 m, 5.9 m, 21.9 m, 8000 kg, 16380 kg, 30450 kg, Air Force, 2019, 2x WS-10B
+J-11BH Flanker B [Su-27SK Copy], Fighter, 1, 350 kt, 920 kt, 14.7 m, 5.9 m, 21.9 m, 8000 kg, 16380 kg, 30450 kg, Navy, 2013, 2x WS-10B
+J-11BHG Flanker B [Su-27SK Copy], Fighter, 1, 350 kt, 920 kt, 14.7 m, 5.9 m, 21.9 m, 8000 kg, 16380 kg, 30450 kg, Navy, 2022, 2x WS-10B
+J-11BS Flanker C [Su-27UBK Copy], Fighter, 2, 350 kt, 920 kt, 14.7 m, 5.9 m, 21.9 m, 8000 kg, 16380 kg, 30450 kg, Air Force, 2009, 2x WS-10B
+J-11BS Flanker C [Su-27UBK Copy], Fighter, 2, 350 kt, 920 kt, 14.7 m, 5.9 m, 21.9 m, 8000 kg, 16380 kg, 30450 kg, Air Force, 2012, 2x WS-10B
+J-11BS Flanker C [Su-27UBK Copy], Fighter, 1, 350 kt, 920 kt, 14.7 m, 5.9 m, 21.9 m, 8000 kg, 16380 kg, 30450 kg, Air Force, 2018, 2x WS-10B
+J-11BSH Flanker C [Su-27UBK Copy], Fighter, 2, 350 kt, 920 kt, 14.7 m, 5.9 m, 21.9 m, 8000 kg, 16380 kg, 30450 kg, Navy, 2013, 2x WS-10B
+J-11D Flanker L [Su-27SK Copy], Fighter, 1, 350 kt, 920 kt, 14.7 m, 5.9 m, 21.9 m, 8000 kg, 16380 kg, 30450 kg, Air Force, 2018, 2x WS-10B
+J-15 Flying Shark [Su-33 Copy], Fighter, 1, 350 kt, 920 kt, 14.7 m, 5.9 m, 21.9 m, 8000 kg, 17700 kg, 33000 kg, Navy, 2017, 2x AL-31F
+J-15B Flying Shark [Su-33 Copy], Fighter, 1, 350 kt, 920 kt, 14.7 m, 5.9 m, 21.9 m, 8000 kg, 17700 kg, 33000 kg, Navy, 2022, 2x AL-31F
+J-15D Growler Shark, Fighter, 1, 350 kt, 920 kt, 14.7 m, 5.9 m, 21.9 m, 8000 kg, 17700 kg, 33000 kg, Navy, 2017, 2x AL-31F
+J-15D Roaring Shark, Electronic Warfare, 2, 350 kt, 920 kt, 14.7 m, 5.9 m, 21.9 m, 8000 kg, 16380 kg, 30450 kg, Navy, 2019, 2x AL-31F
+J-15S Flying Shark, Fighter, 2, 350 kt, 920 kt, 14.7 m, 5.9 m, 21.9 m, 8000 kg, 17700 kg, 33000 kg, Navy, 2017, 2x AL-31F
+J-16 Flying Shark [Su-30MKK Copy], Fighter, 2, 350 kt, 920 kt, 14.7 m, 5.9 m, 21.9 m, 8000 kg, 16380 kg, 30450 kg, Navy, 2015, 2x WS-10B
+J-16 Flying Shark [Su-30MKK Copy], Fighter, 2, 350 kt, 920 kt, 14.7 m, 5.9 m, 21.9 m, 8000 kg, 16380 kg, 30450 kg, Navy, 2018, 2x AL-31F
+J-16 Flying Shark [Su-30MKK Copy], Fighter, 2, 350 kt, 920 kt, 14.7 m, 5.9 m, 21.9 m, 8000 kg, 16380 kg, 30450 kg, People's Liberation Army Air Force, 2018, 2x AL-31F
+J-16 Flying Shark [Su-30MKK Copy], Fighter, 2, 350 kt, 920 kt, 14.7 m, 5.9 m, 21.9 m, 8000 kg, 16380 kg, 30450 kg, People's Liberation Army Air Force, 2015, 2x WS-10B
+J-16 Flying Shark [Su-30MKK Copy], Fighter, 2, 350 kt, 920 kt, 14.7 m, 5.9 m, 21.9 m, 8000 kg, 16380 kg, 30450 kg, People's Liberation Army Air Force, 2016, 2x WS-10B
+J-16D Roaring Wolf, Electronic Warfare, 2, 350 kt, 920 kt, 14.7 m, 5.9 m, 21.9 m, 8000 kg, 16380 kg, 30450 kg, Navy, 2021, 2x AL-31F
+J-20A Mighty Dragon, Fighter, 1, 350 kt, 920 kt, 12.88 m, 4.45 m, 21.26 m, 4500 kg, 19400 kg, 37000 kg, Air Force, 2017, 2x AL-31FM-2
+J-20A Mighty Dragon, Fighter, 1, 350 kt, 920 kt, 12.9 m, 4.5 m, 21.3 m, 4500 kg, 19400 kg, 37000 kg, Air Force, 2019, 2x WS-10B
+J-20B Mighty Dragon, Fighter, 1, 350 kt, 1000 kt, 12.9 m, 4.5 m, 21.3 m, 4500 kg, 19400 kg, 37000 kg, Air Force, 2023, 2x WS-15
+J-20B Mighty Dragon, Fighter, 1, 350 kt, 920 kt, 12.9 m, 4.5 m, 21.3 m, 4500 kg, 19400 kg, 37000 kg, Air Force, 2020, 2x WS-10C
+J-20S Mighty Dragon, Fighter, 2, 350 kt, 920 kt, 12.9 m, 4.5 m, 21.3 m, 4500 kg, 19400 kg, 37000 kg, Air Force, 2021, 2x WS-10B
+J-5A Fresco [MiG-17PF Copy], Fighter, 1, 350 kt, 650 kt, 9.6 m, 3.8 m, 11.4 m, 650 kg, 3930 kg, 5350 kg, Air Force, 1966, 1x WP-5 [VK-1F Copy]
+J-6 Farmer [MiG-19S Copy], Fighter, 1, 350 kt, 700 kt, 9.2 m, 3.9 m, 14.9 m, 0 kg, 5760 kg, 10000 kg, Air Force, 1966, 1x WP-6 [RD-9BF-811 Copy]
+J-6 Farmer [MiG-19S Copy] UAV, Unmanned Aerial Vehicle (UAV), 0, 350 kt, 700 kt, 9.2 m, 3.9 m, 14.9 m, 0 kg, 5760 kg, 10000 kg, Air Force, 2021, 1x WP-6 [RD-9BF-811 Copy]
+J-6A Farmer [MiG-19P Copy], Fighter, 1, 350 kt, 700 kt, 9.2 m, 3.9 m, 14.9 m, 0 kg, 5760 kg, 10000 kg, Air Force, 1982, 1x WP-6 [RD-9BF-811 Copy]
+J-6A Farmer [MiG-19P Copy], Fighter, 1, 350 kt, 700 kt, 9.2 m, 3.9 m, 14.9 m, 0 kg, 5760 kg, 10000 kg, Air Force, 1976, 1x WP-6 [RD-9BF-811 Copy]
+J-7C Fishbed [MiG-21 Copy], Fighter, 1, 350 kt, 920 kt, 7.2 m, 4.1 m, 14.0 m, 0 kg, 4871 kg, 8625 kg, Air Force, 1988, 1x WP-13 [R-13F-300 Copy]
+J-7D Fishbed [MiG-21 Copy], Fighter, 1, 350 kt, 920 kt, 7.2 m, 4.1 m, 14.0 m, 0 kg, 4871 kg, 8625 kg, Air Force, 1995, 1x WP-13F1 [R-13F-300 Copy]
+J-7E Fishbed [MiG-21 Copy], Fighter, 1, 350 kt, 920 kt, 8.3 m, 4.1 m, 14.0 m, 0 kg, 4871 kg, 8625 kg, Air Force, 1996, 1x WP-13F [R-13F-300 Copy]
+J-7EH Fishbed [MiG-21 Copy], Fighter, 1, 350 kt, 920 kt, 8.3 m, 4.1 m, 14.0 m, 0 kg, 4871 kg, 8625 kg, Navy, 1996, 1x WP-13F [R-13F-300 Copy]
+J-7G Fishbed [MiG-21 Copy], Fighter, 1, 350 kt, 920 kt, 8.3 m, 4.1 m, 14.0 m, 0 kg, 4871 kg, 8625 kg, Air Force, 2005, 1x WP-13F [R-13F-300 Copy]
+J-7I Fishbed [MiG-21 Copy], Fighter, 1, 350 kt, 920 kt, 7.2 m, 4.1 m, 14.0 m, 0 kg, 4871 kg, 8625 kg, Air Force, 1982, 1x WP-7A
+J-7I Fishbed [MiG-21 Copy], Fighter, 1, 350 kt, 920 kt, 7.2 m, 4.1 m, 14.0 m, 0 kg, 4871 kg, 8625 kg, Air Force, 1977, 1x WP-7A
+J-7II Fishbed [MiG-21 Copy], Fighter, 1, 350 kt, 920 kt, 7.2 m, 4.1 m, 14.0 m, 0 kg, 4871 kg, 8625 kg, Air Force, 1983, 1x WP-7B
+J-7IIH Fishbed [MiG-21 Copy], Fighter, 1, 350 kt, 920 kt, 7.2 m, 4.1 m, 14.0 m, 0 kg, 4871 kg, 8625 kg, Air Force, 1991, 1x WP-7B
+J-8A Finback A [J-8I], Fighter, 1, 350 kt, 920 kt, 9.3 m, 5.4 m, 21.6 m, 2500 kg, 9820 kg, 17800 kg, Air Force, 1986, 2x WP-7B
+J-8B Finback B [J-8II], Fighter, 1, 350 kt, 920 kt, 9.3 m, 5.4 m, 21.6 m, 0 kg, 9820 kg, 17800 kg, Air Force, 1996, 2x WP-13A2 [R-13F-300 Copy]
+J-8B Finback B [J-8II], Fighter, 1, 350 kt, 920 kt, 9.3 m, 5.4 m, 21.6 m, 0 kg, 9820 kg, 17800 kg, Navy, 1996, 2x WP-13A2 [R-13F-300 Copy]
+J-8D Finback B [J-8II], Fighter, 1, 350 kt, 920 kt, 9.3 m, 5.4 m, 21.6 m, 0 kg, 9820 kg, 17800 kg, Air Force, 1997, 2x WP-13A2 [R-13F-300 Copy]
+J-8D Finback B [J-8II], Fighter, 1, 350 kt, 920 kt, 9.3 m, 5.4 m, 21.6 m, 0 kg, 9820 kg, 17800 kg, Navy, 1997, 2x WP-13A2 [R-13F-300 Copy]
+J-8F Finback B [J-8II], Fighter, 1, 350 kt, 920 kt, 9.3 m, 5.4 m, 21.6 m, 0 kg, 9820 kg, 17800 kg, Air Force, 2004, 2x WP-13B2 [R-13F-300 Copy]
+J-8F Finback B [J-8II], Fighter, 1, 350 kt, 920 kt, 9.3 m, 5.4 m, 21.6 m, 0 kg, 9820 kg, 17800 kg, Navy, 2004, 2x WP-13B2 [R-13F-300 Copy]
+J-8IE Finback A [J-8I], Fighter, 1, 350 kt, 920 kt, 9.3 m, 5.4 m, 21.6 m, 0 kg, 9820 kg, 17800 kg, Air Force, 1996, 2x WP-7B
+J-8IE Finback A [J-8I], Fighter, 1, 350 kt, 920 kt, 9.3 m, 5.4 m, 21.6 m, 0 kg, 9820 kg, 17800 kg, Navy, 1996, 2x WP-7B
+JH-7 Flounder, Attack, 2, 350 kt, 750 kt, 12.8 m, 6.2 m, 22.3 m, 6500 kg, 14500 kg, 28475 kg, Navy, 1999, 2x WS-9/Spey Mk.202
+JH-7A Flounder, Attack, 2, 350 kt, 750 kt, 12.8 m, 6.2 m, 22.3 m, 9000 kg, 13500 kg, 30000 kg, Navy, 2008, 2x WS-9/Spey Mk.202
+JH-7A Flounder, Attack, 2, 350 kt, 750 kt, 12.8 m, 6.2 m, 22.3 m, 9000 kg, 13500 kg, 30000 kg, Air Force, 2008, 2x WS-9/Spey Mk.202
+JH-7A Flounder, Attack, 2, 350 kt, 750 kt, 12.8 m, 6.2 m, 22.3 m, 9000 kg, 13500 kg, 30000 kg, Navy, 2013, 2x WS-9/Spey Mk.202
+JH-7A Flounder, Attack, 2, 350 kt, 750 kt, 12.8 m, 6.2 m, 22.3 m, 9000 kg, 13500 kg, 30000 kg, Air Force, 2018, 2x WS-9/Spey Mk.202
+JH-7A Flounder, Attack, 2, 350 kt, 750 kt, 12.8 m, 6.2 m, 22.3 m, 9000 kg, 13500 kg, 30000 kg, Navy, 2021, 2x WS-9/Spey Mk.202
+JH-7A2 Flounder, Attack, 2, 350 kt, 750 kt, 12.8 m, 6.2 m, 22.3 m, 9000 kg, 13500 kg, 30000 kg, Air Force, 2019, 2x WS-9/Spey Mk.202
+JH-7B Flounder, Attack, 2, 350 kt, 750 kt, 12.8 m, 6.2 m, 22.3 m, 9000 kg, 13500 kg, 30000 kg, Navy, 2018, 2x WS-9A/Spey Mk.202
+JL-8 Karakorum, Trainer, 2, 280 kt, 430 kt, 9.6 m, 4.2 m, 11.6 m, 950 kg, 2687 kg, 4330 kg, Air Force, 1997, 1x TFE-731-2A-2A
+JZ-8F Finback B, Recon, 1, 350 kt, 920 kt, 9.3 m, 5.4 m, 21.6 m, 0 kg, 9820 kg, 17800 kg, Air Force, 2007, 2x WP-13B2 [R-13F-300 Copy]
+JZ-8F Finback B, Recon, 1, 350 kt, 920 kt, 9.3 m, 5.4 m, 21.6 m, 0 kg, 9820 kg, 17800 kg, Navy, 2007, 2x WP-13B2 [R-13F-300 Copy]
+JZ-8R Finback A, Recon, 1, 350 kt, 920 kt, 9.3 m, 5.4 m, 21.6 m, 0 kg, 9820 kg, 17800 kg, Air Force, 1995, 2x WP-7B
+KJ-2000 Mainring [A-50], Airborne Early Warning (AEW), 15, 250 kt, 470 kt, 50.5 m, 14.8 m, 46.6 m, 50000 kg, 88000 kg, 195000 kg, Air Force, 2007, 4x D-30KP
+KJ-500 Cub [GX9], Airborne Early Warning (AEW), 6, 210 kt, 410 kt, 40.0 m, 10.5 m, 36.0 m, 25000 kg, 39000 kg, 77000 kg, Air Force, 2016, 4x WJ-6C
+KJ-500A Cub [GX9], Airborne Early Warning (AEW), 6, 210 kt, 410 kt, 40.0 m, 10.5 m, 36.0 m, 25000 kg, 39000 kg, 77000 kg, Air Force, 2020, 4x WJ-6C
+KJ-600, Airborne Early Warning (AEW), 6, 210 kt, 374 kt, 24.4 m, 5.75 m, 18.4 m, 0 kg, 25400 kg, 30480 kg, Navy, 2020, 2x WJ-6C
+Ka-28 Helix A, Anti-Submarine Warfare (ASW), 3, 55 kt, 135 kt, 3.65 m, 5.4 m, 11.3 m, 12000 kg, 6500 kg, 1800 kg, Navy, 1997, 2x TV3-117VK
+Ka-28 Helix A, Anti-Submarine Warfare (ASW), 3, 55 kt, 135 kt, 3.65 m, 5.4 m, 11.3 m, 12000 kg, 6500 kg, 1800 kg, Navy, 2019, 2x TV3-117VK
+Ka-31 Helix, Airborne Early Warning (AEW), 3, 55 kt, 135 kt, 3.65 m, 5.4 m, 11.3 m, 12000 kg, 6500 kg, 1800 kg, Navy, 2011, 2x TV3-117VMA
+MA-60H MPA, Maritime Patrol Aircraft (MPA), 2, 180 kt, 280 kt, 29.2 m, 8.86 m, 24.71 m, 5500 kg, 13700 kg, 21800 kg, Coast Guard, 2016, 2x PW127J
+Mi-17 Hip H, Transport, 2, 55 kt, 135 kt, 5.7 m, 5.7 m, 18.2 m, 0 kg, 7160 kg, 12000 kg, Army, 1992, 2x TV3-117MT
+Mi-171 Hip H, Transport, 2, 55 kt, 135 kt, 5.7 m, 5.7 m, 18.2 m, 0 kg, 7160 kg, 12000 kg, Army, 1998, 2x TV3-117MT
+Mi-171 Hip H, Transport, 2, 55 kt, 135 kt, 5.7 m, 5.7 m, 18.2 m, 0 kg, 7160 kg, 12000 kg, Army, 2020, 2x TV3-117MT
+Mi-17V5 Hip H, Transport, 2, 55 kt, 135 kt, 5.7 m, 5.7 m, 18.2 m, 0 kg, 7160 kg, 12000 kg, Army, 2003, 2x TV3-117VMA
+Mi-17V7 Hip H, Transport, 2, 55 kt, 135 kt, 5.7 m, 5.7 m, 18.2 m, 0 kg, 7160 kg, 12000 kg, Army, 2005, 2x VK-2500
+Mi-8T Hip C, Transport, 2, 55 kt, 135 kt, 5.7 m, 5.7 m, 18.2 m, 0 kg, 7160 kg, 12000 kg, Army, 1980, 2x TV2-117A
+Q-5 Fantan, Attack, 1, 350 kt, 700 kt, 9.8 m, 4.5 m, 16.7 m, 0 kg, 6375 kg, 11830 kg, Air Force, 1971, 2x WP-6 [RD-9BF-811 Copy]
+Q-5C Fantan, Attack, 1, 350 kt, 700 kt, 9.8 m, 4.5 m, 16.7 m, 0 kg, 6375 kg, 11830 kg, Air Force, 1998, 2x WP-6III
+Q-5D Fantan, Attack, 1, 350 kt, 700 kt, 9.8 m, 4.5 m, 16.7 m, 0 kg, 6375 kg, 11830 kg, Air Force, 2008, 2x WP-6III
+Q-5I Fantan, Attack, 1, 350 kt, 700 kt, 9.8 m, 4.5 m, 16.7 m, 0 kg, 6375 kg, 11830 kg, Air Force, 1987, 2x WP-6III
+Q-5I Fantan, Attack, 1, 350 kt, 700 kt, 9.8 m, 4.5 m, 16.7 m, 0 kg, 6375 kg, 11830 kg, Air Force, 1997, 2x WP-6III
+Q-5IA Fantan, Attack, 1, 350 kt, 700 kt, 9.8 m, 4.5 m, 16.7 m, 0 kg, 6375 kg, 11830 kg, Air Force, 1989, 2x WP-6III
+Q-5IA Fantan, Attack, 1, 350 kt, 700 kt, 9.8 m, 4.5 m, 16.7 m, 0 kg, 6375 kg, 11830 kg, Air Force, 1997, 2x WP-6III
+S-70C-2 Blackhawk, Transport, 4, 55 kt, 155 kt, 2.4 m, 5.1 m, 15.3 m, 0 kg, 4819 kg, 11113 kg, Army, 1987, 2x T700-GE-701C
+SA.321Ja Super Frelon, Naval Utility, 5, 55 kt, 130 kt, 5.2 m, 6.6 m, 19.4 m, 0 kg, 6863 kg, 13000 kg, Navy, 1978, 3x Turmo IIIC5 [WZ6]
+SH-5 Harbin, Area Surveillance, 8, 140 kt, 290 kt, 36.0 m, 9.8 m, 38.9 m, 0 kg, 26500 kg, 45000 kg, Navy, 1986, 4x WJ-5A
+Spy Balloon, Blimp, 0, 5 kt, 115 kt, 35.0 m, 60.0 m, 35.0 m, 200 kg, 0 kg, 910 kg, Unknown, 0, Balloon Propulsion
+Su-30MKK Flanker G, Multirole (Fighter/Attack), 2, 350 kt, 920 kt, 14.7 m, 5.9 m, 22.2 m, 8000 kg, 16300 kg, 30450 kg, Air Force, 2002, 2x AL-31F
+Su-30MKK Flanker G, Multirole (Fighter/Attack), 2, 350 kt, 920 kt, 14.7 m, 5.9 m, 22.2 m, 8000 kg, 16300 kg, 30450 kg, Air Force, 2018, 2x AL-31F
+Su-30MKK2 Flanker G, Multirole (Fighter/Attack), 2, 350 kt, 920 kt, 14.7 m, 5.9 m, 22.2 m, 8000 kg, 16300 kg, 30450 kg, Navy, 2005, 2x AL-31F
+Su-30MKK2 Flanker G, Multirole (Fighter/Attack), 2, 350 kt, 920 kt, 14.7 m, 5.9 m, 22.2 m, 8000 kg, 16300 kg, 30450 kg, Navy, 2009, 2x AL-31F
+Su-35K Flanker E, Fighter, 1, 350 kt, 920 kt, 15.3 m, 5.9 m, 21.9 m, 8000 kg, 18400 kg, 34500 kg, Air Force, 2018, 2x AL-41F1S [Saturn 117S] TVC
+Tu-154M Careless [Type I ELINT], Recon, 5, 230 kt, 520 kt, 37.6 m, 11.4 m, 48.0 m, 0 kg, 55300 kg, 100000 kg, Air Force, 1997, 3x D-30KU-154
+Tu-154M Careless [Type II ELINT / SLAR], Recon, 5, 230 kt, 520 kt, 37.6 m, 11.4 m, 48.0 m, 0 kg, 55300 kg, 100000 kg, Air Force, 1999, 3x D-30KU-154
+WZ-7 Soar Dragon UAV, Unmanned Aerial Vehicle (UAV), 0, 150 kt, 405 kt, 25.0 m, 4.6 m, 14.3 m, 650 kg, 7500 kg, 8500 kg, Navy, 2018, 1x WP-13 Turbojet
+WZ-8, Recon, 0, 1000 kt, 2255 kt, 6.7 m, 1.2 m, 11.5 m, 0 kg, 5000 kg, 0 kg, Air Force, 2019, 2× YF50 Rocket Motor
+Y-12 (II), Transport, 2, 120 kt, 165 kt, 17.24 m, 5.68 m, 14.86 m, 1700 kg, 2840 kg, 5300 kg, Air Force, 1986, 2x PT6A-27
+Y-20A Kunpeng, Transport, 3, 250 kt, 490 kt, 45.8 m, 15.0 m, 47.0 m, 66000 kg, 100000 kg, 220000 kg, Air Force, 2016, 4x D-30KP
+Y-20A Kunpeng, Airborne Early Warning (AEW), 3, 250 kt, 490 kt, 45.8 m, 15.0 m, 47.0 m, 66000 kg, 100000 kg, 220000 kg, Air Force, 2019, 4x D-30KP
+Y-20U Kunpeng, Tanker (Air Refueling), 3, 250 kt, 490 kt, 45.8 m, 15.0 m, 47.0 m, 66000 kg, 100000 kg, 220000 kg, Air Force, 2019, 4x D-30KP
+Y-5B(T) [An-2SKh Colt Copy], Transport, 2, 80 kt, 135 kt, 18.2 m, 4.1 m, 12.4 m, 2140 kg, 3300 kg, 5440 kg, People's Liberation Army Air Force, 0, 1x Shvetsov ASh-62
+Y-5U [An-2SKh Colt Copy], Unmanned Aerial Vehicle (UAV), 0, 80 kt, 135 kt, 18.2 m, 4.1 m, 12.4 m, 2140 kg, 3300 kg, 5440 kg, People's Liberation Army Air Force, 2023, 1x Shvetsov ASh-62
+Y-7 Curl, Transport, 5, 180 kt, 300 kt, 29.6 m, 8.6 m, 23.7 m, 5500 kg, 14900 kg, 21800 kg, Air Force, 1986, 2x WJ-5A-1
+Y-7H Curl, Transport, 5, 180 kt, 300 kt, 29.6 m, 8.6 m, 23.7 m, 5500 kg, 14900 kg, 21800 kg, Air Force, 1993, 2x WJ-5E
+Y-8 Cub, Transport, 6, 210 kt, 410 kt, 38.0 m, 10.5 m, 33.1 m, 20000 kg, 28000 kg, 61000 kg, Air Force, 1982, 4x AI-20M [WJ-6]
+Y-8C Cub, Transport, 6, 210 kt, 410 kt, 38.0 m, 10.5 m, 33.1 m, 20000 kg, 28000 kg, 61000 kg, Air Force, 1989, 4x AI-20M [WJ-6]
+Y-8CB Cub [GX1], Electronic Warfare, 6, 210 kt, 410 kt, 38.0 m, 10.5 m, 33.1 m, 20000 kg, 28000 kg, 61000 kg, Air Force, 2006, 4x AI-20M [WJ-6]
+Y-8G Cub [GX4], Electronic Warfare, 6, 210 kt, 410 kt, 38.0 m, 10.5 m, 33.1 m, 20000 kg, 28000 kg, 61000 kg, Air Force, 2008, 4x AI-20M [WJ-6]
+Y-8J Cub, Airborne Early Warning (AEW), 6, 210 kt, 410 kt, 38.0 m, 11.6 m, 34.0 m, 20000 kg, 35488 kg, 61000 kg, Navy, 2001, 4x AI-20M [WJ-6]
+Y-8JB Cub [GX2], Electronic Intelligence (ELINT), 6, 210 kt, 410 kt, 38.0 m, 11.6 m, 34.0 m, 20000 kg, 35488 kg, 61000 kg, Navy, 2005, 4x AI-20M [WJ-6]
+Y-8Q Cub [GX6], Anti-Submarine Warfare (ASW), 6, 210 kt, 410 kt, 38.0 m, 10.5 m, 33.1 m, 20000 kg, 28000 kg, 61000 kg, Navy, 2015, 4x AI-20M [WJ-6]
+Y-8T Cub [GX3], Airborne Command Post (ACP), 6, 210 kt, 410 kt, 38.0 m, 11.6 m, 34.0 m, 20000 kg, 35488 kg, 61000 kg, Navy, 2007, 4x AI-20M [WJ-6]
+Y-8W Balance Beam [KJ-200 Cub], Airborne Early Warning (AEW), 6, 210 kt, 410 kt, 38.0 m, 11.6 m, 34.0 m, 20000 kg, 35488 kg, 61000 kg, Air Force, 2009, 4x AI-20M [WJ-6]
+Y-8W Balance Beam [KJ-200 Cub], Airborne Early Warning (AEW), 6, 210 kt, 410 kt, 38.0 m, 11.6 m, 34.0 m, 20000 kg, 35488 kg, 61000 kg, Air Force, 2020, 4x AI-20M [WJ-6]
+Y-8X Cub, Maritime Patrol Aircraft (MPA), 9, 210 kt, 410 kt, 38.0 m, 11.6 m, 34.0 m, 20000 kg, 35488 kg, 61000 kg, Navy, 1987, 4x AI-20M [WJ-6]
+Y-8XZ Cub [GX7], Electronic Intelligence (ELINT), 6, 210 kt, 410 kt, 38.0 m, 11.6 m, 34.0 m, 20000 kg, 35488 kg, 61000 kg, Air Force, 2006, 4x AI-20M [WJ-6]
+Y-9 Cub, Transport, 4, 210 kt, 410 kt, 40.0 m, 10.5 m, 36.0 m, 25000 kg, 39000 kg, 77000 kg, Air Force, 2013, 4x WJ-6C
+Y-9G Cub [GX11], Electronic Warfare, 6, 210 kt, 410 kt, 40.0 m, 10.5 m, 36.0 m, 25000 kg, 39000 kg, 77000 kg, Navy, 2015, 4x WJ-6C
+Y-9JB Cub [GX8], Electronic Intelligence (ELINT), 6, 210 kt, 410 kt, 40.0 m, 10.5 m, 36.0 m, 25000 kg, 39000 kg, 77000 kg, Navy, 2014, 4x WJ-6C
+Y-9XZ Cub [GX10], Electronic Intelligence (ELINT), 6, 210 kt, 410 kt, 40.0 m, 10.5 m, 36.0 m, 25000 kg, 39000 kg, 77000 kg, Navy, 2015, 4x WJ-6C
+Z-10 Fierce Thunderbolt, Attack, 2, 55 kt, 160 kt, 3.0 m, 3.85 m, 14.15 m, 1500 kg, 5540 kg, 7000 kg, Army, 2012, 2x WZ-9/WZ-16 [MTR 390 Copy?]
+Z-10 Fierce Thunderbolt, Attack, 2, 55 kt, 160 kt, 3.0 m, 3.85 m, 14.15 m, 1500 kg, 5540 kg, 7000 kg, Army, 2020, 2x WZ-9/WZ-16 [MTR 390 Copy?]
+Z-11J, Utility, 1, 55 kt, 150 kt, 1.8 m, 3.14 m, 11.24 m, 976 kg, 1274 kg, 2250 kg, Army, 2000, 1× WZ-8D Turboshaft
+Z-11W, Attack, 1, 55 kt, 150 kt, 1.8 m, 3.14 m, 11.24 m, 976 kg, 1274 kg, 2250 kg, Army, 2000, 1× WZ-8D Turboshaft
+Z-11WB, Recon, 1, 55 kt, 150 kt, 1.8 m, 3.14 m, 11.24 m, 976 kg, 1274 kg, 2250 kg, Army, 2017, 1× WZ-8D Turboshaft
+Z-18 Super Frelon, Transport, 5, 55 kt, 130 kt, 5.2 m, 6.6 m, 19.4 m, 0 kg, 7095 kg, 13000 kg, Navy, 2014, 3x Turmo IIIC5 [WZ6]
+Z-18FQ Super Frelon, Anti-Submarine Warfare (ASW), 5, 55 kt, 130 kt, 5.2 m, 6.6 m, 19.4 m, 0 kg, 7095 kg, 13000 kg, Navy, 2016, 3x Turmo IIIC5 [WZ6]
+Z-18YJ Super Frelon [Black Bat], Airborne Early Warning (AEW), 5, 55 kt, 130 kt, 5.2 m, 6.6 m, 19.4 m, 0 kg, 7095 kg, 13000 kg, Navy, 2014, 3x Turmo IIIC5 [WZ6]
+Z-19 Black Whirlwind, Attack, 2, 55 kt, 155 kt, 3.0 m, 4.01 m, 12.0 m, 1600 kg, 2350 kg, 4250 kg, Army, 2014, 2x WZ-8C [Arriel 1C2 Copy]
+Z-19 Black Whirlwind, Attack, 2, 55 kt, 155 kt, 3.0 m, 4.01 m, 12.0 m, 1600 kg, 2350 kg, 4250 kg, Army, 2014, 2x WZ-8C [Arriel 1C2 Copy]
+Z-20A, Transport, 3, 60 kt, 165 kt, 2.4 m, 5.1 m, 15.3 m, 0 kg, 5118 kg, 11113 kg, Army, 2018, 2x WZ-10 Turboshafts
+Z-20A, Transport, 3, 60 kt, 165 kt, 2.4 m, 5.1 m, 15.3 m, 0 kg, 5118 kg, 11113 kg, Army, 2021, 2x WZ-10 Turboshafts
+Z-20F, Anti-Submarine Warfare (ASW), 4, 60 kt, 165 kt, 2.4 m, 5.3 m, 15.3 m, 0 kg, 5118 kg, 11113 kg, Navy, 2020, 2x WZ-10 Turboshafts
+Z-20S, Naval Utility, 4, 60 kt, 165 kt, 2.4 m, 5.1 m, 15.3 m, 0 kg, 5118 kg, 11113 kg, Navy, 2019, 2x WZ-10 Turboshafts
+Z-8A Super Frelon, Utility, 5, 55 kt, 130 kt, 5.2 m, 6.6 m, 19.4 m, 0 kg, 7095 kg, 13000 kg, Army, 2004, 3x Turmo IIIC5 [WZ6]
+Z-8C Super Frelon, Transport, 5, 55 kt, 130 kt, 5.2 m, 6.6 m, 19.4 m, 0 kg, 7095 kg, 13000 kg, Navy, 2021, 3x Turmo IIIC5 [WZ6]
+Z-8G Super Frelon, Transport, 5, 55 kt, 130 kt, 5.2 m, 6.6 m, 19.4 m, 0 kg, 7095 kg, 13000 kg, Army, 2014, 3x Turmo IIIC5 [WZ6]
+Z-8J Super Frelon [ASW], Anti-Submarine Warfare (ASW), 5, 55 kt, 130 kt, 5.2 m, 6.6 m, 19.4 m, 0 kg, 7095 kg, 13000 kg, Navy, 1996, 3x Turmo IIIC5 [WZ6]
+Z-8J Super Frelon [Transport & Amphibious Assault], Naval Utility, 5, 55 kt, 130 kt, 5.2 m, 6.6 m, 19.4 m, 0 kg, 7095 kg, 13000 kg, Navy, 1996, 3x Turmo IIIC5 [WZ6]
+Z-8K Super Frelon [SAR], Search And Rescue (SAR), 5, 55 kt, 130 kt, 5.2 m, 6.6 m, 19.4 m, 0 kg, 7095 kg, 13000 kg, Army, 2008, 3x Turmo IIIC5 [WZ6]
+Z-8L Super Frelon, Transport, 5, 55 kt, 130 kt, 7.0 m, 6.6 m, 19.4 m, 0 kg, 7095 kg, 13000 kg, Army, 2021, 3x Turmo IIIC5 [WZ6]
+Z-9 Haitun, Utility, 2, 55 kt, 155 kt, 3.0 m, 4.1 m, 11.3 m, 1600 kg, 2240 kg, 4250 kg, Army, 1986, 2x Arriel 1C1
+Z-9A Haitun, Utility, 2, 55 kt, 155 kt, 3.0 m, 4.1 m, 11.3 m, 1600 kg, 2240 kg, 4250 kg, Army, 1990, 2x Arriel 1C2
+Z-9B Haitun, Utility, 2, 55 kt, 155 kt, 3.0 m, 4.1 m, 11.3 m, 1600 kg, 2240 kg, 4250 kg, Army, 1998, 2x Arriel 1C2
+Z-9C Haitun, Anti-Submarine Warfare (ASW), 2, 55 kt, 155 kt, 3.0 m, 4.1 m, 11.3 m, 1600 kg, 2240 kg, 4250 kg, Navy, 1998, 2x Arriel 1C2
+Z-9C Haitun, Anti-Submarine Warfare (ASW), 2, 55 kt, 155 kt, 3.0 m, 4.1 m, 11.3 m, 1600 kg, 2240 kg, 4250 kg, Navy, 2010, 2x Arriel 1C2
+Z-9C Haitun, Anti-Submarine Warfare (ASW), 2, 55 kt, 155 kt, 3.0 m, 4.1 m, 11.3 m, 1600 kg, 2240 kg, 4250 kg, Navy, 2015, 2x Arriel 1C2
+Z-9D Haitun, Anti-Submarine Warfare (ASW), 2, 55 kt, 155 kt, 3.0 m, 4.1 m, 11.3 m, 1600 kg, 2240 kg, 4250 kg, Navy, 2013, 2x Arriel 1C2
+Z-9D Haitun, Anti-Submarine Warfare (ASW), 2, 55 kt, 155 kt, 3.0 m, 4.1 m, 11.3 m, 1600 kg, 2240 kg, 4250 kg, Navy, 2019, 2x Arriel 1C2
+Z-9D Haitun, Search And Rescue (SAR), 2, 55 kt, 155 kt, 3.0 m, 4.1 m, 11.3 m, 1600 kg, 2240 kg, 4250 kg, Navy, 2019, 2x Arriel 1C2
+Z-9W Haitun, Attack, 2, 55 kt, 155 kt, 3.0 m, 4.1 m, 11.3 m, 1600 kg, 2240 kg, 4250 kg, Army, 1998, 2x Arriel 1C2
+Z-9WA Haitun, Attack, 2, 55 kt, 155 kt, 3.0 m, 4.1 m, 11.3 m, 1600 kg, 2240 kg, 4250 kg, Army, 2010, 2x Arriel 1C2

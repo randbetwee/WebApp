@@ -1,0 +1,2956 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Aircrafts - cmano-db.com</title>
+    <base href="https://cmano-db.com/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="bootstrap.css" media="screen">
+    <link rel="stylesheet" href="custom.min.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="js.cookie.js"></script>
+    
+	<link rel="stylesheet" href="leaflet.css" />
+	<script src="leaflet/js/leaflet.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+	<style type="text/css">
+		.info_sensors {
+			padding: 3px 4px;
+			font: 13px/15px Arial, Helvetica, sans-serif;
+			background: white;
+			background: rgba(255,255,255,0.8);
+			box-shadow: 0 0 15px rgba(0,0,0,0.2);
+			border-radius: 5px;
+			width: 55px;
+		}
+		.info_weapons {
+			padding: 3px 4px;
+			font: 13px/15px Arial, Helvetica, sans-serif;
+			background: white;
+			background: rgba(255,255,255,0.8);
+			box-shadow: 0 0 15px rgba(0,0,0,0.2);
+			border-radius: 5px;
+			width: 62px;
+		}
+		.legend {
+			line-height: 18px;
+			color: #555;
+		}
+		#list {
+			display: none;
+		}
+		.country {
+			float: left;
+			width: 350px;
+			height: 440px;
+			overflow: auto;
+			padding-left: 15px;
+			margin-right: 0px;
+			margin-bottom: 15px;
+			border-bottom: solid 1px black;
+		}
+		.country a {
+			color: #CCCCCC;
+		}
+		.country a:hover {
+			color: white;
+		}
+		.country a:visited {
+			color: #8C8C8C;
+		}
+		.country h4 {
+			padding-bottom: 8px;
+			margin: 0px;
+			color: white;
+		}
+		.country h4 a{
+			color: white;
+		}
+		.country ul {
+			padding-left: 20px;
+			margin: 0px;
+		}
+		#preview img {
+			max-width: 400px;
+			padding: 0px;
+			margin: 0px;
+		}
+
+}
+	</style>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$('#save-event').click(function() {
+		var curPos = marker.getLatLng();
+		var lat_save = curPos.lat;
+		var lon_save = curPos.lng;
+		
+		document.cookie="lat="+lat_save+"; path=/";
+		document.cookie="lon="+lon_save+"; path=/";
+		
+    	$('.modal').modal('hide');
+    });
+    
+	$('#favorites_button').click(function() {
+		$('#favorites').modal('show');
+    });	
+	$('#settings_button').click(function() {
+		$('#settings').modal('show');
+		  setTimeout(function() {
+			map.invalidateSize();
+
+		  }, 10);
+    });	
+
+	// FAVORITE
+	var Cookies2 = Cookies.noConflict();
+
+	var empty_array = [['type','id','name','country']];
+	var empty = JSON.stringify(empty_array);
+
+	$('#favorites').on('show.bs.modal', function () {
+		var favorites_array = JSON.parse(Cookies2.get('favorites') || empty);
+		var txt = "";
+		
+		for (favorite in favorites_array) {
+			if (favorites_array[favorite][0] != "type") {
+				txt += '<li><a href="' + favorites_array[favorite][0].toLowerCase() + '/' + favorites_array[favorite][1] + '/">' + favorites_array[favorite][3] + ': ' + favorites_array[favorite][2] + '</a></li>';
+			}
+		}
+		if (txt == "") {
+			var txt = "Empty favorites! Use favorite button to add.";
+		}
+		$("#favorite_list").html("<ul>" + txt + "</ul>");
+	});
+
+	function checkCookie(){
+		var cookieEnabled=(navigator.cookieEnabled)? true : false;
+		if (typeof navigator.cookieEnabled=="undefined" && !cookieEnabled){ 
+			document.cookie="testcookie";
+			cookieEnabled=(document.cookie.indexOf("testcookie")!=-1)? true : false;
+		}
+		return (cookieEnabled)?true:showCookieFail();
+	}
+
+	function showCookieFail(){
+		$("#cookie_notice").html("Notice: Settings and Favorites does not work if cookies are disabled!");
+	}
+	
+	checkCookie();
+	imagePreview();
+});
+</script>
+  </head>
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="https://cmano-db.com/" class="navbar-brand">CMANO-DB.COM</a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+          <ul class="nav navbar-nav">
+          	<li><a href="https://cmano-db.com/compare.php"><i class="fa fa-random" aria-hidden="true"></i> Compare</a></li>
+          	
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="lists"><i class="fa fa-list" aria-hidden="true"></i> List <span class="caret"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="lists">
+                <li><a href="aircraft/">Aircraft</a></li>
+                <li><a href="ship/">Ship</a></li>
+                <li><a href="submarine/">Submarine</a></li>
+                <li><a href="facility/">Facility</a></li>
+                <li><a href="weapon/">Weapon</a></li>
+                <li><a href="sensor/">Sensor</a></li>
+              </ul>
+            </li>
+            
+            <li><a href="search.php"><i class="fa fa-search" aria-hidden="true"></i> Search</a></li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+          	<li><a href="#" id="favorites_button"><i class="fa fa-star" aria-hidden="true"></i> Favorites</a></li>
+			<li><a href="#" id="settings_button"><i class="fa fa-wrench" aria-hidden="true"></i> Settings</a></li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+          <br />
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- cmano-db.com -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1382552067334538"
+     data-ad-slot="3320724779"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+          <br /><br />
+							<ul class="breadcrumb">
+				  <li><a href="aircraft/">Aircraft</a></li>
+				  <li class="active">Soviet Union [-1991]</li>
+				</ul>				
+				
+				<table class="table table-striped table-hover ">
+				  <thead>
+					<tr>
+					  <th>Pic</th>
+					  <th>Name</th>
+					</tr>
+				  </thead>
+				  <tbody>				
+				<tr>							<style>
+							.picture_1 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2990.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_1" onclick="window.open('aircraft/2990/', '_self')"></td>
+							<td><a href="aircraft/2990/">3MN-1 Bison B [Bomber]</a>
+							<br />1960<br />Bomber</td></tr><tr>							<style>
+							.picture_2 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2381.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_2" onclick="window.open('aircraft/2381/', '_self')"></td>
+							<td><a href="aircraft/2381/">3MS-1 Bison B [Bomber]</a>
+							<br />1960<br />Bomber</td></tr><tr>							<style>
+							.picture_3 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2380.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_3" onclick="window.open('aircraft/2380/', '_self')"></td>
+							<td><a href="aircraft/2380/">3MS-2 Bison B [Tanker]</a>
+							<br />1976<br />Tanker (Air Refueling)</td></tr><tr>							<style>
+							.picture_4 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_256.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_4" onclick="window.open('aircraft/256/', '_self')"></td>
+							<td><a href="aircraft/256/">A-50 Mainstay A</a>
+							<br />1986, Il-76 Mod<br />Airborne Early Warning (AEW)</td></tr><tr>							<style>
+							.picture_5 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2394.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_5" onclick="window.open('aircraft/2394/', '_self')"></td>
+							<td><a href="aircraft/2394/">A-90 Orlyonok</a>
+							<br />1979, 3x, WiG<br />Transport</td></tr><tr>							<style>
+							.picture_6 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_3189.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_6" onclick="window.open('aircraft/3189/', '_self')"></td>
+							<td><a href="aircraft/3189/">AS-2 Kipper [K-10SP, OECM Drone]</a>
+							<br />1981<br />Target Drone</td></tr><tr>							<style>
+							.picture_7 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_891.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_7" onclick="window.open('aircraft/891/', '_self')"></td>
+							<td><a href="aircraft/891/">An-124 Condor</a>
+							<br />1987<br />Transport</td></tr><tr>							<style>
+							.picture_8 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_1639.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_8" onclick="window.open('aircraft/1639/', '_self')"></td>
+							<td><a href="aircraft/1639/">An-12BK Cub A</a>
+							<br />1967<br />Transport</td></tr><tr>							<style>
+							.picture_9 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2010.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_9" onclick="window.open('aircraft/2010/', '_self')"></td>
+							<td><a href="aircraft/2010/">An-12BK-IS Cub D</a>
+							<br />1973, 45+105x, Jammer+Chaff<br />Electronic Warfare</td></tr><tr>							<style>
+							.picture_10 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_1640.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_10" onclick="window.open('aircraft/1640/', '_self')"></td>
+							<td><a href="aircraft/1640/">An-12BK-PP Cub C</a>
+							<br />1971, 27x Conversions, Jammer<br />Electronic Warfare</td></tr><tr>							<style>
+							.picture_11 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_902.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_11" onclick="window.open('aircraft/902/', '_self')"></td>
+							<td><a href="aircraft/902/">An-12BK-PPS Cub D</a>
+							<br />1983, 19x, Jammer+Chaff<br />Electronic Warfare</td></tr><tr>							<style>
+							.picture_12 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_984.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_12" onclick="window.open('aircraft/984/', '_self')"></td>
+							<td><a href="aircraft/984/">An-12BP Cub A</a>
+							<br />1965<br />Transport</td></tr><tr>							<style>
+							.picture_13 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2509.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_13" onclick="window.open('aircraft/2509/', '_self')"></td>
+							<td><a href="aircraft/2509/">An-22 Cock</a>
+							<br />1969, 38x<br />Transport</td></tr><tr>							<style>
+							.picture_14 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_892.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_14" onclick="window.open('aircraft/892/', '_self')"></td>
+							<td><a href="aircraft/892/">An-225 Cossack</a>
+							<br />1989, 1x<br />Transport</td></tr><tr>							<style>
+							.picture_15 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2512.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_15" onclick="window.open('aircraft/2512/', '_self')"></td>
+							<td><a href="aircraft/2512/">An-22A Cock</a>
+							<br />1968, 28x<br />Transport</td></tr><tr>							<style>
+							.picture_16 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_606.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_16" onclick="window.open('aircraft/606/', '_self')"></td>
+							<td><a href="aircraft/606/">An-26 Curl A</a>
+							<br />1971<br />Transport</td></tr><tr>							<style>
+							.picture_17 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_607.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_17" onclick="window.open('aircraft/607/', '_self')"></td>
+							<td><a href="aircraft/607/">An-26RR Curl B</a>
+							<br />1975, 42x, An-26RT, An-26RTR, SIGINT, ELINT<br />Signals Intelligence (SIGINT)</td></tr><tr>							<style>
+							.picture_18 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_609.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_18" onclick="window.open('aircraft/609/', '_self')"></td>
+							<td><a href="aircraft/609/">An-32 Cline</a>
+							<br />1986<br />Transport</td></tr><tr>							<style>
+							.picture_19 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_19" onclick="window.open('aircraft/4712/', '_self')"></td>
+							<td><a href="aircraft/4712/">An-71 Madcap</a>
+							<br />1985, 3 prototypes, never went to production<br />Transport</td></tr><tr>							<style>
+							.picture_20 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_610.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_20" onclick="window.open('aircraft/610/', '_self')"></td>
+							<td><a href="aircraft/610/">An-72A Coaler C</a>
+							<br />1985<br />Transport</td></tr><tr>							<style>
+							.picture_21 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_611.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_21" onclick="window.open('aircraft/611/', '_self')"></td>
+							<td><a href="aircraft/611/">An-74A Coaler B</a>
+							<br />1986, Polar Operations<br />Transport</td></tr><tr>							<style>
+							.picture_22 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_692.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_22" onclick="window.open('aircraft/692/', '_self')"></td>
+							<td><a href="aircraft/692/">Be-12PL Mail</a>
+							<br />1982<br />Anti-Submarine Warfare (ASW)</td></tr><tr>							<style>
+							.picture_23 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_1642.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_23" onclick="window.open('aircraft/1642/', '_self')"></td>
+							<td><a href="aircraft/1642/">Be-12PL Mail</a>
+							<br />1976<br />Anti-Submarine Warfare (ASW)</td></tr><tr>							<style>
+							.picture_24 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2680.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_24" onclick="window.open('aircraft/2680/', '_self')"></td>
+							<td><a href="aircraft/2680/">Be-12PS Mail</a>
+							<br />1974, SAR<br />Search And Rescue (SAR)</td></tr><tr>							<style>
+							.picture_25 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2118.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_25" onclick="window.open('aircraft/2118/', '_self')"></td>
+							<td><a href="aircraft/2118/">Il-20M Coot A</a>
+							<br />1971<br />Electronic Intelligence (ELINT)</td></tr><tr>							<style>
+							.picture_26 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_5.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_26" onclick="window.open('aircraft/5/', '_self')"></td>
+							<td><a href="aircraft/5/">Il-38 May</a>
+							<br />1982<br />Maritime Patrol Aircraft (MPA)</td></tr><tr>							<style>
+							.picture_27 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_1644.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_27" onclick="window.open('aircraft/1644/', '_self')"></td>
+							<td><a href="aircraft/1644/">Il-38 May</a>
+							<br />1975<br />Maritime Patrol Aircraft (MPA)</td></tr><tr>							<style>
+							.picture_28 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_893.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_28" onclick="window.open('aircraft/893/', '_self')"></td>
+							<td><a href="aircraft/893/">Il-62 Classic</a>
+							<br />1968<br />Transport</td></tr><tr>							<style>
+							.picture_29 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_450.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_29" onclick="window.open('aircraft/450/', '_self')"></td>
+							<td><a href="aircraft/450/">Il-76M Candid B</a>
+							<br />1982<br />Transport</td></tr><tr>							<style>
+							.picture_30 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2624.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_30" onclick="window.open('aircraft/2624/', '_self')"></td>
+							<td><a href="aircraft/2624/">Il-76MD Candid B</a>
+							<br />1978<br />Transport</td></tr><tr>							<style>
+							.picture_31 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_31" onclick="window.open('aircraft/5172/', '_self')"></td>
+							<td><a href="aircraft/5172/">Il-76SK Candid ACP</a>
+							<br />1989, Command Post, Il-80<br />Airborne Command Post (ACP)</td></tr><tr>							<style>
+							.picture_32 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_295.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_32" onclick="window.open('aircraft/295/', '_self')"></td>
+							<td><a href="aircraft/295/">Il-76T Candid A</a>
+							<br />1976<br />Transport</td></tr><tr>							<style>
+							.picture_33 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_872.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_33" onclick="window.open('aircraft/872/', '_self')"></td>
+							<td><a href="aircraft/872/">Il-76VPK Candid ACP</a>
+							<br />1989, Command Post, Il-82<br />Airborne Command Post (ACP)</td></tr><tr>							<style>
+							.picture_34 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_232.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_34" onclick="window.open('aircraft/232/', '_self')"></td>
+							<td><a href="aircraft/232/">Il-78 Midas</a>
+							<br />1985, Il-76 Mod<br />Tanker (Air Refueling)</td></tr><tr>							<style>
+							.picture_35 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_870.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_35" onclick="window.open('aircraft/870/', '_self')"></td>
+							<td><a href="aircraft/870/">Il-78M Midas</a>
+							<br />1988, Il-76 Mod<br />Tanker (Air Refueling)</td></tr><tr>							<style>
+							.picture_36 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_449.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_36" onclick="window.open('aircraft/449/', '_self')"></td>
+							<td><a href="aircraft/449/">Il-80 Maxdome ACP</a>
+							<br />1988, 4x, Il-86VKP<br />Airborne Command Post (ACP)</td></tr><tr>							<style>
+							.picture_37 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2395.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_37" onclick="window.open('aircraft/2395/', '_self')"></td>
+							<td><a href="aircraft/2395/">KM-08 Duck [Pr.902R Lun]</a>
+							<br />1990, WiG<br />Attack</td></tr><tr>							<style>
+							.picture_38 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_50.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_38" onclick="window.open('aircraft/50/', '_self')"></td>
+							<td><a href="aircraft/50/">Ka-25BSh Hormone A</a>
+							<br />1972, ASW, Ka-25PL<br />Anti-Submarine Warfare (ASW)</td></tr><tr>							<style>
+							.picture_39 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_231.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_39" onclick="window.open('aircraft/231/', '_self')"></td>
+							<td><a href="aircraft/231/">Ka-25PS Hormone C</a>
+							<br />1972, SAR<br />Recon</td></tr><tr>							<style>
+							.picture_40 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_51.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_40" onclick="window.open('aircraft/51/', '_self')"></td>
+							<td><a href="aircraft/51/">Ka-25Ts Hormone B</a>
+							<br />1972, OTH Targeting<br />Recon</td></tr><tr>							<style>
+							.picture_41 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_4.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_41" onclick="window.open('aircraft/4/', '_self')"></td>
+							<td><a href="aircraft/4/">Ka-27PL Helix A</a>
+							<br />1982<br />Anti-Submarine Warfare (ASW)</td></tr><tr>							<style>
+							.picture_42 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2372.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_42" onclick="window.open('aircraft/2372/', '_self')"></td>
+							<td><a href="aircraft/2372/">Ka-27PS Helix D</a>
+							<br />1983<br />Search And Rescue (SAR)</td></tr><tr>							<style>
+							.picture_43 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2410.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_43" onclick="window.open('aircraft/2410/', '_self')"></td>
+							<td><a href="aircraft/2410/">Mi-10K Harke B</a>
+							<br />1968, Ca 20x<br />Transport</td></tr><tr>							<style>
+							.picture_44 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2411.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_44" onclick="window.open('aircraft/2411/', '_self')"></td>
+							<td><a href="aircraft/2411/">Mi-10PP Harke</a>
+							<br />1972, 12x<br />Electronic Warfare</td></tr><tr>							<style>
+							.picture_45 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2409.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_45" onclick="window.open('aircraft/2409/', '_self')"></td>
+							<td><a href="aircraft/2409/">Mi-10R Harke A</a>
+							<br />1964, Ca 60x<br />Transport</td></tr><tr>							<style>
+							.picture_46 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_852.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_46" onclick="window.open('aircraft/852/', '_self')"></td>
+							<td><a href="aircraft/852/">Mi-14BT Haze B</a>
+							<br />1984, Mine Sweeper<br />Mine Sweeper (MCM)</td></tr><tr>							<style>
+							.picture_47 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_933.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_47" onclick="window.open('aircraft/933/', '_self')"></td>
+							<td><a href="aircraft/933/">Mi-14PL Haze A</a>
+							<br />1982<br />Anti-Submarine Warfare (ASW)</td></tr><tr>							<style>
+							.picture_48 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_1645.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_48" onclick="window.open('aircraft/1645/', '_self')"></td>
+							<td><a href="aircraft/1645/">Mi-14PL Haze A</a>
+							<br />1977<br />Anti-Submarine Warfare (ASW)</td></tr><tr>							<style>
+							.picture_49 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_1025.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_49" onclick="window.open('aircraft/1025/', '_self')"></td>
+							<td><a href="aircraft/1025/">Mi-14PLM Haze A</a>
+							<br />1982<br />Anti-Submarine Warfare (ASW)</td></tr><tr>							<style>
+							.picture_50 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_1646.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_50" onclick="window.open('aircraft/1646/', '_self')"></td>
+							<td><a href="aircraft/1646/">Mi-14PLM Haze A</a>
+							<br />1979, Few<br />Anti-Submarine Warfare (ASW)</td></tr><tr>							<style>
+							.picture_51 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_326.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_51" onclick="window.open('aircraft/326/', '_self')"></td>
+							<td><a href="aircraft/326/">Mi-14PS Haze C</a>
+							<br />1980, SAR<br />Search And Rescue (SAR)</td></tr><tr>							<style>
+							.picture_52 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_453.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_52" onclick="window.open('aircraft/453/', '_self')"></td>
+							<td><a href="aircraft/453/">Mi-24A Hind A</a>
+							<br />1974, 198x<br />Attack</td></tr><tr>							<style>
+							.picture_53 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_456.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_53" onclick="window.open('aircraft/456/', '_self')"></td>
+							<td><a href="aircraft/456/">Mi-24D Hind D</a>
+							<br />1977<br />Attack</td></tr><tr>							<style>
+							.picture_54 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2662.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_54" onclick="window.open('aircraft/2662/', '_self')"></td>
+							<td><a href="aircraft/2662/">Mi-24K Hind</a>
+							<br />1985, Forward Observer, 170x<br />Attack</td></tr><tr>							<style>
+							.picture_55 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_457.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_55" onclick="window.open('aircraft/457/', '_self')"></td>
+							<td><a href="aircraft/457/">Mi-24P Hind F</a>
+							<br />1984<br />Attack</td></tr><tr>							<style>
+							.picture_56 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_76.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_56" onclick="window.open('aircraft/76/', '_self')"></td>
+							<td><a href="aircraft/76/">Mi-24V Hind E</a>
+							<br />1978<br />Attack</td></tr><tr>							<style>
+							.picture_57 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2375.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_57" onclick="window.open('aircraft/2375/', '_self')"></td>
+							<td><a href="aircraft/2375/">Mi-24V Hind E</a>
+							<br />1983<br />Attack</td></tr><tr>							<style>
+							.picture_58 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_991.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_58" onclick="window.open('aircraft/991/', '_self')"></td>
+							<td><a href="aircraft/991/">Mi-26 Halo</a>
+							<br />1985<br />Transport</td></tr><tr>							<style>
+							.picture_59 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_616.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_59" onclick="window.open('aircraft/616/', '_self')"></td>
+							<td><a href="aircraft/616/">Mi-8MT Hip H</a>
+							<br />1979<br />Transport</td></tr><tr>							<style>
+							.picture_60 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2672.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_60" onclick="window.open('aircraft/2672/', '_self')"></td>
+							<td><a href="aircraft/2672/">Mi-8MTV Hip H</a>
+							<br />1991<br />Transport</td></tr><tr>							<style>
+							.picture_61 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2541.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_61" onclick="window.open('aircraft/2541/', '_self')"></td>
+							<td><a href="aircraft/2541/">Mi-8PP Hip K</a>
+							<br />0, OECM<br />Electronic Warfare</td></tr><tr>							<style>
+							.picture_62 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2539.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_62" onclick="window.open('aircraft/2539/', '_self')"></td>
+							<td><a href="aircraft/2539/">Mi-8PPA Hip K</a>
+							<br />1982, OECM<br />Electronic Warfare</td></tr><tr>							<style>
+							.picture_63 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_1788.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_63" onclick="window.open('aircraft/1788/', '_self')"></td>
+							<td><a href="aircraft/1788/">Mi-8SMV Hip J</a>
+							<br />0, OECM<br />Electronic Warfare</td></tr><tr>							<style>
+							.picture_64 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_1784.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_64" onclick="window.open('aircraft/1784/', '_self')"></td>
+							<td><a href="aircraft/1784/">Mi-8T Hip C</a>
+							<br />1968<br />Transport</td></tr><tr>							<style>
+							.picture_65 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_1786.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_65" onclick="window.open('aircraft/1786/', '_self')"></td>
+							<td><a href="aircraft/1786/">Mi-8TB Hip E</a>
+							<br />1976<br />Transport</td></tr><tr>							<style>
+							.picture_66 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_167.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_66" onclick="window.open('aircraft/167/', '_self')"></td>
+							<td><a href="aircraft/167/">MiG-21MT Fishbed K</a>
+							<br />1974, Upgraded MiG-21SMT, Few built, 15x<br />Fighter</td></tr><tr>							<style>
+							.picture_67 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2716.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_67" onclick="window.open('aircraft/2716/', '_self')"></td>
+							<td><a href="aircraft/2716/">MiG-21S Fishbed J</a>
+							<br />1968<br />Fighter</td></tr><tr>							<style>
+							.picture_68 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2717.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_68" onclick="window.open('aircraft/2717/', '_self')"></td>
+							<td><a href="aircraft/2717/">MiG-21SM Fishbed J</a>
+							<br />1972<br />Fighter</td></tr><tr>							<style>
+							.picture_69 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2719.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_69" onclick="window.open('aircraft/2719/', '_self')"></td>
+							<td><a href="aircraft/2719/">MiG-21bis Fishbed L</a>
+							<br />1973, Lazur GCI System<br />Fighter</td></tr><tr>							<style>
+							.picture_70 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_148.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_70" onclick="window.open('aircraft/148/', '_self')"></td>
+							<td><a href="aircraft/148/">MiG-21bis Fishbed N</a>
+							<br />1973, Polyot ILS System<br />Fighter</td></tr><tr>							<style>
+							.picture_71 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2608.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_71" onclick="window.open('aircraft/2608/', '_self')"></td>
+							<td><a href="aircraft/2608/">MiG-23BN Flogger H</a>
+							<br />1974<br />Attack</td></tr><tr>							<style>
+							.picture_72 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_878.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_72" onclick="window.open('aircraft/878/', '_self')"></td>
+							<td><a href="aircraft/878/">MiG-23M Flogger B</a>
+							<br />1985<br />Fighter</td></tr><tr>							<style>
+							.picture_73 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2611.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_73" onclick="window.open('aircraft/2611/', '_self')"></td>
+							<td><a href="aircraft/2611/">MiG-23M Flogger B</a>
+							<br />1974<br />Fighter</td></tr><tr>							<style>
+							.picture_74 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_208.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_74" onclick="window.open('aircraft/208/', '_self')"></td>
+							<td><a href="aircraft/208/">MiG-23ML Flogger G</a>
+							<br />1985<br />Fighter</td></tr><tr>							<style>
+							.picture_75 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2610.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_75" onclick="window.open('aircraft/2610/', '_self')"></td>
+							<td><a href="aircraft/2610/">MiG-23ML Flogger G</a>
+							<br />1983<br />Fighter</td></tr><tr>							<style>
+							.picture_76 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_3087.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_76" onclick="window.open('aircraft/3087/', '_self')"></td>
+							<td><a href="aircraft/3087/">MiG-23ML Flogger G</a>
+							<br />1981<br />Fighter</td></tr><tr>							<style>
+							.picture_77 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_672.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_77" onclick="window.open('aircraft/672/', '_self')"></td>
+							<td><a href="aircraft/672/">MiG-23MLD Flogger K</a>
+							<br />1984<br />Fighter</td></tr><tr>							<style>
+							.picture_78 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_1647.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_78" onclick="window.open('aircraft/1647/', '_self')"></td>
+							<td><a href="aircraft/1647/">MiG-23MLD Flogger K</a>
+							<br />1989<br />Fighter</td></tr><tr>							<style>
+							.picture_79 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2158.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_79" onclick="window.open('aircraft/2158/', '_self')"></td>
+							<td><a href="aircraft/2158/">MiG-23P Flogger G</a>
+							<br />1983, PVO-Only<br />Fighter</td></tr><tr>							<style>
+							.picture_80 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_80" onclick="window.open('aircraft/4581/', '_self')"></td>
+							<td><a href="aircraft/4581/">MiG-23P Flogger G</a>
+							<br />1981, PVO-Only<br />Fighter</td></tr><tr>							<style>
+							.picture_81 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2159.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_81" onclick="window.open('aircraft/2159/', '_self')"></td>
+							<td><a href="aircraft/2159/">MiG-23PD Flogger K</a>
+							<br />1989, PVO-Only<br />Fighter</td></tr><tr>							<style>
+							.picture_82 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_466.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_82" onclick="window.open('aircraft/466/', '_self')"></td>
+							<td><a href="aircraft/466/">MiG-25BM Foxbat F</a>
+							<br />1988<br />Wild Weasel</td></tr><tr>							<style>
+							.picture_83 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_1222.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_83" onclick="window.open('aircraft/1222/', '_self')"></td>
+							<td><a href="aircraft/1222/">MiG-25P Foxbat A</a>
+							<br />1972<br />Fighter</td></tr><tr>							<style>
+							.picture_84 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_227.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_84" onclick="window.open('aircraft/227/', '_self')"></td>
+							<td><a href="aircraft/227/">MiG-25PD Foxbat E</a>
+							<br />1984<br />Fighter</td></tr><tr>							<style>
+							.picture_85 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_3011.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_85" onclick="window.open('aircraft/3011/', '_self')"></td>
+							<td><a href="aircraft/3011/">MiG-25PD Foxbat E</a>
+							<br />1980<br />Fighter</td></tr><tr>							<style>
+							.picture_86 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2433.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_86" onclick="window.open('aircraft/2433/', '_self')"></td>
+							<td><a href="aircraft/2433/">MiG-25PDS Foxbat E</a>
+							<br />1984, Upgraded MiG-25P, No Droptanks<br />Fighter</td></tr><tr>							<style>
+							.picture_87 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_3034.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_87" onclick="window.open('aircraft/3034/', '_self')"></td>
+							<td><a href="aircraft/3034/">MiG-25PDS Foxbat E</a>
+							<br />1980, Upgraded MiG-25P, No Droptanks<br />Fighter</td></tr><tr>							<style>
+							.picture_88 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_226.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_88" onclick="window.open('aircraft/226/', '_self')"></td>
+							<td><a href="aircraft/226/">MiG-25RB Foxbat B</a>
+							<br />1972, Bomb<br />Recon</td></tr><tr>							<style>
+							.picture_89 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_989.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_89" onclick="window.open('aircraft/989/', '_self')"></td>
+							<td><a href="aircraft/989/">MiG-25RBF Foxbat D</a>
+							<br />1981, SLAR, Bomb<br />Recon</td></tr><tr>							<style>
+							.picture_90 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_987.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_90" onclick="window.open('aircraft/987/', '_self')"></td>
+							<td><a href="aircraft/987/">MiG-25RBK Foxbat B</a>
+							<br />1976, SLAR<br />Recon</td></tr><tr>							<style>
+							.picture_91 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_988.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_91" onclick="window.open('aircraft/988/', '_self')"></td>
+							<td><a href="aircraft/988/">MiG-25RBS Foxbat D</a>
+							<br />1982, SLAR<br />Recon</td></tr><tr>							<style>
+							.picture_92 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2414.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_92" onclick="window.open('aircraft/2414/', '_self')"></td>
+							<td><a href="aircraft/2414/">MiG-25RBS Foxbat D</a>
+							<br />1976, SLAR<br />Recon</td></tr><tr>							<style>
+							.picture_93 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_440.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_93" onclick="window.open('aircraft/440/', '_self')"></td>
+							<td><a href="aircraft/440/">MiG-25RBSh Foxbat D</a>
+							<br />1982, SLAR<br />Recon</td></tr><tr>							<style>
+							.picture_94 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_986.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_94" onclick="window.open('aircraft/986/', '_self')"></td>
+							<td><a href="aircraft/986/">MiG-25RBT Foxbat B</a>
+							<br />1984, SLAR<br />Recon</td></tr><tr>							<style>
+							.picture_95 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_218.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_95" onclick="window.open('aircraft/218/', '_self')"></td>
+							<td><a href="aircraft/218/">MiG-27 Flogger D</a>
+							<br />1976, MiG-23BM<br />Attack</td></tr><tr>							<style>
+							.picture_96 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2585.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_96" onclick="window.open('aircraft/2585/', '_self')"></td>
+							<td><a href="aircraft/2585/">MiG-27 Flogger D</a>
+							<br />1985, MiG-23BM<br />Attack</td></tr><tr>							<style>
+							.picture_97 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_3015.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_97" onclick="window.open('aircraft/3015/', '_self')"></td>
+							<td><a href="aircraft/3015/">MiG-27 Flogger D</a>
+							<br />1981, MiG-23BM<br />Attack</td></tr><tr>							<style>
+							.picture_98 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_874.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_98" onclick="window.open('aircraft/874/', '_self')"></td>
+							<td><a href="aircraft/874/">MiG-27K Flogger J</a>
+							<br />1985, Armoured cockpit and fueselage<br />Attack</td></tr><tr>							<style>
+							.picture_99 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2236.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_99" onclick="window.open('aircraft/2236/', '_self')"></td>
+							<td><a href="aircraft/2236/">MiG-27K Flogger J</a>
+							<br />1981, Armoured cockpit and fueselage<br />Attack</td></tr><tr>							<style>
+							.picture_100 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_78.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_100" onclick="window.open('aircraft/78/', '_self')"></td>
+							<td><a href="aircraft/78/">MiG-27M Flogger J</a>
+							<br />1985<br />Attack</td></tr><tr>							<style>
+							.picture_101 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2237.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_101" onclick="window.open('aircraft/2237/', '_self')"></td>
+							<td><a href="aircraft/2237/">MiG-27M Flogger J</a>
+							<br />1981<br />Attack</td></tr><tr>							<style>
+							.picture_102 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_740.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_102" onclick="window.open('aircraft/740/', '_self')"></td>
+							<td><a href="aircraft/740/">MiG-29 Fulcrum A</a>
+							<br />1984<br />Multirole (Fighter/Attack)</td></tr><tr>							<style>
+							.picture_103 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_842.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_103" onclick="window.open('aircraft/842/', '_self')"></td>
+							<td><a href="aircraft/842/">MiG-29 Fulcrum A</a>
+							<br />1987<br />Multirole (Fighter/Attack)</td></tr><tr>							<style>
+							.picture_104 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_741.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_104" onclick="window.open('aircraft/741/', '_self')"></td>
+							<td><a href="aircraft/741/">MiG-29 Fulcrum C</a>
+							<br />1987, 9.13<br />Multirole (Fighter/Attack)</td></tr><tr>							<style>
+							.picture_105 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_843.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_105" onclick="window.open('aircraft/843/', '_self')"></td>
+							<td><a href="aircraft/843/">MiG-29S Fulcrum C</a>
+							<br />1987, 9-13S<br />Multirole (Fighter/Attack)</td></tr><tr>							<style>
+							.picture_106 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_849.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_106" onclick="window.open('aircraft/849/', '_self')"></td>
+							<td><a href="aircraft/849/">MiG-29UB Fulcrum B</a>
+							<br />1987<br />Trainer</td></tr><tr>							<style>
+							.picture_107 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_1359.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_107" onclick="window.open('aircraft/1359/', '_self')"></td>
+							<td><a href="aircraft/1359/">MiG-29UB Fulcrum B</a>
+							<br />1984<br />Trainer</td></tr><tr>							<style>
+							.picture_108 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_15.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_108" onclick="window.open('aircraft/15/', '_self')"></td>
+							<td><a href="aircraft/15/">MiG-31 Foxhound</a>
+							<br />1982<br />Fighter</td></tr><tr>							<style>
+							.picture_109 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2253.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_109" onclick="window.open('aircraft/2253/', '_self')"></td>
+							<td><a href="aircraft/2253/">MiG-31 Foxhound</a>
+							<br />1989<br />Fighter</td></tr><tr>							<style>
+							.picture_110 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2506.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_110" onclick="window.open('aircraft/2506/', '_self')"></td>
+							<td><a href="aircraft/2506/">Su-15MF Flagon D</a>
+							<br />1972<br />Fighter</td></tr><tr>							<style>
+							.picture_111 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_688.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_111" onclick="window.open('aircraft/688/', '_self')"></td>
+							<td><a href="aircraft/688/">Su-15TM Flagon E/F</a>
+							<br />1979, AA-8 Capability<br />Fighter</td></tr><tr>							<style>
+							.picture_112 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_1621.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_112" onclick="window.open('aircraft/1621/', '_self')"></td>
+							<td><a href="aircraft/1621/">Su-17 Fitter B</a>
+							<br />1985, Afghanistan Mod; Armoured cockpit and fueselage<br />Attack</td></tr><tr>							<style>
+							.picture_113 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2607.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_113" onclick="window.open('aircraft/2607/', '_self')"></td>
+							<td><a href="aircraft/2607/">Su-17 Fitter B</a>
+							<br />1972<br />Attack</td></tr><tr>							<style>
+							.picture_114 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_1619.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_114" onclick="window.open('aircraft/1619/', '_self')"></td>
+							<td><a href="aircraft/1619/">Su-17M Fitter C</a>
+							<br />1985, Afghanistan Mod; Armoured cockpit and fueselage<br />Attack</td></tr><tr>							<style>
+							.picture_115 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2605.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_115" onclick="window.open('aircraft/2605/', '_self')"></td>
+							<td><a href="aircraft/2605/">Su-17M Fitter C</a>
+							<br />1974<br />Attack</td></tr><tr>							<style>
+							.picture_116 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_3352.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_116" onclick="window.open('aircraft/3352/', '_self')"></td>
+							<td><a href="aircraft/3352/">Su-17M Fitter C</a>
+							<br />1981<br />Attack</td></tr><tr>							<style>
+							.picture_117 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_117" onclick="window.open('aircraft/4214/', '_self')"></td>
+							<td><a href="aircraft/4214/">Su-17M Fitter C</a>
+							<br />1975<br />Attack</td></tr><tr>							<style>
+							.picture_118 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_118" onclick="window.open('aircraft/4215/', '_self')"></td>
+							<td><a href="aircraft/4215/">Su-17M Fitter C</a>
+							<br />1981<br />Attack</td></tr><tr>							<style>
+							.picture_119 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_119" onclick="window.open('aircraft/4216/', '_self')"></td>
+							<td><a href="aircraft/4216/">Su-17M Fitter C</a>
+							<br />1985<br />Attack</td></tr><tr>							<style>
+							.picture_120 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_1620.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_120" onclick="window.open('aircraft/1620/', '_self')"></td>
+							<td><a href="aircraft/1620/">Su-17M-2 Fitter D</a>
+							<br />1985<br />Attack</td></tr><tr>							<style>
+							.picture_121 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2606.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_121" onclick="window.open('aircraft/2606/', '_self')"></td>
+							<td><a href="aircraft/2606/">Su-17M-2 Fitter D</a>
+							<br />1977<br />Attack</td></tr><tr>							<style>
+							.picture_122 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_3353.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_122" onclick="window.open('aircraft/3353/', '_self')"></td>
+							<td><a href="aircraft/3353/">Su-17M-2 Fitter D</a>
+							<br />1981<br />Attack</td></tr><tr>							<style>
+							.picture_123 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_689.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_123" onclick="window.open('aircraft/689/', '_self')"></td>
+							<td><a href="aircraft/689/">Su-17M-3 Fitter H</a>
+							<br />1985, Afghanistan Mod; Armoured cockpit and fueselage<br />Attack</td></tr><tr>							<style>
+							.picture_124 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2603.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_124" onclick="window.open('aircraft/2603/', '_self')"></td>
+							<td><a href="aircraft/2603/">Su-17M-3 Fitter H</a>
+							<br />1981<br />Attack</td></tr><tr>							<style>
+							.picture_125 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2604.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_125" onclick="window.open('aircraft/2604/', '_self')"></td>
+							<td><a href="aircraft/2604/">Su-17M-3 Fitter H</a>
+							<br />1978<br />Attack</td></tr><tr>							<style>
+							.picture_126 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_126" onclick="window.open('aircraft/4218/', '_self')"></td>
+							<td><a href="aircraft/4218/">Su-17M-3 Fitter H</a>
+							<br />1982<br />Attack</td></tr><tr>							<style>
+							.picture_127 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_127" onclick="window.open('aircraft/4219/', '_self')"></td>
+							<td><a href="aircraft/4219/">Su-17M-3 Fitter H</a>
+							<br />1985<br />Attack</td></tr><tr>							<style>
+							.picture_128 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2666.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_128" onclick="window.open('aircraft/2666/', '_self')"></td>
+							<td><a href="aircraft/2666/">Su-17M-3R Fitter H</a>
+							<br />1978<br />Recon</td></tr><tr>							<style>
+							.picture_129 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_1177.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_129" onclick="window.open('aircraft/1177/', '_self')"></td>
+							<td><a href="aircraft/1177/">Su-17M-4 Fitter K</a>
+							<br />1985, Afghanistan Mod; Armoured cockpit and fueselage<br />Attack</td></tr><tr>							<style>
+							.picture_130 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2667.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_130" onclick="window.open('aircraft/2667/', '_self')"></td>
+							<td><a href="aircraft/2667/">Su-17M-4R Fitter K</a>
+							<br />1985, Afghanistan Mod; Armoured cockpit and fueselage<br />Recon</td></tr><tr>							<style>
+							.picture_131 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_714.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_131" onclick="window.open('aircraft/714/', '_self')"></td>
+							<td><a href="aircraft/714/">Su-24 Fencer B</a>
+							<br />1985<br />Attack</td></tr><tr>							<style>
+							.picture_132 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_1137.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_132" onclick="window.open('aircraft/1137/', '_self')"></td>
+							<td><a href="aircraft/1137/">Su-24 Fencer B</a>
+							<br />1975<br />Attack</td></tr><tr>							<style>
+							.picture_133 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_469.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_133" onclick="window.open('aircraft/469/', '_self')"></td>
+							<td><a href="aircraft/469/">Su-24 Fencer C</a>
+							<br />1981<br />Attack</td></tr><tr>							<style>
+							.picture_134 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_716.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_134" onclick="window.open('aircraft/716/', '_self')"></td>
+							<td><a href="aircraft/716/">Su-24 Fencer C</a>
+							<br />1985<br />Attack</td></tr><tr>							<style>
+							.picture_135 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_470.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_135" onclick="window.open('aircraft/470/', '_self')"></td>
+							<td><a href="aircraft/470/">Su-24M Fencer D</a>
+							<br />1985<br />Attack</td></tr><tr>							<style>
+							.picture_136 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2583.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_136" onclick="window.open('aircraft/2583/', '_self')"></td>
+							<td><a href="aircraft/2583/">Su-24M Fencer D</a>
+							<br />1983<br />Attack</td></tr><tr>							<style>
+							.picture_137 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_619.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_137" onclick="window.open('aircraft/619/', '_self')"></td>
+							<td><a href="aircraft/619/">Su-24MP Fencer F</a>
+							<br />1990, EW<br />Electronic Intelligence (ELINT)</td></tr><tr>							<style>
+							.picture_138 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_472.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_138" onclick="window.open('aircraft/472/', '_self')"></td>
+							<td><a href="aircraft/472/">Su-24MR Fencer E</a>
+							<br />1988, SLAR<br />Recon</td></tr><tr>							<style>
+							.picture_139 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_139" onclick="window.open('aircraft/4211/', '_self')"></td>
+							<td><a href="aircraft/4211/">Su-24MR Fencer E</a>
+							<br />1988, SLAR<br />Recon</td></tr><tr>							<style>
+							.picture_140 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_140" onclick="window.open('aircraft/4212/', '_self')"></td>
+							<td><a href="aircraft/4212/">Su-24MR Fencer E</a>
+							<br />1988, SLAR<br />Recon</td></tr><tr>							<style>
+							.picture_141 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_307.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_141" onclick="window.open('aircraft/307/', '_self')"></td>
+							<td><a href="aircraft/307/">Su-25 Frogfoot A</a>
+							<br />1984<br />Attack</td></tr><tr>							<style>
+							.picture_142 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2156.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_142" onclick="window.open('aircraft/2156/', '_self')"></td>
+							<td><a href="aircraft/2156/">Su-27P Flanker B</a>
+							<br />1987<br />Fighter</td></tr><tr>							<style>
+							.picture_143 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_134.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_143" onclick="window.open('aircraft/134/', '_self')"></td>
+							<td><a href="aircraft/134/">Su-27S Flanker B</a>
+							<br />1987<br />Fighter</td></tr><tr>							<style>
+							.picture_144 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_729.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_144" onclick="window.open('aircraft/729/', '_self')"></td>
+							<td><a href="aircraft/729/">Su-27S Flanker B</a>
+							<br />1986<br />Fighter</td></tr><tr>							<style>
+							.picture_145 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2570.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_145" onclick="window.open('aircraft/2570/', '_self')"></td>
+							<td><a href="aircraft/2570/">Tu-123 UAV [DBR-1 Yastreb]</a>
+							<br />1964, UAV, Expendable<br />Unmanned Aerial Vehicle (UAV)</td></tr><tr>							<style>
+							.picture_146 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_217.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_146" onclick="window.open('aircraft/217/', '_self')"></td>
+							<td><a href="aircraft/217/">Tu-126 Moss</a>
+							<br />1965<br />Airborne Early Warning (AEW)</td></tr><tr>							<style>
+							.picture_147 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2505.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_147" onclick="window.open('aircraft/2505/', '_self')"></td>
+							<td><a href="aircraft/2505/">Tu-128 Fiddler A</a>
+							<br />1970, Upgraded to Tu-128M<br />Attack</td></tr><tr>							<style>
+							.picture_148 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_685.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_148" onclick="window.open('aircraft/685/', '_self')"></td>
+							<td><a href="aircraft/685/">Tu-128M Fiddler B</a>
+							<br />1980<br />Attack</td></tr><tr>							<style>
+							.picture_149 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2569.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_149" onclick="window.open('aircraft/2569/', '_self')"></td>
+							<td><a href="aircraft/2569/">Tu-141 UAV [VR-2 Strizh]</a>
+							<br />1979, UAV<br />Unmanned Aerial Vehicle (UAV)</td></tr><tr>							<style>
+							.picture_150 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_621.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_150" onclick="window.open('aircraft/621/', '_self')"></td>
+							<td><a href="aircraft/621/">Tu-142A Bear F Mod 1</a>
+							<br />1972<br />Maritime Patrol Aircraft (MPA)</td></tr><tr>							<style>
+							.picture_151 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_1643.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_151" onclick="window.open('aircraft/1643/', '_self')"></td>
+							<td><a href="aircraft/1643/">Tu-142M Bear F Mod 2</a>
+							<br />1981<br />Maritime Patrol Aircraft (MPA)</td></tr><tr>							<style>
+							.picture_152 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_61.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_152" onclick="window.open('aircraft/61/', '_self')"></td>
+							<td><a href="aircraft/61/">Tu-142MK Bear F Mod 3</a>
+							<br />1983<br />Maritime Patrol Aircraft (MPA)</td></tr><tr>							<style>
+							.picture_153 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_477.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_153" onclick="window.open('aircraft/477/', '_self')"></td>
+							<td><a href="aircraft/477/">Tu-142MR Bear J</a>
+							<br />1987, SSBN Communication<br />Airborne Command Post (ACP)</td></tr><tr>							<style>
+							.picture_154 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2568.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_154" onclick="window.open('aircraft/2568/', '_self')"></td>
+							<td><a href="aircraft/2568/">Tu-143 UAV [VR-3 Reys]</a>
+							<br />1976, UAV<br />Unmanned Aerial Vehicle (UAV)</td></tr><tr>							<style>
+							.picture_155 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_280.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_155" onclick="window.open('aircraft/280/', '_self')"></td>
+							<td><a href="aircraft/280/">Tu-160 Blackjack</a>
+							<br />1989<br />Bomber</td></tr><tr>							<style>
+							.picture_156 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_154.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_156" onclick="window.open('aircraft/154/', '_self')"></td>
+							<td><a href="aircraft/154/">Tu-16K-10-26P Badger C Mod</a>
+							<br />1985<br />Bomber</td></tr><tr>							<style>
+							.picture_157 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_3141.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_157" onclick="window.open('aircraft/3141/', '_self')"></td>
+							<td><a href="aircraft/3141/">Tu-16K-10-26P Badger C Mod</a>
+							<br />1976<br />Bomber</td></tr><tr>							<style>
+							.picture_158 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2514.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_158" onclick="window.open('aircraft/2514/', '_self')"></td>
+							<td><a href="aircraft/2514/">Tu-16K-10P Badger C</a>
+							<br />1985, OECM Drone Lnch Unit<br />Bomber</td></tr><tr>							<style>
+							.picture_159 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_159" onclick="window.open('aircraft/3140/', '_self')"></td>
+							<td><a href="aircraft/3140/">Tu-16K-10P Badger C</a>
+							<br />1981, OECM Drone Lnch Unit<br />Bomber</td></tr><tr>							<style>
+							.picture_160 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_155.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_160" onclick="window.open('aircraft/155/', '_self')"></td>
+							<td><a href="aircraft/155/">Tu-16K-26PM Badger G Mod</a>
+							<br />1985, Rubin-1M Radar<br />Bomber</td></tr><tr>							<style>
+							.picture_161 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2289.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_161" onclick="window.open('aircraft/2289/', '_self')"></td>
+							<td><a href="aircraft/2289/">Tu-16K-26PM Badger G Mod</a>
+							<br />1985, Rubin-1KV Radar<br />Bomber</td></tr><tr>							<style>
+							.picture_162 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_3142.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_162" onclick="window.open('aircraft/3142/', '_self')"></td>
+							<td><a href="aircraft/3142/">Tu-16K-26PM Badger G Mod</a>
+							<br />1976, Rubin-1KV Radar<br />Bomber</td></tr><tr>							<style>
+							.picture_163 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_3143.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_163" onclick="window.open('aircraft/3143/', '_self')"></td>
+							<td><a href="aircraft/3143/">Tu-16K-26PM Badger G Mod</a>
+							<br />1976, Rubin-1M Radar<br />Bomber</td></tr><tr>							<style>
+							.picture_164 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_128.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_164" onclick="window.open('aircraft/128/', '_self')"></td>
+							<td><a href="aircraft/128/">Tu-16N Badger A</a>
+							<br />1964, Tanker<br />Tanker (Air Refueling)</td></tr><tr>							<style>
+							.picture_165 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_127.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_165" onclick="window.open('aircraft/127/', '_self')"></td>
+							<td><a href="aircraft/127/">Tu-16P Badger H</a>
+							<br />1963, 71x, Chaff & Jammer Refit<br />Electronic Warfare</td></tr><tr>							<style>
+							.picture_166 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_126.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_166" onclick="window.open('aircraft/126/', '_self')"></td>
+							<td><a href="aircraft/126/">Tu-16P Badger J</a>
+							<br />1963, Jammer<br />Electronic Warfare</td></tr><tr>							<style>
+							.picture_167 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2435.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_167" onclick="window.open('aircraft/2435/', '_self')"></td>
+							<td><a href="aircraft/2435/">Tu-16P Badger J</a>
+							<br />1963, Jammer<br />Electronic Warfare</td></tr><tr>							<style>
+							.picture_168 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_125.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_168" onclick="window.open('aircraft/125/', '_self')"></td>
+							<td><a href="aircraft/125/">Tu-16P Badger L</a>
+							<br />1983, Offensive ECM/Jammer<br />Electronic Warfare</td></tr><tr>							<style>
+							.picture_169 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2436.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_169" onclick="window.open('aircraft/2436/', '_self')"></td>
+							<td><a href="aircraft/2436/">Tu-16P Badger L</a>
+							<br />1983, Offensive ECM/Jammer<br />Electronic Warfare</td></tr><tr>							<style>
+							.picture_170 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_1139.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_170" onclick="window.open('aircraft/1139/', '_self')"></td>
+							<td><a href="aircraft/1139/">Tu-16R Badger E</a>
+							<br />1962, Recce<br />Recon</td></tr><tr>							<style>
+							.picture_171 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2252.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_171" onclick="window.open('aircraft/2252/', '_self')"></td>
+							<td><a href="aircraft/2252/">Tu-16R Badger F</a>
+							<br />1979, Recon<br />Recon</td></tr><tr>							<style>
+							.picture_172 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_1321.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_172" onclick="window.open('aircraft/1321/', '_self')"></td>
+							<td><a href="aircraft/1321/">Tu-16RM-1/2 Badger D</a>
+							<br />1967, 23x, Radar Recon<br />Recon</td></tr><tr>							<style>
+							.picture_173 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2288.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_173" onclick="window.open('aircraft/2288/', '_self')"></td>
+							<td><a href="aircraft/2288/">Tu-16Ye Badger K</a>
+							<br />1981, Recon, Badger E variant<br />Recon</td></tr><tr>							<style>
+							.picture_174 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_1664.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_174" onclick="window.open('aircraft/1664/', '_self')"></td>
+							<td><a href="aircraft/1664/">Tu-22KD Blinder B</a>
+							<br />1985, Chaff Dispenser<br />Bomber</td></tr><tr>							<style>
+							.picture_175 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_3144.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_175" onclick="window.open('aircraft/3144/', '_self')"></td>
+							<td><a href="aircraft/3144/">Tu-22KD Blinder B</a>
+							<br />1979, Chaff Dispenser<br />Bomber</td></tr><tr>							<style>
+							.picture_176 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2675.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_176" onclick="window.open('aircraft/2675/', '_self')"></td>
+							<td><a href="aircraft/2675/">Tu-22KPD Blinder B</a>
+							<br />1985, SEAD<br />Bomber</td></tr><tr>							<style>
+							.picture_177 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_3145.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_177" onclick="window.open('aircraft/3145/', '_self')"></td>
+							<td><a href="aircraft/3145/">Tu-22KPD Blinder B</a>
+							<br />1980, SEAD<br />Bomber</td></tr><tr>							<style>
+							.picture_178 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_1666.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_178" onclick="window.open('aircraft/1666/', '_self')"></td>
+							<td><a href="aircraft/1666/">Tu-22M-2 Backfire B</a>
+							<br />1985<br />Bomber</td></tr><tr>							<style>
+							.picture_179 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2437.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_179" onclick="window.open('aircraft/2437/', '_self')"></td>
+							<td><a href="aircraft/2437/">Tu-22M-2 Backfire B</a>
+							<br />1985<br />Bomber</td></tr><tr>							<style>
+							.picture_180 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_3146.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_180" onclick="window.open('aircraft/3146/', '_self')"></td>
+							<td><a href="aircraft/3146/">Tu-22M-2 Backfire B</a>
+							<br />1976<br />Bomber</td></tr><tr>							<style>
+							.picture_181 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_3147.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_181" onclick="window.open('aircraft/3147/', '_self')"></td>
+							<td><a href="aircraft/3147/">Tu-22M-2 Backfire B</a>
+							<br />1976<br />Bomber</td></tr><tr>							<style>
+							.picture_182 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_1669.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_182" onclick="window.open('aircraft/1669/', '_self')"></td>
+							<td><a href="aircraft/1669/">Tu-22M-3 Backfire C</a>
+							<br />1983<br />Bomber</td></tr><tr>							<style>
+							.picture_183 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_1670.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_183" onclick="window.open('aircraft/1670/', '_self')"></td>
+							<td><a href="aircraft/1670/">Tu-22M-3 Backfire C</a>
+							<br />1988<br />Bomber</td></tr><tr>							<style>
+							.picture_184 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2438.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_184" onclick="window.open('aircraft/2438/', '_self')"></td>
+							<td><a href="aircraft/2438/">Tu-22M-3 Backfire C</a>
+							<br />1989<br />Bomber</td></tr><tr>							<style>
+							.picture_185 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_1674.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_185" onclick="window.open('aircraft/1674/', '_self')"></td>
+							<td><a href="aircraft/1674/">Tu-22MR Backfire C</a>
+							<br />1989<br />Recon</td></tr><tr>							<style>
+							.picture_186 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2116.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_186" onclick="window.open('aircraft/2116/', '_self')"></td>
+							<td><a href="aircraft/2116/">Tu-22PD Blinder E</a>
+							<br />1963<br />Electronic Warfare</td></tr><tr>							<style>
+							.picture_187 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_1665.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_187" onclick="window.open('aircraft/1665/', '_self')"></td>
+							<td><a href="aircraft/1665/">Tu-22RD Blinder C</a>
+							<br />1985<br />Recon</td></tr><tr>							<style>
+							.picture_188 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_3148.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_188" onclick="window.open('aircraft/3148/', '_self')"></td>
+							<td><a href="aircraft/3148/">Tu-22RD Blinder C</a>
+							<br />1963<br />Recon</td></tr><tr>							<style>
+							.picture_189 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2112.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_189" onclick="window.open('aircraft/2112/', '_self')"></td>
+							<td><a href="aircraft/2112/">Tu-22RDK Blinder C</a>
+							<br />1985<br />Recon</td></tr><tr>							<style>
+							.picture_190 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_3149.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_190" onclick="window.open('aircraft/3149/', '_self')"></td>
+							<td><a href="aircraft/3149/">Tu-22RDK Blinder C</a>
+							<br />1978<br />Recon</td></tr><tr>							<style>
+							.picture_191 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2115.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_191" onclick="window.open('aircraft/2115/', '_self')"></td>
+							<td><a href="aircraft/2115/">Tu-22RDM Blinder C</a>
+							<br />1983, 11x<br />Recon</td></tr><tr>							<style>
+							.picture_192 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2571.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_192" onclick="window.open('aircraft/2571/', '_self')"></td>
+							<td><a href="aircraft/2571/">Tu-243 UAV [VR-3 Reys-D]</a>
+							<br />1989, UAV<br />Unmanned Aerial Vehicle (UAV)</td></tr><tr>							<style>
+							.picture_193 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_771.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_193" onclick="window.open('aircraft/771/', '_self')"></td>
+							<td><a href="aircraft/771/">Tu-95K-22 Bear G</a>
+							<br />1988, AS-4<br />Bomber</td></tr><tr>							<style>
+							.picture_194 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_643.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_194" onclick="window.open('aircraft/643/', '_self')"></td>
+							<td><a href="aircraft/643/">Tu-95KM Bear C</a>
+							<br />1969, AS-3<br />Bomber</td></tr><tr>							<style>
+							.picture_195 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_444.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_195" onclick="window.open('aircraft/444/', '_self')"></td>
+							<td><a href="aircraft/444/">Tu-95MR Bear E</a>
+							<br />1966, Photo Recon<br />Recon</td></tr><tr>							<style>
+							.picture_196 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_62.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_196" onclick="window.open('aircraft/62/', '_self')"></td>
+							<td><a href="aircraft/62/">Tu-95MS-16 Bear H</a>
+							<br />1987<br />Bomber</td></tr><tr>							<style>
+							.picture_197 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_1611.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_197" onclick="window.open('aircraft/1611/', '_self')"></td>
+							<td><a href="aircraft/1611/">Tu-95MS-6 Bear H</a>
+							<br />1984<br />Bomber</td></tr><tr>							<style>
+							.picture_198 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_129.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_198" onclick="window.open('aircraft/129/', '_self')"></td>
+							<td><a href="aircraft/129/">Tu-95RT Bear D</a>
+							<br />1966<br />Recon</td></tr><tr>							<style>
+							.picture_199 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2165.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_199" onclick="window.open('aircraft/2165/', '_self')"></td>
+							<td><a href="aircraft/2165/">Yak-28P Firebar</a>
+							<br />1965<br />Fighter</td></tr><tr>							<style>
+							.picture_200 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2120.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_200" onclick="window.open('aircraft/2120/', '_self')"></td>
+							<td><a href="aircraft/2120/">Yak-28PP Brewer E</a>
+							<br />1971<br />Electronic Warfare</td></tr><tr>							<style>
+							.picture_201 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2166.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_201" onclick="window.open('aircraft/2166/', '_self')"></td>
+							<td><a href="aircraft/2166/">Yak-28R Brewer D</a>
+							<br />1967<br />Recon</td></tr><tr>							<style>
+							.picture_202 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_1856.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_202" onclick="window.open('aircraft/1856/', '_self')"></td>
+							<td><a href="aircraft/1856/">Yak-38 Forger A</a>
+							<br />1977<br />Attack</td></tr><tr>							<style>
+							.picture_203 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_3018.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_203" onclick="window.open('aircraft/3018/', '_self')"></td>
+							<td><a href="aircraft/3018/">Yak-38 Forger A</a>
+							<br />1983<br />Attack</td></tr><tr>							<style>
+							.picture_204 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_59.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_204" onclick="window.open('aircraft/59/', '_self')"></td>
+							<td><a href="aircraft/59/">Yak-38M Forger A</a>
+							<br />1986<br />Attack</td></tr>				  </tbody>
+				</table>				
+				          </div>
+        </div>
+        
+	<div class="modal" id="settings">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+			<h4 class="modal-title">Settings</h4>
+		  </div>
+		  <div class="modal-body">
+		  		<p>Sensors and Weapons placement on map:</p>
+				<div id="map_settings" style="height: 250px; width: 100%;"></div>
+				<p><small>Drag marker and save</small></p>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			<button type="button" class="btn btn-primary" id="save-event">Save changes</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+
+	<div class="modal" id="favorites">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+			<h4 class="modal-title">Favorites</h4>
+		  </div>
+		  <div class="modal-body">
+		  		<p>
+		  		<div id="favorite_list"></div>
+		  		</p>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	
+	<script type="text/javascript">
+		var maplayer = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+			maxZoom: 19,
+			attribution: '&copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
+		});	
+
+			var map = L.map('map_settings', {
+			center: [60.13603, 24.94514],
+			zoom: 3,
+			layers: [maplayer]
+		});
+
+		var icon = L.icon({
+			iconUrl: 'marker.png',
+			iconSize: [25, 41],
+			iconAnchor: [12, 41]
+		});
+	
+		var marker = L.marker(new L.LatLng(60.13603, 24.94514), {
+			draggable: true,
+			icon: icon
+		}).addTo(map);
+	</script>
+	
+      <footer>
+        <div class="row">
+          <div class="col-lg-12">
+          	<div id="cookie_notice" style="color: red; font-size: small;"></div>
+            <ul class="list-unstyled">
+              <li><a href="index.php">Home</a></li>
+              <li><a href="compare.php">Compare</a></li>
+              <li><a href="search.php">Search</a></li>
+              <li><a href="helper.php">Helper</a></li>
+              <li>|</li>
+              <li><a href="https://cmano-db.com/cw/">Cold War DataBase</a></li>
+            </ul>
+            <p><small>&copy; cmano-db.com - db v. 502</small></p>
+
+          </div>
+        </div>
+      </footer>    </div>
+
+    <script src="bootstrap.min.js"></script>
+    <script src="custom.js"></script>
+  
+  </body>
+</html>

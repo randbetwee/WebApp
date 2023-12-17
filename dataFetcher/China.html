@@ -1,0 +1,3073 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Aircrafts - cmano-db.com</title>
+    <base href="https://cmano-db.com/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="bootstrap.css" media="screen">
+    <link rel="stylesheet" href="custom.min.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="js.cookie.js"></script>
+    
+	<link rel="stylesheet" href="leaflet.css" />
+	<script src="leaflet/js/leaflet.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+	<style type="text/css">
+		.info_sensors {
+			padding: 3px 4px;
+			font: 13px/15px Arial, Helvetica, sans-serif;
+			background: white;
+			background: rgba(255,255,255,0.8);
+			box-shadow: 0 0 15px rgba(0,0,0,0.2);
+			border-radius: 5px;
+			width: 55px;
+		}
+		.info_weapons {
+			padding: 3px 4px;
+			font: 13px/15px Arial, Helvetica, sans-serif;
+			background: white;
+			background: rgba(255,255,255,0.8);
+			box-shadow: 0 0 15px rgba(0,0,0,0.2);
+			border-radius: 5px;
+			width: 62px;
+		}
+		.legend {
+			line-height: 18px;
+			color: #555;
+		}
+		#list {
+			display: none;
+		}
+		.country {
+			float: left;
+			width: 350px;
+			height: 440px;
+			overflow: auto;
+			padding-left: 15px;
+			margin-right: 0px;
+			margin-bottom: 15px;
+			border-bottom: solid 1px black;
+		}
+		.country a {
+			color: #CCCCCC;
+		}
+		.country a:hover {
+			color: white;
+		}
+		.country a:visited {
+			color: #8C8C8C;
+		}
+		.country h4 {
+			padding-bottom: 8px;
+			margin: 0px;
+			color: white;
+		}
+		.country h4 a{
+			color: white;
+		}
+		.country ul {
+			padding-left: 20px;
+			margin: 0px;
+		}
+		#preview img {
+			max-width: 400px;
+			padding: 0px;
+			margin: 0px;
+		}
+
+}
+	</style>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$('#save-event').click(function() {
+		var curPos = marker.getLatLng();
+		var lat_save = curPos.lat;
+		var lon_save = curPos.lng;
+		
+		document.cookie="lat="+lat_save+"; path=/";
+		document.cookie="lon="+lon_save+"; path=/";
+		
+    	$('.modal').modal('hide');
+    });
+    
+	$('#favorites_button').click(function() {
+		$('#favorites').modal('show');
+    });	
+	$('#settings_button').click(function() {
+		$('#settings').modal('show');
+		  setTimeout(function() {
+			map.invalidateSize();
+
+		  }, 10);
+    });	
+
+	// FAVORITE
+	var Cookies2 = Cookies.noConflict();
+
+	var empty_array = [['type','id','name','country']];
+	var empty = JSON.stringify(empty_array);
+
+	$('#favorites').on('show.bs.modal', function () {
+		var favorites_array = JSON.parse(Cookies2.get('favorites') || empty);
+		var txt = "";
+		
+		for (favorite in favorites_array) {
+			if (favorites_array[favorite][0] != "type") {
+				txt += '<li><a href="' + favorites_array[favorite][0].toLowerCase() + '/' + favorites_array[favorite][1] + '/">' + favorites_array[favorite][3] + ': ' + favorites_array[favorite][2] + '</a></li>';
+			}
+		}
+		if (txt == "") {
+			var txt = "Empty favorites! Use favorite button to add.";
+		}
+		$("#favorite_list").html("<ul>" + txt + "</ul>");
+	});
+
+	function checkCookie(){
+		var cookieEnabled=(navigator.cookieEnabled)? true : false;
+		if (typeof navigator.cookieEnabled=="undefined" && !cookieEnabled){ 
+			document.cookie="testcookie";
+			cookieEnabled=(document.cookie.indexOf("testcookie")!=-1)? true : false;
+		}
+		return (cookieEnabled)?true:showCookieFail();
+	}
+
+	function showCookieFail(){
+		$("#cookie_notice").html("Notice: Settings and Favorites does not work if cookies are disabled!");
+	}
+	
+	checkCookie();
+	imagePreview();
+});
+</script>
+  </head>
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="https://cmano-db.com/" class="navbar-brand">CMANO-DB.COM</a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+          <ul class="nav navbar-nav">
+          	<li><a href="https://cmano-db.com/compare.php"><i class="fa fa-random" aria-hidden="true"></i> Compare</a></li>
+          	
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="lists"><i class="fa fa-list" aria-hidden="true"></i> List <span class="caret"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="lists">
+                <li><a href="aircraft/">Aircraft</a></li>
+                <li><a href="ship/">Ship</a></li>
+                <li><a href="submarine/">Submarine</a></li>
+                <li><a href="facility/">Facility</a></li>
+                <li><a href="weapon/">Weapon</a></li>
+                <li><a href="sensor/">Sensor</a></li>
+              </ul>
+            </li>
+            
+            <li><a href="search.php"><i class="fa fa-search" aria-hidden="true"></i> Search</a></li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+          	<li><a href="#" id="favorites_button"><i class="fa fa-star" aria-hidden="true"></i> Favorites</a></li>
+			<li><a href="#" id="settings_button"><i class="fa fa-wrench" aria-hidden="true"></i> Settings</a></li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+          <br />
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- cmano-db.com -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1382552067334538"
+     data-ad-slot="3320724779"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+          <br /><br />
+							<ul class="breadcrumb">
+				  <li><a href="aircraft/">Aircraft</a></li>
+				  <li class="active">China</li>
+				</ul>				
+				
+				<table class="table table-striped table-hover ">
+				  <thead>
+					<tr>
+					  <th>Pic</th>
+					  <th>Name</th>
+					</tr>
+				  </thead>
+				  <tbody>				
+				<tr>							<style>
+							.picture_1 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_1" onclick="window.open('aircraft/4979/', '_self')"></td>
+							<td><a href="aircraft/4979/">AG-600 [Kunlong]</a>
+							<br />2021, Amphibious<br />Naval Utility</td></tr><tr>							<style>
+							.picture_2 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2404.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_2" onclick="window.open('aircraft/2404/', '_self')"></td>
+							<td><a href="aircraft/2404/">AS.565SA Panther</a>
+							<br />1988, 4x, Luda, Ex-SA.365M Dauphin 2<br />Anti-Submarine Warfare (ASW)</td></tr><tr>							<style>
+							.picture_3 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_3" onclick="window.open('aircraft/2498/', '_self')"></td>
+							<td><a href="aircraft/2498/">An-24B Coke</a>
+							<br />1971, PLAAF<br />Transport</td></tr><tr>							<style>
+							.picture_4 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_4" onclick="window.open('aircraft/2499/', '_self')"></td>
+							<td><a href="aircraft/2499/">An-24RV Coke</a>
+							<br />0, PLAAF<br />Transport</td></tr><tr>							<style>
+							.picture_5 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_5" onclick="window.open('aircraft/2501/', '_self')"></td>
+							<td><a href="aircraft/2501/">An-26 Curl A</a>
+							<br />1979, PLAAF, 13th Air Div<br />Transport</td></tr><tr>							<style>
+							.picture_6 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_3309.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_6" onclick="window.open('aircraft/3309/', '_self')"></td>
+							<td><a href="aircraft/3309/">BZK-005 Sea Eagle UAV</a>
+							<br />2009, PLANAF<br />Unmanned Aerial Vehicle (UAV)</td></tr><tr>							<style>
+							.picture_7 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_7" onclick="window.open('aircraft/6739/', '_self')"></td>
+							<td><a href="aircraft/6739/">BZK-005 Sky Eagle UAV</a>
+							<br />2020, SAR<br />Unmanned Aerial Vehicle (UAV)</td></tr><tr>							<style>
+							.picture_8 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_8" onclick="window.open('aircraft/4515/', '_self')"></td>
+							<td><a href="aircraft/4515/">CH-4B [Rainbow, Predator Copy] UAV</a>
+							<br />2014<br />Unmanned Combat Aerial Vehicle (UCAV)</td></tr><tr>							<style>
+							.picture_9 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_9" onclick="window.open('aircraft/4727/', '_self')"></td>
+							<td><a href="aircraft/4727/">CH-5 [Rainbow] UCAV</a>
+							<br />2018, PLAAF<br />Unmanned Combat Aerial Vehicle (UCAV)</td></tr><tr>							<style>
+							.picture_10 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_10" onclick="window.open('aircraft/4716/', '_self')"></td>
+							<td><a href="aircraft/4716/">CH-500 UCAV</a>
+							<br />2019<br />Unmanned Combat Aerial Vehicle (UCAV)</td></tr><tr>							<style>
+							.picture_11 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_11" onclick="window.open('aircraft/5384/', '_self')"></td>
+							<td><a href="aircraft/5384/">CH-6 UAV [Recon Type]</a>
+							<br />2021<br />Unmanned Aerial Vehicle (UAV)</td></tr><tr>							<style>
+							.picture_12 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_12" onclick="window.open('aircraft/5385/', '_self')"></td>
+							<td><a href="aircraft/5385/">CH-6 UAV [Recon/Attack Type]</a>
+							<br />2021<br />Unmanned Combat Aerial Vehicle (UCAV)</td></tr><tr>							<style>
+							.picture_13 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_13" onclick="window.open('aircraft/4616/', '_self')"></td>
+							<td><a href="aircraft/4616/">CSA-003 [Diamond DA42 Twin Star]</a>
+							<br />2016, ELINT<br />Electronic Intelligence (ELINT)</td></tr><tr>							<style>
+							.picture_14 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_14" onclick="window.open('aircraft/4615/', '_self')"></td>
+							<td><a href="aircraft/4615/">CSA-004 [Diamond DA42 Twin Star]</a>
+							<br />2016, 1x, LIDAR, Camera<br />Area Surveillance</td></tr><tr>							<style>
+							.picture_15 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_3171.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_15" onclick="window.open('aircraft/3171/', '_self')"></td>
+							<td><a href="aircraft/3171/">Camcopter S-100 UAV</a>
+							<br />2012, 18x<br />Unmanned Aerial Vehicle (UAV)</td></tr><tr>							<style>
+							.picture_16 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_16" onclick="window.open('aircraft/4931/', '_self')"></td>
+							<td><a href="aircraft/4931/">Divine Eagle UAV</a>
+							<br />2020, AEW Recon<br />Unmanned Aerial Vehicle (UAV)</td></tr><tr>							<style>
+							.picture_17 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2917.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_17" onclick="window.open('aircraft/2917/', '_self')"></td>
+							<td><a href="aircraft/2917/">FC-31 Gyrfalcon</a>
+							<br />2022, J-21, J-31, J-35<br />Multirole (Fighter/Attack)</td></tr><tr>							<style>
+							.picture_18 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_18" onclick="window.open('aircraft/4454/', '_self')"></td>
+							<td><a href="aircraft/4454/">FC-31 Gyrfalcon [Carrier Variant]</a>
+							<br />2022, J-21, J-31, J-35<br />Multirole (Fighter/Attack)</td></tr><tr>							<style>
+							.picture_19 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_19" onclick="window.open('aircraft/6147/', '_self')"></td>
+							<td><a href="aircraft/6147/">FTC-2000 Mountain Eagle [JL-9G]</a>
+							<br />2013, Carrier Trainer<br />Trainer</td></tr><tr>							<style>
+							.picture_20 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_20" onclick="window.open('aircraft/6146/', '_self')"></td>
+							<td><a href="aircraft/6146/">FTC-2000 Mountain Eagle [JL-9]</a>
+							<br />2013<br />Trainer</td></tr><tr>							<style>
+							.picture_21 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_3310.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_21" onclick="window.open('aircraft/3310/', '_self')"></td>
+							<td><a href="aircraft/3310/">GJ-1 Wing Loong I UAV</a>
+							<br />2013, WD-1K<br />Unmanned Aerial Vehicle (UAV)</td></tr><tr>							<style>
+							.picture_22 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_22" onclick="window.open('aircraft/4961/', '_self')"></td>
+							<td><a href="aircraft/4961/">GJ-11 Sharp Sword UAV</a>
+							<br />2020, Tanker Model<br />Unmanned Aerial Vehicle (UAV)</td></tr><tr>							<style>
+							.picture_23 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_23" onclick="window.open('aircraft/4962/', '_self')"></td>
+							<td><a href="aircraft/4962/">GJ-11 Sharp Sword UAV</a>
+							<br />2019, Recon Model<br />Unmanned Aerial Vehicle (UAV)</td></tr><tr>							<style>
+							.picture_24 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_24" onclick="window.open('aircraft/4963/', '_self')"></td>
+							<td><a href="aircraft/4963/">GJ-11 Sharp Sword UCAV</a>
+							<br />2020, Armed Model<br />Unmanned Combat Aerial Vehicle (UCAV)</td></tr><tr>							<style>
+							.picture_25 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_25" onclick="window.open('aircraft/4725/', '_self')"></td>
+							<td><a href="aircraft/4725/">GJ-2 Wing Loong II UCAV</a>
+							<br />2018<br />Unmanned Combat Aerial Vehicle (UCAV)</td></tr><tr>							<style>
+							.picture_26 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_26" onclick="window.open('aircraft/4901/', '_self')"></td>
+							<td><a href="aircraft/4901/">GJ-2 Wing Loong II UCAV</a>
+							<br />2019, ELINT<br />Unmanned Combat Aerial Vehicle (UCAV)</td></tr><tr>							<style>
+							.picture_27 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_27" onclick="window.open('aircraft/6150/', '_self')"></td>
+							<td><a href="aircraft/6150/">GJ-3 Wing Loong III UCAV</a>
+							<br />2022<br />Unmanned Combat Aerial Vehicle (UCAV)</td></tr><tr>							<style>
+							.picture_28 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_139.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_28" onclick="window.open('aircraft/139/', '_self')"></td>
+							<td><a href="aircraft/139/">H-5 Beagle</a>
+							<br />1967, Bomber<br />Bomber</td></tr><tr>							<style>
+							.picture_29 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2481.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_29" onclick="window.open('aircraft/2481/', '_self')"></td>
+							<td><a href="aircraft/2481/">H-5 Beagle</a>
+							<br />1984, Bomber<br />Bomber</td></tr><tr>							<style>
+							.picture_30 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_140.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_30" onclick="window.open('aircraft/140/', '_self')"></td>
+							<td><a href="aircraft/140/">H-6A Badger</a>
+							<br />1973, PLAAF, Bomber<br />Bomber</td></tr><tr>							<style>
+							.picture_31 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2495.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_31" onclick="window.open('aircraft/2495/', '_self')"></td>
+							<td><a href="aircraft/2495/">H-6A Badger</a>
+							<br />1995, PLAAF, Bomber<br />Bomber</td></tr><tr>							<style>
+							.picture_32 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_3139.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_32" onclick="window.open('aircraft/3139/', '_self')"></td>
+							<td><a href="aircraft/3139/">H-6A Badger</a>
+							<br />1984, PLAAF, Bomber<br />Bomber</td></tr><tr>							<style>
+							.picture_33 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_33" onclick="window.open('aircraft/2299/', '_self')"></td>
+							<td><a href="aircraft/2299/">H-6C Badger</a>
+							<br />1984, PLAAF, Bomber<br />Bomber</td></tr><tr>							<style>
+							.picture_34 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_34" onclick="window.open('aircraft/2494/', '_self')"></td>
+							<td><a href="aircraft/2494/">H-6C Badger</a>
+							<br />1995, PLAAF, Bomber<br />Bomber</td></tr><tr>							<style>
+							.picture_35 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_197.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_35" onclick="window.open('aircraft/197/', '_self')"></td>
+							<td><a href="aircraft/197/">H-6D Badger</a>
+							<br />1987, PLANAF, C-601 ASCM<br />Bomber</td></tr><tr>							<style>
+							.picture_36 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_803.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_36" onclick="window.open('aircraft/803/', '_self')"></td>
+							<td><a href="aircraft/803/">H-6D Badger</a>
+							<br />2000, PLANAF, C-611 ASCM<br />Bomber</td></tr><tr>							<style>
+							.picture_37 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2066.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_37" onclick="window.open('aircraft/2066/', '_self')"></td>
+							<td><a href="aircraft/2066/">H-6E Badger</a>
+							<br />2000, PLAAF, Bomber<br />Bomber</td></tr><tr>							<style>
+							.picture_38 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2065.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_38" onclick="window.open('aircraft/2065/', '_self')"></td>
+							<td><a href="aircraft/2065/">H-6G Badger</a>
+							<br />2006, PLANAF, 4x YJ-83K ASCM<br />Bomber</td></tr><tr>							<style>
+							.picture_39 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_39" onclick="window.open('aircraft/3299/', '_self')"></td>
+							<td><a href="aircraft/3299/">H-6G Badger [H-6M]</a>
+							<br />2015, PLANAF, 4x YJ-12 ASCM, 2x YJ-100 ASCM<br />Bomber</td></tr><tr>							<style>
+							.picture_40 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2464.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_40" onclick="window.open('aircraft/2464/', '_self')"></td>
+							<td><a href="aircraft/2464/">H-6H Badger</a>
+							<br />2006, PLAAF, 4x KD-63/YJ-63 ALCM/ASCM<br />Bomber</td></tr><tr>							<style>
+							.picture_41 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_41" onclick="window.open('aircraft/4816/', '_self')"></td>
+							<td><a href="aircraft/4816/">H-6J Badger</a>
+							<br />2018, PLANAF, 4+<br />Bomber</td></tr><tr>							<style>
+							.picture_42 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_1731.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_42" onclick="window.open('aircraft/1731/', '_self')"></td>
+							<td><a href="aircraft/1731/">H-6K Badger</a>
+							<br />2011, 6x KD-20/CJ-10A ALCM, New Production<br />Bomber</td></tr><tr>							<style>
+							.picture_43 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_3308.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_43" onclick="window.open('aircraft/3308/', '_self')"></td>
+							<td><a href="aircraft/3308/">H-6M Badger</a>
+							<br />2008, PLAAF, 4x KD-20/CJ-10A ALCM, Stopgap<br />Bomber</td></tr><tr>							<style>
+							.picture_44 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_44" onclick="window.open('aircraft/4837/', '_self')"></td>
+							<td><a href="aircraft/4837/">H-6N Badger</a>
+							<br />2018, ALBM Launch Platform<br />Bomber</td></tr><tr>							<style>
+							.picture_45 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_45" onclick="window.open('aircraft/4969/', '_self')"></td>
+							<td><a href="aircraft/4969/">H-6N Badger</a>
+							<br />2018, ALBM Launch Platform, WZ-8<br />Bomber</td></tr><tr>							<style>
+							.picture_46 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_1730.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_46" onclick="window.open('aircraft/1730/', '_self')"></td>
+							<td><a href="aircraft/1730/">HD-5 Beagle</a>
+							<br />1987, EW<br />Electronic Warfare</td></tr><tr>							<style>
+							.picture_47 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_47" onclick="window.open('aircraft/2298/', '_self')"></td>
+							<td><a href="aircraft/2298/">HY-6D Badger [H-6DU]</a>
+							<br />2000, PLANAF, Tanker + Missile Carrier<br />Tanker (Air Refueling)</td></tr><tr>							<style>
+							.picture_48 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_823.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_48" onclick="window.open('aircraft/823/', '_self')"></td>
+							<td><a href="aircraft/823/">HY-6U Badger [H-6U]</a>
+							<br />1997, PLAAF, Tanker (Dedicated)<br />Tanker (Air Refueling)</td></tr><tr>							<style>
+							.picture_49 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_49" onclick="window.open('aircraft/1729/', '_self')"></td>
+							<td><a href="aircraft/1729/">HZ-5 Beagle</a>
+							<br />1979, Recce<br />Recon</td></tr><tr>							<style>
+							.picture_50 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_50" onclick="window.open('aircraft/2172/', '_self')"></td>
+							<td><a href="aircraft/2172/">HZ-6A Badger</a>
+							<br />1990<br />Electronic Intelligence (ELINT)</td></tr><tr>							<style>
+							.picture_51 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2503.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_51" onclick="window.open('aircraft/2503/', '_self')"></td>
+							<td><a href="aircraft/2503/">Il-76MD Candid B</a>
+							<br />1992, PLAAF, 14x, 13th Air Div<br />Transport</td></tr><tr>							<style>
+							.picture_52 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_3727.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_52" onclick="window.open('aircraft/3727/', '_self')"></td>
+							<td><a href="aircraft/3727/">Il-78M Midas</a>
+							<br />2015, Il-76 Mod<br />Tanker (Air Refueling)</td></tr><tr>							<style>
+							.picture_53 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_715.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_53" onclick="window.open('aircraft/715/', '_self')"></td>
+							<td><a href="aircraft/715/">J-10A Firebird</a>
+							<br />2008, PLAAF<br />Fighter</td></tr><tr>							<style>
+							.picture_54 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_54" onclick="window.open('aircraft/4633/', '_self')"></td>
+							<td><a href="aircraft/4633/">J-10A Firebird</a>
+							<br />2018, PLAAF<br />Fighter</td></tr><tr>							<style>
+							.picture_55 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2478.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_55" onclick="window.open('aircraft/2478/', '_self')"></td>
+							<td><a href="aircraft/2478/">J-10AH Firebird</a>
+							<br />2011, PLANAF<br />Fighter</td></tr><tr>							<style>
+							.picture_56 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_3300.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_56" onclick="window.open('aircraft/3300/', '_self')"></td>
+							<td><a href="aircraft/3300/">J-10B Firebird</a>
+							<br />2014, PLAAF<br />Fighter</td></tr><tr>							<style>
+							.picture_57 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_57" onclick="window.open('aircraft/4617/', '_self')"></td>
+							<td><a href="aircraft/4617/">J-10B Firebird</a>
+							<br />2018, PLAAF<br />Fighter</td></tr><tr>							<style>
+							.picture_58 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2057.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_58" onclick="window.open('aircraft/2057/', '_self')"></td>
+							<td><a href="aircraft/2057/">J-10C Firebird</a>
+							<br />2018, PLAAF<br />Fighter</td></tr><tr>							<style>
+							.picture_59 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_59" onclick="window.open('aircraft/5259/', '_self')"></td>
+							<td><a href="aircraft/5259/">J-10C Firebird</a>
+							<br />2019, PLAAF, WS-10B<br />Fighter</td></tr><tr>							<style>
+							.picture_60 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_708.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_60" onclick="window.open('aircraft/708/', '_self')"></td>
+							<td><a href="aircraft/708/">J-11 Flanker B [Su-27SK]</a>
+							<br />1994, From Russia<br />Fighter</td></tr><tr>							<style>
+							.picture_61 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_61" onclick="window.open('aircraft/5996/', '_self')"></td>
+							<td><a href="aircraft/5996/">J-11 Flanker B [Su-27SK]</a>
+							<br />2015, MAWS & Upgr. Cockpit, R-77, PL-10<br />Fighter</td></tr><tr>							<style>
+							.picture_62 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_1993.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_62" onclick="window.open('aircraft/1993/', '_self')"></td>
+							<td><a href="aircraft/1993/">J-11B Flanker B [Su-27SK Copy]</a>
+							<br />2009, PLAAF, 1st Division, WS-10B, Immature<br />Fighter</td></tr><tr>							<style>
+							.picture_63 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_63" onclick="window.open('aircraft/4425/', '_self')"></td>
+							<td><a href="aircraft/4425/">J-11B Flanker B [Su-27SK Copy]</a>
+							<br />2012, PLAAF, 1st Division, WS-10, Mature<br />Fighter</td></tr><tr>							<style>
+							.picture_64 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_64" onclick="window.open('aircraft/4641/', '_self')"></td>
+							<td><a href="aircraft/4641/">J-11B Flanker B [Su-27SK Copy]</a>
+							<br />2018, PLAAF, 1st Division, WS-10, Mature<br />Fighter</td></tr><tr>							<style>
+							.picture_65 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_65" onclick="window.open('aircraft/4900/', '_self')"></td>
+							<td><a href="aircraft/4900/">J-11BG</a>
+							<br />2019, PLAAF, 1st Air Brigade, AESA<br />Fighter</td></tr><tr>							<style>
+							.picture_66 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_66" onclick="window.open('aircraft/4446/', '_self')"></td>
+							<td><a href="aircraft/4446/">J-11BH Flanker B [Su-27SK Copy]</a>
+							<br />2013, PLANAF<br />Fighter</td></tr><tr>							<style>
+							.picture_67 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_67" onclick="window.open('aircraft/6701/', '_self')"></td>
+							<td><a href="aircraft/6701/">J-11BHG Flanker B [Su-27SK Copy]</a>
+							<br />2022, PLANAF, MLU<br />Fighter</td></tr><tr>							<style>
+							.picture_68 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_68" onclick="window.open('aircraft/4447/', '_self')"></td>
+							<td><a href="aircraft/4447/">J-11BS Flanker C [Su-27UBK Copy]</a>
+							<br />2009, PLAAF, 1st Division, WS-10B, Immature, Two-Seater<br />Fighter</td></tr><tr>							<style>
+							.picture_69 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_69" onclick="window.open('aircraft/4448/', '_self')"></td>
+							<td><a href="aircraft/4448/">J-11BS Flanker C [Su-27UBK Copy]</a>
+							<br />2012, PLAAF, 1st Division, WS-10, Mature, Two-Seater<br />Fighter</td></tr><tr>							<style>
+							.picture_70 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_70" onclick="window.open('aircraft/4642/', '_self')"></td>
+							<td><a href="aircraft/4642/">J-11BS Flanker C [Su-27UBK Copy]</a>
+							<br />2018, PLAAF, 1st Division, WS-10, Mature, Two-Seater<br />Fighter</td></tr><tr>							<style>
+							.picture_71 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_71" onclick="window.open('aircraft/4449/', '_self')"></td>
+							<td><a href="aircraft/4449/">J-11BSH Flanker C [Su-27UBK Copy]</a>
+							<br />2013, PLANAF, Navalized, Two-Seater<br />Fighter</td></tr><tr>							<style>
+							.picture_72 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_72" onclick="window.open('aircraft/4039/', '_self')"></td>
+							<td><a href="aircraft/4039/">J-11D Flanker L [Su-27SK Copy]</a>
+							<br />2018<br />Fighter</td></tr><tr>							<style>
+							.picture_73 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2496.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_73" onclick="window.open('aircraft/2496/', '_self')"></td>
+							<td><a href="aircraft/2496/">J-15 Flying Shark [Su-33 Copy]</a>
+							<br />2017, PLANAF<br />Fighter</td></tr><tr>							<style>
+							.picture_74 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_74" onclick="window.open('aircraft/6098/', '_self')"></td>
+							<td><a href="aircraft/6098/">J-15B Flying Shark [Su-33 Copy]</a>
+							<br />2022, PLANAF, CATOBAR<br />Fighter</td></tr><tr>							<style>
+							.picture_75 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_75" onclick="window.open('aircraft/4957/', '_self')"></td>
+							<td><a href="aircraft/4957/">J-15D Growler Shark</a>
+							<br />2017, PLANAF<br />Fighter</td></tr><tr>							<style>
+							.picture_76 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_76" onclick="window.open('aircraft/4817/', '_self')"></td>
+							<td><a href="aircraft/4817/">J-15D Roaring Shark</a>
+							<br />2019, PLANAF, EW Variant, Carrier Capable<br />Electronic Warfare</td></tr><tr>							<style>
+							.picture_77 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_3311.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_77" onclick="window.open('aircraft/3311/', '_self')"></td>
+							<td><a href="aircraft/3311/">J-15S Flying Shark</a>
+							<br />2017, PLANAF, Twin-Seat<br />Fighter</td></tr><tr>							<style>
+							.picture_78 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2853.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_78" onclick="window.open('aircraft/2853/', '_self')"></td>
+							<td><a href="aircraft/2853/">J-16 Flying Shark [Su-30MKK Copy]</a>
+							<br />2015, PLANAF<br />Fighter</td></tr><tr>							<style>
+							.picture_79 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_79" onclick="window.open('aircraft/4225/', '_self')"></td>
+							<td><a href="aircraft/4225/">J-16 Flying Shark [Su-30MKK Copy]</a>
+							<br />2018, PLANAF<br />Fighter</td></tr><tr>							<style>
+							.picture_80 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_80" onclick="window.open('aircraft/4926/', '_self')"></td>
+							<td><a href="aircraft/4926/">J-16 Flying Shark [Su-30MKK Copy]</a>
+							<br />2018<br />Fighter</td></tr><tr>							<style>
+							.picture_81 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_81" onclick="window.open('aircraft/4927/', '_self')"></td>
+							<td><a href="aircraft/4927/">J-16 Flying Shark [Su-30MKK Copy]</a>
+							<br />2015<br />Fighter</td></tr><tr>							<style>
+							.picture_82 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_82" onclick="window.open('aircraft/6450/', '_self')"></td>
+							<td><a href="aircraft/6450/">J-16 Flying Shark [Su-30MKK Copy]</a>
+							<br />2016, PL-21<br />Fighter</td></tr><tr>							<style>
+							.picture_83 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_83" onclick="window.open('aircraft/4632/', '_self')"></td>
+							<td><a href="aircraft/4632/">J-16D Roaring Wolf</a>
+							<br />2021, PLAAF, EW Variant<br />Electronic Warfare</td></tr><tr>							<style>
+							.picture_84 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_84" onclick="window.open('aircraft/5012/', '_self')"></td>
+							<td><a href="aircraft/5012/">J-20A Mighty Dragon</a>
+							<br />2017, AL-31F M2 Engine<br />Fighter</td></tr><tr>							<style>
+							.picture_85 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_85" onclick="window.open('aircraft/5014/', '_self')"></td>
+							<td><a href="aircraft/5014/">J-20A Mighty Dragon</a>
+							<br />2019, WS-10B Engine<br />Fighter</td></tr><tr>							<style>
+							.picture_86 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2463.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_86" onclick="window.open('aircraft/2463/', '_self')"></td>
+							<td><a href="aircraft/2463/">J-20B Mighty Dragon</a>
+							<br />2023, WS-15 Engine, Supercruise, Supermanouverability<br />Fighter</td></tr><tr>							<style>
+							.picture_87 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_87" onclick="window.open('aircraft/5013/', '_self')"></td>
+							<td><a href="aircraft/5013/">J-20B Mighty Dragon</a>
+							<br />2020, WS-10C Engine<br />Fighter</td></tr><tr>							<style>
+							.picture_88 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_88" onclick="window.open('aircraft/5454/', '_self')"></td>
+							<td><a href="aircraft/5454/">J-20S Mighty Dragon</a>
+							<br />2021, WS-10B Engine, Two-Seater<br />Fighter</td></tr><tr>							<style>
+							.picture_89 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2769.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_89" onclick="window.open('aircraft/2769/', '_self')"></td>
+							<td><a href="aircraft/2769/">J-5A Fresco [MiG-17PF Copy]</a>
+							<br />1966<br />Fighter</td></tr><tr>							<style>
+							.picture_90 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2770.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_90" onclick="window.open('aircraft/2770/', '_self')"></td>
+							<td><a href="aircraft/2770/">J-6 Farmer [MiG-19S Copy]</a>
+							<br />1966<br />Fighter</td></tr><tr>							<style>
+							.picture_91 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_91" onclick="window.open('aircraft/5435/', '_self')"></td>
+							<td><a href="aircraft/5435/">J-6 Farmer [MiG-19S Copy] UAV</a>
+							<br />2021, Unmanned Modification<br />Unmanned Aerial Vehicle (UAV)</td></tr><tr>							<style>
+							.picture_92 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_170.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_92" onclick="window.open('aircraft/170/', '_self')"></td>
+							<td><a href="aircraft/170/">J-6A Farmer [MiG-19P Copy]</a>
+							<br />1982<br />Fighter</td></tr><tr>							<style>
+							.picture_93 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_3010.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_93" onclick="window.open('aircraft/3010/', '_self')"></td>
+							<td><a href="aircraft/3010/">J-6A Farmer [MiG-19P Copy]</a>
+							<br />1976<br />Fighter</td></tr><tr>							<style>
+							.picture_94 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_82.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_94" onclick="window.open('aircraft/82/', '_self')"></td>
+							<td><a href="aircraft/82/">J-7C Fishbed [MiG-21 Copy]</a>
+							<br />1988, PLAAF, J-7III, 15th Air Div, 20-30x<br />Fighter</td></tr><tr>							<style>
+							.picture_95 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2475.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_95" onclick="window.open('aircraft/2475/', '_self')"></td>
+							<td><a href="aircraft/2475/">J-7D Fishbed [MiG-21 Copy]</a>
+							<br />1995, PLAAF, J-7IIIA, 1x Regt?<br />Fighter</td></tr><tr>							<style>
+							.picture_96 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_793.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_96" onclick="window.open('aircraft/793/', '_self')"></td>
+							<td><a href="aircraft/793/">J-7E Fishbed [MiG-21 Copy]</a>
+							<br />1996, PLAAF, Double Delta<br />Fighter</td></tr><tr>							<style>
+							.picture_97 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2476.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_97" onclick="window.open('aircraft/2476/', '_self')"></td>
+							<td><a href="aircraft/2476/">J-7EH Fishbed [MiG-21 Copy]</a>
+							<br />1996, PLANAF, Double Delta<br />Fighter</td></tr><tr>							<style>
+							.picture_98 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2477.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_98" onclick="window.open('aircraft/2477/', '_self')"></td>
+							<td><a href="aircraft/2477/">J-7G Fishbed [MiG-21 Copy]</a>
+							<br />2005, PLAAF, Ca 50x, Double Delta<br />Fighter</td></tr><tr>							<style>
+							.picture_99 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_358.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_99" onclick="window.open('aircraft/358/', '_self')"></td>
+							<td><a href="aircraft/358/">J-7I Fishbed [MiG-21 Copy]</a>
+							<br />1982, PLAAF, Initial Production, Flawed<br />Fighter</td></tr><tr>							<style>
+							.picture_100 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_3009.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_100" onclick="window.open('aircraft/3009/', '_self')"></td>
+							<td><a href="aircraft/3009/">J-7I Fishbed [MiG-21 Copy]</a>
+							<br />1977, PLAAF, Initial Production, Flawed<br />Fighter</td></tr><tr>							<style>
+							.picture_101 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_81.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_101" onclick="window.open('aircraft/81/', '_self')"></td>
+							<td><a href="aircraft/81/">J-7II Fishbed [MiG-21 Copy]</a>
+							<br />1983, PLAAF, Mass Production<br />Fighter</td></tr><tr>							<style>
+							.picture_102 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2474.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_102" onclick="window.open('aircraft/2474/', '_self')"></td>
+							<td><a href="aircraft/2474/">J-7IIH Fishbed [MiG-21 Copy]</a>
+							<br />1991, PLAAF , J-7H<br />Fighter</td></tr><tr>							<style>
+							.picture_103 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_795.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_103" onclick="window.open('aircraft/795/', '_self')"></td>
+							<td><a href="aircraft/795/">J-8A Finback A [J-8I]</a>
+							<br />1986, PLAAF, Few Produced (30-50x)<br />Fighter</td></tr><tr>							<style>
+							.picture_104 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_499.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_104" onclick="window.open('aircraft/499/', '_self')"></td>
+							<td><a href="aircraft/499/">J-8B Finback B [J-8II]</a>
+							<br />1996, PLAAF, Early Batch<br />Fighter</td></tr><tr>							<style>
+							.picture_105 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2469.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_105" onclick="window.open('aircraft/2469/', '_self')"></td>
+							<td><a href="aircraft/2469/">J-8B Finback B [J-8II]</a>
+							<br />1996, PLANAF, Early Batch<br />Fighter</td></tr><tr>							<style>
+							.picture_106 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2470.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_106" onclick="window.open('aircraft/2470/', '_self')"></td>
+							<td><a href="aircraft/2470/">J-8D Finback B [J-8II]</a>
+							<br />1997, PLAAF, IFR<br />Fighter</td></tr><tr>							<style>
+							.picture_107 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2471.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_107" onclick="window.open('aircraft/2471/', '_self')"></td>
+							<td><a href="aircraft/2471/">J-8D Finback B [J-8II]</a>
+							<br />1997, PLANAF, IFR<br />Fighter</td></tr><tr>							<style>
+							.picture_108 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_108" onclick="window.open('aircraft/2472/', '_self')"></td>
+							<td><a href="aircraft/2472/">J-8F Finback B [J-8II]</a>
+							<br />2004, PLAAF, IFR<br />Fighter</td></tr><tr>							<style>
+							.picture_109 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_109" onclick="window.open('aircraft/2473/', '_self')"></td>
+							<td><a href="aircraft/2473/">J-8F Finback B [J-8II]</a>
+							<br />2004, PLANAF, IFR<br />Fighter</td></tr><tr>							<style>
+							.picture_110 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_110" onclick="window.open('aircraft/145/', '_self')"></td>
+							<td><a href="aircraft/145/">J-8IE Finback A [J-8I]</a>
+							<br />1996, PLAAF, J-8I Upgrade<br />Fighter</td></tr><tr>							<style>
+							.picture_111 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_111" onclick="window.open('aircraft/2468/', '_self')"></td>
+							<td><a href="aircraft/2468/">J-8IE Finback A [J-8I]</a>
+							<br />1996, PLANAF, J-8I Upgrade<br />Fighter</td></tr><tr>							<style>
+							.picture_112 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_797.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_112" onclick="window.open('aircraft/797/', '_self')"></td>
+							<td><a href="aircraft/797/">JH-7 Flounder</a>
+							<br />1999, 20x + 20x, 6th Div<br />Attack</td></tr><tr>							<style>
+							.picture_113 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_254.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_113" onclick="window.open('aircraft/254/', '_self')"></td>
+							<td><a href="aircraft/254/">JH-7A Flounder</a>
+							<br />2008<br />Attack</td></tr><tr>							<style>
+							.picture_114 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2071.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_114" onclick="window.open('aircraft/2071/', '_self')"></td>
+							<td><a href="aircraft/2071/">JH-7A Flounder</a>
+							<br />2008<br />Attack</td></tr><tr>							<style>
+							.picture_115 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_3312.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_115" onclick="window.open('aircraft/3312/', '_self')"></td>
+							<td><a href="aircraft/3312/">JH-7A Flounder</a>
+							<br />2013<br />Attack</td></tr><tr>							<style>
+							.picture_116 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_116" onclick="window.open('aircraft/4653/', '_self')"></td>
+							<td><a href="aircraft/4653/">JH-7A Flounder</a>
+							<br />2018<br />Attack</td></tr><tr>							<style>
+							.picture_117 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_117" onclick="window.open('aircraft/5596/', '_self')"></td>
+							<td><a href="aircraft/5596/">JH-7A Flounder</a>
+							<br />2021, CM-802B<br />Attack</td></tr><tr>							<style>
+							.picture_118 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_118" onclick="window.open('aircraft/4905/', '_self')"></td>
+							<td><a href="aircraft/4905/">JH-7A2 Flounder</a>
+							<br />2019, JH-7A2, Improved LLTV<br />Attack</td></tr><tr>							<style>
+							.picture_119 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_119" onclick="window.open('aircraft/4329/', '_self')"></td>
+							<td><a href="aircraft/4329/">JH-7B Flounder</a>
+							<br />2018, Cancelled<br />Attack</td></tr><tr>							<style>
+							.picture_120 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_120" onclick="window.open('aircraft/2229/', '_self')"></td>
+							<td><a href="aircraft/2229/">JL-8 Karakorum</a>
+							<br />1997, K-8<br />Trainer</td></tr><tr>							<style>
+							.picture_121 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_121" onclick="window.open('aircraft/3695/', '_self')"></td>
+							<td><a href="aircraft/3695/">JZ-8F Finback B</a>
+							<br />2007, IFR, Few<br />Recon</td></tr><tr>							<style>
+							.picture_122 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_122" onclick="window.open('aircraft/3696/', '_self')"></td>
+							<td><a href="aircraft/3696/">JZ-8F Finback B</a>
+							<br />2007, IFR, Few<br />Recon</td></tr><tr>							<style>
+							.picture_123 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2467.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_123" onclick="window.open('aircraft/2467/', '_self')"></td>
+							<td><a href="aircraft/2467/">JZ-8R Finback A</a>
+							<br />1995, 2x Regt<br />Recon</td></tr><tr>							<style>
+							.picture_124 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_1960.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_124" onclick="window.open('aircraft/1960/', '_self')"></td>
+							<td><a href="aircraft/1960/">KJ-2000 Mainring [A-50]</a>
+							<br />2007, PLAAF, 4x, 26th Air Div, Il-76 Mod<br />Airborne Early Warning (AEW)</td></tr><tr>							<style>
+							.picture_125 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_3683.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_125" onclick="window.open('aircraft/3683/', '_self')"></td>
+							<td><a href="aircraft/3683/">KJ-500 Cub [GX9]</a>
+							<br />2016, PLAAF 4x, PLANAF 2x, Y-9 Rotodome AEW<br />Airborne Early Warning (AEW)</td></tr><tr>							<style>
+							.picture_126 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_126" onclick="window.open('aircraft/6004/', '_self')"></td>
+							<td><a href="aircraft/6004/">KJ-500A Cub [GX9]</a>
+							<br />2020, FLIR, AAR Capable<br />Airborne Early Warning (AEW)</td></tr><tr>							<style>
+							.picture_127 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_127" onclick="window.open('aircraft/5420/', '_self')"></td>
+							<td><a href="aircraft/5420/">KJ-600</a>
+							<br />2020, "Mockeye," E-2D Copy<br />Airborne Early Warning (AEW)</td></tr><tr>							<style>
+							.picture_128 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_862.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_128" onclick="window.open('aircraft/862/', '_self')"></td>
+							<td><a href="aircraft/862/">Ka-28 Helix A</a>
+							<br />1997<br />Anti-Submarine Warfare (ASW)</td></tr><tr>							<style>
+							.picture_129 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_129" onclick="window.open('aircraft/4902/', '_self')"></td>
+							<td><a href="aircraft/4902/">Ka-28 Helix A</a>
+							<br />2019, APR-3M<br />Anti-Submarine Warfare (ASW)</td></tr><tr>							<style>
+							.picture_130 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_130" onclick="window.open('aircraft/3304/', '_self')"></td>
+							<td><a href="aircraft/3304/">Ka-31 Helix</a>
+							<br />2011, 9x<br />Airborne Early Warning (AEW)</td></tr><tr>							<style>
+							.picture_131 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_131" onclick="window.open('aircraft/5185/', '_self')"></td>
+							<td><a href="aircraft/5185/">MA-60H MPA</a>
+							<br />2016, 1x<br />Maritime Patrol Aircraft (MPA)</td></tr><tr>							<style>
+							.picture_132 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_132" onclick="window.open('aircraft/1405/', '_self')"></td>
+							<td><a href="aircraft/1405/">Mi-17 Hip H</a>
+							<br />1992, PLA, 24x<br />Transport</td></tr><tr>							<style>
+							.picture_133 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_133" onclick="window.open('aircraft/2489/', '_self')"></td>
+							<td><a href="aircraft/2489/">Mi-171 Hip H</a>
+							<br />1998, PLA<br />Transport</td></tr><tr>							<style>
+							.picture_134 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_134" onclick="window.open('aircraft/6891/', '_self')"></td>
+							<td><a href="aircraft/6891/">Mi-171 Hip H</a>
+							<br />2020, PLA, RWR, LWR, MAWS<br />Transport</td></tr><tr>							<style>
+							.picture_135 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_135" onclick="window.open('aircraft/2490/', '_self')"></td>
+							<td><a href="aircraft/2490/">Mi-17V5 Hip H</a>
+							<br />2003, PLA, 35x<br />Transport</td></tr><tr>							<style>
+							.picture_136 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_136" onclick="window.open('aircraft/2491/', '_self')"></td>
+							<td><a href="aircraft/2491/">Mi-17V7 Hip H</a>
+							<br />2005, PLA, 25x<br />Transport</td></tr><tr>							<style>
+							.picture_137 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_137" onclick="window.open('aircraft/2488/', '_self')"></td>
+							<td><a href="aircraft/2488/">Mi-8T Hip C</a>
+							<br />1980, PLA, Few<br />Transport</td></tr><tr>							<style>
+							.picture_138 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_79.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_138" onclick="window.open('aircraft/79/', '_self')"></td>
+							<td><a href="aircraft/79/">Q-5 Fantan</a>
+							<br />1971, PLAAF<br />Attack</td></tr><tr>							<style>
+							.picture_139 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_367.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_139" onclick="window.open('aircraft/367/', '_self')"></td>
+							<td><a href="aircraft/367/">Q-5C Fantan</a>
+							<br />1998, PLAAF, No PGMs<br />Attack</td></tr><tr>							<style>
+							.picture_140 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2466.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_140" onclick="window.open('aircraft/2466/', '_self')"></td>
+							<td><a href="aircraft/2466/">Q-5D Fantan</a>
+							<br />2008, PLAAF, ca 30x, 5th Air Div, PGMs<br />Attack</td></tr><tr>							<style>
+							.picture_141 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_1732.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_141" onclick="window.open('aircraft/1732/', '_self')"></td>
+							<td><a href="aircraft/1732/">Q-5I Fantan</a>
+							<br />1987, PLAAF<br />Attack</td></tr><tr>							<style>
+							.picture_142 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_142" onclick="window.open('aircraft/3688/', '_self')"></td>
+							<td><a href="aircraft/3688/">Q-5I Fantan</a>
+							<br />1997, PLAAF<br />Attack</td></tr><tr>							<style>
+							.picture_143 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_143" onclick="window.open('aircraft/366/', '_self')"></td>
+							<td><a href="aircraft/366/">Q-5IA Fantan</a>
+							<br />1989, PLAAF<br />Attack</td></tr><tr>							<style>
+							.picture_144 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_144" onclick="window.open('aircraft/3689/', '_self')"></td>
+							<td><a href="aircraft/3689/">Q-5IA Fantan</a>
+							<br />1997, PLAAF<br />Attack</td></tr><tr>							<style>
+							.picture_145 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2497.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_145" onclick="window.open('aircraft/2497/', '_self')"></td>
+							<td><a href="aircraft/2497/">S-70C-2 Blackhawk</a>
+							<br />1987, 24x<br />Transport</td></tr><tr>							<style>
+							.picture_146 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2406.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_146" onclick="window.open('aircraft/2406/', '_self')"></td>
+							<td><a href="aircraft/2406/">SA.321Ja Super Frelon</a>
+							<br />1978, 13x, Basic<br />Naval Utility</td></tr><tr>							<style>
+							.picture_147 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_810.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_147" onclick="window.open('aircraft/810/', '_self')"></td>
+							<td><a href="aircraft/810/">SH-5 Harbin</a>
+							<br />1986, PLAN, 4x<br />Area Surveillance</td></tr><tr>							<style>
+							.picture_148 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_148" onclick="window.open('aircraft/6354/', '_self')"></td>
+							<td><a href="aircraft/6354/">Spy Balloon</a>
+							<br />0<br />Blimp</td></tr><tr>							<style>
+							.picture_149 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_635.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_149" onclick="window.open('aircraft/635/', '_self')"></td>
+							<td><a href="aircraft/635/">Su-30MKK Flanker G</a>
+							<br />2002<br />Multirole (Fighter/Attack)</td></tr><tr>							<style>
+							.picture_150 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_150" onclick="window.open('aircraft/4652/', '_self')"></td>
+							<td><a href="aircraft/4652/">Su-30MKK Flanker G</a>
+							<br />2018<br />Multirole (Fighter/Attack)</td></tr><tr>							<style>
+							.picture_151 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_151" onclick="window.open('aircraft/4450/', '_self')"></td>
+							<td><a href="aircraft/4450/">Su-30MKK2 Flanker G</a>
+							<br />2005, PLANAF, 24x<br />Multirole (Fighter/Attack)</td></tr><tr>							<style>
+							.picture_152 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_152" onclick="window.open('aircraft/4451/', '_self')"></td>
+							<td><a href="aircraft/4451/">Su-30MKK2 Flanker G</a>
+							<br />2009, PLANAF, Kh-59MK<br />Multirole (Fighter/Attack)</td></tr><tr>							<style>
+							.picture_153 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_153" onclick="window.open('aircraft/4547/', '_self')"></td>
+							<td><a href="aircraft/4547/">Su-35K Flanker E</a>
+							<br />2018, 24x<br />Fighter</td></tr><tr>							<style>
+							.picture_154 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_3693.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_154" onclick="window.open('aircraft/3693/', '_self')"></td>
+							<td><a href="aircraft/3693/">Tu-154M Careless [Type I ELINT]</a>
+							<br />1997<br />Recon</td></tr><tr>							<style>
+							.picture_155 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_3694.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_155" onclick="window.open('aircraft/3694/', '_self')"></td>
+							<td><a href="aircraft/3694/">Tu-154M Careless [Type II ELINT / SLAR]</a>
+							<br />1999, 4x<br />Recon</td></tr><tr>							<style>
+							.picture_156 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_156" onclick="window.open('aircraft/4623/', '_self')"></td>
+							<td><a href="aircraft/4623/">WZ-7 Soar Dragon UAV</a>
+							<br />2018, 4x, EA-03, HALE<br />Unmanned Aerial Vehicle (UAV)</td></tr><tr>							<style>
+							.picture_157 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_157" onclick="window.open('aircraft/6642/', '_self')"></td>
+							<td><a href="aircraft/6642/">WZ-8</a>
+							<br />2019<br />Recon</td></tr><tr>							<style>
+							.picture_158 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_158" onclick="window.open('aircraft/4342/', '_self')"></td>
+							<td><a href="aircraft/4342/">Y-12 (II)</a>
+							<br />1986<br />Transport</td></tr><tr>							<style>
+							.picture_159 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_159" onclick="window.open('aircraft/4609/', '_self')"></td>
+							<td><a href="aircraft/4609/">Y-20A Kunpeng</a>
+							<br />2016<br />Transport</td></tr><tr>							<style>
+							.picture_160 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_160" onclick="window.open('aircraft/4976/', '_self')"></td>
+							<td><a href="aircraft/4976/">Y-20A Kunpeng</a>
+							<br />2019, AEW<br />Airborne Early Warning (AEW)</td></tr><tr>							<style>
+							.picture_161 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_161" onclick="window.open('aircraft/4975/', '_self')"></td>
+							<td><a href="aircraft/4975/">Y-20U Kunpeng</a>
+							<br />2019, Tanker<br />Tanker (Air Refueling)</td></tr><tr>							<style>
+							.picture_162 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_162" onclick="window.open('aircraft/6474/', '_self')"></td>
+							<td><a href="aircraft/6474/">Y-5B(T) [An-2SKh Colt Copy]</a>
+							<br />0<br />Transport</td></tr><tr>							<style>
+							.picture_163 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_163" onclick="window.open('aircraft/6475/', '_self')"></td>
+							<td><a href="aircraft/6475/">Y-5U [An-2SKh Colt Copy]</a>
+							<br />2023<br />Unmanned Aerial Vehicle (UAV)</td></tr><tr>							<style>
+							.picture_164 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2500.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_164" onclick="window.open('aircraft/2500/', '_self')"></td>
+							<td><a href="aircraft/2500/">Y-7 Curl</a>
+							<br />1986, PLAAF<br />Transport</td></tr><tr>							<style>
+							.picture_165 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2502.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_165" onclick="window.open('aircraft/2502/', '_self')"></td>
+							<td><a href="aircraft/2502/">Y-7H Curl</a>
+							<br />1993, PLAAF<br />Transport</td></tr><tr>							<style>
+							.picture_166 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_985.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_166" onclick="window.open('aircraft/985/', '_self')"></td>
+							<td><a href="aircraft/985/">Y-8 Cub</a>
+							<br />1982, PLAAF<br />Transport</td></tr><tr>							<style>
+							.picture_167 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2483.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_167" onclick="window.open('aircraft/2483/', '_self')"></td>
+							<td><a href="aircraft/2483/">Y-8C Cub</a>
+							<br />1989, PLAAF<br />Transport</td></tr><tr>							<style>
+							.picture_168 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2484.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_168" onclick="window.open('aircraft/2484/', '_self')"></td>
+							<td><a href="aircraft/2484/">Y-8CB Cub [GX1]</a>
+							<br />2006, PLAAF, 6x, HD-5 Beagle EW Replacement<br />Electronic Warfare</td></tr><tr>							<style>
+							.picture_169 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2486.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_169" onclick="window.open('aircraft/2486/', '_self')"></td>
+							<td><a href="aircraft/2486/">Y-8G Cub [GX4]</a>
+							<br />2008, PLAAF, 9x, 10th Air Div<br />Electronic Warfare</td></tr><tr>							<style>
+							.picture_170 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_809.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_170" onclick="window.open('aircraft/809/', '_self')"></td>
+							<td><a href="aircraft/809/">Y-8J Cub</a>
+							<br />2001, PLANAF, 4x<br />Airborne Early Warning (AEW)</td></tr><tr>							<style>
+							.picture_171 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2485.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_171" onclick="window.open('aircraft/2485/', '_self')"></td>
+							<td><a href="aircraft/2485/">Y-8JB Cub [GX2]</a>
+							<br />2005, PLANAF, 5x, 1st Independent Regt<br />Electronic Intelligence (ELINT)</td></tr><tr>							<style>
+							.picture_172 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_3301.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_172" onclick="window.open('aircraft/3301/', '_self')"></td>
+							<td><a href="aircraft/3301/">Y-8Q Cub [GX6]</a>
+							<br />2015, PLANAF, ASW Mod<br />Anti-Submarine Warfare (ASW)</td></tr><tr>							<style>
+							.picture_173 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_3690.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_173" onclick="window.open('aircraft/3690/', '_self')"></td>
+							<td><a href="aircraft/3690/">Y-8T Cub [GX3]</a>
+							<br />2007, PLAAF, 3x, ACP<br />Airborne Command Post (ACP)</td></tr><tr>							<style>
+							.picture_174 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2487.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_174" onclick="window.open('aircraft/2487/', '_self')"></td>
+							<td><a href="aircraft/2487/">Y-8W Balance Beam [KJ-200 Cub]</a>
+							<br />2009, 11x, Moth, GX5<br />Airborne Early Warning (AEW)</td></tr><tr>							<style>
+							.picture_175 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_175" onclick="window.open('aircraft/5629/', '_self')"></td>
+							<td><a href="aircraft/5629/">Y-8W Balance Beam [KJ-200 Cub]</a>
+							<br />2020, 11x, Moth, GX5, AAR, ESM Upgrade<br />Airborne Early Warning (AEW)</td></tr><tr>							<style>
+							.picture_176 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_354.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_176" onclick="window.open('aircraft/354/', '_self')"></td>
+							<td><a href="aircraft/354/">Y-8X Cub</a>
+							<br />1987, PLANAF, 4x, Ex-Y-8MPA<br />Maritime Patrol Aircraft (MPA)</td></tr><tr>							<style>
+							.picture_177 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_3691.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_177" onclick="window.open('aircraft/3691/', '_self')"></td>
+							<td><a href="aircraft/3691/">Y-8XZ Cub [GX7]</a>
+							<br />2006, PLAAF, 2x, PsyOps<br />Electronic Intelligence (ELINT)</td></tr><tr>							<style>
+							.picture_178 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_3684.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_178" onclick="window.open('aircraft/3684/', '_self')"></td>
+							<td><a href="aircraft/3684/">Y-9 Cub</a>
+							<br />2013, PLAAF, Y-8 Replacement<br />Transport</td></tr><tr>							<style>
+							.picture_179 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_179" onclick="window.open('aircraft/4204/', '_self')"></td>
+							<td><a href="aircraft/4204/">Y-9G Cub [GX11]</a>
+							<br />2015, PLANAF, OECM<br />Electronic Warfare</td></tr><tr>							<style>
+							.picture_180 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_3692.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_180" onclick="window.open('aircraft/3692/', '_self')"></td>
+							<td><a href="aircraft/3692/">Y-9JB Cub [GX8]</a>
+							<br />2014, PLANAF, 4x<br />Electronic Intelligence (ELINT)</td></tr><tr>							<style>
+							.picture_181 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_181" onclick="window.open('aircraft/4203/', '_self')"></td>
+							<td><a href="aircraft/4203/">Y-9XZ Cub [GX10]</a>
+							<br />2015, PLANAF, 1x, PsyOps<br />Electronic Intelligence (ELINT)</td></tr><tr>							<style>
+							.picture_182 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2493.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_182" onclick="window.open('aircraft/2493/', '_self')"></td>
+							<td><a href="aircraft/2493/">Z-10 Fierce Thunderbolt</a>
+							<br />2012, WZ-10<br />Attack</td></tr><tr>							<style>
+							.picture_183 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_183" onclick="window.open('aircraft/5856/', '_self')"></td>
+							<td><a href="aircraft/5856/">Z-10 Fierce Thunderbolt</a>
+							<br />2020, WZ-10, IRSS & Cockpit/Engine Armor<br />Attack</td></tr><tr>							<style>
+							.picture_184 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_184" onclick="window.open('aircraft/4718/', '_self')"></td>
+							<td><a href="aircraft/4718/">Z-11J</a>
+							<br />2000, Unarmed Utility; AS.350 clone<br />Utility</td></tr><tr>							<style>
+							.picture_185 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_185" onclick="window.open('aircraft/4719/', '_self')"></td>
+							<td><a href="aircraft/4719/">Z-11W</a>
+							<br />2000, Light Attack; AS.350 clone<br />Attack</td></tr><tr>							<style>
+							.picture_186 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_186" onclick="window.open('aircraft/4717/', '_self')"></td>
+							<td><a href="aircraft/4717/">Z-11WB</a>
+							<br />2017, Light Recon; AS.350 clone<br />Recon</td></tr><tr>							<style>
+							.picture_187 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_3708.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_187" onclick="window.open('aircraft/3708/', '_self')"></td>
+							<td><a href="aircraft/3708/">Z-18 Super Frelon</a>
+							<br />2014, PLANAF, Carrier-based transport<br />Transport</td></tr><tr>							<style>
+							.picture_188 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_3707.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_188" onclick="window.open('aircraft/3707/', '_self')"></td>
+							<td><a href="aircraft/3707/">Z-18FQ Super Frelon</a>
+							<br />2016, PLANAF, Carrier-based ASW<br />Anti-Submarine Warfare (ASW)</td></tr><tr>							<style>
+							.picture_189 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_3303.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_189" onclick="window.open('aircraft/3303/', '_self')"></td>
+							<td><a href="aircraft/3303/">Z-18YJ Super Frelon [Black Bat]</a>
+							<br />2014, PLANAF, Carrier-based AEW<br />Airborne Early Warning (AEW)</td></tr><tr>							<style>
+							.picture_190 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_3305.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_190" onclick="window.open('aircraft/3305/', '_self')"></td>
+							<td><a href="aircraft/3305/">Z-19 Black Whirlwind</a>
+							<br />2014, WZ-19<br />Attack</td></tr><tr>							<style>
+							.picture_191 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_191" onclick="window.open('aircraft/5855/', '_self')"></td>
+							<td><a href="aircraft/5855/">Z-19 Black Whirlwind</a>
+							<br />2014, WZ-19, MMR<br />Attack</td></tr><tr>							<style>
+							.picture_192 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_192" onclick="window.open('aircraft/4720/', '_self')"></td>
+							<td><a href="aircraft/4720/">Z-20A</a>
+							<br />2018, "Copyhawk," UH-60 Clone<br />Transport</td></tr><tr>							<style>
+							.picture_193 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_193" onclick="window.open('aircraft/5434/', '_self')"></td>
+							<td><a href="aircraft/5434/">Z-20A</a>
+							<br />2021, ESSS Copy<br />Transport</td></tr><tr>							<style>
+							.picture_194 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_194" onclick="window.open('aircraft/4933/', '_self')"></td>
+							<td><a href="aircraft/4933/">Z-20F</a>
+							<br />2020, ASW<br />Anti-Submarine Warfare (ASW)</td></tr><tr>							<style>
+							.picture_195 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_195" onclick="window.open('aircraft/4882/', '_self')"></td>
+							<td><a href="aircraft/4882/">Z-20S</a>
+							<br />2019<br />Naval Utility</td></tr><tr>							<style>
+							.picture_196 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2479.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_196" onclick="window.open('aircraft/2479/', '_self')"></td>
+							<td><a href="aircraft/2479/">Z-8A Super Frelon</a>
+							<br />2004, 4x, 7th Helicopter Regt<br />Utility</td></tr><tr>							<style>
+							.picture_197 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_197" onclick="window.open('aircraft/5608/', '_self')"></td>
+							<td><a href="aircraft/5608/">Z-8C Super Frelon</a>
+							<br />2021, Z-8CJ<br />Transport</td></tr><tr>							<style>
+							.picture_198 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_198" onclick="window.open('aircraft/4743/', '_self')"></td>
+							<td><a href="aircraft/4743/">Z-8G Super Frelon</a>
+							<br />2014, Z-18<br />Transport</td></tr><tr>							<style>
+							.picture_199 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2407.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_199" onclick="window.open('aircraft/2407/', '_self')"></td>
+							<td><a href="aircraft/2407/">Z-8J Super Frelon [ASW]</a>
+							<br />1996, 6x<br />Anti-Submarine Warfare (ASW)</td></tr><tr>							<style>
+							.picture_200 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_806.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_200" onclick="window.open('aircraft/806/', '_self')"></td>
+							<td><a href="aircraft/806/">Z-8J Super Frelon [Transport & Amphibious Assault]</a>
+							<br />1996, 12x<br />Naval Utility</td></tr><tr>							<style>
+							.picture_201 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2480.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_201" onclick="window.open('aircraft/2480/', '_self')"></td>
+							<td><a href="aircraft/2480/">Z-8K Super Frelon [SAR]</a>
+							<br />2008, 26th Air Div + 15th Airborne Corps<br />Search And Rescue (SAR)</td></tr><tr>							<style>
+							.picture_202 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_202" onclick="window.open('aircraft/5773/', '_self')"></td>
+							<td><a href="aircraft/5773/">Z-8L Super Frelon</a>
+							<br />2021, Wider Z-8G for Bulky Cargo<br />Transport</td></tr><tr>							<style>
+							.picture_203 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_203" onclick="window.open('aircraft/2402/', '_self')"></td>
+							<td><a href="aircraft/2402/">Z-9 Haitun</a>
+							<br />1986, 28x, AS.365N1<br />Utility</td></tr><tr>							<style>
+							.picture_204 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2401.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_204" onclick="window.open('aircraft/2401/', '_self')"></td>
+							<td><a href="aircraft/2401/">Z-9A Haitun</a>
+							<br />1990, 20x + 22x + xx, AS.365N2<br />Utility</td></tr><tr>							<style>
+							.picture_205 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_1463.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_205" onclick="window.open('aircraft/1463/', '_self')"></td>
+							<td><a href="aircraft/1463/">Z-9B Haitun</a>
+							<br />1998, 150x<br />Utility</td></tr><tr>							<style>
+							.picture_206 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_60.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_206" onclick="window.open('aircraft/60/', '_self')"></td>
+							<td><a href="aircraft/60/">Z-9C Haitun</a>
+							<br />1998<br />Anti-Submarine Warfare (ASW)</td></tr><tr>							<style>
+							.picture_207 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_207" onclick="window.open('aircraft/4826/', '_self')"></td>
+							<td><a href="aircraft/4826/">Z-9C Haitun</a>
+							<br />2010, 3x, Anti-Piracy Mod.<br />Anti-Submarine Warfare (ASW)</td></tr><tr>							<style>
+							.picture_208 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_208" onclick="window.open('aircraft/5854/', '_self')"></td>
+							<td><a href="aircraft/5854/">Z-9C Haitun</a>
+							<br />2015, New LF Dipping Sonar<br />Anti-Submarine Warfare (ASW)</td></tr><tr>							<style>
+							.picture_209 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_3302.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_209" onclick="window.open('aircraft/3302/', '_self')"></td>
+							<td><a href="aircraft/3302/">Z-9D Haitun</a>
+							<br />2013, Few, Aboard Type 056<br />Anti-Submarine Warfare (ASW)</td></tr><tr>							<style>
+							.picture_210 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_210" onclick="window.open('aircraft/4928/', '_self')"></td>
+							<td><a href="aircraft/4928/">Z-9D Haitun</a>
+							<br />2019<br />Anti-Submarine Warfare (ASW)</td></tr><tr>							<style>
+							.picture_211 {
+								width: 200px;
+								height: 100px;
+								background-image: url('no_image.png');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_211" onclick="window.open('aircraft/5011/', '_self')"></td>
+							<td><a href="aircraft/5011/">Z-9D Haitun</a>
+							<br />2019, SAR Variant<br />Search And Rescue (SAR)</td></tr><tr>							<style>
+							.picture_212 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_2492.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_212" onclick="window.open('aircraft/2492/', '_self')"></td>
+							<td><a href="aircraft/2492/">Z-9W Haitun</a>
+							<br />1998, 30x, 8th Helicopter Regt<br />Attack</td></tr><tr>							<style>
+							.picture_213 {
+								width: 200px;
+								height: 100px;
+								background-image: url('images/DB3000/thumb/aircraft_3307.jpg');
+								background-size: cover;
+								background-position: center center;
+								border: 0px solid black;
+								cursor: pointer;
+							}
+							</style>
+							<td class="picture_213" onclick="window.open('aircraft/3307/', '_self')"></td>
+							<td><a href="aircraft/3307/">Z-9WA Haitun</a>
+							<br />2010<br />Attack</td></tr>				  </tbody>
+				</table>				
+				          </div>
+        </div>
+        
+	<div class="modal" id="settings">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+			<h4 class="modal-title">Settings</h4>
+		  </div>
+		  <div class="modal-body">
+		  		<p>Sensors and Weapons placement on map:</p>
+				<div id="map_settings" style="height: 250px; width: 100%;"></div>
+				<p><small>Drag marker and save</small></p>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			<button type="button" class="btn btn-primary" id="save-event">Save changes</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+
+	<div class="modal" id="favorites">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+			<h4 class="modal-title">Favorites</h4>
+		  </div>
+		  <div class="modal-body">
+		  		<p>
+		  		<div id="favorite_list"></div>
+		  		</p>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	
+	<script type="text/javascript">
+		var maplayer = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+			maxZoom: 19,
+			attribution: '&copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
+		});	
+
+			var map = L.map('map_settings', {
+			center: [60.13603, 24.94514],
+			zoom: 3,
+			layers: [maplayer]
+		});
+
+		var icon = L.icon({
+			iconUrl: 'marker.png',
+			iconSize: [25, 41],
+			iconAnchor: [12, 41]
+		});
+	
+		var marker = L.marker(new L.LatLng(60.13603, 24.94514), {
+			draggable: true,
+			icon: icon
+		}).addTo(map);
+	</script>
+	
+      <footer>
+        <div class="row">
+          <div class="col-lg-12">
+          	<div id="cookie_notice" style="color: red; font-size: small;"></div>
+            <ul class="list-unstyled">
+              <li><a href="index.php">Home</a></li>
+              <li><a href="compare.php">Compare</a></li>
+              <li><a href="search.php">Search</a></li>
+              <li><a href="helper.php">Helper</a></li>
+              <li>|</li>
+              <li><a href="https://cmano-db.com/cw/">Cold War DataBase</a></li>
+            </ul>
+            <p><small>&copy; cmano-db.com - db v. 502</small></p>
+
+          </div>
+        </div>
+      </footer>    </div>
+
+    <script src="bootstrap.min.js"></script>
+    <script src="custom.js"></script>
+  
+  </body>
+</html>

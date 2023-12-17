@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>cmano-db.com</title>
+    <base href="https://cmano-db.com/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="bootstrap.css" media="screen">
+    <link rel="stylesheet" href="custom.min.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="js.cookie.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.min.js"></script>
+
+	<link rel="stylesheet" href="leaflet.css" />
+	<script src="leaflet/js/leaflet.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-YTRFZCCFK6"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', 'G-YTRFZCCFK6');
+	</script>
+
+	<style type="text/css">
+		.info_sensors {
+			padding: 3px 4px;
+			font: 13px/15px Arial, Helvetica, sans-serif;
+			background: white;
+			background: rgba(255,255,255,0.8);
+			box-shadow: 0 0 15px rgba(0,0,0,0.2);
+			border-radius: 5px;
+			width: 55px;
+		}
+		.info_weapons {
+			padding: 3px 4px;
+			font: 13px/15px Arial, Helvetica, sans-serif;
+			background: white;
+			background: rgba(255,255,255,0.8);
+			box-shadow: 0 0 15px rgba(0,0,0,0.2);
+			border-radius: 5px;
+			width: 62px;
+		}
+		.legend {
+			line-height: 18px;
+			color: #555;
+		}
+		#list {
+			display: none;
+		}
+		#preview {
+			position: absolute;
+			border: 1px solid #000000;
+			background: #333;
+			padding: 5px;
+			display: none;
+			color: #fff;
+			max-width: 415px;
+			z-index: 9999;
+		}
+		#preview img {
+			max-width: 400px;
+			padding: 0px;
+			margin: 0px;
+		}
+
+		#description > div > div > div.modal-body > p {
+			overflow: auto;
+		}
+	</style>
+
+<script type="text/javascript">
+var ESC_MAP = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+};
+
+function escapeHTML(s, forAttribute) {
+    return s.replace(forAttribute ? /[&<>'"]/g : /[&<>]/g, function(c) {
+        return ESC_MAP[c];
+    });
+}
+
+$(document).ready(function() {
+
+	$("#list").show();
+
+    $("#t_list").click(function(){
+        $("#list").toggle();
+    });
+
+    $("#reset").click(function(){
+        $("#country").html("");
+        $("#item").html("");
+        $('#submit').attr("disabled", true);
+    });
+
+			$("#list").hide();
+		
+	$('#submit').attr("disabled", true);
+
+	$("#type").change(function()
+	{
+		$("#country").html("");
+		$("#item").html("");
+
+		var id=$(this).val();
+		var dataString = 'type='+ id;
+
+		$.ajax
+		({
+			type: "GET",
+			url: "d.php",
+			data: dataString,
+			cache: false,
+			beforeSend: function() {
+				$("#wait").css("display", "block");
+			},
+			success: function(html)
+			{
+				$("#country").html(html);
+				$("#type_submit").val(id);
+				$('#submit').attr("disabled", true);
+				$("#wait").css("display", "none");
+			}
+		});
+	});
+
+
+	$("#country").change(function()
+	{
+		var type_submit = $("#type option:selected" ).text();
+		var country=$(this).val();
+		var dataString = 'type='+type_submit+'&country='+ country;
+
+		$.ajax
+		({
+			type: "GET",
+			url: "d.php",
+			data: dataString,
+			cache: false,
+			beforeSend: function() {
+				$("#wait").css("display", "block");
+			},
+			success: function(html)
+			{
+				$("#item").html(html);
+				$('#submit').attr("disabled", true);
+				$("#wait").css("display", "none");
+			}
+		});
+	});
+
+	$("#item").change(function()
+	{
+		$('#submit').attr("disabled", false);
+	});
+
+	$('#save-event').click(function() {
+		var curPos = marker.getLatLng();
+		var lat_save = curPos.lat;
+		var lon_save = curPos.lng;
+
+		document.cookie="lat="+lat_save+"; path=/";
+		document.cookie="lon="+lon_save+"; path=/";
+
+    	$('.modal').modal('hide');
+    });
+
+	$('#favorites_button').click(function() {
+		$('#favorites').modal('show');
+    });
+	$('#settings_button').click(function() {
+		$('#settings').modal('show');
+		  setTimeout(function() {
+			map.invalidateSize();
+
+		  }, 10);
+    });
+
+	// FAVORITE
+	var Cookies2 = Cookies.noConflict();
+
+	var fav_type = $("#setcompare_type").val();
+	var fav_id = $("#setcompare_item").val();
+	var fav_name = $("#setcompare_name").val();
+	var fav_country = $("#setcompare_country").val();
+
+	var empty_array = [['type','id','name','country']];
+	var empty = JSON.stringify(empty_array);
+
+	function is_favorite() {
+		var favorites_array2 = JSON.parse(Cookies2.get('favorites') || empty);
+		var favItem = ['' + fav_type + '','' + fav_id + '','' + fav_name + '','' + fav_country + ''];
+
+		for (var i = 0, len = favorites_array2.length; i < len; i++) {
+			if (favorites_array2[i][0].toLowerCase() == favItem[0].toLowerCase() && favorites_array2[i][1] == favItem[1]) {
+
+				$('#favorite').find('i').removeClass('fa-star-o').addClass('fa fa-star');
+				//console.log(favorites_array2);
+				return "found";
+				break;
+			}
+		}
+
+		console.log(favorites_array2);
+	}
+
+	function add_favorite() {
+		var favorites_array = JSON.parse(Cookies2.get('favorites') || empty);
+		var favItem = ['' + fav_type + '','' + fav_id + '','' + fav_name + '','' + fav_country + ''];
+
+		if (is_favorite() == "found") {
+			for (var i = favorites_array.length; i--;) {
+			   if (favorites_array[i][0].toLowerCase() == favItem[0].toLowerCase() && favorites_array[i][1] == favItem[1]) {
+				   favorites_array.splice(i, 1);
+			   }
+			}
+			Cookies2.set('favorites', JSON.stringify(favorites_array), { expires: 365, path: '/' });
+		}
+		else {
+			favorites_array.push(favItem);
+			Cookies2.set('favorites', JSON.stringify(favorites_array), { expires: 365, path: '/' });
+		}
+	}
+
+	$("#favorite").click(function() {
+		add_favorite();
+		$("#favorite").find('i').toggleClass('fa fa-star-o fa fa-star');
+	});
+
+	$('#favorites').on('show.bs.modal', function () {
+		var favorites_array = JSON.parse(Cookies2.get('favorites') || empty);
+		var txt = "";
+
+		for (favorite in favorites_array) {
+			if (favorites_array[favorite][0] != "type") {
+				txt += '<li><a href="' + escapeHTML(favorites_array[favorite][0].toLowerCase()) + '/' + escapeHTML(favorites_array[favorite][1]) + '/">' + escapeHTML(favorites_array[favorite][3]) + ': ' + escapeHTML(favorites_array[favorite][2]) + '</a></li>';
+			}
+		}
+		if (txt == "") {
+			var txt = "Empty favorites! Use favorite button to add.";
+		}
+		$("#favorite_list").html("<ul>" + txt + "</ul>");
+	});
+
+	function checkCookie(){
+		var cookieEnabled=(navigator.cookieEnabled)? true : false;
+		if (typeof navigator.cookieEnabled=="undefined" && !cookieEnabled){
+			document.cookie="testcookie";
+			cookieEnabled=(document.cookie.indexOf("testcookie")!=-1)? true : false;
+		}
+		return (cookieEnabled)?true:showCookieFail();
+	}
+
+	function showCookieFail(){
+		$("#cookie_notice").html("Notice: Settings and Favorites does not work if cookies are disabled!");
+	}
+
+	checkCookie();
+	is_favorite();
+	imagePreview();
+});
+
+function subm_data(country, type, item) {
+
+	var subm_country = country;
+	var subm_type = type;
+	var subm_item = item;
+	var dataString = 'type='+subm_type+'&country='+ subm_country;
+	var dataString2 = 'type='+subm_type+'';
+
+	$("#type").children('option:contains("'+subm_type+'")').attr('selected','selected');
+
+	$.ajax
+	({
+		type: "GET",
+		url: "d.php",
+		data: dataString2,
+		cache: false,
+		success: function(html2)
+		{
+			$("#country").html(html2);
+			$("#country").children('option:contains("'+subm_country+'")').attr('selected','selected');
+		}
+	});
+
+	$.ajax
+	({
+		type: "GET",
+		url: "d.php",
+		data: dataString,
+		cache: false,
+		success: function(html)
+		{
+			$("#item").html(html);
+			$("#item").children('option[value="'+subm_item+'"]').attr('selected','selected');
+		}
+	});
+}
+</script>
+  </head>
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="https://cmano-db.com/" class="navbar-brand">CMANO-DB.COM</a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+          <ul class="nav navbar-nav">
+          	<li><a href="https://cmano-db.com/compare.php"><i class="fa fa-random" aria-hidden="true"></i> Compare</a></li>
+
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="lists"><i class="fa fa-list" aria-hidden="true"></i> List <span class="caret"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="lists">
+                <li><a href="aircraft/">Aircraft</a></li>
+                <li><a href="ship/">Ship</a></li>
+                <li><a href="submarine/">Submarine</a></li>
+                <li><a href="facility/">Facility</a></li>
+                <li><a href="weapon/">Weapon</a></li>
+                <li><a href="sensor/">Sensor</a></li>
+              </ul>
+            </li>
+
+            <li><a href="search.php"><i class="fa fa-search" aria-hidden="true"></i> Search</a></li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+          	<li><a href="#" id="favorites_button"><i class="fa fa-star" aria-hidden="true"></i> Favorites</a></li>
+			<li><a href="#" id="settings_button"><i class="fa fa-wrench" aria-hidden="true"></i> Settings</a></li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+		  <div class="row" id="list">
+	  		<br />
+		  	<form class="form-vertical" method="get" action="index.php">
+			  	<div class="col-lg-2">	
+			  		<input type="hidden" id="type_submit">
+					<label class="control-label" for="type">Category:</label>
+					<select class="form-control" id="type" size="10" name="type">
+						<option value="aircraft">Aircraft</option>
+						<option value="ship">Ship</option>
+						<option value="submarine">Submarine</option>
+						<option value="facility">Facility</option>
+						<option value="weapon">Weapon</option>
+						<option value="sensor">Sensor</option>
+					</select>
+
+				</div>
+				<div class="col-lg-3">
+					<label class="control-label" for="country">Country/Type:</label>
+					<select class="form-control" id="country" size="10" name="country">
+
+					</select>
+
+				</div>
+				<div class="col-lg-7">
+					<label class="control-label" for="item">Item:</label>
+					<select class="form-control" id="item" size="10" name="item">
+
+					</select>
+					<br />
+					<button type="reset" class="btn btn-default" id="reset">Cancel</button>
+					<button type="submit" class="btn btn-primary" id="submit" name="submit">Submit</button>
+				</div>
+			</form>			
+      </div>
+
+					<div class="row">
+			<br />
+			 <div class="col-lg-12">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- cmano-db.com -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1382552067334538"
+     data-ad-slot="3320724779"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+				<div class="page-header">
+					<ul class="breadcrumb">
+					  <li><a href="aircraft/">Aircraft</a></li>
+					  <li><a href="aircraft/United+States/">United States</a></li>
+					  <li class="active">F-16C Blk 30 Falcon</li>
+					</ul>
+					<a href="javascript: void(0)" class="btn btn-primary btn-sm pull-right" id="t_list"><i class="fa fa-toggle-down" aria-hidden="true"></i> Toggle List</a>
+					<form action="compare.php" method="post">
+					<input type="hidden" name="setcompare_type" id="setcompare_type" value="Aircraft">
+					<input type="hidden" name="setcompare_item" id="setcompare_item" value="1065">
+					<input type="hidden" name="setcompare_name" id="setcompare_name" value="F-16C Blk 30 Falcon - 1992">
+					<input type="hidden" name="setcompare_country" id="setcompare_country" value="United States">
+					<button type="submit" name="setcompare" value="setcompare" class="btn btn-default btn-sm pull-right" title="Add to compare"><i class="fa fa-plus" aria-hidden="true"></i> Compare</button>
+					</form>
+					<a href="pdf/aircraft/1065/" class="btn btn-default btn-sm pull-right" data-toggle="modal"><i class="fa fa-print" aria-hidden="true"></i> PDF/Print</a>
+					<a href="javascript: void(0)" class="btn btn-default btn-sm pull-right" id="favorite" name="favorite" title="Add or remove favorite"><i class="fa fa-star-o" aria-hidden="true"></i> Favorite</a>
+				  <h3 id="typography">F-16C Blk 30 Falcon - 1992</h3>
+				</div>
+			  </div>
+			  <div class="col-lg-7">
+				<a href="images/DB3000/aircraft_1065.jpg" target="_blank"><img src="images/DB3000/aircraft_1065.jpg" width="100%"></a>				
+				<table class="table table-striped table-hover ">
+				  <thead>
+					<tr>
+					  <th><b><u>General data:</u></b></th>
+					  <th></th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<tr>
+					  <td>Type: Multirole (Fighter/Attack)</td>
+					  <td>Crew: 1</td>
+					</tr>
+					<tr>
+					  <td>Min Speed: 350 kt</td>
+					  <td>Max Speed: 920 kt</td>
+					</tr>
+					<tr>
+					  <td>Wingspan: 9.5 m</td>
+					  <td>Height: 4.8 m</td>
+					</tr>
+					<tr>
+					  <td>Length: 14.5 m</td>
+					  <td>Max Payload: 6894 kg</td>
+					</tr>
+					<tr>
+					  <td>Empty Weight: 8280 kg</td>
+					  <td>Max Weight: 19200 kg</td>
+					</tr>
+					<tr>
+					  <td>Operator: Air Force</td>
+					  <td>Commissioned: 1992</td>
+					</tr>
+					<tr>
+					  <td style="max-width: 100px;">Propulsion: 1x F110-GE-100</td>
+					  <td>
+											  </td>
+					</tr>
+				  </tbody>
+				</table>
+
+								<table class="table table-striped table-hover ">
+				  <thead>
+					<tr>
+					  <th><b><u>Sensors / EW:</u></b></th>
+					</tr>
+				  </thead>
+				  <tbody>
+					  <tr><td><b><a href="sensor/577/">AN/ALR-74</a></b> -  ESM<br />
+					RWR, Radar Warning Receiver<br /> Max Range: 222.2 km</td></tr><tr><td><b><a href="sensor/925/">AN/APG-68</a></b> -  Radar<br />
+					Radar, FCR, Air-to-Air & Air-to-Surface, Medium-Range<br /> Max Range: 111.1 km</td></tr>				  </tbody>
+				</table>
+								
+								<table class="table table-striped table-hover ">
+				  <thead>
+					<tr>
+					  <th><b><u>Weapons / Loadouts:</u></b></th>
+					</tr>
+				  </thead>
+				  <tbody>
+					  <tr><td><b><a href="weapon/1523/">300 USG Drop Tank</a></b> -
+				 Drop Tank<br />
+				</td></tr><tr><td><b><a href="weapon/1763/">370 USG Drop Tank</a></b> -
+				 Drop Tank<br />
+				</td></tr><tr><td> <a href="images/DB3000/weapon_1383.jpg" class="preview pull-right" target="_blank"><i class="fa fa-picture-o"></i></a><b><a href="weapon/1383/">AIM-120A AMRAAM</a></b> -
+				(1992) Guided Weapon<br />
+				Air Max: 50 km. </td></tr><tr><td> <a href="images/DB3000/weapon_1384.jpg" class="preview pull-right" target="_blank"><i class="fa fa-picture-o"></i></a><b><a href="weapon/1384/">AIM-9M Sidewinder</a></b> -
+				(1984) Guided Weapon<br />
+				Air Max: 18.5 km. </td></tr><tr><td> <a href="images/DB3000/weapon_1036.jpg" class="preview pull-right" target="_blank"><i class="fa fa-picture-o"></i></a><b><a href="weapon/1036/">AN/ALQ-119 DECM Pod</a></b> -
+				 Sensor Pod<br />
+				</td></tr><tr><td> <a href="images/DB3000/weapon_650.jpg" class="preview pull-right" target="_blank"><i class="fa fa-picture-o"></i></a><b><a href="weapon/650/">AGM-88B HARM</a></b> -
+				(1990) Guided Weapon<br />
+				Surface Max: 129.6 km. Land Max: 129.6 km. </td></tr><tr><td> <a href="images/DB3000/weapon_1814.jpg" class="preview pull-right" target="_blank"><i class="fa fa-picture-o"></i></a><b><a href="weapon/1814/">Mk82 500lb LDGP</a></b> -
+				(1954) Bomb<br />
+				Surface Max: 1.9 km. Land Max: 1.9 km. </td></tr><tr><td> <a href="images/DB3000/weapon_1839.jpg" class="preview pull-right" target="_blank"><i class="fa fa-picture-o"></i></a><b><a href="weapon/1839/">Mk84 2000lb LDGP</a></b> -
+				(1955) Bomb<br />
+				Surface Max: 1.9 km. Land Max: 1.9 km. </td></tr><tr><td> <a href="images/DB3000/weapon_1764.jpg" class="preview pull-right" target="_blank"><i class="fa fa-picture-o"></i></a><b><a href="weapon/1764/">AGM-65B Maverick EO</a></b> -
+				(1976) Guided Weapon<br />
+				Surface Max: 11.1 km. Land Max: 11.1 km. </td></tr><tr><td> <a href="images/DB3000/weapon_1876.jpg" class="preview pull-right" target="_blank"><i class="fa fa-picture-o"></i></a><b><a href="weapon/1876/">AGM-65D Maverick IR</a></b> -
+				(1984) Guided Weapon<br />
+				Surface Max: 14.8 km. Land Max: 14.8 km. </td></tr><tr><td><b><a href="weapon/717/">CBU-52/B CB [217 x BLU-61/B Frag Bomblets]</a></b> -
+				(1972, SUU-30/B) Bomb<br />
+				Surface Max: 1.9 km. Land Max: 1.9 km. </td></tr><tr><td><b><a href="weapon/714/">CBU-71A/B CB [650 x BLU-86/B Frag Bomblets]</a></b> -
+				(SUU-30A/B) Bomb<br />
+				Surface Max: 1.9 km. Land Max: 1.9 km. </td></tr><tr><td> <a href="images/DB3000/weapon_222.jpg" class="preview pull-right" target="_blank"><i class="fa fa-picture-o"></i></a><b><a href="weapon/222/">CBU-87/B CEM [202 x BLU-97/B Dual-Purpose Bomblets]</a></b> -
+				(1987, SUU-65/B) Bomb<br />
+				Surface Max: 1.9 km. Land Max: 1.9 km. </td></tr><tr><td><b><a href="weapon/712/">CBU-89/B GATOR [45 x BLU-91/B Bomblets + 15 x BLU-92/B Mines]</a></b> -
+				(SUU-64/B) Bomb<br />
+				Surface Max: 1.9 km. Land Max: 1.9 km. </td></tr><tr><td> <a href="images/DB3000/weapon_1498.jpg" class="preview pull-right" target="_blank"><i class="fa fa-picture-o"></i></a><b><a href="weapon/1498/">Mk20 Rockeye II CB [247 x Mk118 Dual Purpose Bomblets]</a></b> -
+				(1969, Mk7 Dispenser) Bomb<br />
+				Surface Max: 1.9 km. Land Max: 1.9 km. </td></tr>				  </tbody>
+				</table>
+							  </div>
+
+			  <div class="col-lg-5">
+				
+						<a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#description">Open Description</a>
+
+						<div id="description" class="modal">
+						  <div class="modal-dialog">
+							<div class="modal-content">
+							  <div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+								<h4 class="modal-title">Description</h4>
+							  </div>
+							  <div class="modal-body">
+									<p>OVERVIEW: The General Dynamics F-16 Fighting Falcon is a single-engine multirole fighter aircraft originally developed by General Dynamics for the United States Air Force (USAF). Designed as an air superiority day fighter, it evolved into a successful all-weather multirole aircraft. Over 4,500 aircraft have been built since production was approved in 1976. Although no longer being purchased by the U.S. Air Force, improved versions are still being built for export customers. In 1993, General Dynamics sold its aircraft manufacturing business to the Lockheed Corporation, which in turn became part of Lockheed Martin after a 1995 merger with Martin Marietta.<br /><br />The Fighting Falcon has key features including a frameless bubble canopy for better visibility, side-mounted control stick to ease control while maneuvering, a seat reclined 30 degrees to reduce the effect of g-forces on the pilot, and the first use of a relaxed static stability/fly-by-wire flight control system helps to make it a nimble aircraft. The F-16 has an internal M61 Vulcan cannon and 11 locations for mounting weapons and other mission equipment. The F-16's official name is "Fighting Falcon", but "Viper" is commonly used by its pilots, due to a perceived resemblance to a viper snake as well as the Battlestar Galactica Colonial Viper starfighter.<br /><br />In addition to active duty U.S. Air Force, Air Force Reserve Command, and Air National Guard units, the aircraft is also used by the USAF aerial demonstration team, the U.S. Air Force Thunderbirds, and as an adversary/aggressor aircraft by the United States Navy. The F-16 has also been procured to serve in the air forces of 25 other nations.<br /><br />DETAILS: The F-16 is a single-engine, very maneuverable, supersonic, multi-role tactical fighter aircraft; it was designed to be a cost-effective combat "workhorse" that can perform various missions and maintain around-the-clock readiness. It is much smaller and lighter than predecessors, but uses advanced aerodynamics and avionics, including the first use of a relaxed static stability/fly-by-wire (RSS/FBW) flight control system, to achieve enhanced maneuver performance. Highly nimble, the F-16 was the first fighter aircraft purpose-built to pull 9-g maneuvers and can reach a maximum speed of over Mach 2. Innovations include a frameless bubble canopy for better visibility, side-mounted control stick, and reclined seat to reduce g-force effects on the pilot. The F-16 has an internal M61 Vulcan cannon in the left wing root and has multiple locations for mounting various missiles, bombs and pods. It has a thrust-to-weight ratio greater than one, providing power to climb and accelerate vertically.<br /><br />SPECIFICATION: Crew: (1) || Length: 49 ft 5 in (15.06 m) || Wingspan: 32 ft 8 in (9.96 m) || Height: 16 ft (4.88 m) || Max. takeoff weight: 42,300 lb (19,200 kg) || Powerplant: (1) F110-GE-100 afterburning turbofan || Dry thrust: 17,155 lbf (76.3 kN) || AB Thrust: 28,600 lbf (127 kN).<br /><br />PERFORMANCE: Max Speed: Mach 2.0 (1,320 mph, 2,120 km/h) || Combat radius: 340 mi (295 nmi, 550 km) on a hi-lo-hi mission with four 1,000 lb (450 kg) bombs || Service ceiling: 50,000+ ft (15,240+ m) || Rate of climb: 50,000 ft/min (254 m/s) || Thrust/weight: 1.095 || Maximum g-load: +9.0 g.<br /><br />SENSORS: AN/APG-68 radar || SUU-42A/A Flares/Infrared decoys dispenser pod and chaff pod || AN/ALQ-131 & AN/ALQ-184 ECM pods || LANTIRN, Lockheed Martin Sniper XR & LITENING targeting pods || UTC Aerospace DB-110 long range EO/IR sensor pod.<br /><br />ARMAMENT: (1) 20 mm (0.787 in) M61A1 Vulcan 6-barrel Gatling cannon, 511 rounds || Hardpoints: (2( wing-tip Air-to-air missile launch rails, (6) under-wing, and (3) under-fuselage pylon (2 of 3 for sensors) stations with a capacity of up to 17,000 lb (7,700 kg) of stores || LAU-61/LAU-68 rocket pods with Hydra 70 mm rockets || LAU-5003 rocket pods with CRV7 70 mm rockets || LAU-10 rocket pods with Zuni 127 mm rockets || AIM-7 Sparrow || AIM-9 Sidewinder || AIM-120 AMRAAM || IRIS-T || Python-4 || AGM-65 Maverick || AGM-88 HARM || AGM-158 Joint Air-to-Surface Standoff Missile (JASSM) || AGM-84 Harpoon || AGM-119 Penguin || CBU-87 Combined Effects Munition || CBU-89 Gator mine || CBU-97 Sensor Fuzed Weapon || Mark 84 general-purpose bombs || Mark 83 GP bombs || Mark 82 GP bombs || GBU-39 Small Diameter Bomb (SDB) || GBU-10 Paveway II || GBU-12 Paveway II || GBU-24 Paveway III || GBU-27 Paveway III || Joint Direct Attack Munition (JDAM) series || AGM-154 Joint Standoff Weapon (JSOW) || Wind Corrected Munitions Dispenser (WCMD) || B61 nuclear bomb || B83 nuclear bomb.<br /> <br />SOURCE: [SCO] Wikipedia http://en.wikipedia.org </p>
+							  </div>
+							  <div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							  </div>
+							</div>
+						  </div>
+						</div>
+						<br />
+									  	
+				<div id="map_sensors" style="width: 100%; height: 500px;"></div>
+				<br />
+				<div id="map_weapons" style="width: 100%; height: 500px;"></div>
+				<br />
+				<ul class="nav nav-tabs" style="padding: 0px; margin: 0px;">
+  <li class="active"><a href="#radar" data-toggle="tab" aria-expanded="true">Radar</a></li>
+  <li class=""><a href="#visual" data-toggle="tab" aria-expanded="false">Visual/IR</a></li>
+</ul>
+
+<div id="signature_tab" class="tab-content">
+  <div class="tab-pane fade active in" id="radar">
+  	<div id="chart_radar_div" style="width: 100%; height: 500px; padding: 0px; margin: 0px;">
+		<canvas id="chart_radar" width="500" height="500" style="background-color: rgba(29, 32, 36, 0.2);"></canvas>
+	</div>
+  </div>
+  <div class="tab-pane fade" id="visual">
+  	<div id="chart_visual_div" style="width: 100%; height: 500px; padding: 0px; margin: 0px;">
+		<canvas id="chart_visual" width="500" height="500" style="background-color: rgba(29, 32, 36, 0.2);"></canvas>
+	</div>
+  </div>
+</div>
+
+<script>
+var ctx = document.getElementById("chart_radar");
+var ctx2 = document.getElementById("chart_visual");
+
+var front_sig = 4.3;
+var side_sig = 6.6;
+var rear_sig = 4.3;
+var top_sig = 7.1;
+
+var front_sig_radar = 4.1;
+var side_sig_radar = 6.5;
+var rear_sig_radar = 4.1;
+var top_sig_radar = 6.5;
+
+var front_sig_vis = 2.46;
+var side_sig_vis = 5.52;
+var rear_sig_vis = 2.46;
+var top_sig_vis = 6.72;
+
+var front_sig_inf = 2.46;
+var side_sig_inf = 7.38;
+var rear_sig_inf = 12.17;
+var top_sig_inf = 8.41;
+
+// radar
+var data = {
+    labels: ["Front", "Side", "Rear", "Top"],
+    datasets: [
+        {
+            label: "Radar, A-D Band (30-2000 MHz)",
+            backgroundColor: "rgba(120, 108, 230, 0.7)",
+            borderColor: "rgba(179,181,198,1)",
+            pointBackgroundColor: "rgba(179,181,198,1)",
+            pointBorderColor: "#fff",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgba(179,181,198,1)",
+            data: [front_sig, side_sig, rear_sig, top_sig]
+        },
+        {
+            label: "Radar, E-M Band (2-100 GHz)",
+            backgroundColor: "rgba(255, 51, 0, 0.5)",
+            borderColor: "rgba(179,181,198,1)",
+            pointBackgroundColor: "rgba(179,181,198,1)",
+            pointBorderColor: "#fff",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgba(179,181,198,1)",
+            data: [front_sig_radar, side_sig_radar, rear_sig_radar, top_sig_radar]
+        }
+    ]
+};
+
+new Chart(ctx, {
+    type: "radar",
+    data: data,
+    options: {
+    		responsive: true,
+    		maintainAspectRatio: false,
+            scale: {
+                reverse: false,
+                ticks: {
+                    beginAtZero: true,
+                    fontColor: "#ffffff",
+                    showLabelBackdrop: false
+                },
+              gridLines: {
+                color: 'rgb(128, 128, 128)',
+              }
+            },
+        title: {
+            display: true,
+            text: "Signatures (dBsm)",
+            fontColor: 'rgb(242, 242, 242)'
+        },
+        legend: {
+            display: true,
+            labels: {
+                fontColor: 'rgb(242, 242, 242)'
+            }
+        }
+    }
+});
+
+// visual/ir
+var data2 = {
+    labels: ["Front", "Side", "Rear", "Top"],
+    datasets: [
+        {
+            label: "Visual Detection Range",
+            backgroundColor: "rgba(120, 108, 230, 0.7)",
+            borderColor: "rgba(179,181,198,1)",
+            pointBackgroundColor: "rgba(179,181,198,1)",
+            pointBorderColor: "#fff",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgba(179,181,198,1)",
+            data: [front_sig_vis, side_sig_vis, rear_sig_vis, top_sig_vis]
+        },
+        {
+            label: "Infrared Detection Range",
+            backgroundColor: "rgba(255, 51, 0, 0.5)",
+            borderColor: "rgba(179,181,198,1)",
+            pointBackgroundColor: "rgba(179,181,198,1)",
+            pointBorderColor: "#fff",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgba(179,181,198,1)",
+            data: [front_sig_inf, side_sig_inf, rear_sig_inf, top_sig_inf]
+        }
+    ]
+};
+
+new Chart(ctx2, {
+    type: "radar",
+    data: data2,
+    options: {
+    		responsive: true,
+    		maintainAspectRatio: false,
+            scale: {
+                reverse: false,
+                ticks: {
+                    beginAtZero: true,
+                    fontColor: "#ffffff",
+                    showLabelBackdrop: false
+                },
+              gridLines: {
+                color: 'rgb(128, 128, 128)',
+              }
+            },
+        title: {
+            display: true,
+            text: "Signatures (nm)",
+            fontColor: 'rgb(242, 242, 242)'
+        },
+        legend: {
+            display: true,
+            labels: {
+                fontColor: 'rgb(242, 242, 242)'
+            }
+        }
+    }
+});
+
+var defaultcolor = Chart.defaults.global.defaultFontColor = '#fff';
+</script>			  </div>
+
+			</div>
+			<script src="map_sensors.php?type=Aircraft&item=1065"></script>
+			<script src="map_weapons.php?type=Aircraft&item=1065"></script>
+			
+			<script type="text/javascript">
+				subm_data("United States","Aircraft","1065");
+			</script>
+				
+
+	<div class="modal" id="settings">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+			<h4 class="modal-title">Settings</h4>
+		  </div>
+		  <div class="modal-body">
+		  		<p>Sensors and Weapons placement on map:</p>
+				<div id="map_settings" style="height: 250px; width: 100%;"></div>
+				<p><small>Drag marker and save</small></p>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			<button type="button" class="btn btn-primary" id="save-event">Save changes</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+
+	<div class="modal" id="favorites">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+			<h4 class="modal-title">Favorites</h4>
+		  </div>
+		  <div class="modal-body">
+		  		<p>
+		  		<div id="favorite_list"></div>
+		  		</p>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+
+	<script type="text/javascript">
+		var maplayer = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+			maxZoom: 19,
+			attribution: '&copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
+		});
+
+			var map = L.map('map_settings', {
+			center: [60.13603, 24.94514],
+			zoom: 3,
+			layers: [maplayer]
+		});
+
+		var icon = L.icon({
+			iconUrl: 'marker.png',
+			iconSize: [25, 41],
+			iconAnchor: [12, 41]
+		});
+
+		var marker = L.marker(new L.LatLng(60.13603, 24.94514), {
+			draggable: true,
+			icon: icon
+		}).addTo(map);
+	</script>
+
+		      <footer>
+        <div class="row">
+          <div class="col-lg-12">
+          	<div id="cookie_notice" style="color: red; font-size: small;"></div>
+            <ul class="list-unstyled">
+              <li><a href="index.php">Home</a></li>
+              <li><a href="compare.php">Compare</a></li>
+              <li><a href="search.php">Search</a></li>
+              <li><a href="helper.php">Helper</a></li>
+              <li>|</li>
+              <li><a href="https://cmano-db.com/cw/">Cold War DataBase</a></li>
+            </ul>
+            <p><small>&copy; cmano-db.com - db v. 502</small></p>
+
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script src="bootstrap.min.js"></script>
+    <script src="custom.js"></script>
+
+  </body>
+</html>
