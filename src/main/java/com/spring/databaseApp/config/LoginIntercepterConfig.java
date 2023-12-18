@@ -9,11 +9,11 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import com.spring.databaseApp.interceptor.LoginInterceptor;
 
+
 @Configuration
 public class LoginIntercepterConfig implements WebMvcConfigurer{
     
-   
-
+    
     public void addIntercepter(InterceptorRegistry registry){
         HandlerInterceptor intercepter=new LoginInterceptor();
         List<String> patterns = new ArrayList<>();
@@ -22,8 +22,8 @@ public class LoginIntercepterConfig implements WebMvcConfigurer{
         patterns.add("/**");
 
 
-        registry.addInterceptor(intercepter)
-                .addPathPatterns("/**")    //拦截名单
-                .excludePathPatterns(patterns);        //白名单
+        registry.addInterceptor(intercepter);
+                //.addPathPatterns("/**")    //拦截名单
+                //.excludePathPatterns(patterns);        //白名单
     }
 }

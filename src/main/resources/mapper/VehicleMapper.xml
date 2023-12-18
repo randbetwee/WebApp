@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.databaseApp.mapper.VehicleMapper">
+
+    <insert id="insertVehicle" useGeneratedKeys="false" keyProperty="id">
+        insert into vehicle(catag,nation,name)
+            values (#{catag},#{nation},#{name})
+    </insert>
+
+    <insert id="insertAircraft">
+        insert into aircraft(name,type,Crew,min_speed,max_speed,wingspan,height,Length,MaxPayload,EmptyWeight,	MaxWeight,operator,Commissioned,Propulsion)
+            values (#{name},#{Type},#{Crew},#{min_Speed},#{Max_speed},#{Wingspan},#{Height},#{Length},#{Max_payload},#{Empty_weight},#{Max_weight},#{Operator},#{Commissioned},#{Propulsion})
+    </insert>
+
+    <insert id="insertNation" >
+        insert into nation(nation_name)
+            values (#{nation_name})
+    </insert>
+
+    <insert id="insertCateg" >
+        insert into category(type,count)
+            values (#{type},#{count})
+    </insert>
+
+    <select id="find_by_cate" resultType="java.lang.String">
+        select name from vehicle where catag = #{cate}
+    </select>
+
+    <select id="find_by_name" resultType="com.spring.databaseApp.entity.Aircraft">
+        select * from aircraft where name = #{name}
+    </select>
+
+</mapper>
