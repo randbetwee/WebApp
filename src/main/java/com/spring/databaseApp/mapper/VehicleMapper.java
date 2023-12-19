@@ -35,6 +35,9 @@ public interface VehicleMapper {
     @Select("select * from vehicle where nation=#{nation}")
     public List<Vehicle> find_by_nation(String nation);
 
+    @Select("select * from vehicle where id=#{id}")
+    public Vehicle find_by_id(int id);
+
     public List<String> find_by_cate(String cate);
 
     public Aircraft find_by_name(String name);

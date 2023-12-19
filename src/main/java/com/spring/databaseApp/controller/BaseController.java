@@ -3,8 +3,12 @@ package com.spring.databaseApp.controller;
 
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import com.spring.databaseApp.service.exception.CategoryMatchFailure;
 import com.spring.databaseApp.service.exception.DuplicatedEmail;
+import com.spring.databaseApp.service.exception.DuplicatedName;
 import com.spring.databaseApp.service.exception.InsertException;
+import com.spring.databaseApp.service.exception.NationMatchFailure;
+import com.spring.databaseApp.service.exception.FileUploadFailed;
 import com.spring.databaseApp.service.exception.ServiceException;
 
 import com.spring.databaseApp.service.exception.PasswordMatchFailure;
@@ -34,6 +38,22 @@ public class BaseController {
         else if(exception instanceof DuplicatedEmail){
             result.setState(4001);
             result.setMessage("邮箱重复");
+        }
+        else if(exception instanceof DuplicatedName){
+            result.setState(4002);
+            result.setMessage("名字重复");
+        }
+        else if(exception instanceof CategoryMatchFailure){
+            result.setState(5001);
+            result.setMessage("找不到此类");
+        }
+        else if(exception instanceof NationMatchFailure){
+             result.setState(5002);
+            result.setMessage("找不到该国家");
+        }
+        else if(exception instanceof FileUploadFailed){
+            result.setState(3000);
+            result.setMessage("文件上传失败");
         }
 
         return result;

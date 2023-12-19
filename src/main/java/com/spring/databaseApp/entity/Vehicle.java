@@ -7,19 +7,25 @@ public class Vehicle implements Serializable{
 	private int id;
 	private String nation;
     private String name;
-
-
-    
+    private String picture;
 
     public Vehicle() {
     }
 
+    public String getPicture() {
+        return picture;
+    }
 
-    public void setVehicle(String catag,int id,String nation,String name){
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    public void setVehicle(String catag,int id,String nation,String name,String picture){
         this.catag=catag;
         this.id=id;
         this.nation=nation;
         this.name=name;
+        this.picture=picture;
     }
 
 

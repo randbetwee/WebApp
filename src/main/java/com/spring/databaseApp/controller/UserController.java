@@ -29,6 +29,7 @@ public class UserController extends BaseController{
         User user=userService.login(UserID, password);
         session.setAttribute("id",user.getId());
         session.setAttribute("username",user.getUser_name());
+        session.setAttribute("type",user.isUser_type());
         return new JsonResult<User>(200, user);
     }
 

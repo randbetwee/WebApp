@@ -1,105 +1,166 @@
-name,Type,Crew,Min Speed,Max Speed,Wingspan,Height,Length,Max Payload,Empty Weight,Max Weight,Operator,Commissioned,Propulsion,Nation,Catag
-A-10A Thunderbolt II, Attack,1, 180 kt, 390 kt, 17.5 m, 4.5 m, 16.3 m, 7260 kg, 11321 kg, 23000 kg, Air Force,1986, 2x TF34-GE-100A,US,aircraft
-A-12A Avenger II, Attack,2, 350 kt, 570 kt, 21.4 m, 3.4 m, 13.2 m, 4600 kg, 17700 kg, 36300 kg, Navy,1999, 2x F412-GE-400,US,aircraft
-A-29B Super Tucano [EMB-314], Attack,2, 220 kt, 330 kt, 11.1 m, 3.9 m, 11.4 m, 1500 kg, 3200 kg, 5400 kg, Air Force,2008, 1x PT6A-68C,US,aircraft
-A-37B Dragonfly [Super Tweet], Attack,2, 320 kt, 460 kt, 10.9 m, 2.7 m, 8.6 m, 2179 kg, 2817 kg, 6350 kg, Army,1968, 2x J85-GE-17A,US,aircraft
-A-4M Skyhawk, Attack,1, 300 kt, 570 kt, 8.4 m, 4.6 m, 12.3 m, 8318 kg, 5678 kg, 11136 kg, Marine Corps,1976, 1x J52-P-408,US,aircraft
-A-6E Intruder, Attack,2, 300 kt, 570 kt, 16.2 m, 4.8 m, 16.7 m, 15870 kg, 12070 kg, 27500 kg, Navy,1989, 2x J52-P-409,US,aircraft
-A-6F Intruder II, Attack,2, 350 kt, 580 kt, 16.2 m, 4.8 m, 16.7 m, 15870 kg, 12600 kg, 27500 kg, Navy,1995, 2x F404-GE-400D,US,aircraft
-A-7B Corsair II, Attack,1, 300 kt, 570 kt, 11.8 m, 4.9 m, 14.1 m, 6810 kg, 8840 kg, 19050 kg, Navy,1975, 1x TF30-PW-408,US,aircraft
-A-7D Corsair II, Attack,1, 300 kt, 570 kt, 11.8 m, 4.9 m, 14.1 m, 6810 kg, 8840 kg, 19050 kg, Air National Guard,1976, 1x TF41-A-1,US,aircraft
-A-7E Corsair II, Attack,1, 300 kt, 570 kt, 11.8 m, 4.9 m, 14.1 m, 6810 kg, 8840 kg, 19050 kg, Navy,1986, 1x TF41-A-2,US,aircraft
-A-7K Corsair II [TA-7D, FLIR], Attack,1, 300 kt, 570 kt, 11.8 m, 4.9 m, 14.1 m, 6810 kg, 8840 kg, 19050 kg, Air Force,1989, 1x TF41-A-1,US,aircraft
-A/F-117X Sea Hawk, Attack,2, 350 kt, 590 kt, 19.74 m, 3.8 m, 20.1 m, 3629 kg, 20000 kg, 33230 kg, Navy,1999, 2x F414-GE-400,US,aircraft
-AC-130A Pave Pronto, Attack,5, 180 kt, 325 kt, 39.7 m, 11.9 m, 29.3 m, 16000 kg, 34400 kg, 55500 kg, Air Force,1969, 4x T56-A-9,US,aircraft
-AC-130H Pave Spectre II, Attack,5, 180 kt, 325 kt, 40.4 m, 11.6 m, 29.8 m, 19090 kg, 34400 kg, 70300 kg, Air Force,1975, 4x T56-A-15,US,aircraft
-AC-130J Ghostrider, Attack,5, 210 kt, 350 kt, 40.4 m, 11.8 m, 29.8 m, 20000 kg, 34200 kg, 79200 kg, Air Force,2017, 4x AE2100D3,US,aircraft
-AC-130U Spooky, Attack,5, 180 kt, 325 kt, 40.4 m, 11.6 m, 29.8 m, 19090 kg, 34400 kg, 70300 kg, Air Force,1997, 4x T56-A-15,US,aircraft
-AC-130W Stinger II, Area Surveillance,5, 180 kt, 325 kt, 40.4 m, 11.6 m, 29.8 m, 19090 kg, 34400 kg, 70300 kg, Air Force,2011, 4x T56-A-15,US,aircraft
-AH-1F Cobra, Attack,2, 55 kt, 125 kt, 3.3 m, 4.4 m, 13.6 m, 0 kg, 2630 kg, 4535 kg, Army,1981, 1x T53-L-703,US,aircraft
-AH-1J Sea Cobra, Attack,2, 55 kt, 160 kt, 3.3 m, 4.4 m, 13.6 m, 0 kg, 2990 kg, 4540 kg, Marine Corps,1983, 1x T400-CP-400,US,aircraft
-H-1S Cobra, Attack,2, 55 kt, 125 kt, 3.3 m, 4.4 m, 13.6 m, 0 kg, 2630 kg, 4535 kg, Army,1983, 1x T53-L-703,US,aircraft
-AH-1T Sea Cobra, Attack,2, 55 kt, 160 kt, 3.3 m, 4.4 m, 13.6 m, 0 kg, 2630 kg, 6356 kg, Marine Corps,1983, 1x T400-CP-402,US,aircraft
-AH-1W Super Cobra, Attack,2, 55 kt, 180 kt, 4.3 m, 4.2 m, 13.9 m, 0 kg, 4630 kg, 6690 kg, Marine Corps,2000, 2x T700-GE-401,US,aircraft
-AH-64A Apache, Attack,2, 55 kt, 160 kt, 5.2 m, 4.6 m, 14.96 m, 0 kg, 5165 kg, 10450 kg, Army,1992, 2x T700-GE-701C,US,aircraft
-H-64AS Sea Apache, Attack,2, 55 kt, 160 kt, 5.2 m, 4.6 m, 14.96 m, 0 kg, 5165 kg, 10450 kg, Marine Corps,1990, 2x T700-GE-701C,US,aircraft
-AH-64D Apache Longbow, Attack,2, 55 kt, 160 kt, 4.9 m, 4.9 m, 14.96 m, 0 kg, 5360 kg, 10450 kg, Army,2008, 2x T700-GE-701C,US,aircraft
-AH-6C Little Bird [MD-500D], Attack,2, 55 kt, 135 kt, 1.9 m, 2.6 m, 7.6 m, 454 kg, 560 kg, 1361 kg, Army,1972, 1x T63-A-5A,US,aircraft
-AH-6G Little Bird [MD-530MG], Attack,2, 55 kt, 150 kt, 1.9 m, 3.0 m, 7.3 m, 454 kg, 560 kg, 1610 kg, Army,1990, 1x 250-C20B,US,aircraft
-AL-1A Airborne Laser, Airborne Laser Platform,3, 230 kt, 520 kt, 64.4 m, 19.4 m, 70.6 m, 0 kg, 178755 kg, 396890 kg, Air Force,0, 4x CF6-80C2,US,aircraft
-AN/TPS-63 LASS Aerostat, Aerostat,0, 0 kt, 0 kt, 10.0 m, 10.0 m, 71.0 m, 2300 kg, 0 kg, 0 kg, Customs,1986, Aerostat Cable,US,aircraft
-AT-6E Wolverine, Attack,1, 220 kt, 325 kt, 10.4 m, 3.25 m, 10.16 m, 1865 kg, 2670 kg, 4535 kg, Air Force,2021, 1x PT6A-68D,US,aircraft
-AT-802U Sky Warden, Attack,2, 90 kt, 210 kt, 18.04 m, 3.9 m, 11.43 m, 4000 kg, 3703 kg, 7257 kg, Air Force,2023, 1x PT6A-67F,US,aircraft
-AV-8A Harrier, Attack,1, 350 kt, 540 kt, 7.7 m, 3.4 m, 14.4 m, 0 kg, 5535 kg, 11168 kg, Marine Corps,1978, 1x Pegasus 11 Mk.103,US,aircraft
-AV-8B Harrier II [Day-Only], Attack,1, 350 kt, 570 kt, 9.3 m, 3.6 m, 14.5 m, 0 kg, 6340 kg, 15980 kg, Marine Corps,1986, 1x F402-RR-406A/Pegasus 11-21 Mk.105,US,aircraft
-AV-8C Harrier, Attack,1, 350 kt, 540 kt, 7.7 m, 3.4 m, 14.4 m, 0 kg, 5535 kg, 11168 kg, Marine Corps,1982, 1x Pegasus 11 Mk.103,US,aircraft
-Altius 600 UAV, Unmanned Aerial Vehicle (UAV),0, 45 kt, 80 kt, 2.54 m, 0.0 m, 1.0 m, 3 kg, 12 kg, 15 kg, Army,2020, 1x Piston Engine,US,aircraft
-An-26 Curl A, Transport,5, 180 kt, 300 kt, 29.2 m, 8.3 m, 23.8 m, 5500 kg, 16300 kg, 24000 kg, Air Force,2003, 2x AI-24T,US,aircraft
-B-1B Lancer, Bomber,4, 350 kt, 700 kt, 41.7 m, 10.4 m, 47.8 m, 34019 kg, 86183 kg, 214650 kg, Air Force,1991, 4x F101-GE102,US,aircraft
-B-1R Lancer, Bomber,4, 350 kt, 1260 kt, 41.7 m, 10.4 m, 47.8 m, 34019 kg, 86183 kg, 214650 kg, Air Force,2015, 4x F119-PW-100,US,aircraft
-B-21 Raider, Bomber,3, 280 kt, 540 kt, 41.15 m, 3.66 m, 18.2 m, 0 kg, 53775 kg, 170600 kg, Air Force,2027, 2x F135-PW-100,US,aircraft
-B-2A Spirit Blk 20, Bomber,3, 280 kt, 540 kt, 52.4 m, 5.2 m, 21.0 m, 0 kg, 71700 kg, 170600 kg, Air Force,1997, 4x F118-GE-110,US,aircraft
-B-52D Stratofortress, Bomber,6, 280 kt, 510 kt, 56.4 m, 12.4 m, 48.5 m, 0 kg, 74960 kg, 204300 kg, Air Force,1975, 8x J57-P-29WA,US,aircraft
-B-52H Stratofortress, Bomber,4, 280 kt, 510 kt, 56.4 m, 12.4 m, 48.5 m, 0 kg, 81740 kg, 204300 kg, Air Force,1989, 8x TF33-P-3,US,aircraft
-B-70A Valkyrie, Bomber,4, 400 kt, 1800 kt, 31.4 m, 9.3 m, 56.6 m, 28000 kg, 85427 kg, 252473 kg, Air Force,1980, 6x YJ93-GE-3,US,aircraft
-BQM-167A Skeeter UAV, Target Drone,0, 350 kt, 610 kt, 3.2 m, 1.2 m, 6.1 m, 292 kg, 313 kg, 646 kg, Air Force,2008, 1x Tri 60-5+ Turbojet,US,aircraft
-BQM-74C Chukar III UAV, Target Drone,0, 350 kt, 500 kt, 1.8 m, 0.7 m, 4.0 m, 0 kg, 199 kg, 0 kg, Navy,1981, 1x J400-WR-402/3,US,aircraft
-Boeing 747-ALBM [ALBM Carrier Aircraft], Bomber,3, 230 kt, 520 kt, 59.6 m, 19.3 m, 70.6 m, 0 kg, 178100 kg, 377840 kg, Air Force,1986, 4x JT9D-7,US,aircraft
-C-130E Hercules, Transport,5, 180 kt, 325 kt, 39.7 m, 11.9 m, 29.3 m, 19090 kg, 34400 kg, 69750 kg, Air Force,1963, 4x T56-A-7A,US,aircraft
-C-130J Hercules, Transport,5, 210 kt, 350 kt, 40.4 m, 11.8 m, 29.8 m, 20000 kg, 34200 kg, 79200 kg, Air Force,2007, 4x AE2100D3,US,aircraft
-C-141A Starlifter, Transport,6, 250 kt, 490 kt, 48.8 m, 12.0 m, 44.2 m, 30000 kg, 65542 kg, 147000 kg, Air Force,1966, 4x TF33-PW-7,US,aircraft
-C-145A Combat Coyote [An-28 Copy], Transport,3, 130 kt, 190 kt, 22.06 m, 4.9 m, 13.1 m, 2300 kg, 4100 kg, 7500 kg, Air Force,2007, 2x PT6A-65B,US,aircraft
-C-17A Globemaster III, Transport,3, 250 kt, 480 kt, 51.8 m, 16.8 m, 53.0 m, 77500 kg, 128100 kg, 265350 kg, Air Force,1994, 4x F117-PW-100,US,aircraft
-C-212-200 Aviocar [C-41A], Maritime Patrol Aircraft (MPA),2, 140 kt, 200 kt, 20.3 m, 6.3 m, 16.2 m, 2960 kg, 3780 kg, 7700 kg, Air Force,1985, 2x TPE331-10R-511C,US,aircraft
-C-22B [Boeing 727-35], Transport,3, 230 kt, 520 kt, 32.9 m, 10.4 m, 40.6 m, 0 kg, 36560 kg, 77000 kg, Air Force,0, 3x JT8D-1,US,aircraft
-C-2A Greyhound, Transport,3, 200 kt, 335 kt, 24.6 m, 4.9 m, 17.3 m, 4500 kg, 15310 kg, 24655 kg, Navy,1967, 2x T56-A-425,US,aircraft
-C-2A(R) Greyhound, Transport,3, 200 kt, 335 kt, 24.6 m, 4.9 m, 17.3 m, 4500 kg, 15310 kg, 24655 kg, Navy,1986, 2x T56-A-425,US,aircraft
-C-32A [Boeing 757-200ER], Transport,16, 230 kt, 520 kt, 38.05 m, 10.4 m, 47.32 m, 0 kg, 57840 kg, 115680 kg, Air Force,1998, 2x PW2037,US,aircraft
-C-32B [Boeing 757-200ER+], Transport,16, 230 kt, 520 kt, 38.05 m, 10.4 m, 47.32 m, 0 kg, 57840 kg, 115680 kg, Air Force,0, 2x PW2037,US,aircraft
-C-40A Clipper [Boeing 737-700C], Transport,5, 230 kt, 500 kt, 34.31 m, 12.55 m, 33.63 m, 17544 kg, 37648 kg, 70080 kg, Navy,2001, 2x CFM56-7-B20,US,aircraft
-C-47T Turbo Dakota [DC-3], Transport,3, 120 kt, 190 kt, 29.4 m, 5.2 m, 19.4 m, 2700 kg, 8038 kg, 14061 kg, Air Force,2002, 2x PT6A-65R,US,aircraft
-C-5A Galaxy, Transport,8, 250 kt, 480 kt, 67.9 m, 19.9 m, 75.5 m, 86260 kg, 172370 kg, 381000 kg, Air Force,1971, 4x TF39-GE-1C,US,aircraft
-C-5M Super Galaxy, Transport,8, 250 kt, 480 kt, 67.9 m, 19.9 m, 75.5 m, 122470 kg, 172370 kg, 381000 kg, Air Force,2010, 4x F138-GE-100,US,aircraft
-C-9A Nightingale [DC-9-30], Transport,8, 230 kt, 480 kt, 28.47 m, 8.38 m, 36.37 m, 0 kg, 29638 kg, 48600 kg, Air Force,1968, 2x JT8D-9A,US,aircraft
-CH-46D Sea Knight, Transport,3, 55 kt, 150 kt, 4.5 m, 5.1 m, 13.7 m, 3000 kg, 6287 kg, 10442 kg, Marine Corps,1967, 2x T58-GE-10,US,aircraft
-CH-47C Chinook, Transport,3, 55 kt, 140 kt, 3.8 m, 5.8 m, 15.9 m, 6810 kg, 10615 kg, 20865 kg, Army,1969, 2x T55-L-11C,US,aircraft
-CH-53C Sea Stallion, Transport,3, 50 kt, 155 kt, 9.0 m, 7.6 m, 22.3 m, 8000 kg, 10740 kg, 19100 kg, Air Force,1969, 3x T64-GE-7,US,aircraft
-CMV-22B Osprey, Transport,4, 140 kt, 305 kt, 14.0 m, 5.5 m, 17.5 m, 9000 kg, 15032 kg, 27400 kg, Navy,2022, 2x T406-AD-400,US,aircraft
-CV-22A Osprey, Transport,3, 140 kt, 305 kt, 14.0 m, 5.5 m, 17.5 m, 9000 kg, 15032 kg, 27400 kg, Air Force,2009, 2x T406-AD-400,US,aircraft
-DARPA TERN UCAV, Unmanned Aerial Vehicle (UAV),0, 55 kt, 140 kt, 12.0 m, 3.0 m, 3.0 m, 1065 kg, 1210 kg, 2722 kg, Navy,2019, 1x 250-C47E,US,aircraft
-Dash-8 Foxhound, Area Surveillance,2, 180 kt, 295 kt, 27.43 m, 7.49 m, 25.68 m, 5138 kg, 11791 kg, 19500 kg, Army,2014, 2x PW123B,US,aircraft
-E-11A BACN [Bombardier Global 6000], Airborne Command Post (ACP),4, 220 kt, 520 kt, 28.65 m, 7.8 m, 30.3 m, 2617 kg, 23691 kg, 45132 kg, Air Force,2005, 2x BR710A1-10,US,aircraft
-E-2C Hawkeye 2000, Airborne Early Warning (AEW),5, 200 kt, 335 kt, 24.6 m, 5.6 m, 17.6 m, 0 kg, 18090 kg, 26083 kg, Navy,2003, 2x T56-A-427,US,aircraft
-E-2D Advanced Hawkeye, Airborne Early Warning (AEW),5, 200 kt, 335 kt, 24.6 m, 5.6 m, 17.6 m, 0 kg, 18090 kg, 26083 kg, Navy,2016, 2x T56-A-427A,US,aircraft
-E-3A Sentry, Airborne Early Warning (AEW),17, 230 kt, 520 kt, 44.4 m, 12.6 m, 46.6 m, 0 kg, 73480 kg, 147000 kg, Air Force,1980, 4x TF33-PW-100A/JT3D-3B,US,aircraft
-E-4B NAOC, Airborne Command Post (ACP),8, 230 kt, 520 kt, 59.6 m, 19.3 m, 70.6 m, 0 kg, 174000 kg, 377840 kg, Air Force,1984, 4x CF6-50-E2,US,aircraft
-E-6A Mercury, Airborne Command Post (ACP),23, 230 kt, 520 kt, 45.2 m, 12.9 m, 45.8 m, 0 kg, 66406 kg, 154400 kg, Navy,1990, 4x F108-CF-100/CFM56-2A,US,aircraft
-E-7A Wedgetail, Airborne Early Warning (AEW),10, 230 kt, 520 kt, 35.8 m, 12.5 m, 33.6 m, 19830 kg, 46606 kg, 77565 kg, Air Force,2027, 2x CFM56-7B27A,US,aircraft
-E-8A Joint STARS, Area Surveillance,15, 230 kt, 520 kt, 44.4 m, 12.9 m, 46.6 m, 0 kg, 77564 kg, 152409 kg, Air Force,1991, 4x TF33-PW-100A/JT3D-3B,US,aircraft
-E-9A Joint STARS, Electronic Warfare,15, 220 kt, 520 kt, 28.5 m, 7.9 m, 29.4 m, 2800 kg, 21800 kg, 41300 kg, Air Force,2022, 2x BR710A1-10,US,aircraft
-EA-18G Growler, Electronic Warfare,2, 350 kt, 920 kt, 13.6 m, 0.0 m, 18.3 m, 8050 kg, 13880 kg, 29937 kg, Navy,2016, 2x F414-GE-400,US,aircraft
-EA-3B Skywarrior, Electronic Warfare,3, 300 kt, 550 kt, 22.1 m, 7.0 m, 23.3 m, 0 kg, 17876 kg, 37195 kg, Navy,1963, 2x J57-P-10,US,aircraft
-EA-6A Electric Intruder, Electronic Warfare,2, 300 kt, 570 kt, 16.2 m, 4.8 m, 16.7 m, 15870 kg, 12070 kg, 27500 kg, Marine Corps,1966, 2x J52-P-6,US,aircraft
-EA-6B Prowler ICAP III, Electronic Warfare,4, 300 kt, 570 kt, 16.2 m, 4.8 m, 18.2 m, 13320 kg, 14600 kg, 27920 kg, Marine Corps,2006, 2x J52-P-408A,US,aircraft
-EC-130E Commando Solo I, Airborne Command Post (ACP),5, 180 kt, 325 kt, 39.7 m, 11.9 m, 29.3 m, 19090 kg, 34400 kg, 69750 kg, Air Force,1979, 4x T56-A-7A,US,aircraft
-EC-37B Compass Call, Electronic Warfare,2, 220 kt, 520 kt, 28.5 m, 7.9 m, 29.4 m, 2800 kg, 21800 kg, 41300 kg, Air Force,2021, 2x BR710A1-10,US,aircraft
-EF-111A Raven, Electronic Warfare,2, 350 kt, 920 kt, 19.2 m, 6.1 m, 23.5 m, 11500 kg, 25073 kg, 40370 kg, Air Force,1983, 2x TF30-PW-3,US,aircraft
-F-14E Super Tomcat-21 [ST-21], Fighter,2, 350 kt, 920 kt, 19.6 m, 4.9 m, 19.2 m, 5900 kg, 20292 kg, 34470 kg, Navy,2018, 2x F110-GE-400,US,aircraft
-F-15A Eagle, Fighter,1, 350 kt, 920 kt, 13.1 m, 4.65 m, 19.3 m, 7260 kg, 12710 kg, 25400 kg, Air Force,1984, 2x F100-PW-100,US,aircraft
-F-15C Eagle, Fighter,1, 350 kt, 920 kt, 13.1 m, 4.65 m, 19.3 m, 7260 kg, 13240 kg, 30845 kg, Air Force,1984, 2x F100-PW-220E,US,aircraft
-F-15CX Advanced Eagle, Multirole (Fighter/Attack),1, 350 kt, 920 kt, 13.1 m, 4.65 m, 19.3 m, 7260 kg, 14390 kg, 32000 kg, Air Force,2024, 2x F110-GE-129,US,aircraft
-F-15E Strike Eagle, Multirole (Fighter/Attack),2, 350 kt, 920 kt, 13.1 m, 4.65 m, 19.3 m, 7260 kg, 14390 kg, 32000 kg, Air Force,1995, 2x F100-PW-229,US,aircraft
-F-15EX Eagle II, Multirole (Fighter/Attack),2, 350 kt, 920 kt, 13.1 m, 4.65 m, 19.3 m, 7260 kg, 14390 kg, 32000 kg, Air Force,2023, 2x F110-GE-129,US,aircraft
-F-16A Falcon, Multirole (Fighter/Attack),1, 350 kt, 920 kt, 9.5 m, 4.8 m, 14.5 m, 6894 kg, 7395 kg, 19200 kg, Air Force,1981, 1x F100-PW-200,US,aircraft
-F-16C Blk 25 Falcon, Multirole (Fighter/Attack),1, 350 kt, 920 kt, 9.5 m, 4.8 m, 14.5 m, 6894 kg, 8280 kg, 19200 kg, Air Force,1985, 1x F100-PW-220,US,aircraft
-F-16C Blk 30 Falcon, Multirole (Fighter/Attack),1, 350 kt, 920 kt, 9.5 m, 4.8 m, 14.5 m, 6894 kg, 8280 kg, 19200 kg, Air National Guard,2003, 1x F110-GE-100,US,aircraft
-F-16CG Blk 42 Falcon, Multirole (Fighter/Attack),1, 350 kt, 920 kt, 9.5 m, 4.8 m, 14.5 m, 6894 kg, 8280 kg, 19200 kg, Air Force,1995, 1x F100-PW-220,US,aircraft
-F-22A Raptor, Multirole (Fighter/Attack),1, 350 kt, 1000 kt, 13.6 m, 5.08 m, 18.9 m, 4500 kg, 14365 kg, 38000 kg, Air Force,2019, 2x F119-PW-100,US,aircraft
-F-23A Black Widow II, Multirole (Fighter/Attack),1, 350 kt, 1000 kt, 13.28 m, 4.23 m, 20.54 m, 4500 kg, 13100 kg, 29000 kg, Air Force,2006, 2x F119-PW-100,US,aircraft
-F-24A Hellcat II [NATF, Lockheed Proposal], Fighter,2, 350 kt, 1000 kt, 19.5 m, 5.08 m, 18.9 m, 4500 kg, 14365 kg, 38000 kg, Navy,2002, 2x F119-PW-100,US,aircraft
-F-35A Lightning II, Multirole (Fighter/Attack),1, 350 kt, 920 kt, 10.7 m, 4.33 m, 15.67 m, 6810 kg, 13300 kg, 31800 kg, Air Force,2017, 1x F135-PW-100,US,aircraft
-F-35B Lightning II, Multirole (Fighter/Attack),1, 350 kt, 920 kt, 13.1 m, 4.54 m, 15.7 m, 6810 kg, 14700 kg, 27300 kg, Marine Corps,2016, 1x F135-PW-100,US,aircraft
-F-35C Lightning II, Multirole (Fighter/Attack),1, 350 kt, 920 kt, 10.7 m, 4.33 m, 15.6 m, 6810 kg, 15800 kg, 31800 kg, Navy,2019, 1x F135-PW-100,US,aircraft
-F-4C Phantom II, Multirole (Fighter/Attack),2, 350 kt, 920 kt, 11.7 m, 5.02 m, 19.2 m, 8000 kg, 13245 kg, 27500 kg, Air Force,1972, 2x J79-GE-15,US,aircraft
-F-5E Tiger II [DACT], Multirole (Fighter/Attack),1, 350 kt, 920 kt, 8.0 m, 4.1 m, 14.4 m, 0 kg, 4349 kg, 11214 kg, Air Force,1975, 2x J85-GE-21,US,aircraft
-F/A-18A Hornet, Multirole (Fighter/Attack),1, 350 kt, 920 kt, 11.4 m, 4.88 m, 17.1 m, 7030 kg, 10455 kg, 23500 kg, Navy,1986, 2x F404-GE-400,US,aircraft
+name,Type,Crew,Min Speed,Max Speed,Wingspan,Height,Length,Max Payload,Empty Weight,Max Weight,Operator,Commissioned,Propulsion,picture,Nation,Category
+A-10A Thunderbolt II, Attack,1, 180 kt, 390 kt, 17.5 m, 4.5 m, 16.3 m, 7260 kg, 11321 kg, 23000 kg, Air Force,1986, 2x TF34-GE-100A,https://cmano-db.com/images/DB3000/aircraft_445.jpg,US,aircraft
+A-12A Avenger II, Attack,2, 350 kt, 570 kt, 21.4 m, 3.4 m, 13.2 m, 4600 kg, 17700 kg, 36300 kg, Navy,1999, 2x F412-GE-400,https://cmano-db.com/images/DB3000/aircraft_3484.jpg,US,aircraft
+A-29B Super Tucano [EMB-314], Attack,2, 220 kt, 330 kt, 11.1 m, 3.9 m, 11.4 m, 1500 kg, 3200 kg, 5400 kg, Air Force,2008, 1x PT6A-68C,0,US,aircraft
+A-37B Dragonfly [Super Tweet], Attack,2, 320 kt, 460 kt, 10.9 m, 2.7 m, 8.6 m, 2179 kg, 2817 kg, 6350 kg, Army,1968, 2x J85-GE-17A,https://cmano-db.com/images/DB3000/aircraft_1428.jpg,US,aircraft
+A-4M Skyhawk, Attack,1, 300 kt, 570 kt, 8.4 m, 4.6 m, 12.3 m, 8318 kg, 5678 kg, 11136 kg, Marine Corps,1976, 1x J52-P-408,https://cmano-db.com/images/DB3000/aircraft_658.jpg,US,aircraft
+A-6E Intruder, Attack,2, 300 kt, 570 kt, 16.2 m, 4.8 m, 16.7 m, 15870 kg, 12070 kg, 27500 kg, Navy,1989, 2x J52-P-409,https://cmano-db.com/images/DB3000/aircraft_43.jpg,US,aircraft
+A-6F Intruder II, Attack,2, 350 kt, 580 kt, 16.2 m, 4.8 m, 16.7 m, 15870 kg, 12600 kg, 27500 kg, Navy,1995, 2x F404-GE-400D,0,US,aircraft
+A-7B Corsair II, Attack,1, 300 kt, 570 kt, 11.8 m, 4.9 m, 14.1 m, 6810 kg, 8840 kg, 19050 kg, Navy,1975, 1x TF30-PW-408,https://cmano-db.com/images/DB3000/aircraft_903.jpg,US,aircraft
+A-7D Corsair II, Attack,1, 300 kt, 570 kt, 11.8 m, 4.9 m, 14.1 m, 6810 kg, 8840 kg, 19050 kg, Air National Guard,1976, 1x TF41-A-1,https://cmano-db.com/images/DB3000/aircraft_480.jpg,US,aircraft
+A-7D Corsair II [FLIR], Attack,1, 300 kt, 570 kt, 11.8 m, 4.9 m, 14.1 m, 6810 kg, 8840 kg, 19050 kg, Air National Guard,1989, 1x TF41-A-1,https://cmano-db.com/images/DB3000/aircraft_3029.jpg,US,aircraft
+A-7E Corsair II, Attack,1, 300 kt, 570 kt, 11.8 m, 4.9 m, 14.1 m, 6810 kg, 8840 kg, 19050 kg, Navy,1986, 1x TF41-A-2,https://cmano-db.com/images/DB3000/aircraft_478.jpg,US,aircraft
+A-7E Corsair II [FLIR], Attack,1, 300 kt, 570 kt, 11.8 m, 4.9 m, 14.1 m, 6810 kg, 8840 kg, 19050 kg, Navy,1987, 1x TF41-A-2,https://cmano-db.com/images/DB3000/aircraft_479.jpg,US,aircraft
+"A-7K Corsair II [TA-7D, FLIR]", Attack,1, 300 kt, 570 kt, 11.8 m, 4.9 m, 14.1 m, 6810 kg, 8840 kg, 19050 kg, Air Force,1989, 1x TF41-A-1,https://cmano-db.com/images/DB3000/aircraft_3028.jpg,US,aircraft
+A-7K Corsair II [TA-7D], Attack,1, 300 kt, 570 kt, 11.8 m, 4.9 m, 14.1 m, 6810 kg, 8840 kg, 19050 kg, Air Force,1984, 1x TF41-A-1,https://cmano-db.com/images/DB3000/aircraft_491.jpg,US,aircraft
+A/F-117X Sea Hawk, Attack,2, 350 kt, 590 kt, 19.74 m, 3.8 m, 20.1 m, 3629 kg, 20000 kg, 33230 kg, Navy,1999, 2x F414-GE-400,https://cmano-db.com/images/DB3000/aircraft_3743.jpg,US,aircraft
+AC-130A Pave Pronto, Attack,5, 180 kt, 325 kt, 39.7 m, 11.9 m, 29.3 m, 16000 kg, 34400 kg, 55500 kg, Air Force,1969, 4x T56-A-9,https://cmano-db.com/images/DB3000/aircraft_622.jpg,US,aircraft
+AC-130H Pave Spectre II, Attack,5, 180 kt, 325 kt, 40.4 m, 11.6 m, 29.8 m, 19090 kg, 34400 kg, 70300 kg, Air Force,1975, 4x T56-A-15,https://cmano-db.com/images/DB3000/aircraft_1141.jpg,US,aircraft
+AC-130U Spooky, Attack,5, 180 kt, 325 kt, 40.4 m, 11.6 m, 29.8 m, 19090 kg, 34400 kg, 70300 kg, Air Force,1997, 4x T56-A-15,https://cmano-db.com/images/DB3000/aircraft_429.jpg,US,aircraft
+AC-130W Stinger II, Area Surveillance,5, 180 kt, 325 kt, 40.4 m, 11.6 m, 29.8 m, 19090 kg, 34400 kg, 70300 kg, Air Force,2011, 4x T56-A-15,https://cmano-db.com/images/DB3000/aircraft_3105.jpg,US,aircraft
+AH-1F Cobra, Attack,2, 55 kt, 125 kt, 3.3 m, 4.4 m, 13.6 m, 0 kg, 2630 kg, 4535 kg, Army,1981, 1x T53-L-703,https://cmano-db.com/images/DB3000/aircraft_2106.jpg,US,aircraft
+AH-1J Sea Cobra, Attack,2, 55 kt, 160 kt, 3.3 m, 4.4 m, 13.6 m, 0 kg, 2990 kg, 4540 kg, Marine Corps,1983, 1x T400-CP-400,https://cmano-db.com/images/DB3000/aircraft_206.jpg,US,aircraft
+AH-1S Cobra, Attack,2, 55 kt, 125 kt, 3.3 m, 4.4 m, 13.6 m, 0 kg, 2630 kg, 4535 kg, Army,1978, 1x T53-L-703,https://cmano-db.com/images/DB3000/aircraft_108.jpg,US,aircraft
+AH-1T Sea Cobra, Attack,2, 55 kt, 160 kt, 3.3 m, 4.4 m, 13.6 m, 0 kg, 2630 kg, 6356 kg, Marine Corps,1983, 1x T400-CP-402,https://cmano-db.com/images/DB3000/aircraft_1486.jpg,US,aircraft
+AH-1W Super Cobra, Attack,2, 55 kt, 180 kt, 4.3 m, 4.2 m, 13.9 m, 0 kg, 4630 kg, 6690 kg, Marine Corps,2000, 2x T700-GE-401,https://cmano-db.com/images/DB3000/aircraft_301.jpg,US,aircraft
+AH-1Z Viper [Super Cobra], Attack,2, 55 kt, 180 kt, 4.3 m, 4.2 m, 13.9 m, 0 kg, 5540 kg, 8390 kg, Marine Corps,2009, 2x T700-GE-401,https://cmano-db.com/images/DB3000/aircraft_336.jpg,US,aircraft
+AH-64A Apache, Attack,2, 55 kt, 160 kt, 5.2 m, 4.6 m, 14.96 m, 0 kg, 5165 kg, 10450 kg, Army,1992, 2x T700-GE-701C,https://cmano-db.com/images/DB3000/aircraft_284.jpg,US,aircraft
+AH-64AS Sea Apache, Attack,2, 55 kt, 160 kt, 5.2 m, 4.6 m, 14.96 m, 0 kg, 5165 kg, 10450 kg, Marine Corps,1990, 2x T700-GE-701C,0,US,aircraft
+AH-64D Apache Longbow, Attack,2, 55 kt, 160 kt, 4.9 m, 4.9 m, 14.96 m, 0 kg, 5360 kg, 10450 kg, Army,2008, 2x T700-GE-701C,https://cmano-db.com/images/DB3000/aircraft_246.jpg,US,aircraft
+AH-64E Apache Guardian, Attack,2, 55 kt, 160 kt, 4.9 m, 4.9 m, 14.96 m, 0 kg, 5360 kg, 10450 kg, Army,2014, 2x T700-GE-701D,0,US,aircraft
+AH-6C Little Bird [MD-500D], Attack,2, 55 kt, 135 kt, 1.9 m, 2.6 m, 7.6 m, 454 kg, 560 kg, 1361 kg, Army,1972, 1x T63-A-5A,https://cmano-db.com/images/DB3000/aircraft_1591.jpg,US,aircraft
+AH-6F Little Bird [MD-500MG], Attack,2, 55 kt, 135 kt, 1.9 m, 2.6 m, 7.6 m, 454 kg, 560 kg, 1361 kg, Army,1985, 1x T63-A-5A,https://cmano-db.com/images/DB3000/aircraft_1595.jpg,US,aircraft
+AH-6G Little Bird [MD-530MG], Attack,2, 55 kt, 150 kt, 1.9 m, 3.0 m, 7.3 m, 454 kg, 560 kg, 1610 kg, Army,1990, 1x 250-C20B,https://cmano-db.com/images/DB3000/aircraft_1596.jpg,US,aircraft
+AH-6J Little Bird [MD-530MG], Attack,2, 55 kt, 150 kt, 1.9 m, 3.0 m, 7.3 m, 454 kg, 560 kg, 1610 kg, Army,0, 1x 250-C20B,https://cmano-db.com/images/DB3000/aircraft_1587.jpg,US,aircraft
+AH-6M Little Bird MELB [MD-530F], Attack,2, 55 kt, 150 kt, 1.9 m, 3.0 m, 7.3 m, 454 kg, 896 kg, 2367 kg, Army,0, 1x 250-C30/R3,https://cmano-db.com/images/DB3000/aircraft_1593.jpg,US,aircraft
+AL-1A Airborne Laser, Airborne Laser Platform,3, 230 kt, 520 kt, 64.4 m, 19.4 m, 70.6 m, 0 kg, 178755 kg, 396890 kg, Air Force,0, 4x CF6-80C2,https://cmano-db.com/images/DB3000/aircraft_718.jpg,US,aircraft
+AN/TPS-63 LASS Aerostat, Aerostat,0, 0 kt, 0 kt, 10.0 m, 10.0 m, 71.0 m, 2300 kg, 0 kg, 0 kg, Customs,1986, Aerostat Cable,https://cmano-db.com/images/DB3000/aircraft_2656.jpg,US,aircraft
+AT-6E Wolverine, Attack,1, 220 kt, 325 kt, 10.4 m, 3.25 m, 10.16 m, 1865 kg, 2670 kg, 4535 kg, Air Force,2021, 1x PT6A-68D,0,US,aircraft
+AT-802U Sky Warden, Attack,2, 90 kt, 210 kt, 18.04 m, 3.9 m, 11.43 m, 4000 kg, 3703 kg, 7257 kg, Air Force,2023, 1x PT6A-67F,0,US,aircraft
+AV-8A Harrier, Attack,1, 350 kt, 540 kt, 7.7 m, 3.4 m, 14.4 m, 0 kg, 5535 kg, 11168 kg, Marine Corps,1978, 1x Pegasus 11 Mk.103,https://cmano-db.com/images/DB3000/aircraft_2399.jpg,US,aircraft
+AV-8B Harrier II [Day-Only], Attack,1, 350 kt, 570 kt, 9.3 m, 3.6 m, 14.5 m, 0 kg, 6340 kg, 15980 kg, Marine Corps,1986, 1x F402-RR-406A/Pegasus 11-21 Mk.105,https://cmano-db.com/images/DB3000/aircraft_1565.jpg,US,aircraft
+AV-8B Harrier II [Night Attack], Attack,1, 350 kt, 570 kt, 9.3 m, 3.6 m, 14.5 m, 0 kg, 6340 kg, 15980 kg, Marine Corps,1992, 1x F402-RR-406A/Pegasus 11-21 Mk.105,https://cmano-db.com/images/DB3000/aircraft_855.jpg,US,aircraft
+AV-8C Harrier, Attack,1, 350 kt, 540 kt, 7.7 m, 3.4 m, 14.4 m, 0 kg, 5535 kg, 11168 kg, Marine Corps,1982, 1x Pegasus 11 Mk.103,https://cmano-db.com/images/DB3000/aircraft_205.jpg,US,aircraft
+Altius 600 UAV, Unmanned Aerial Vehicle (UAV),0, 45 kt, 80 kt, 2.54 m, 0.0 m, 1.0 m, 3 kg, 12 kg, 15 kg, Army,2020, 1x Piston Engine,0,US,aircraft
+An-26 Curl A, Transport,5, 180 kt, 300 kt, 29.2 m, 8.3 m, 23.8 m, 5500 kg, 16300 kg, 24000 kg, Air Force,2003, 2x AI-24T,0,US,aircraft
+B-1B Lancer, Bomber,4, 350 kt, 700 kt, 41.7 m, 10.4 m, 47.8 m, 34019 kg, 86183 kg, 214650 kg, Air Force,1991, 4x F101-GE102,https://cmano-db.com/images/DB3000/aircraft_113.jpg,US,aircraft
+B-21 Raider, Bomber,3, 280 kt, 540 kt, 41.15 m, 3.66 m, 18.2 m, 0 kg, 53775 kg, 170600 kg, Air Force,2027, 2x F135-PW-100,0,US,aircraft
+B-2A Spirit Blk 20, Bomber,3, 280 kt, 540 kt, 52.4 m, 5.2 m, 21.0 m, 0 kg, 71700 kg, 170600 kg, Air Force,1997, 4x F118-GE-110,https://cmano-db.com/images/DB3000/aircraft_267.jpg,US,aircraft
+B-2A Spirit Blk 30, Bomber,3, 280 kt, 540 kt, 52.4 m, 5.2 m, 21.0 m, 0 kg, 71700 kg, 170600 kg, Air Force,1999, 4x F118-GE-110,https://cmano-db.com/images/DB3000/aircraft_286.jpg,US,aircraft
+B-52D Stratofortress, Bomber,6, 280 kt, 510 kt, 56.4 m, 12.4 m, 48.5 m, 0 kg, 74960 kg, 204300 kg, Air Force,1975, 8x J57-P-29WA,https://cmano-db.com/images/DB3000/aircraft_1928.jpg,US,aircraft
+B-52G Stratofortress, Bomber,6, 280 kt, 510 kt, 56.4 m, 12.4 m, 48.5 m, 0 kg, 81730 kg, 221550 kg, Air Force,1985, 8x J57-P-43WB,https://cmano-db.com/images/DB3000/aircraft_204.jpg,US,aircraft
+B-70A Valkyrie, Bomber,4, 400 kt, 1800 kt, 31.4 m, 9.3 m, 56.6 m, 28000 kg, 85427 kg, 252473 kg, Air Force,1980, 6x YJ93-GE-3,0,US,aircraft
+BQM-167A Skeeter UAV, Target Drone,0, 350 kt, 610 kt, 3.2 m, 1.2 m, 6.1 m, 292 kg, 313 kg, 646 kg, Air Force,2008, 1x Tri 60-5+ Turbojet,0,US,aircraft
+BQM-74C Chukar III UAV, Target Drone,0, 350 kt, 500 kt, 1.8 m, 0.7 m, 4.0 m, 0 kg, 199 kg, 0 kg, Navy,1981, 1x J400-WR-402/3,https://cmano-db.com/images/DB3000/aircraft_943.jpg,US,aircraft
+BQM-74E Chukar III UAV, Target Drone,0, 350 kt, 550 kt, 1.8 m, 0.7 m, 4.0 m, 0 kg, 211 kg, 0 kg, Navy,1993, 1x J400-WR-404,https://cmano-db.com/images/DB3000/aircraft_2691.jpg,US,aircraft
+BQM-74F Chukar III UAV, Target Drone,0, 350 kt, 610 kt, 2.1 m, 0.7 m, 4.5 m, 0 kg, 280 kg, 0 kg, Navy,2007, 1x J400-WR-40x,https://cmano-db.com/images/DB3000/aircraft_2692.jpg,US,aircraft
+Boeing 747-ALBM [ALBM Carrier Aircraft], Bomber,3, 230 kt, 520 kt, 59.6 m, 19.3 m, 70.6 m, 0 kg, 178100 kg, 377840 kg, Air Force,1986, 4x JT9D-7,0,US,aircraft
+Boeing 747-CMCA [Cruise Missile Carrier Aircraft], Bomber,3, 230 kt, 520 kt, 59.6 m, 19.3 m, 70.6 m, 0 kg, 178100 kg, 377840 kg, Air Force,1988, 4x JT9D-7,0,US,aircraft
+C-130E Hercules, Transport,5, 180 kt, 325 kt, 39.7 m, 11.9 m, 29.3 m, 19090 kg, 34400 kg, 69750 kg, Air Force,1963, 4x T56-A-7A,https://cmano-db.com/images/DB3000/aircraft_1614.jpg,US,aircraft
+C-130H Hercules, Transport,5, 180 kt, 325 kt, 40.4 m, 11.6 m, 29.8 m, 19090 kg, 34400 kg, 70300 kg, Air Force,1976, 4x T56-A-15,https://cmano-db.com/images/DB3000/aircraft_251.jpg,US,aircraft
+C-130J Hercules, Transport,5, 210 kt, 350 kt, 40.4 m, 11.8 m, 29.8 m, 20000 kg, 34200 kg, 79200 kg, Air Force,2017, 4x AE2100D3,0,US,aircraft
+C-130J-30 Hercules, Transport,5, 210 kt, 350 kt, 40.4 m, 11.8 m, 29.8 m, 20000 kg, 34200 kg, 79200 kg, Air Force,2017, 4x AE2100D3,0,US,aircraft
+C-141A Starlifter, Transport,6, 250 kt, 490 kt, 48.8 m, 12.0 m, 44.2 m, 30000 kg, 65542 kg, 147000 kg, Air Force,1966, 4x TF33-PW-7,https://cmano-db.com/images/DB3000/aircraft_1855.jpg,US,aircraft
+C-141B Starlifter, Transport,6, 250 kt, 490 kt, 48.7 m, 12.0 m, 51.3 m, 30000 kg, 65542 kg, 147000 kg, Air Force,1980, 4x TF33-PW-7,https://cmano-db.com/images/DB3000/aircraft_213.jpg,US,aircraft
+C-141B Starlifter SOLL, Transport,6, 250 kt, 490 kt, 48.7 m, 12.0 m, 51.3 m, 30000 kg, 65542 kg, 147000 kg, Air Force,1994, 4x TF33-PW-7,https://cmano-db.com/images/DB3000/aircraft_1929.jpg,US,aircraft
+C-141C Starlifter, Transport,6, 250 kt, 490 kt, 48.7 m, 12.0 m, 51.3 m, 30000 kg, 65542 kg, 147000 kg, Air Force,2000, 4x TF33-PW-7,https://cmano-db.com/images/DB3000/aircraft_485.jpg,US,aircraft
+C-145A Combat Coyote [An-28 Copy], Transport,3, 130 kt, 190 kt, 22.06 m, 4.9 m, 13.1 m, 2300 kg, 4100 kg, 7500 kg, Air Force,2007, 2x PT6A-65B,0,US,aircraft
+C-17A Globemaster III, Transport,3, 250 kt, 480 kt, 51.8 m, 16.8 m, 53.0 m, 77500 kg, 128100 kg, 265350 kg, Air Force,1994, 4x F117-PW-100,https://cmano-db.com/images/DB3000/aircraft_288.jpg,US,aircraft
+C-17A Globemaster III SOLL, Transport,3, 250 kt, 480 kt, 51.8 m, 16.8 m, 53.0 m, 77500 kg, 128100 kg, 265350 kg, Air Force,2003, 4x F117-PW-100,https://cmano-db.com/images/DB3000/aircraft_1932.jpg,US,aircraft
+C-212-200 Aviocar [C-41A], Maritime Patrol Aircraft (MPA),2, 140 kt, 200 kt, 20.3 m, 6.3 m, 16.2 m, 2960 kg, 3780 kg, 7700 kg, Air Force,1985, 2x TPE331-10R-511C,0,US,aircraft
+C-22B [Boeing 727-35], Transport,3, 230 kt, 520 kt, 32.9 m, 10.4 m, 40.6 m, 0 kg, 36560 kg, 77000 kg, Air Force,0, 3x JT8D-1,0,US,aircraft
+C-2A Greyhound, Transport,3, 200 kt, 335 kt, 24.6 m, 4.9 m, 17.3 m, 4500 kg, 15310 kg, 24655 kg, Navy,1967, 2x T56-A-425,https://cmano-db.com/images/DB3000/aircraft_633.jpg,US,aircraft
+C-2A(R) Greyhound, Transport,3, 200 kt, 335 kt, 24.6 m, 4.9 m, 17.3 m, 4500 kg, 15310 kg, 24655 kg, Navy,1986, 2x T56-A-425,https://cmano-db.com/images/DB3000/aircraft_2891.jpg,US,aircraft
+C-32A [Boeing 757-200ER], Transport,16, 230 kt, 520 kt, 38.05 m, 10.4 m, 47.32 m, 0 kg, 57840 kg, 115680 kg, Air Force,1998, 2x PW2037,0,US,aircraft
+C-32B [Boeing 757-200ER+], Transport,16, 230 kt, 520 kt, 38.05 m, 10.4 m, 47.32 m, 0 kg, 57840 kg, 115680 kg, Air Force,0, 2x PW2037,0,US,aircraft
+C-40A Clipper [Boeing 737-700C], Transport,5, 230 kt, 500 kt, 34.31 m, 12.55 m, 33.63 m, 17544 kg, 37648 kg, 70080 kg, Navy,2001, 2x CFM56-7-B20,0,US,aircraft
+C-40B Clipper [Boeing 737-700C], Transport,5, 230 kt, 500 kt, 34.31 m, 12.55 m, 33.63 m, 17544 kg, 37648 kg, 70080 kg, Air Force,2003, 2x CFM56-7-B20,0,US,aircraft
+C-40C Clipper [Boeing 737-700C], Transport,5, 230 kt, 500 kt, 34.31 m, 12.55 m, 33.63 m, 17544 kg, 37648 kg, 70080 kg, Air Force,2003, 2x CFM56-7-B20,0,US,aircraft
+C-47T Turbo Dakota [DC-3], Transport,3, 120 kt, 190 kt, 29.4 m, 5.2 m, 19.4 m, 2700 kg, 8038 kg, 14061 kg, Air Force,2002, 2x PT6A-65R,0,US,aircraft
+C-5A Galaxy, Transport,8, 250 kt, 480 kt, 67.9 m, 19.9 m, 75.5 m, 86260 kg, 172370 kg, 381000 kg, Air Force,1971, 4x TF39-GE-1C,https://cmano-db.com/images/DB3000/aircraft_2889.jpg,US,aircraft
+C-5B Galaxy, Transport,8, 250 kt, 480 kt, 67.9 m, 19.9 m, 75.5 m, 122470 kg, 172370 kg, 381000 kg, Air Force,1987, 4x TF39-GE-1C,https://cmano-db.com/images/DB3000/aircraft_287.jpg,US,aircraft
+C-5B Galaxy SOLL, Transport,8, 250 kt, 480 kt, 67.9 m, 19.9 m, 75.5 m, 122470 kg, 172370 kg, 381000 kg, Air Force,1981, 4x TF39-GE-1C,https://cmano-db.com/images/DB3000/aircraft_1930.jpg,US,aircraft
+C-5M Super Galaxy, Transport,8, 250 kt, 480 kt, 67.9 m, 19.9 m, 75.5 m, 122470 kg, 172370 kg, 381000 kg, Air Force,2010, 4x F138-GE-100,https://cmano-db.com/images/DB3000/aircraft_1931.jpg,US,aircraft
+C-9A Nightingale [DC-9-30], Transport,8, 230 kt, 480 kt, 28.47 m, 8.38 m, 36.37 m, 0 kg, 29638 kg, 48600 kg, Air Force,1968, 2x JT8D-9A,0,US,aircraft
+C-9B Skytrain II [DC-9-30], Transport,2, 230 kt, 480 kt, 28.47 m, 8.38 m, 36.37 m, 0 kg, 27080 kg, 49900 kg, Navy,1973, 2x JT8D-9A,0,US,aircraft
+C-9C [DC-9-30], Transport,2, 230 kt, 480 kt, 28.47 m, 8.38 m, 36.37 m, 0 kg, 27080 kg, 49900 kg, Air Force,1977, 2x JT8D-9A,0,US,aircraft
+CH-46D Sea Knight, Transport,3, 55 kt, 150 kt, 4.5 m, 5.1 m, 13.7 m, 3000 kg, 6287 kg, 10442 kg, Marine Corps,1967, 2x T58-GE-10,https://cmano-db.com/images/DB3000/aircraft_917.jpg,US,aircraft
+CH-46E Sea Knight, Transport,3, 55 kt, 150 kt, 4.5 m, 5.1 m, 13.9 m, 3000 kg, 6287 kg, 11000 kg, Marine Corps,1979, 2x T58-GE-16,https://cmano-db.com/images/DB3000/aircraft_918.jpg,US,aircraft
+CH-46E Sea Knight [Extended Range Mod], Transport,3, 55 kt, 150 kt, 4.5 m, 5.1 m, 13.9 m, 3000 kg, 6287 kg, 11000 kg, Marine Corps,2007, 2x T58-GE-16,https://cmano-db.com/images/DB3000/aircraft_2195.jpg,US,aircraft
+CH-46F Sea Knight, Transport,3, 55 kt, 150 kt, 4.5 m, 5.1 m, 13.7 m, 3000 kg, 6287 kg, 11000 kg, Marine Corps,1969, 2x T58-GE-10,https://cmano-db.com/images/DB3000/aircraft_865.jpg,US,aircraft
+CH-47C Chinook, Transport,3, 55 kt, 140 kt, 3.8 m, 5.8 m, 15.9 m, 6810 kg, 10615 kg, 20865 kg, Army,1969, 2x T55-L-11C,https://cmano-db.com/images/DB3000/aircraft_514.jpg,US,aircraft
+CH-47D Chinook, Transport,3, 55 kt, 155 kt, 3.8 m, 5.8 m, 15.9 m, 10886 kg, 10615 kg, 22668 kg, Army,1983, 2x T55-L-712,https://cmano-db.com/images/DB3000/aircraft_512.jpg,US,aircraft
+CH-47F Chinook, Transport,3, 55 kt, 155 kt, 3.8 m, 5.8 m, 15.9 m, 10896 kg, 10615 kg, 22668 kg, Army,2008, 2x T55-L-714A,https://cmano-db.com/images/DB3000/aircraft_2890.jpg,US,aircraft
+CH-53C Sea Stallion, Transport,3, 50 kt, 155 kt, 9.0 m, 7.6 m, 22.3 m, 8000 kg, 10740 kg, 19100 kg, Air Force,1969, 3x T64-GE-7,0,US,aircraft
+CH-53D Sea Stallion, Transport,3, 50 kt, 155 kt, 9.0 m, 7.6 m, 22.3 m, 8000 kg, 10740 kg, 19100 kg, Marine Corps,1971, 3x T64-GE-413A,https://cmano-db.com/images/DB3000/aircraft_776.jpg,US,aircraft
+CH-53E Super Stallion, Transport,3, 50 kt, 170 kt, 9.0 m, 8.5 m, 22.3 m, 16000 kg, 15071 kg, 33300 kg, Navy,1981, 3x T64-GE-416A,0,US,aircraft
+CH-53K King Stallion, Transport,3, 50 kt, 195 kt, 9.0 m, 8.5 m, 22.3 m, 16000 kg, 15071 kg, 38400 kg, Marine Corps,2022, 3x T408 [GE38-1B],0,US,aircraft
+CMV-22B Osprey, Transport,4, 140 kt, 305 kt, 14.0 m, 5.5 m, 17.5 m, 9000 kg, 15032 kg, 27400 kg, Navy,2022, 2x T406-AD-400,0,US,aircraft
+CV-22A Osprey, Transport,3, 140 kt, 305 kt, 14.0 m, 5.5 m, 17.5 m, 9000 kg, 15032 kg, 27400 kg, Air Force,2009, 2x T406-AD-400,https://cmano-db.com/images/DB3000/aircraft_296.jpg,US,aircraft
+DARPA TERN UCAV, Unmanned Aerial Vehicle (UAV),0, 55 kt, 140 kt, 12.0 m, 3.0 m, 3.0 m, 1065 kg, 1210 kg, 2722 kg, Navy,2019, 1x 250-C47E,0,US,aircraft
+Dash-8 Foxhound, Area Surveillance,2, 180 kt, 295 kt, 27.43 m, 7.49 m, 25.68 m, 5138 kg, 11791 kg, 19500 kg, Army,2014, 2x PW123B,0,US,aircraft
+E-11A BACN [Bombardier Global 6000], Airborne Command Post (ACP),4, 220 kt, 520 kt, 28.65 m, 7.8 m, 30.3 m, 2617 kg, 23691 kg, 45132 kg, Air Force,2005, 2x BR710A1-10,0,US,aircraft
+E-2C Hawkeye 2000, Airborne Early Warning (AEW),5, 200 kt, 335 kt, 24.6 m, 5.6 m, 17.6 m, 0 kg, 18090 kg, 26083 kg, Navy,2003, 2x T56-A-427,https://cmano-db.com/images/DB3000/aircraft_694.jpg,US,aircraft
+E-2C Hawkeye Basic, Airborne Early Warning (AEW),5, 200 kt, 335 kt, 24.6 m, 5.6 m, 17.6 m, 0 kg, 18090 kg, 26083 kg, Navy,1974, 2x T56-A-425,https://cmano-db.com/images/DB3000/aircraft_270.jpg,US,aircraft
+E-2C Hawkeye Group 0, Airborne Early Warning (AEW),5, 200 kt, 335 kt, 24.6 m, 5.6 m, 17.6 m, 0 kg, 18090 kg, 26083 kg, Navy,1984, 2x T56-A-425,https://cmano-db.com/images/DB3000/aircraft_557.jpg,US,aircraft
+E-2C Hawkeye Group I, Airborne Early Warning (AEW),5, 200 kt, 335 kt, 24.6 m, 5.6 m, 17.6 m, 0 kg, 18090 kg, 26083 kg, Navy,1990, 2x T56-A-427,https://cmano-db.com/images/DB3000/aircraft_13.jpg,US,aircraft
+E-2C Hawkeye Group II, Airborne Early Warning (AEW),5, 200 kt, 335 kt, 24.6 m, 5.6 m, 17.6 m, 0 kg, 18090 kg, 26083 kg, Navy,1995, 2x T56-A-427,https://cmano-db.com/images/DB3000/aircraft_268.jpg,US,aircraft
+E-2D Advanced Hawkeye, Airborne Early Warning (AEW),5, 200 kt, 335 kt, 24.6 m, 5.6 m, 17.6 m, 0 kg, 18090 kg, 26083 kg, Navy,2016, 2x T56-A-427A,https://cmano-db.com/images/DB3000/aircraft_690.jpg,US,aircraft
+E-3A Sentry, Airborne Early Warning (AEW),17, 230 kt, 520 kt, 44.4 m, 12.6 m, 46.6 m, 0 kg, 73480 kg, 147000 kg, Air Force,1980, 4x TF33-PW-100A/JT3D-3B,https://cmano-db.com/images/DB3000/aircraft_764.jpg,US,aircraft
+E-3B Sentry, Airborne Early Warning (AEW),17, 230 kt, 520 kt, 44.4 m, 12.6 m, 46.6 m, 0 kg, 73480 kg, 147000 kg, Air Force,1985, 4x TF33-PW-100A/JT3D-3B,https://cmano-db.com/images/DB3000/aircraft_765.jpg,US,aircraft
+E-3D Sentry, Airborne Early Warning (AEW),14, 230 kt, 520 kt, 44.4 m, 12.6 m, 46.6 m, 0 kg, 83990 kg, 151636 kg, Navy,2022, 4x CFM56-2A3,0,US,aircraft
+E-3G Sentry, Airborne Early Warning (AEW),17, 230 kt, 520 kt, 44.4 m, 12.6 m, 46.6 m, 0 kg, 73480 kg, 147000 kg, Air Force,2015, 4x TF33-PW-100A/JT3D-3B,https://cmano-db.com/images/DB3000/aircraft_3853.jpg,US,aircraft
+E-4B NAOC, Airborne Command Post (ACP),8, 230 kt, 520 kt, 59.6 m, 19.3 m, 70.6 m, 0 kg, 174000 kg, 377840 kg, Air Force,1984, 4x CF6-50-E2,https://cmano-db.com/images/DB3000/aircraft_695.jpg,US,aircraft
+E-6A Mercury, Airborne Command Post (ACP),23, 230 kt, 520 kt, 45.2 m, 12.9 m, 45.8 m, 0 kg, 66406 kg, 154400 kg, Navy,1990, 4x F108-CF-100/CFM56-2A,https://cmano-db.com/images/DB3000/aircraft_289.jpg,US,aircraft
+E-6B Mercury, Airborne Command Post (ACP),23, 230 kt, 520 kt, 45.2 m, 12.9 m, 45.8 m, 0 kg, 66406 kg, 154400 kg, Navy,1998, 4x F108-CF-100/CFM56-2A,https://cmano-db.com/images/DB3000/aircraft_592.jpg,US,aircraft
+E-7A Wedgetail, Airborne Early Warning (AEW),10, 230 kt, 520 kt, 35.8 m, 12.5 m, 33.6 m, 19830 kg, 46606 kg, 77565 kg, Air Force,2027, 2x CFM56-7B27A,0,US,aircraft
+E-8A Joint STARS, Area Surveillance,15, 230 kt, 520 kt, 44.4 m, 12.9 m, 46.6 m, 0 kg, 77564 kg, 152409 kg, Air Force,1991, 4x TF33-PW-100A/JT3D-3B,https://cmano-db.com/images/DB3000/aircraft_590.jpg,US,aircraft
+E-8C Joint STARS, Area Surveillance,15, 230 kt, 520 kt, 44.4 m, 12.9 m, 46.6 m, 0 kg, 77564 kg, 152409 kg, Air Force,1997, 4x TF33-PW-100A/JT3D-3B,https://cmano-db.com/images/DB3000/aircraft_290.jpg,US,aircraft
+E-9A Joint STARS, Electronic Warfare,15, 220 kt, 520 kt, 28.5 m, 7.9 m, 29.4 m, 2800 kg, 21800 kg, 41300 kg, Air Force,2022, 2x BR710A1-10,0,US,aircraft
+E-9A Widget [Dash-8-100], Maritime Patrol Aircraft (MPA),2, 180 kt, 295 kt, 25.9 m, 7.49 m, 22.3 m, 4200 kg, 10483 kg, 16470 kg, Air Force,1988, 2x PW120A,0,US,aircraft
+EA-18G Growler, Electronic Warfare,2, 350 kt, 920 kt, 13.6 m, 0.0 m, 18.3 m, 8050 kg, 13880 kg, 29937 kg, Navy,2016, 2x F414-GE-400,https://cmano-db.com/images/DB3000/aircraft_343.jpg,US,aircraft
+EA-3B Skywarrior, Electronic Warfare,3, 300 kt, 550 kt, 22.1 m, 7.0 m, 23.3 m, 0 kg, 17876 kg, 37195 kg, Navy,1963, 2x J57-P-10,https://cmano-db.com/images/DB3000/aircraft_755.jpg,US,aircraft
+EA-6A Electric Intruder, Electronic Warfare,2, 300 kt, 570 kt, 16.2 m, 4.8 m, 16.7 m, 15870 kg, 12070 kg, 27500 kg, Marine Corps,1966, 2x J52-P-6,https://cmano-db.com/images/DB3000/aircraft_960.jpg,US,aircraft
+EA-6A Electric Intruder RECAP, Electronic Warfare,2, 300 kt, 570 kt, 16.2 m, 4.8 m, 16.7 m, 15870 kg, 12070 kg, 27500 kg, Navy,1989, 2x J52-P-6,https://cmano-db.com/images/DB3000/aircraft_2249.jpg,US,aircraft
+EA-6B Prowler EXCAP, Electronic Warfare,4, 300 kt, 570 kt, 16.2 m, 4.8 m, 18.2 m, 13320 kg, 14600 kg, 27920 kg, Navy,1975, 2x J52-P-408A,https://cmano-db.com/images/DB3000/aircraft_2210.jpg,US,aircraft
+EC-130E Commando Solo I, Airborne Command Post (ACP),5, 180 kt, 325 kt, 39.7 m, 11.9 m, 29.3 m, 19090 kg, 34400 kg, 69750 kg, Air Force,1979, 4x T56-A-7A,https://cmano-db.com/images/DB3000/aircraft_225.jpg,US,aircraft
+EC-130E Commando Solo II, Airborne Command Post (ACP),5, 180 kt, 325 kt, 39.7 m, 11.9 m, 29.3 m, 19090 kg, 34400 kg, 69750 kg, Air Force,1993, 4x T56-A-7A,https://cmano-db.com/images/DB3000/aircraft_2879.jpg,US,aircraft
+EC-130G Hercules TACAMO, Electronic Warfare,5, 180 kt, 325 kt, 39.7 m, 11.9 m, 29.3 m, 19090 kg, 34400 kg, 69750 kg, Navy,1964, 4x T56-A-7A,https://cmano-db.com/images/DB3000/aircraft_319.jpg,US,aircraft
+EC-130H Compass Call, Electronic Warfare,5, 180 kt, 325 kt, 40.4 m, 11.6 m, 29.8 m, 19090 kg, 34400 kg, 70300 kg, Air Force,1983, 4x T56-A-15,https://cmano-db.com/images/DB3000/aircraft_320.jpg,US,aircraft
+EC-130H Compass Call [Baseline 1], Electronic Warfare,5, 180 kt, 325 kt, 40.4 m, 11.6 m, 29.8 m, 19090 kg, 34400 kg, 70300 kg, Air Force,2011, 4x T56-A-15,0,US,aircraft
+EC-130J Commando Solo III, Transport,5, 210 kt, 350 kt, 40.4 m, 11.8 m, 29.8 m, 20000 kg, 34200 kg, 79200 kg, Air Force,2004, 4x AE2100D3,https://cmano-db.com/images/DB3000/aircraft_2880.jpg,US,aircraft
+EC-130J TACAMO, Airborne Command Post (ACP),5, 210 kt, 350 kt, 40.4 m, 11.8 m, 29.8 m, 20000 kg, 34200 kg, 79200 kg, Navy,2026, 4x AE2100D3,0,US,aircraft
+EC-130Q TACAMO, Electronic Warfare,5, 180 kt, 325 kt, 39.7 m, 11.9 m, 29.3 m, 19090 kg, 34400 kg, 69750 kg, Navy,1968, 4x T56-A-15,https://cmano-db.com/images/DB3000/aircraft_2881.jpg,US,aircraft
+EC-130SJ Commando Solo III, Transport,5, 210 kt, 350 kt, 40.4 m, 11.8 m, 29.8 m, 20000 kg, 34200 kg, 79200 kg, Air Force,2022, 4x AE2100D3,0,US,aircraft
+EC-130V Hercules, Airborne Early Warning (AEW),5, 180 kt, 325 kt, 40.4 m, 11.6 m, 29.8 m, 19090 kg, 34400 kg, 70300 kg, Coast Guard,1991, 4x T56-A-15,0,US,aircraft
+EC-37B Compass Call, Electronic Warfare,2, 220 kt, 520 kt, 28.5 m, 7.9 m, 29.4 m, 2800 kg, 21800 kg, 41300 kg, Air Force,2021, 2x BR710A1-10,0,US,aircraft
+EF-111A Raven, Electronic Warfare,2, 350 kt, 920 kt, 19.2 m, 6.1 m, 23.5 m, 11500 kg, 25073 kg, 40370 kg, Air Force,1983, 2x TF30-PW-3,https://cmano-db.com/images/DB3000/aircraft_475.jpg,US,aircraft
+F-14E Super Tomcat-21 [ST-21], Fighter,2, 350 kt, 920 kt, 19.6 m, 4.9 m, 19.2 m, 5900 kg, 20292 kg, 34470 kg, Navy,2018, 2x F110-GE-400,0,US,aircraft
+F-14E Tomcat Quickstrike, Fighter,2, 350 kt, 920 kt, 19.6 m, 4.9 m, 19.2 m, 5900 kg, 19838 kg, 33720 kg, Navy,1999, 2x F110-GE-400,https://cmano-db.com/images/DB3000/aircraft_3492.jpg,US,aircraft
+F-14E Tomcat Quickstrike Blk III, Fighter,2, 350 kt, 920 kt, 19.6 m, 4.9 m, 19.2 m, 5900 kg, 19838 kg, 33720 kg, Navy,2023, 2x F110-GE-400,0,US,aircraft
+F-15A Eagle, Fighter,1, 350 kt, 920 kt, 13.1 m, 4.65 m, 19.3 m, 7260 kg, 12710 kg, 25400 kg, Air Force,1984, 2x F100-PW-100,https://cmano-db.com/images/DB3000/aircraft_203.jpg,US,aircraft
+F-15A Eagle ASAT, Anti-Satellite Interceptor (ASAT),1, 350 kt, 920 kt, 13.1 m, 4.65 m, 19.3 m, 7260 kg, 12710 kg, 25400 kg, Air Force,1985, 2x F100-PW-100,https://cmano-db.com/images/DB3000/aircraft_1994.jpg,US,aircraft
+F-15C Eagle, Fighter,1, 350 kt, 920 kt, 13.1 m, 4.65 m, 19.3 m, 7260 kg, 13240 kg, 30845 kg, Air Force,1984, 2x F100-PW-220E,https://cmano-db.com/images/DB3000/aircraft_211.jpg,US,aircraft
+F-15E Strike Eagle, Multirole (Fighter/Attack),2, 350 kt, 920 kt, 13.1 m, 4.65 m, 19.3 m, 7260 kg, 14390 kg, 32000 kg, Air Force,1995, 2x F100-PW-229,https://cmano-db.com/images/DB3000/aircraft_6.jpg,US,aircraft
+F-15EX Eagle II, Multirole (Fighter/Attack),2, 350 kt, 920 kt, 13.1 m, 4.65 m, 19.3 m, 7260 kg, 14390 kg, 32000 kg, Air Force,2023, 2x F110-GE-129,0,US,aircraft
+F-15N-PHX, Fighter,1, 350 kt, 920 kt, 13.1 m, 4.65 m, 19.3 m, 7260 kg, 12710 kg, 25400 kg, Navy,1977, 2x F100-PW-100,0,US,aircraft
+F-15NX Advanced Eagle, Multirole (Fighter/Attack),1, 350 kt, 920 kt, 13.1 m, 4.65 m, 19.3 m, 7260 kg, 14390 kg, 32000 kg, Navy,0, 2x F110-GE-129,0,US,aircraft
+F-16A Falcon, Multirole (Fighter/Attack),1, 350 kt, 920 kt, 9.5 m, 4.8 m, 14.5 m, 6894 kg, 7395 kg, 19200 kg, Air Force,1981, 1x F100-PW-200,https://cmano-db.com/images/DB3000/aircraft_158.jpg,US,aircraft
+F-16B Falcon, Multirole (Fighter/Attack),2, 350 kt, 920 kt, 9.5 m, 4.8 m, 14.5 m, 6894 kg, 7395 kg, 19200 kg, Air Force,1981, 1x F100-PW-200,0,US,aircraft
+F-16C Blk 25 Falcon, Multirole (Fighter/Attack),1, 350 kt, 920 kt, 9.5 m, 4.8 m, 14.5 m, 6894 kg, 8280 kg, 19200 kg, Air Force,1985, 1x F100-PW-220,https://cmano-db.com/images/DB3000/aircraft_223.jpg,US,aircraft
+F-16C Blk 30 Falcon, Multirole (Fighter/Attack),1, 350 kt, 920 kt, 9.5 m, 4.8 m, 14.5 m, 6894 kg, 8280 kg, 19200 kg, Air National Guard,2003, 1x F110-GE-100,https://cmano-db.com/images/DB3000/aircraft_198.jpg,US,aircraft
+F-16CG Blk 42 Falcon, Multirole (Fighter/Attack),1, 350 kt, 920 kt, 9.5 m, 4.8 m, 14.5 m, 6894 kg, 8280 kg, 19200 kg, Air Force,1995, 1x F100-PW-220,https://cmano-db.com/images/DB3000/aircraft_664.jpg,US,aircraft
+F-16CM Blk 42 Falcon, Multirole (Fighter/Attack),1, 350 kt, 920 kt, 9.5 m, 4.8 m, 14.5 m, 6894 kg, 8280 kg, 19200 kg, Air Force,2003, 1x F100-PW-220,https://cmano-db.com/images/DB3000/aircraft_1752.jpg,US,aircraft
+F-22A Raptor, Multirole (Fighter/Attack),1, 350 kt, 1000 kt, 13.6 m, 5.08 m, 18.9 m, 4500 kg, 14365 kg, 38000 kg, Air Force,2019, 2x F119-PW-100,https://cmano-db.com/images/DB3000/aircraft_2201.jpg,US,aircraft
+F-23A Black Widow II, Multirole (Fighter/Attack),1, 350 kt, 1000 kt, 13.28 m, 4.23 m, 20.54 m, 4500 kg, 13100 kg, 29000 kg, Air Force,2006, 2x F119-PW-100,0,US,aircraft
+"F-24A Hellcat II [NATF, Lockheed Proposal]", Fighter,2, 350 kt, 1000 kt, 19.5 m, 5.08 m, 18.9 m, 4500 kg, 14365 kg, 38000 kg, Navy,2002, 2x F119-PW-100,0,US,aircraft
+F-35A Lightning II, Multirole (Fighter/Attack),1, 350 kt, 920 kt, 10.7 m, 4.33 m, 15.67 m, 6810 kg, 13300 kg, 31800 kg, Air Force,2017, 1x F135-PW-100,https://cmano-db.com/images/DB3000/aircraft_278.jpg,US,aircraft
+F-35C Lightning II, Multirole (Fighter/Attack),1, 350 kt, 920 kt, 10.7 m, 4.33 m, 15.6 m, 6810 kg, 15800 kg, 31800 kg, Navy,2019, 1x F135-PW-100,https://cmano-db.com/images/DB3000/aircraft_824.jpg,US,aircraft
+F-4C Phantom II, Multirole (Fighter/Attack),2, 350 kt, 920 kt, 11.7 m, 5.02 m, 19.2 m, 8000 kg, 13245 kg, 27500 kg, Air Force,1972, 2x J79-GE-15,https://cmano-db.com/images/DB3000/aircraft_864.jpg,US,aircraft
+F-5E Tiger II [DACT], Multirole (Fighter/Attack),1, 350 kt, 920 kt, 8.0 m, 4.1 m, 14.4 m, 0 kg, 4349 kg, 11214 kg, Air Force,1975, 2x J85-GE-21,0,US,aircraft
+F/A-18A Hornet, Multirole (Fighter/Attack),1, 350 kt, 920 kt, 11.4 m, 4.88 m, 17.1 m, 7030 kg, 10455 kg, 23500 kg, Navy,1986, 2x F404-GE-400,https://cmano-db.com/images/DB3000/aircraft_47.jpg,US,aircraft
+F/A-18A+ Hornet, Multirole (Fighter/Attack),1, 350 kt, 920 kt, 11.4 m, 4.88 m, 17.1 m, 7030 kg, 10810 kg, 23500 kg, Navy,2003, 2x F404-GE-402,https://cmano-db.com/images/DB3000/aircraft_2035.jpg,US,aircraft
+F/A-18C Hornet, Multirole (Fighter/Attack),1, 350 kt, 920 kt, 11.4 m, 4.88 m, 17.1 m, 7030 kg, 10810 kg, 23500 kg, Marine Corps,2003, 2x F404-GE-402,https://cmano-db.com/images/DB3000/aircraft_825.jpg,US,aircraft
+F/A-18D Hornet, Multirole (Fighter/Attack),2, 350 kt, 920 kt, 11.4 m, 4.88 m, 17.1 m, 7030 kg, 10810 kg, 23500 kg, Marine Corps,2022, 2x F404-GE-402,0,US,aircraft
+F/A-18D Hornet [ATARS Recon], Multirole (Fighter/Attack),2, 350 kt, 920 kt, 11.4 m, 4.88 m, 17.1 m, 7030 kg, 10810 kg, 23500 kg, Marine Corps,2002, 2x F404-GE-402,https://cmano-db.com/images/DB3000/aircraft_4100.jpg,US,aircraft
+F/A-18E Super Hornet, Multirole (Fighter/Attack),1, 350 kt, 920 kt, 13.6 m, 4.88 m, 18.3 m, 8050 kg, 13880 kg, 29937 kg, Navy,2002, 2x F414-GE-400,https://cmano-db.com/images/DB3000/aircraft_342.jpg,US,aircraft

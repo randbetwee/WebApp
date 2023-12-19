@@ -5,8 +5,8 @@
 <mapper namespace="com.spring.databaseApp.mapper.VehicleMapper">
 
     <insert id="insertVehicle" useGeneratedKeys="false" keyProperty="id">
-        insert into vehicle(catag,nation,name)
-            values (#{catag},#{nation},#{name})
+        insert into vehicle(catag,nation,name,picture)
+            values (#{catag},#{nation},#{name},#{picture})
     </insert>
 
     <insert id="insertAircraft">

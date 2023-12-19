@@ -21,6 +21,8 @@ public class VehicleService {
 
     }
 
+
+    //增
     public String  Upload_Aircraft(Aircraft air){
         String temp=air.getName();
         Aircraft find_air=vechicleMapper.find_by_name(temp);
@@ -58,6 +60,7 @@ public class VehicleService {
         return name;
     }
 
+    //查
     public List<Vehicle> Search_by_Category(String Category){
         List<String> categ=vechicleMapper.find_all_category();
         if(!categ.contains(Category)){
@@ -84,5 +87,29 @@ public class VehicleService {
         List<Vehicle> list=vechicleMapper.find_all_Vehicles();
         return list;
     }
+
+    public Vehicle show_vehicle(int id){
+        Vehicle vec=vechicleMapper.find_by_id(id);
+        return vec;
+    }
+
+    public Vehicle show_vechicle_detail(int id){
+        Vehicle vec=vechicleMapper.find_by_id(id);
+        String cat=vec.getCatag();
+        switch(cat){
+            case "aircraft":
+                return vechicleMapper.find_by_name(vec.getName());
+            
+            default:
+                throw new CategoryMatchFailure("搜索不到该项的类别");
+
+        }
+    }
+
+    
+    //删
+    
+
+    //改
 
 }

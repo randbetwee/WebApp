@@ -17,7 +17,7 @@ headers = {
 url = 'https://cmano-db.com/aircraft/China/'# 首页网址URL
 refer='https://cmano-db.com/'
 #source_html  = requests.get(url=url, headers=headers).text# 请求发送
-tmp_html = "Soviet.html"
+tmp_html = "US.html"
 with open(tmp_html, "r", encoding="utf-8") as f:
     #f.write(source_html)
     #f.seek(0)
@@ -40,27 +40,33 @@ MaxWeight=[]
 Operator=[]
 Commissioned=[]
 Propulsion=[]
-#newname=[]
+pic=[]
+newname=[]
 m=0
 for i in range(len(Link)):
     #detail_url=refer+Link[i]
     #source_html  = requests.get(url=detail_url, headers=headers).text
-    with open('Soviet_aircraft/_'+str(i)+'.html', "r", encoding="utf-8") as f:
-            #f.write(source_html)
-            #f.seek(0)
-        
-            source_html= f.read()
-            #newname.append(name[i])
-    
-
-    
+    try:
+        with open('US_aircraft/_'+str(i)+'.html', "r", encoding="utf-8") as f:
+                #f.write(source_html)
+                #f.seek(0)
+            
+                source_html= f.read()
+                #newname.append(name[i])
+    except:
+        continue
     m+=1
     
     tree = etree.HTML(source_html)
-    
+    newname.append(name[i])
     detail=[j.lstrip() for j in 
             tree.xpath("//div[@class='col-lg-7']/table[1]/tbody/tr/td/text()")]
     modified_detail = [s.split(":")[1] if ":" in s else s for s in detail]
+    png=tree.xpath("//div[@class='col-lg-7']/a/@href")
+    if(len(png)!=0):
+        pic.append(refer+png[0])
+    else:
+         pic.append(0)
     Type.append(modified_detail[0])
     Crew.append(modified_detail[1])
     min_speed.append(modified_detail[2])
@@ -75,14 +81,14 @@ for i in range(len(Link)):
     Commissioned.append(modified_detail[11])
     Propulsion.append(modified_detail[12])
 
-dic = {'name':name,'Type':Type,'Crew': Crew, 
+dic = {'name':newname,'Type':Type,'Crew': Crew, 
            'Min Speed': min_speed,	 'Max Speed':max_speed,
             'Wingspan': wingspan,'Height':height,
             'Length':Length,	'Max Payload': MaxPayload,
             'Empty Weight': EmptyWeight,	'Max Weight':MaxWeight,
             'Operator': Operator,	'Commissioned':Commissioned,
-            'Propulsion': Propulsion}
-    
+            'Propulsion': Propulsion,'picture':pic}
+
 df2 = pd.DataFrame(dic)
-df2.to_csv('Soviet_aircraft.csv',index=None)
+df2.to_csv('US_aircraft.csv',index=None)
 

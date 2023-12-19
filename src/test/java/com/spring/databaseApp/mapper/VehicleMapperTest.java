@@ -10,6 +10,7 @@ import com.opencsv.CSVReaderBuilder;
 import com.opencsv.exceptions.CsvException;
 import com.spring.databaseApp.entity.Aircraft;
 import com.spring.databaseApp.entity.Category;
+import com.spring.databaseApp.entity.Vehicle;
 
 @SpringBootTest
 public class VehicleMapperTest {
@@ -28,7 +29,8 @@ public class VehicleMapperTest {
 
     @Test
     void testFind_by_cate() {
-
+        Vehicle vec=vec_map.find_by_id(412);
+        System.out.println(vec);
     }
 
      @Test

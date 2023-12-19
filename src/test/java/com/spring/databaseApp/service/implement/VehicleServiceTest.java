@@ -26,7 +26,7 @@ public class VehicleServiceTest {
 
     @Test
     void testUpload_Vehicle() {
-        String csvFilePath = "../dataFetcher/China_aircraft.csv";
+        String csvFilePath = "./dataFetcher/Soviet_aircraft.csv";
 
         try(CSVReader csvReader = new CSVReaderBuilder(new FileReader(csvFilePath)).build()){
             // 读取所有行
@@ -38,7 +38,7 @@ public class VehicleServiceTest {
                 // 遍历列
             if(i>0){
                 Aircraft vec=new Aircraft();
-                vec.setVehicle(row[15],0,row[14],row[0]);
+                vec.setVehicle(row[16],0,row[15],row[0],row[14]);
                 vec.setAircraft(row[0], row[1],Integer.parseInt(row[2]), 
                     row[3], row[4], row[5], row[6], row[7], 
                     row[8], row[9], row[10], row[11], row[12], row[13]);
