@@ -4,14 +4,16 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.databaseApp.entity.Comment;
 import com.spring.databaseApp.entity.Vehicle;
 import com.spring.databaseApp.service.implement.CommentService;
 import com.spring.databaseApp.util.JsonResult;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @RestController
 public class CommentController extends BaseController{
@@ -32,9 +34,11 @@ public class CommentController extends BaseController{
     }
     
 
-    @ResponseBody
+    
     @RequestMapping("{vid}/comment")         //接受某个飞机的评论区
-    public JsonResult<Void> commentrequest(Comment c){
+    public JsonResult<Void> commentrequest(Comment c,HttpServletRequest request){
+        Object a=request.getSession().getAttribute("id");
+        c.setUserID(Integer.parseInt(a.toString()));
         commentService.comment(c);
         return new JsonResult<Void>(200); 
     }

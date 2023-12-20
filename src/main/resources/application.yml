@@ -4,6 +4,11 @@ spring:
     username: guan  
     password: Chong@123
     driver-class-name: org.postgresql.Driver
+  servlet:
+    multipart:
+      max-file-size: 40MB        # file-size 总文件大小       MB 大写
+      max-request-size: 40MB     # request-size 单个文件大小  MB 大写
+      enabled: true 
 
 server:
   port: 8080

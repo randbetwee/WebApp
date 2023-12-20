@@ -1,6 +1,5 @@
 package com.spring.databaseApp.controller;
 
-import org.apache.tomcat.util.http.fileupload.FileUploadException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,8 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.databaseApp.service.exception.FileUploadFailed;
-import com.spring.databaseApp.service.exception.ServiceException;
-import com.spring.databaseApp.service.exception.UserNotFound;
 import com.spring.databaseApp.service.implement.PhotoWallService;
 import com.spring.databaseApp.service.implement.VehicleService;
 import com.spring.databaseApp.util.JsonResult;
@@ -57,15 +54,18 @@ public class PhotoWallController extends BaseController{
     public JsonResult<Void> AuditPhoto(int id,String address) {
        PhotoWall photo=new PhotoWall(id, address, false);
        photoWallService.audit(photo); 
-        
+        if(vehicleService.show_vehicle(id).getPicture().equals("0")){
+            vehicleService.show_vehicle(id).setPicture(address);
+        }
         return new JsonResult<Void>(200);
     }
     
 
     @PostMapping("/upload/photo")           //上传图片，自动标为未审核
-    public JsonResult<String> upload_Photo(MultipartFile uploadFile,
-                                int vid,
-                                HttpServletRequest request) {
+    public JsonResult<String> upload_Photo(
+                                    @RequestParam(value = "id") int vid,
+                                    @RequestParam(value = "File") MultipartFile uploadFile,
+                                    HttpServletRequest request) {
 
         String format = sdf.format(new Date());
         File folder = new File(uploadPath + format);
@@ -80,7 +80,7 @@ public class PhotoWallController extends BaseController{
                 + oldName.substring(oldName.lastIndexOf("."), oldName.length());
         
             // 文件保存
-            uploadFile.transferTo(new File(folder, newName));
+            uploadFile.transferTo((new File(folder, newName)).getAbsoluteFile());
 
             // 返回上传文件的访问路径
             String filePath = request.getScheme() + "://" + request.getServerName()

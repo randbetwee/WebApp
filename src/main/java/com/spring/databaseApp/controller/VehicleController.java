@@ -2,8 +2,6 @@ package com.spring.databaseApp.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import com.spring.databaseApp.entity.Category;
-import com.spring.databaseApp.entity.Nation;
 import com.spring.databaseApp.entity.Vehicle;
 import com.spring.databaseApp.service.exception.UserNotFound;
 import com.spring.databaseApp.service.implement.VehicleService;
