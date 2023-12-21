@@ -3,15 +3,22 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.databaseApp.mapper.VehicleMapper">
-
+    <resultMap id="airMap" type="com.spring.databaseApp.entity.Aircraft">
+        <result column="min_speed" property="min_speed" jdbcType="VARCHAR" />
+        <result column="max_speed" property="max_speed" jdbcType="VARCHAR" />
+        <result column="wing_span" property="wing_span" jdbcType="VARCHAR" />
+        <result column="max_payload" property="max_payload" jdbcType="VARCHAR" />
+        <result column="empty_weight" property="empty_weight" jdbcType="VARCHAR" />
+        <result column="max_weight" property="max_weight" jdbcType="VARCHAR" />
+    </resultMap>
     <insert id="insertVehicle" useGeneratedKeys="false" keyProperty="id">
         insert into vehicle(catag,nation,name,picture)
             values (#{catag},#{nation},#{name},#{picture})
     </insert>
 
     <insert id="insertAircraft">
-        insert into aircraft(name,type,Crew,min_speed,max_speed,wingspan,height,Length,MaxPayload,EmptyWeight,	MaxWeight,operator,Commissioned,Propulsion)
-            values (#{name},#{Type},#{Crew},#{min_Speed},#{Max_speed},#{Wingspan},#{Height},#{Length},#{Max_payload},#{Empty_weight},#{Max_weight},#{Operator},#{Commissioned},#{Propulsion})
+        insert into aircraft(name,type,Crew,min_speed,max_speed,wing_span,height,Length,max_payload,empty_weight,max_weight,operator,Commissioned,Propulsion)
+            values (#{name},#{Type},#{Crew},#{min_speed},#{max_speed},#{wing_span},#{Height},#{Length},#{max_payload},#{empty_weight},#{max_weight},#{Operator},#{Commissioned},#{Propulsion})
     </insert>
 
     <insert id="insertNation" >
@@ -28,7 +35,7 @@
         select name from vehicle where catag = #{cate}
     </select>
 
-    <select id="find_by_name" resultType="com.spring.databaseApp.entity.Aircraft">
+    <select id="find_by_name" parameterType= "Map" resultMap="airMap">
         select * from aircraft where name = #{name}
     </select>
 

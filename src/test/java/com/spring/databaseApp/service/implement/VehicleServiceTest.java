@@ -26,7 +26,7 @@ public class VehicleServiceTest {
 
     @Test
     void testUpload_Vehicle() {
-        String csvFilePath = "./dataFetcher/Soviet_aircraft.csv";
+        String csvFilePath = "./dataFetcher/aircraft.csv";
 
         try(CSVReader csvReader = new CSVReaderBuilder(new FileReader(csvFilePath)).build()){
             // 读取所有行

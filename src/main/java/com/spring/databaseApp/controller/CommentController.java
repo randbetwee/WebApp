@@ -35,7 +35,7 @@ public class CommentController extends BaseController{
     
 
     
-    @RequestMapping("{vid}/comment")         //接受某个飞机的评论区
+    @RequestMapping("comment/{vid}")         //接受某个飞机的评论区
     public JsonResult<Void> commentrequest(Comment c,HttpServletRequest request){
         Object a=request.getSession().getAttribute("id");
         c.setUserID(Integer.parseInt(a.toString()));
@@ -43,5 +43,11 @@ public class CommentController extends BaseController{
         return new JsonResult<Void>(200); 
     }
     
-
+    @RequestMapping("{vid}/delete")         //删除某个评论
+    public JsonResult<Void> commentDelete(@PathVariable("vid") Integer vid,HttpServletRequest request){
+        Object a=request.getSession().getAttribute("id");
+        int id=Integer.parseInt(a.toString());
+        commentService.delete(vid, id);
+        return new JsonResult<Void>(200); 
+    }
 }

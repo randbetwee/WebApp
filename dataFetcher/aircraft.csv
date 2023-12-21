@@ -1,0 +1,472 @@
+name,Type,Crew,Min Speed,Max Speed,Wingspan,Height,Length,Max Payload,Empty Weight,Max Weight,Operator,Commissioned,Propulsion,picture,Nation,Category
+AG-600 [Kunlong], Naval Utility,3, 210 kt, 302 kt, 38.8 m, 12.1 m, 36.9 m, 0 kg, 33600 kg, 53500 kg, Navy,2021, 4x WJ-6C,0,China,aircraft
+AS.565SA Panther, Anti-Submarine Warfare (ASW),2, 55 kt, 155 kt, 3.0 m, 4.1 m, 11.3 m, 1600 kg, 2300 kg, 4300 kg, Navy,1988, 2x Arriel 2C,https://cmano-db.com/images/DB3000/aircraft_2404.jpg,China,aircraft
+An-24B Coke, Transport,5, 160 kt, 270 kt, 29.2 m, 8.3 m, 23.5 m, 5500 kg, 13300 kg, 21000 kg, Air Force,1971, 2x AI-24A,0,China,aircraft
+An-24RV Coke, Transport,5, 160 kt, 270 kt, 29.2 m, 8.3 m, 23.5 m, 5500 kg, 13300 kg, 21000 kg, Air Force,0, 2x AI-24A,0,China,aircraft
+BZK-005 Sea Eagle UAV, Unmanned Aerial Vehicle (UAV),0, 70 kt, 115 kt, 15.0 m, 2.5 m, 9.0 m, 0 kg, 600 kg, 1200 kg, Navy,2009, 1x Piston,https://cmano-db.com/images/DB3000/aircraft_3309.jpg,China,aircraft
+BZK-005 Sky Eagle UAV, Unmanned Aerial Vehicle (UAV),0, 70 kt, 115 kt, 15.0 m, 2.5 m, 9.0 m, 0 kg, 600 kg, 1200 kg, Army,2020, 1x Piston,0,China,aircraft
+"CH-4B [Rainbow, Predator Copy] UAV", Unmanned Combat Aerial Vehicle (UCAV),0, 70 kt, 115 kt, 18.0 m, 2.1 m, 9.0 m, 345 kg, 550 kg, 1330 kg, Army,2014, 1x Piston,0,China,aircraft
+CH-5 [Rainbow] UCAV, Unmanned Combat Aerial Vehicle (UCAV),0, 55 kt, 120 kt, 21.0 m, 4.1 m, 11.0 m, 1200 kg, 1200 kg, 3300 kg, Air Force,2018, 1x Turbo-charged Piston,0,China,aircraft
+CH-500 UCAV, Unmanned Combat Aerial Vehicle (UCAV),0, 35 kt, 65 kt, 0.8 m, 0.8 m, 1.8 m, 55 kg, 100 kg, 200 kg, Army,2019, 1x Gas Turboshaft,0,China,aircraft
+CH-6 UAV [Recon Type], Unmanned Aerial Vehicle (UAV),0, 200 kt, 430 kt, 20.5 m, 5.0 m, 15.0 m, 300 kg, 5261 kg, 7076 kg, People's Liberation Army Air Force,2021, 2x Turbofans,0,China,aircraft
+CH-6 UAV [Recon/Attack Type], Unmanned Combat Aerial Vehicle (UCAV),0, 200 kt, 430 kt, 20.5 m, 5.0 m, 15.0 m, 2000 kg, 5261 kg, 7076 kg, People's Liberation Army Air Force,2021, 2x Turbofans,0,China,aircraft
+CSA-003 [Diamond DA42 Twin Star], Electronic Intelligence (ELINT),2, 110 kt, 180 kt, 13.42 m, 2.5 m, 8.9 m, 403 kg, 1596 kg, 2000 kg, Army,2016, 2x Austro Engine E4 AE-300,0,China,aircraft
+CSA-004 [Diamond DA42 Twin Star], Area Surveillance,2, 110 kt, 180 kt, 13.42 m, 2.5 m, 8.9 m, 403 kg, 1596 kg, 2000 kg, Army,2016, 2x Austro Engine E4 AE-300,0,China,aircraft
+Camcopter S-100 UAV, Unmanned Aerial Vehicle (UAV),0, 55 kt, 115 kt, 1.24 m, 1.12 m, 3.11 m, 50 kg, 110 kg, 200 kg, Navy,2012, 1x AE50R Wankel,https://cmano-db.com/images/DB3000/aircraft_3171.jpg,China,aircraft
+Divine Eagle UAV, Unmanned Aerial Vehicle (UAV),0, 150 kt, 405 kt, 40.23 m, 4.7 m, 15.25 m, 0 kg, 6781 kg, 15000 kg, Air Force,2020, 1x WP-13 Turbojet,0,China,aircraft
+FC-31 Gyrfalcon, Multirole (Fighter/Attack),1, 350 kt, 900 kt, 11.5 m, 4.8 m, 16.8 m, 7000 kg, 13500 kg, 25000 kg, Air Force,2022, 2x WS-13E,https://cmano-db.com/images/DB3000/aircraft_2917.jpg,China,aircraft
+FC-31 Gyrfalcon [Carrier Variant], Multirole (Fighter/Attack),1, 350 kt, 900 kt, 11.5 m, 4.8 m, 16.8 m, 7000 kg, 13500 kg, 25000 kg, Air Force,2022, 2x WS-13E,0,China,aircraft
+FTC-2000 Mountain Eagle [JL-9G], Trainer,2, 350 kt, 920 kt, 8.32 m, 4.1 m, 14.5 m, 0 kg, 7800 kg, 9800 kg, Navy,2013, 1x Guizhou Liyang WP-13F,0,China,aircraft
+FTC-2000 Mountain Eagle [JL-9], Trainer,2, 350 kt, 920 kt, 8.32 m, 4.1 m, 14.5 m, 0 kg, 7800 kg, 9800 kg, Air Force,2013, 1x Guizhou Liyang WP-13F,0,China,aircraft
+GJ-1 Wing Loong I UAV, Unmanned Aerial Vehicle (UAV),0, 70 kt, 115 kt, 14.0 m, 2.77 m, 9.05 m, 0 kg, 600 kg, 1100 kg, Air Force,2013, 1x Piston,https://cmano-db.com/images/DB3000/aircraft_3310.jpg,China,aircraft
+GJ-11 Sharp Sword UAV, Unmanned Aerial Vehicle (UAV),0, 180 kt, 600 kt, 14.0 m, 3.1 m, 11.63 m, 2000 kg, 6350 kg, 20215 kg, Navy,2020, 1x Turbofan,0,China,aircraft
+GJ-11 Sharp Sword UCAV, Unmanned Combat Aerial Vehicle (UCAV),0, 180 kt, 600 kt, 14.0 m, 3.1 m, 11.63 m, 2000 kg, 6350 kg, 20215 kg, Navy,2020, 1x Turbofan,0,China,aircraft
+GJ-2 Wing Loong II UCAV, Unmanned Combat Aerial Vehicle (UCAV),0, 120 kt, 200 kt, 20.5 m, 4.1 m, 11.0 m, 480 kg, 1500 kg, 4200 kg, Air Force,2018, 1x Turboprop,0,China,aircraft
+GJ-3 Wing Loong III UCAV, Unmanned Combat Aerial Vehicle (UCAV),0, 120 kt, 200 kt, 24.0 m, 4.3 m, 12.2 m, 2300 kg, 1500 kg, 6200 kg, Air Force,2022, 1x Turboprop,0,China,aircraft
+H-5 Beagle, Bomber,3, 250 kt, 510 kt, 21.5 m, 6.2 m, 17.7 m, 3000 kg, 12890 kg, 21200 kg, Navy,1967, 2x WJ-SA,https://cmano-db.com/images/DB3000/aircraft_139.jpg,China,aircraft
+H-6A Badger, Bomber,6, 300 kt, 550 kt, 33.0 m, 10.4 m, 34.8 m, 13000 kg, 38500 kg, 79000 kg, Air Force,1973, 2x RD-3M,https://cmano-db.com/images/DB3000/aircraft_140.jpg,China,aircraft
+H-6C Badger, Bomber,6, 300 kt, 550 kt, 33.0 m, 10.4 m, 34.8 m, 13000 kg, 38500 kg, 79000 kg, Air Force,1984, 2x RD-3M,0,China,aircraft
+H-6D Badger, Bomber,6, 300 kt, 550 kt, 33.0 m, 10.4 m, 34.8 m, 13000 kg, 38500 kg, 79000 kg, Navy,1987, 2x RD-3M,https://cmano-db.com/images/DB3000/aircraft_197.jpg,China,aircraft
+H-6E Badger, Bomber,6, 300 kt, 550 kt, 33.0 m, 10.4 m, 34.8 m, 13000 kg, 38500 kg, 79000 kg, Air Force,2000, 2x RD-3M,https://cmano-db.com/images/DB3000/aircraft_2066.jpg,China,aircraft
+H-6G Badger, Bomber,6, 300 kt, 550 kt, 33.0 m, 10.4 m, 34.8 m, 13000 kg, 38500 kg, 79000 kg, Navy,2006, 2x RD-3M,https://cmano-db.com/images/DB3000/aircraft_2065.jpg,China,aircraft
+H-6G Badger [H-6M], Bomber,6, 300 kt, 550 kt, 33.0 m, 10.4 m, 34.8 m, 13000 kg, 38500 kg, 79000 kg, Navy,2015, 2x RD-3M,0,China,aircraft
+H-6H Badger, Bomber,6, 300 kt, 550 kt, 33.0 m, 10.4 m, 34.8 m, 13000 kg, 38500 kg, 79000 kg, Air Force,2006, 2x RD-3M,https://cmano-db.com/images/DB3000/aircraft_2464.jpg,China,aircraft
+H-6J Badger, Bomber,3, 300 kt, 550 kt, 33.0 m, 10.4 m, 34.8 m, 13000 kg, 38500 kg, 79000 kg, Navy,2018, 2x WS-18 [D-30KP-2 Copy],0,China,aircraft
+H-6K Badger, Bomber,3, 300 kt, 550 kt, 33.0 m, 10.4 m, 34.8 m, 13000 kg, 38500 kg, 79000 kg, Air Force,2011, 2x WS-18 [D-30KP-2 Copy],https://cmano-db.com/images/DB3000/aircraft_1731.jpg,China,aircraft
+H-6M Badger, Bomber,6, 300 kt, 550 kt, 33.0 m, 10.4 m, 34.8 m, 13000 kg, 38500 kg, 79000 kg, Air Force,2008, 2x RD-3M,https://cmano-db.com/images/DB3000/aircraft_3308.jpg,China,aircraft
+H-6N Badger, Bomber,3, 300 kt, 550 kt, 33.0 m, 10.4 m, 34.8 m, 13000 kg, 38500 kg, 79000 kg, Air Force,2018, 2x WS-18 [D-30KP-2 Copy],0,China,aircraft
+HD-5 Beagle, Electronic Warfare,3, 250 kt, 510 kt, 21.5 m, 6.2 m, 17.7 m, 0 kg, 12890 kg, 21200 kg, Air Force,1987, 2x WJ-SA,https://cmano-db.com/images/DB3000/aircraft_1730.jpg,China,aircraft
+HY-6D Badger [H-6DU], Tanker (Air Refueling),6, 300 kt, 550 kt, 33.0 m, 10.4 m, 34.8 m, 13000 kg, 38500 kg, 79000 kg, Navy,2000, 2x RD-3M,0,China,aircraft
+HY-6U Badger [H-6U], Tanker (Air Refueling),6, 300 kt, 550 kt, 33.0 m, 10.4 m, 34.8 m, 0 kg, 38500 kg, 79000 kg, Air Force,1997, 2x RD-3M,https://cmano-db.com/images/DB3000/aircraft_823.jpg,China,aircraft
+HZ-5 Beagle, Recon,3, 250 kt, 510 kt, 21.5 m, 6.2 m, 17.7 m, 0 kg, 12890 kg, 21200 kg, Air Force,1979, 2x WJ-SA,0,China,aircraft
+HZ-6A Badger, Electronic Intelligence (ELINT),6, 300 kt, 550 kt, 33.0 m, 10.4 m, 34.8 m, 0 kg, 38500 kg, 79000 kg, Air Force,1990, 2x RD-3M,0,China,aircraft
+J-10A Firebird, Fighter,1, 350 kt, 920 kt, 9.7 m, 4.8 m, 15.5 m, 4500 kg, 9750 kg, 19277 kg, Air Force,2008, 1x AL-31F,https://cmano-db.com/images/DB3000/aircraft_715.jpg,China,aircraft
+J-10AH Firebird, Fighter,1, 350 kt, 920 kt, 9.7 m, 4.8 m, 15.5 m, 4500 kg, 9750 kg, 19277 kg, Navy,2011, 1x AL-31F,https://cmano-db.com/images/DB3000/aircraft_2478.jpg,China,aircraft
+J-10B Firebird, Fighter,1, 350 kt, 920 kt, 9.7 m, 4.8 m, 15.5 m, 4500 kg, 9750 kg, 19277 kg, Air Force,2014, 1x AL-31FN,https://cmano-db.com/images/DB3000/aircraft_3300.jpg,China,aircraft
+J-10C Firebird, Fighter,1, 350 kt, 920 kt, 9.7 m, 4.8 m, 15.5 m, 4500 kg, 9750 kg, 19277 kg, Air Force,2018, 1x AL-31FN,https://cmano-db.com/images/DB3000/aircraft_2057.jpg,China,aircraft
+J-11 Flanker B [Su-27SK], Fighter,1, 350 kt, 920 kt, 14.7 m, 5.9 m, 21.9 m, 8000 kg, 16380 kg, 30450 kg, Air Force,1994, 2x AL-31F,https://cmano-db.com/images/DB3000/aircraft_708.jpg,China,aircraft
+J-11B Flanker B [Su-27SK Copy], Fighter,1, 350 kt, 920 kt, 14.7 m, 5.9 m, 21.9 m, 8000 kg, 16380 kg, 30450 kg, Air Force,2009, 2x WS-10B,https://cmano-db.com/images/DB3000/aircraft_1993.jpg,China,aircraft
+J-11BG, Fighter,1, 350 kt, 920 kt, 14.7 m, 5.9 m, 21.9 m, 8000 kg, 16380 kg, 30450 kg, Air Force,2019, 2x WS-10B,0,China,aircraft
+J-11BH Flanker B [Su-27SK Copy], Fighter,1, 350 kt, 920 kt, 14.7 m, 5.9 m, 21.9 m, 8000 kg, 16380 kg, 30450 kg, Navy,2013, 2x WS-10B,0,China,aircraft
+J-11BHG Flanker B [Su-27SK Copy], Fighter,1, 350 kt, 920 kt, 14.7 m, 5.9 m, 21.9 m, 8000 kg, 16380 kg, 30450 kg, Navy,2022, 2x WS-10B,0,China,aircraft
+J-11BS Flanker C [Su-27UBK Copy], Fighter,2, 350 kt, 920 kt, 14.7 m, 5.9 m, 21.9 m, 8000 kg, 16380 kg, 30450 kg, Air Force,2009, 2x WS-10B,0,China,aircraft
+J-11BSH Flanker C [Su-27UBK Copy], Fighter,2, 350 kt, 920 kt, 14.7 m, 5.9 m, 21.9 m, 8000 kg, 16380 kg, 30450 kg, Navy,2013, 2x WS-10B,0,China,aircraft
+J-11D Flanker L [Su-27SK Copy], Fighter,1, 350 kt, 920 kt, 14.7 m, 5.9 m, 21.9 m, 8000 kg, 16380 kg, 30450 kg, Air Force,2018, 2x WS-10B,0,China,aircraft
+J-15 Flying Shark [Su-33 Copy], Fighter,1, 350 kt, 920 kt, 14.7 m, 5.9 m, 21.9 m, 8000 kg, 17700 kg, 33000 kg, Navy,2017, 2x AL-31F,https://cmano-db.com/images/DB3000/aircraft_2496.jpg,China,aircraft
+J-15B Flying Shark [Su-33 Copy], Fighter,1, 350 kt, 920 kt, 14.7 m, 5.9 m, 21.9 m, 8000 kg, 17700 kg, 33000 kg, Navy,2022, 2x AL-31F,0,China,aircraft
+J-15D Growler Shark, Fighter,1, 350 kt, 920 kt, 14.7 m, 5.9 m, 21.9 m, 8000 kg, 17700 kg, 33000 kg, Navy,2017, 2x AL-31F,0,China,aircraft
+J-15D Roaring Shark, Electronic Warfare,2, 350 kt, 920 kt, 14.7 m, 5.9 m, 21.9 m, 8000 kg, 16380 kg, 30450 kg, Navy,2019, 2x AL-31F,0,China,aircraft
+J-15S Flying Shark, Fighter,2, 350 kt, 920 kt, 14.7 m, 5.9 m, 21.9 m, 8000 kg, 17700 kg, 33000 kg, Navy,2017, 2x AL-31F,https://cmano-db.com/images/DB3000/aircraft_3311.jpg,China,aircraft
+J-16 Flying Shark [Su-30MKK Copy], Fighter,2, 350 kt, 920 kt, 14.7 m, 5.9 m, 21.9 m, 8000 kg, 16380 kg, 30450 kg, Navy,2015, 2x WS-10B,https://cmano-db.com/images/DB3000/aircraft_2853.jpg,China,aircraft
+J-16D Roaring Wolf, Electronic Warfare,2, 350 kt, 920 kt, 14.7 m, 5.9 m, 21.9 m, 8000 kg, 16380 kg, 30450 kg, Navy,2021, 2x AL-31F,0,China,aircraft
+J-20A Mighty Dragon, Fighter,1, 350 kt, 920 kt, 12.88 m, 4.45 m, 21.26 m, 4500 kg, 19400 kg, 37000 kg, Air Force,2017, 2x AL-31FM-2,0,China,aircraft
+J-20B Mighty Dragon, Fighter,1, 350 kt, 1000 kt, 12.9 m, 4.5 m, 21.3 m, 4500 kg, 19400 kg, 37000 kg, Air Force,2023, 2x WS-15,https://cmano-db.com/images/DB3000/aircraft_2463.jpg,China,aircraft
+J-20S Mighty Dragon, Fighter,2, 350 kt, 920 kt, 12.9 m, 4.5 m, 21.3 m, 4500 kg, 19400 kg, 37000 kg, Air Force,2021, 2x WS-10B,0,China,aircraft
+J-5A Fresco [MiG-17PF Copy], Fighter,1, 350 kt, 650 kt, 9.6 m, 3.8 m, 11.4 m, 650 kg, 3930 kg, 5350 kg, Air Force,1966, 1x WP-5 [VK-1F Copy],https://cmano-db.com/images/DB3000/aircraft_2769.jpg,China,aircraft
+J-6 Farmer [MiG-19S Copy], Fighter,1, 350 kt, 700 kt, 9.2 m, 3.9 m, 14.9 m, 0 kg, 5760 kg, 10000 kg, Air Force,1966, 1x WP-6 [RD-9BF-811 Copy],https://cmano-db.com/images/DB3000/aircraft_2770.jpg,China,aircraft
+J-6 Farmer [MiG-19S Copy] UAV, Unmanned Aerial Vehicle (UAV),0, 350 kt, 700 kt, 9.2 m, 3.9 m, 14.9 m, 0 kg, 5760 kg, 10000 kg, Air Force,2021, 1x WP-6 [RD-9BF-811 Copy],0,China,aircraft
+J-6A Farmer [MiG-19P Copy], Fighter,1, 350 kt, 700 kt, 9.2 m, 3.9 m, 14.9 m, 0 kg, 5760 kg, 10000 kg, Air Force,1982, 1x WP-6 [RD-9BF-811 Copy],https://cmano-db.com/images/DB3000/aircraft_170.jpg,China,aircraft
+J-7C Fishbed [MiG-21 Copy], Fighter,1, 350 kt, 920 kt, 7.2 m, 4.1 m, 14.0 m, 0 kg, 4871 kg, 8625 kg, Air Force,1988, 1x WP-13 [R-13F-300 Copy],https://cmano-db.com/images/DB3000/aircraft_82.jpg,China,aircraft
+J-7D Fishbed [MiG-21 Copy], Fighter,1, 350 kt, 920 kt, 7.2 m, 4.1 m, 14.0 m, 0 kg, 4871 kg, 8625 kg, Air Force,1995, 1x WP-13F1 [R-13F-300 Copy],https://cmano-db.com/images/DB3000/aircraft_2475.jpg,China,aircraft
+J-7E Fishbed [MiG-21 Copy], Fighter,1, 350 kt, 920 kt, 8.3 m, 4.1 m, 14.0 m, 0 kg, 4871 kg, 8625 kg, Air Force,1996, 1x WP-13F [R-13F-300 Copy],https://cmano-db.com/images/DB3000/aircraft_793.jpg,China,aircraft
+J-7EH Fishbed [MiG-21 Copy], Fighter,1, 350 kt, 920 kt, 8.3 m, 4.1 m, 14.0 m, 0 kg, 4871 kg, 8625 kg, Navy,1996, 1x WP-13F [R-13F-300 Copy],https://cmano-db.com/images/DB3000/aircraft_2476.jpg,China,aircraft
+J-7G Fishbed [MiG-21 Copy], Fighter,1, 350 kt, 920 kt, 8.3 m, 4.1 m, 14.0 m, 0 kg, 4871 kg, 8625 kg, Air Force,2005, 1x WP-13F [R-13F-300 Copy],https://cmano-db.com/images/DB3000/aircraft_2477.jpg,China,aircraft
+J-7I Fishbed [MiG-21 Copy], Fighter,1, 350 kt, 920 kt, 7.2 m, 4.1 m, 14.0 m, 0 kg, 4871 kg, 8625 kg, Air Force,1982, 1x WP-7A,https://cmano-db.com/images/DB3000/aircraft_358.jpg,China,aircraft
+J-7II Fishbed [MiG-21 Copy], Fighter,1, 350 kt, 920 kt, 7.2 m, 4.1 m, 14.0 m, 0 kg, 4871 kg, 8625 kg, Air Force,1983, 1x WP-7B,https://cmano-db.com/images/DB3000/aircraft_81.jpg,China,aircraft
+J-7IIH Fishbed [MiG-21 Copy], Fighter,1, 350 kt, 920 kt, 7.2 m, 4.1 m, 14.0 m, 0 kg, 4871 kg, 8625 kg, Air Force,1991, 1x WP-7B,https://cmano-db.com/images/DB3000/aircraft_2474.jpg,China,aircraft
+J-8A Finback A [J-8I], Fighter,1, 350 kt, 920 kt, 9.3 m, 5.4 m, 21.6 m, 2500 kg, 9820 kg, 17800 kg, Air Force,1986, 2x WP-7B,https://cmano-db.com/images/DB3000/aircraft_795.jpg,China,aircraft
+J-8B Finback B [J-8II], Fighter,1, 350 kt, 920 kt, 9.3 m, 5.4 m, 21.6 m, 0 kg, 9820 kg, 17800 kg, Air Force,1996, 2x WP-13A2 [R-13F-300 Copy],https://cmano-db.com/images/DB3000/aircraft_499.jpg,China,aircraft
+J-8D Finback B [J-8II], Fighter,1, 350 kt, 920 kt, 9.3 m, 5.4 m, 21.6 m, 0 kg, 9820 kg, 17800 kg, Air Force,1997, 2x WP-13A2 [R-13F-300 Copy],https://cmano-db.com/images/DB3000/aircraft_2470.jpg,China,aircraft
+J-8F Finback B [J-8II], Fighter,1, 350 kt, 920 kt, 9.3 m, 5.4 m, 21.6 m, 0 kg, 9820 kg, 17800 kg, Air Force,2004, 2x WP-13B2 [R-13F-300 Copy],0,China,aircraft
+J-8IE Finback A [J-8I], Fighter,1, 350 kt, 920 kt, 9.3 m, 5.4 m, 21.6 m, 0 kg, 9820 kg, 17800 kg, Air Force,1996, 2x WP-7B,0,China,aircraft
+JH-7 Flounder, Attack,2, 350 kt, 750 kt, 12.8 m, 6.2 m, 22.3 m, 6500 kg, 14500 kg, 28475 kg, Navy,1999, 2x WS-9/Spey Mk.202,https://cmano-db.com/images/DB3000/aircraft_797.jpg,China,aircraft
+JH-7A Flounder, Attack,2, 350 kt, 750 kt, 12.8 m, 6.2 m, 22.3 m, 9000 kg, 13500 kg, 30000 kg, Navy,2008, 2x WS-9/Spey Mk.202,https://cmano-db.com/images/DB3000/aircraft_254.jpg,China,aircraft
+JH-7A2 Flounder, Attack,2, 350 kt, 750 kt, 12.8 m, 6.2 m, 22.3 m, 9000 kg, 13500 kg, 30000 kg, Air Force,2019, 2x WS-9/Spey Mk.202,0,China,aircraft
+JH-7B Flounder, Attack,2, 350 kt, 750 kt, 12.8 m, 6.2 m, 22.3 m, 9000 kg, 13500 kg, 30000 kg, Navy,2018, 2x WS-9A/Spey Mk.202,0,China,aircraft
+JL-8 Karakorum, Trainer,2, 280 kt, 430 kt, 9.6 m, 4.2 m, 11.6 m, 950 kg, 2687 kg, 4330 kg, Air Force,1997, 1x TFE-731-2A-2A,0,China,aircraft
+JZ-8F Finback B, Recon,1, 350 kt, 920 kt, 9.3 m, 5.4 m, 21.6 m, 0 kg, 9820 kg, 17800 kg, Air Force,2007, 2x WP-13B2 [R-13F-300 Copy],0,China,aircraft
+JZ-8R Finback A, Recon,1, 350 kt, 920 kt, 9.3 m, 5.4 m, 21.6 m, 0 kg, 9820 kg, 17800 kg, Air Force,1995, 2x WP-7B,https://cmano-db.com/images/DB3000/aircraft_2467.jpg,China,aircraft
+KJ-2000 Mainring [A-50], Airborne Early Warning (AEW),15, 250 kt, 470 kt, 50.5 m, 14.8 m, 46.6 m, 50000 kg, 88000 kg, 195000 kg, Air Force,2007, 4x D-30KP,https://cmano-db.com/images/DB3000/aircraft_1960.jpg,China,aircraft
+KJ-500 Cub [GX9], Airborne Early Warning (AEW),6, 210 kt, 410 kt, 40.0 m, 10.5 m, 36.0 m, 25000 kg, 39000 kg, 77000 kg, Air Force,2016, 4x WJ-6C,https://cmano-db.com/images/DB3000/aircraft_3683.jpg,China,aircraft
+KJ-500A Cub [GX9], Airborne Early Warning (AEW),6, 210 kt, 410 kt, 40.0 m, 10.5 m, 36.0 m, 25000 kg, 39000 kg, 77000 kg, Air Force,2020, 4x WJ-6C,0,China,aircraft
+KJ-600, Airborne Early Warning (AEW),6, 210 kt, 374 kt, 24.4 m, 5.75 m, 18.4 m, 0 kg, 25400 kg, 30480 kg, Navy,2020, 2x WJ-6C,0,China,aircraft
+Ka-28 Helix A, Anti-Submarine Warfare (ASW),3, 55 kt, 135 kt, 3.65 m, 5.4 m, 11.3 m, 12000 kg, 6500 kg, 1800 kg, Navy,1997, 2x TV3-117VK,https://cmano-db.com/images/DB3000/aircraft_862.jpg,China,aircraft
+Ka-31 Helix, Airborne Early Warning (AEW),3, 55 kt, 135 kt, 3.65 m, 5.4 m, 11.3 m, 12000 kg, 6500 kg, 1800 kg, Navy,2011, 2x TV3-117VMA,0,China,aircraft
+MA-60H MPA, Maritime Patrol Aircraft (MPA),2, 180 kt, 280 kt, 29.2 m, 8.86 m, 24.71 m, 5500 kg, 13700 kg, 21800 kg, Coast Guard,2016, 2x PW127J,0,China,aircraft
+Mi-17 Hip H, Transport,2, 55 kt, 135 kt, 5.7 m, 5.7 m, 18.2 m, 0 kg, 7160 kg, 12000 kg, Army,1992, 2x TV3-117MT,0,China,aircraft
+Mi-171 Hip H, Transport,2, 55 kt, 135 kt, 5.7 m, 5.7 m, 18.2 m, 0 kg, 7160 kg, 12000 kg, Army,1998, 2x TV3-117MT,0,China,aircraft
+Mi-17V5 Hip H, Transport,2, 55 kt, 135 kt, 5.7 m, 5.7 m, 18.2 m, 0 kg, 7160 kg, 12000 kg, Army,2003, 2x TV3-117VMA,0,China,aircraft
+Mi-17V7 Hip H, Transport,2, 55 kt, 135 kt, 5.7 m, 5.7 m, 18.2 m, 0 kg, 7160 kg, 12000 kg, Army,2005, 2x VK-2500,0,China,aircraft
+Q-5 Fantan, Attack,1, 350 kt, 700 kt, 9.8 m, 4.5 m, 16.7 m, 0 kg, 6375 kg, 11830 kg, Air Force,1971, 2x WP-6 [RD-9BF-811 Copy],https://cmano-db.com/images/DB3000/aircraft_79.jpg,China,aircraft
+Q-5C Fantan, Attack,1, 350 kt, 700 kt, 9.8 m, 4.5 m, 16.7 m, 0 kg, 6375 kg, 11830 kg, Air Force,1998, 2x WP-6III,https://cmano-db.com/images/DB3000/aircraft_367.jpg,China,aircraft
+Q-5D Fantan, Attack,1, 350 kt, 700 kt, 9.8 m, 4.5 m, 16.7 m, 0 kg, 6375 kg, 11830 kg, Air Force,2008, 2x WP-6III,https://cmano-db.com/images/DB3000/aircraft_2466.jpg,China,aircraft
+Q-5I Fantan, Attack,1, 350 kt, 700 kt, 9.8 m, 4.5 m, 16.7 m, 0 kg, 6375 kg, 11830 kg, Air Force,1987, 2x WP-6III,https://cmano-db.com/images/DB3000/aircraft_1732.jpg,China,aircraft
+Q-5IA Fantan, Attack,1, 350 kt, 700 kt, 9.8 m, 4.5 m, 16.7 m, 0 kg, 6375 kg, 11830 kg, Air Force,1989, 2x WP-6III,0,China,aircraft
+S-70C-2 Blackhawk, Transport,4, 55 kt, 155 kt, 2.4 m, 5.1 m, 15.3 m, 0 kg, 4819 kg, 11113 kg, Army,1987, 2x T700-GE-701C,https://cmano-db.com/images/DB3000/aircraft_2497.jpg,China,aircraft
+SA.321Ja Super Frelon, Naval Utility,5, 55 kt, 130 kt, 5.2 m, 6.6 m, 19.4 m, 0 kg, 6863 kg, 13000 kg, Navy,1978, 3x Turmo IIIC5 [WZ6],https://cmano-db.com/images/DB3000/aircraft_2406.jpg,China,aircraft
+SH-5 Harbin, Area Surveillance,8, 140 kt, 290 kt, 36.0 m, 9.8 m, 38.9 m, 0 kg, 26500 kg, 45000 kg, Navy,1986, 4x WJ-5A,https://cmano-db.com/images/DB3000/aircraft_810.jpg,China,aircraft
+Spy Balloon, Blimp,0, 5 kt, 115 kt, 35.0 m, 60.0 m, 35.0 m, 200 kg, 0 kg, 910 kg, Unknown,0, Balloon Propulsion,0,China,aircraft
+Su-30MKK Flanker G, Multirole (Fighter/Attack),2, 350 kt, 920 kt, 14.7 m, 5.9 m, 22.2 m, 8000 kg, 16300 kg, 30450 kg, Air Force,2002, 2x AL-31F,https://cmano-db.com/images/DB3000/aircraft_635.jpg,China,aircraft
+Su-35K Flanker E, Fighter,1, 350 kt, 920 kt, 15.3 m, 5.9 m, 21.9 m, 8000 kg, 18400 kg, 34500 kg, Air Force,2018, 2x AL-41F1S [Saturn 117S] TVC,0,China,aircraft
+Tu-154M Careless [Type I ELINT], Recon,5, 230 kt, 520 kt, 37.6 m, 11.4 m, 48.0 m, 0 kg, 55300 kg, 100000 kg, Air Force,1997, 3x D-30KU-154,https://cmano-db.com/images/DB3000/aircraft_3693.jpg,China,aircraft
+Tu-154M Careless [Type II ELINT / SLAR], Recon,5, 230 kt, 520 kt, 37.6 m, 11.4 m, 48.0 m, 0 kg, 55300 kg, 100000 kg, Air Force,1999, 3x D-30KU-154,https://cmano-db.com/images/DB3000/aircraft_3694.jpg,China,aircraft
+WZ-7 Soar Dragon UAV, Unmanned Aerial Vehicle (UAV),0, 150 kt, 405 kt, 25.0 m, 4.6 m, 14.3 m, 650 kg, 7500 kg, 8500 kg, Navy,2018, 1x WP-13 Turbojet,0,China,aircraft
+WZ-8, Recon,0, 1000 kt, 2255 kt, 6.7 m, 1.2 m, 11.5 m, 0 kg, 5000 kg, 0 kg, Air Force,2019, 2× YF50 Rocket Motor,0,China,aircraft
+Y-12 (II), Transport,2, 120 kt, 165 kt, 17.24 m, 5.68 m, 14.86 m, 1700 kg, 2840 kg, 5300 kg, Air Force,1986, 2x PT6A-27,0,China,aircraft
+Y-20A Kunpeng, Transport,3, 250 kt, 490 kt, 45.8 m, 15.0 m, 47.0 m, 66000 kg, 100000 kg, 220000 kg, Air Force,2016, 4x D-30KP,0,China,aircraft
+Y-20U Kunpeng, Tanker (Air Refueling),3, 250 kt, 490 kt, 45.8 m, 15.0 m, 47.0 m, 66000 kg, 100000 kg, 220000 kg, Air Force,2019, 4x D-30KP,0,China,aircraft
+Y-5B(T) [An-2SKh Colt Copy], Transport,2, 80 kt, 135 kt, 18.2 m, 4.1 m, 12.4 m, 2140 kg, 3300 kg, 5440 kg, People's Liberation Army Air Force,0, 1x Shvetsov ASh-62,0,China,aircraft
+Y-5U [An-2SKh Colt Copy], Unmanned Aerial Vehicle (UAV),0, 80 kt, 135 kt, 18.2 m, 4.1 m, 12.4 m, 2140 kg, 3300 kg, 5440 kg, People's Liberation Army Air Force,2023, 1x Shvetsov ASh-62,0,China,aircraft
+Y-7 Curl, Transport,5, 180 kt, 300 kt, 29.6 m, 8.6 m, 23.7 m, 5500 kg, 14900 kg, 21800 kg, Air Force,1986, 2x WJ-5A-1,https://cmano-db.com/images/DB3000/aircraft_2500.jpg,China,aircraft
+Y-7H Curl, Transport,5, 180 kt, 300 kt, 29.6 m, 8.6 m, 23.7 m, 5500 kg, 14900 kg, 21800 kg, Air Force,1993, 2x WJ-5E,https://cmano-db.com/images/DB3000/aircraft_2502.jpg,China,aircraft
+Y-8 Cub, Transport,6, 210 kt, 410 kt, 38.0 m, 10.5 m, 33.1 m, 20000 kg, 28000 kg, 61000 kg, Air Force,1982, 4x AI-20M [WJ-6],https://cmano-db.com/images/DB3000/aircraft_985.jpg,China,aircraft
+Y-8C Cub, Transport,6, 210 kt, 410 kt, 38.0 m, 10.5 m, 33.1 m, 20000 kg, 28000 kg, 61000 kg, Air Force,1989, 4x AI-20M [WJ-6],https://cmano-db.com/images/DB3000/aircraft_2483.jpg,China,aircraft
+Y-8CB Cub [GX1], Electronic Warfare,6, 210 kt, 410 kt, 38.0 m, 10.5 m, 33.1 m, 20000 kg, 28000 kg, 61000 kg, Air Force,2006, 4x AI-20M [WJ-6],https://cmano-db.com/images/DB3000/aircraft_2484.jpg,China,aircraft
+Y-8G Cub [GX4], Electronic Warfare,6, 210 kt, 410 kt, 38.0 m, 10.5 m, 33.1 m, 20000 kg, 28000 kg, 61000 kg, Air Force,2008, 4x AI-20M [WJ-6],https://cmano-db.com/images/DB3000/aircraft_2486.jpg,China,aircraft
+Y-8J Cub, Airborne Early Warning (AEW),6, 210 kt, 410 kt, 38.0 m, 11.6 m, 34.0 m, 20000 kg, 35488 kg, 61000 kg, Navy,2001, 4x AI-20M [WJ-6],https://cmano-db.com/images/DB3000/aircraft_809.jpg,China,aircraft
+Y-8JB Cub [GX2], Electronic Intelligence (ELINT),6, 210 kt, 410 kt, 38.0 m, 11.6 m, 34.0 m, 20000 kg, 35488 kg, 61000 kg, Navy,2005, 4x AI-20M [WJ-6],https://cmano-db.com/images/DB3000/aircraft_2485.jpg,China,aircraft
+Y-8Q Cub [GX6], Anti-Submarine Warfare (ASW),6, 210 kt, 410 kt, 38.0 m, 10.5 m, 33.1 m, 20000 kg, 28000 kg, 61000 kg, Navy,2015, 4x AI-20M [WJ-6],https://cmano-db.com/images/DB3000/aircraft_3301.jpg,China,aircraft
+Y-8T Cub [GX3], Airborne Command Post (ACP),6, 210 kt, 410 kt, 38.0 m, 11.6 m, 34.0 m, 20000 kg, 35488 kg, 61000 kg, Navy,2007, 4x AI-20M [WJ-6],https://cmano-db.com/images/DB3000/aircraft_3690.jpg,China,aircraft
+Y-8W Balance Beam [KJ-200 Cub], Airborne Early Warning (AEW),6, 210 kt, 410 kt, 38.0 m, 11.6 m, 34.0 m, 20000 kg, 35488 kg, 61000 kg, Air Force,2009, 4x AI-20M [WJ-6],https://cmano-db.com/images/DB3000/aircraft_2487.jpg,China,aircraft
+Y-8X Cub, Maritime Patrol Aircraft (MPA),9, 210 kt, 410 kt, 38.0 m, 11.6 m, 34.0 m, 20000 kg, 35488 kg, 61000 kg, Navy,1987, 4x AI-20M [WJ-6],https://cmano-db.com/images/DB3000/aircraft_354.jpg,China,aircraft
+Y-8XZ Cub [GX7], Electronic Intelligence (ELINT),6, 210 kt, 410 kt, 38.0 m, 11.6 m, 34.0 m, 20000 kg, 35488 kg, 61000 kg, Air Force,2006, 4x AI-20M [WJ-6],https://cmano-db.com/images/DB3000/aircraft_3691.jpg,China,aircraft
+Y-9 Cub, Transport,4, 210 kt, 410 kt, 40.0 m, 10.5 m, 36.0 m, 25000 kg, 39000 kg, 77000 kg, Air Force,2013, 4x WJ-6C,https://cmano-db.com/images/DB3000/aircraft_3684.jpg,China,aircraft
+Y-9G Cub [GX11], Electronic Warfare,6, 210 kt, 410 kt, 40.0 m, 10.5 m, 36.0 m, 25000 kg, 39000 kg, 77000 kg, Navy,2015, 4x WJ-6C,0,China,aircraft
+Y-9JB Cub [GX8], Electronic Intelligence (ELINT),6, 210 kt, 410 kt, 40.0 m, 10.5 m, 36.0 m, 25000 kg, 39000 kg, 77000 kg, Navy,2014, 4x WJ-6C,https://cmano-db.com/images/DB3000/aircraft_3692.jpg,China,aircraft
+Y-9XZ Cub [GX10], Electronic Intelligence (ELINT),6, 210 kt, 410 kt, 40.0 m, 10.5 m, 36.0 m, 25000 kg, 39000 kg, 77000 kg, Navy,2015, 4x WJ-6C,0,China,aircraft
+Z-10 Fierce Thunderbolt, Attack,2, 55 kt, 160 kt, 3.0 m, 3.85 m, 14.15 m, 1500 kg, 5540 kg, 7000 kg, Army,2012, 2x WZ-9/WZ-16 [MTR 390 Copy?],https://cmano-db.com/images/DB3000/aircraft_2493.jpg,China,aircraft
+Z-11J, Utility,1, 55 kt, 150 kt, 1.8 m, 3.14 m, 11.24 m, 976 kg, 1274 kg, 2250 kg, Army,2000, 1× WZ-8D Turboshaft,0,China,aircraft
+Z-11W, Attack,1, 55 kt, 150 kt, 1.8 m, 3.14 m, 11.24 m, 976 kg, 1274 kg, 2250 kg, Army,2000, 1× WZ-8D Turboshaft,0,China,aircraft
+Z-11WB, Recon,1, 55 kt, 150 kt, 1.8 m, 3.14 m, 11.24 m, 976 kg, 1274 kg, 2250 kg, Army,2017, 1× WZ-8D Turboshaft,0,China,aircraft
+Z-18 Super Frelon, Transport,5, 55 kt, 130 kt, 5.2 m, 6.6 m, 19.4 m, 0 kg, 7095 kg, 13000 kg, Navy,2014, 3x Turmo IIIC5 [WZ6],https://cmano-db.com/images/DB3000/aircraft_3708.jpg,China,aircraft
+Z-18FQ Super Frelon, Anti-Submarine Warfare (ASW),5, 55 kt, 130 kt, 5.2 m, 6.6 m, 19.4 m, 0 kg, 7095 kg, 13000 kg, Navy,2016, 3x Turmo IIIC5 [WZ6],https://cmano-db.com/images/DB3000/aircraft_3707.jpg,China,aircraft
+Z-18YJ Super Frelon [Black Bat], Airborne Early Warning (AEW),5, 55 kt, 130 kt, 5.2 m, 6.6 m, 19.4 m, 0 kg, 7095 kg, 13000 kg, Navy,2014, 3x Turmo IIIC5 [WZ6],https://cmano-db.com/images/DB3000/aircraft_3303.jpg,China,aircraft
+Z-19 Black Whirlwind, Attack,2, 55 kt, 155 kt, 3.0 m, 4.01 m, 12.0 m, 1600 kg, 2350 kg, 4250 kg, Army,2014, 2x WZ-8C [Arriel 1C2 Copy],https://cmano-db.com/images/DB3000/aircraft_3305.jpg,China,aircraft
+Z-20A, Transport,3, 60 kt, 165 kt, 2.4 m, 5.1 m, 15.3 m, 0 kg, 5118 kg, 11113 kg, Army,2018, 2x WZ-10 Turboshafts,0,China,aircraft
+Z-20F, Anti-Submarine Warfare (ASW),4, 60 kt, 165 kt, 2.4 m, 5.3 m, 15.3 m, 0 kg, 5118 kg, 11113 kg, Navy,2020, 2x WZ-10 Turboshafts,0,China,aircraft
+Z-20S, Naval Utility,4, 60 kt, 165 kt, 2.4 m, 5.1 m, 15.3 m, 0 kg, 5118 kg, 11113 kg, Navy,2019, 2x WZ-10 Turboshafts,0,China,aircraft
+Z-8A Super Frelon, Utility,5, 55 kt, 130 kt, 5.2 m, 6.6 m, 19.4 m, 0 kg, 7095 kg, 13000 kg, Army,2004, 3x Turmo IIIC5 [WZ6],https://cmano-db.com/images/DB3000/aircraft_2479.jpg,China,aircraft
+Z-8C Super Frelon, Transport,5, 55 kt, 130 kt, 5.2 m, 6.6 m, 19.4 m, 0 kg, 7095 kg, 13000 kg, Navy,2021, 3x Turmo IIIC5 [WZ6],0,China,aircraft
+Z-8G Super Frelon, Transport,5, 55 kt, 130 kt, 5.2 m, 6.6 m, 19.4 m, 0 kg, 7095 kg, 13000 kg, Army,2014, 3x Turmo IIIC5 [WZ6],0,China,aircraft
+Z-8J Super Frelon [ASW], Anti-Submarine Warfare (ASW),5, 55 kt, 130 kt, 5.2 m, 6.6 m, 19.4 m, 0 kg, 7095 kg, 13000 kg, Navy,1996, 3x Turmo IIIC5 [WZ6],https://cmano-db.com/images/DB3000/aircraft_2407.jpg,China,aircraft
+Z-8J Super Frelon [Transport & Amphibious Assault], Naval Utility,5, 55 kt, 130 kt, 5.2 m, 6.6 m, 19.4 m, 0 kg, 7095 kg, 13000 kg, Navy,1996, 3x Turmo IIIC5 [WZ6],https://cmano-db.com/images/DB3000/aircraft_806.jpg,China,aircraft
+Z-8K Super Frelon [SAR], Search And Rescue (SAR),5, 55 kt, 130 kt, 5.2 m, 6.6 m, 19.4 m, 0 kg, 7095 kg, 13000 kg, Army,2008, 3x Turmo IIIC5 [WZ6],https://cmano-db.com/images/DB3000/aircraft_2480.jpg,China,aircraft
+Z-8L Super Frelon, Transport,5, 55 kt, 130 kt, 7.0 m, 6.6 m, 19.4 m, 0 kg, 7095 kg, 13000 kg, Army,2021, 3x Turmo IIIC5 [WZ6],0,China,aircraft
+Z-9 Haitun, Utility,2, 55 kt, 155 kt, 3.0 m, 4.1 m, 11.3 m, 1600 kg, 2240 kg, 4250 kg, Army,1986, 2x Arriel 1C1,0,China,aircraft
+Z-9A Haitun, Utility,2, 55 kt, 155 kt, 3.0 m, 4.1 m, 11.3 m, 1600 kg, 2240 kg, 4250 kg, Army,1990, 2x Arriel 1C2,https://cmano-db.com/images/DB3000/aircraft_2401.jpg,China,aircraft
+Z-9B Haitun, Utility,2, 55 kt, 155 kt, 3.0 m, 4.1 m, 11.3 m, 1600 kg, 2240 kg, 4250 kg, Army,1998, 2x Arriel 1C2,https://cmano-db.com/images/DB3000/aircraft_1463.jpg,China,aircraft
+Z-9C Haitun, Anti-Submarine Warfare (ASW),2, 55 kt, 155 kt, 3.0 m, 4.1 m, 11.3 m, 1600 kg, 2240 kg, 4250 kg, Navy,1998, 2x Arriel 1C2,https://cmano-db.com/images/DB3000/aircraft_60.jpg,China,aircraft
+Z-9D Haitun, Anti-Submarine Warfare (ASW),2, 55 kt, 155 kt, 3.0 m, 4.1 m, 11.3 m, 1600 kg, 2240 kg, 4250 kg, Navy,2013, 2x Arriel 1C2,https://cmano-db.com/images/DB3000/aircraft_3302.jpg,China,aircraft
+Z-9W Haitun, Attack,2, 55 kt, 155 kt, 3.0 m, 4.1 m, 11.3 m, 1600 kg, 2240 kg, 4250 kg, Army,1998, 2x Arriel 1C2,https://cmano-db.com/images/DB3000/aircraft_2492.jpg,China,aircraft
+Z-9WA Haitun, Attack,2, 55 kt, 155 kt, 3.0 m, 4.1 m, 11.3 m, 1600 kg, 2240 kg, 4250 kg, Army,2010, 2x Arriel 1C2,https://cmano-db.com/images/DB3000/aircraft_3307.jpg,China,aircraft
+3MN-1 Bison B [Bomber], Bomber,8, 250 kt, 490 kt, 53.1 m, 11.5 m, 51.7 m, 24000 kg, 74430 kg, 192000 kg, Long Range Aviation [DA],1960, 4x VD-7B,https://cmano-db.com/images/DB3000/aircraft_2990.jpg,Soviet,aircraft
+3MS-1 Bison B [Bomber], Bomber,8, 250 kt, 490 kt, 53.1 m, 11.5 m, 51.7 m, 24000 kg, 74430 kg, 192000 kg, Long Range Aviation [DA],1960, 4x VD-7B,https://cmano-db.com/images/DB3000/aircraft_2381.jpg,Soviet,aircraft
+3MS-2 Bison B [Tanker], Tanker (Air Refueling),8, 250 kt, 490 kt, 53.1 m, 11.5 m, 51.7 m, 24000 kg, 74430 kg, 192000 kg, Long Range Aviation [DA],1976, 4x VD-7B,https://cmano-db.com/images/DB3000/aircraft_2380.jpg,Soviet,aircraft
+A-50 Mainstay A, Airborne Early Warning (AEW),15, 250 kt, 470 kt, 50.5 m, 14.8 m, 46.6 m, 50000 kg, 88000 kg, 195000 kg, Air Defence Troops [PVO],1986, 4x D-30KP,https://cmano-db.com/images/DB3000/aircraft_256.jpg,Soviet,aircraft
+A-90 Orlyonok, Transport,6, 180 kt, 240 kt, 31.5 m, 16.3 m, 58.1 m, 28000 kg, 0 kg, 140000 kg, Naval Aviation [AV-MF],1979," 2x NK-8-4K, 1x NK-12M",https://cmano-db.com/images/DB3000/aircraft_2394.jpg,Soviet,aircraft
+"AS-2 Kipper [K-10SP, OECM Drone]", Target Drone,0, 750 kt, 1100 kt, 4.88 m, 0.9 m, 9.45 m, 0 kg, 4200 kg, 4200 kg, Naval Fleet [V-MF],1981, RD-9FK Rocket Sustainer,https://cmano-db.com/images/DB3000/aircraft_3189.jpg,Soviet,aircraft
+An-124 Condor, Transport,7, 250 kt, 460 kt, 73.3 m, 20.8 m, 69.1 m, 120000 kg, 177000 kg, 405000 kg, Military Transport Aviation (VTA),1987, 4x D-18T,https://cmano-db.com/images/DB3000/aircraft_891.jpg,Soviet,aircraft
+An-12BK Cub A, Transport,6, 210 kt, 410 kt, 38.0 m, 10.5 m, 33.1 m, 20000 kg, 28000 kg, 61000 kg, Frontal Aviation [VVS],1967, 4x AI-20M [WJ-6],https://cmano-db.com/images/DB3000/aircraft_1639.jpg,Soviet,aircraft
+An-12BK-IS Cub D, Electronic Warfare,6, 210 kt, 410 kt, 38.0 m, 10.5 m, 33.1 m, 20000 kg, 28000 kg, 61000 kg, Frontal Aviation [VVS],1973, 4x AI-20M [WJ-6],https://cmano-db.com/images/DB3000/aircraft_2010.jpg,Soviet,aircraft
+An-12BK-PP Cub C, Electronic Warfare,6, 210 kt, 410 kt, 38.0 m, 10.5 m, 33.1 m, 20000 kg, 28000 kg, 61000 kg, Frontal Aviation [VVS],1971, 4x AI-20M [WJ-6],https://cmano-db.com/images/DB3000/aircraft_1640.jpg,Soviet,aircraft
+An-12BK-PPS Cub D, Electronic Warfare,6, 210 kt, 410 kt, 38.0 m, 10.5 m, 33.1 m, 20000 kg, 28000 kg, 61000 kg, Frontal Aviation [VVS],1983, 4x AI-20M [WJ-6],https://cmano-db.com/images/DB3000/aircraft_902.jpg,Soviet,aircraft
+An-12BP Cub A, Transport,6, 210 kt, 410 kt, 38.0 m, 10.5 m, 33.1 m, 20000 kg, 28000 kg, 61000 kg, Frontal Aviation [VVS],1965, 4x AI-20M [WJ-6],https://cmano-db.com/images/DB3000/aircraft_984.jpg,Soviet,aircraft
+An-22 Cock, Transport,7, 210 kt, 390 kt, 64.4 m, 12.5 m, 57.9 m, 60000 kg, 118727 kg, 225000 kg, Military Transport Aviation (VTA),1969, 4x NK-12MA,https://cmano-db.com/images/DB3000/aircraft_2509.jpg,Soviet,aircraft
+An-225 Cossack, Transport,6, 250 kt, 450 kt, 88.4 m, 18.1 m, 84.0 m, 250000 kg, 285000 kg, 640000 kg, Military Transport Aviation (VTA),1989, 6x D-18T,https://cmano-db.com/images/DB3000/aircraft_892.jpg,Soviet,aircraft
+An-22A Cock, Transport,7, 210 kt, 390 kt, 64.4 m, 12.5 m, 57.9 m, 60000 kg, 118727 kg, 225000 kg, Military Transport Aviation (VTA),1968, 4x NK-12MA,https://cmano-db.com/images/DB3000/aircraft_2512.jpg,Soviet,aircraft
+An-26 Curl A, Transport,5, 180 kt, 300 kt, 29.2 m, 8.3 m, 23.8 m, 5500 kg, 16300 kg, 24000 kg, Military Transport Aviation (VTA),1971, 2x AI-24T,https://cmano-db.com/images/DB3000/aircraft_606.jpg,Soviet,aircraft
+An-26RR Curl B, Signals Intelligence (SIGINT),5, 180 kt, 300 kt, 29.2 m, 8.3 m, 23.8 m, 5500 kg, 16300 kg, 24000 kg, Frontal Aviation [VVS],1975, 2x AI-24T,https://cmano-db.com/images/DB3000/aircraft_607.jpg,Soviet,aircraft
+An-32 Cline, Transport,5, 160 kt, 270 kt, 29.2 m, 8.8 m, 23.8 m, 6700 kg, 16800 kg, 27000 kg, Military Transport Aviation (VTA),1986, 4x AI-20M,https://cmano-db.com/images/DB3000/aircraft_609.jpg,Soviet,aircraft
+An-71 Madcap, Transport,3, 180 kt, 400 kt, 31.9 m, 8.7 m, 28.1 m, 7500 kg, 19050 kg, 34500 kg, Frontal Aviation [VVS],1985, 2x D-36-3A,0,Soviet,aircraft
+An-72A Coaler C, Transport,3, 180 kt, 400 kt, 31.9 m, 8.7 m, 28.1 m, 7500 kg, 19050 kg, 34500 kg, Military Transport Aviation (VTA),1985, 2x D-36-3A,https://cmano-db.com/images/DB3000/aircraft_610.jpg,Soviet,aircraft
+An-74A Coaler B, Transport,3, 180 kt, 400 kt, 31.9 m, 8.7 m, 28.1 m, 7500 kg, 19050 kg, 34500 kg, Military Transport Aviation (VTA),1986, 2x D-36-3A,https://cmano-db.com/images/DB3000/aircraft_611.jpg,Soviet,aircraft
+Be-12PL Mail, Anti-Submarine Warfare (ASW),4, 160 kt, 280 kt, 29.8 m, 7.9 m, 30.1 m, 3000 kg, 24500 kg, 36000 kg, Naval Aviation [AV-MF],1982, 2x AI-20D-4,https://cmano-db.com/images/DB3000/aircraft_692.jpg,Soviet,aircraft
+Be-12PS Mail, Search And Rescue (SAR),6, 160 kt, 280 kt, 29.8 m, 7.9 m, 30.1 m, 3000 kg, 24500 kg, 36000 kg, Naval Aviation [AV-MF],1974, 2x AI-20D-4,https://cmano-db.com/images/DB3000/aircraft_2680.jpg,Soviet,aircraft
+Il-20M Coot A, Electronic Intelligence (ELINT),13, 220 kt, 360 kt, 35.9 m, 10.7 m, 37.4 m, 0 kg, 35000 kg, 64000 kg, Frontal Aviation [VVS],1971, 4x AI-20M,https://cmano-db.com/images/DB3000/aircraft_2118.jpg,Soviet,aircraft
+Il-38 May, Maritime Patrol Aircraft (MPA),8, 215 kt, 410 kt, 37.4 m, 10.7 m, 39.6 m, 0 kg, 33700 kg, 63500 kg, Naval Aviation [AV-MF],1982, 4x AI-20M,https://cmano-db.com/images/DB3000/aircraft_5.jpg,Soviet,aircraft
+Il-62 Classic, Transport,5, 230 kt, 480 kt, 43.2 m, 12.4 m, 53.1 m, 0 kg, 67500 kg, 167000 kg, Military Transport Aviation (VTA),1968, 4x NK-8-4,https://cmano-db.com/images/DB3000/aircraft_893.jpg,Soviet,aircraft
+Il-76M Candid B, Transport,7, 250 kt, 470 kt, 50.5 m, 14.8 m, 46.6 m, 50000 kg, 88000 kg, 195000 kg, Military Transport Aviation (VTA),1982, 4x D-30KP,https://cmano-db.com/images/DB3000/aircraft_450.jpg,Soviet,aircraft
+Il-76MD Candid B, Transport,7, 250 kt, 470 kt, 50.5 m, 14.8 m, 46.6 m, 50000 kg, 88000 kg, 195000 kg, Military Transport Aviation (VTA),1978, 4x D-30KP,https://cmano-db.com/images/DB3000/aircraft_2624.jpg,Soviet,aircraft
+Il-76SK Candid ACP, Airborne Command Post (ACP),7, 250 kt, 470 kt, 50.5 m, 14.8 m, 46.6 m, 50000 kg, 88000 kg, 195000 kg, Military Transport Aviation (VTA),1989, 4x D-30KP,0,Soviet,aircraft
+Il-76T Candid A, Transport,7, 250 kt, 470 kt, 50.5 m, 14.8 m, 46.6 m, 50000 kg, 88000 kg, 195000 kg, Military Transport Aviation (VTA),1976, 4x D-30KP,https://cmano-db.com/images/DB3000/aircraft_295.jpg,Soviet,aircraft
+Il-76VPK Candid ACP, Airborne Command Post (ACP),7, 250 kt, 470 kt, 50.5 m, 14.8 m, 46.6 m, 50000 kg, 88000 kg, 195000 kg, Military Transport Aviation (VTA),1989, 4x D-30KP,https://cmano-db.com/images/DB3000/aircraft_872.jpg,Soviet,aircraft
+Il-78 Midas, Tanker (Air Refueling),6, 250 kt, 470 kt, 50.5 m, 14.8 m, 46.6 m, 50000 kg, 88000 kg, 195000 kg, Military Transport Aviation (VTA),1985, 4x D-30KP-2,https://cmano-db.com/images/DB3000/aircraft_232.jpg,Soviet,aircraft
+Il-78M Midas, Tanker (Air Refueling),6, 250 kt, 470 kt, 50.5 m, 14.8 m, 46.6 m, 50000 kg, 88000 kg, 195000 kg, Military Transport Aviation (VTA),1988, 4x D-30KP-2,https://cmano-db.com/images/DB3000/aircraft_870.jpg,Soviet,aircraft
+Il-80 Maxdome ACP, Airborne Command Post (ACP),4, 230 kt, 510 kt, 60.2 m, 15.7 m, 48.1 m, 0 kg, 117500 kg, 215000 kg, Military Transport Aviation (VTA),1988, 4x NK-86,https://cmano-db.com/images/DB3000/aircraft_449.jpg,Soviet,aircraft
+KM-08 Duck [Pr.902R Lun], Attack,15, 180 kt, 270 kt, 44.0 m, 19.5 m, 73.8 m, 0 kg, 286000 kg, 380000 kg, Naval Aviation [AV-MF],1990, 8x NK-87,https://cmano-db.com/images/DB3000/aircraft_2395.jpg,Soviet,aircraft
+Ka-25BSh Hormone A, Anti-Submarine Warfare (ASW),2, 55 kt, 115 kt, 3.8 m, 5.4 m, 9.8 m, 600 kg, 4765 kg, 7100 kg, Naval Aviation [AV-MF],1972, 2x GTD-3F,https://cmano-db.com/images/DB3000/aircraft_50.jpg,Soviet,aircraft
+Ka-25PS Hormone C, Recon,2, 55 kt, 115 kt, 3.8 m, 5.4 m, 9.8 m, 600 kg, 4765 kg, 7200 kg, Naval Aviation [AV-MF],1972, 2x GTD-3F,https://cmano-db.com/images/DB3000/aircraft_231.jpg,Soviet,aircraft
+Ka-25Ts Hormone B, Recon,2, 55 kt, 115 kt, 3.8 m, 5.4 m, 9.8 m, 600 kg, 4765 kg, 7100 kg, Naval Aviation [AV-MF],1972, 2x GTD-3F,https://cmano-db.com/images/DB3000/aircraft_51.jpg,Soviet,aircraft
+Ka-27PL Helix A, Anti-Submarine Warfare (ASW),3, 55 kt, 135 kt, 3.65 m, 5.4 m, 11.3 m, 12000 kg, 6500 kg, 1800 kg, Naval Aviation [AV-MF],1982, 2x TV3-117KM,https://cmano-db.com/images/DB3000/aircraft_4.jpg,Soviet,aircraft
+Ka-27PS Helix D, Search And Rescue (SAR),3, 55 kt, 135 kt, 3.65 m, 5.4 m, 11.3 m, 12000 kg, 6500 kg, 1800 kg, Naval Aviation [AV-MF],1983, 2x TV3-117KM,https://cmano-db.com/images/DB3000/aircraft_2372.jpg,Soviet,aircraft
+Mi-10K Harke B, Transport,4, 55 kt, 115 kt, 5.0 m, 7.8 m, 32.9 m, 0 kg, 24680 kg, 39800 kg, Red Army,1968, 2x D-25V,https://cmano-db.com/images/DB3000/aircraft_2410.jpg,Soviet,aircraft
+Mi-10PP Harke, Electronic Warfare,4, 55 kt, 115 kt, 5.0 m, 7.8 m, 32.9 m, 0 kg, 22400 kg, 39800 kg, Red Army,1972, 2x D-25V,https://cmano-db.com/images/DB3000/aircraft_2411.jpg,Soviet,aircraft
+Mi-10R Harke A, Transport,4, 55 kt, 115 kt, 5.0 m, 9.8 m, 32.9 m, 0 kg, 27300 kg, 43700 kg, Red Army,1964, 2x D-25V,https://cmano-db.com/images/DB3000/aircraft_2409.jpg,Soviet,aircraft
+Mi-14BT Haze B, Mine Sweeper (MCM),4, 30 kt, 115 kt, 4.4 m, 6.9 m, 18.4 m, 2000 kg, 8800 kg, 14000 kg, Naval Aviation [AV-MF],1984, 2x TV3-117M,https://cmano-db.com/images/DB3000/aircraft_852.jpg,Soviet,aircraft
+Mi-14PL Haze A, Anti-Submarine Warfare (ASW),4, 55 kt, 115 kt, 4.4 m, 6.9 m, 18.4 m, 2000 kg, 8800 kg, 14000 kg, Naval Aviation [AV-MF],1982, 2x TV3-117M,https://cmano-db.com/images/DB3000/aircraft_933.jpg,Soviet,aircraft
+Mi-14PLM Haze A, Anti-Submarine Warfare (ASW),4, 55 kt, 115 kt, 4.4 m, 6.9 m, 18.4 m, 2000 kg, 8800 kg, 14000 kg, Naval Aviation [AV-MF],1982, 2x TV3-117M,https://cmano-db.com/images/DB3000/aircraft_1025.jpg,Soviet,aircraft
+Mi-14PS Haze C, Search And Rescue (SAR),4, 55 kt, 115 kt, 4.4 m, 6.9 m, 18.4 m, 2000 kg, 8800 kg, 14000 kg, Naval Aviation [AV-MF],1980, 2x TV3-117M,https://cmano-db.com/images/DB3000/aircraft_326.jpg,Soviet,aircraft
+Mi-24A Hind A, Attack,3, 55 kt, 180 kt, 1.7 m, 4.4 m, 17.5 m, 1480 kg, 8200 kg, 11500 kg, Red Army,1974, 2x TV3-117V,https://cmano-db.com/images/DB3000/aircraft_453.jpg,Soviet,aircraft
+Mi-24D Hind D, Attack,3, 55 kt, 180 kt, 1.7 m, 4.4 m, 17.5 m, 1480 kg, 8200 kg, 11500 kg, Red Army,1977, 2x TV3-117V,https://cmano-db.com/images/DB3000/aircraft_456.jpg,Soviet,aircraft
+Mi-24K Hind, Attack,3, 55 kt, 180 kt, 1.7 m, 4.4 m, 17.5 m, 1480 kg, 8200 kg, 11500 kg, Red Army,1985, 2x TV3-117V,https://cmano-db.com/images/DB3000/aircraft_2662.jpg,Soviet,aircraft
+Mi-24P Hind F, Attack,2, 55 kt, 180 kt, 1.7 m, 4.4 m, 17.5 m, 1480 kg, 8250 kg, 12000 kg, Red Army,1984, 2x TV3-117V,https://cmano-db.com/images/DB3000/aircraft_457.jpg,Soviet,aircraft
+Mi-24V Hind E, Attack,2, 55 kt, 180 kt, 1.7 m, 4.4 m, 17.5 m, 1480 kg, 8200 kg, 11500 kg, Red Army,1978, 2x TV3-117V,https://cmano-db.com/images/DB3000/aircraft_76.jpg,Soviet,aircraft
+Mi-26 Halo, Transport,5, 55 kt, 155 kt, 6.2 m, 8.1 m, 33.7 m, 20000 kg, 28600 kg, 56000 kg, Red Army,1985, 2x D-136,https://cmano-db.com/images/DB3000/aircraft_991.jpg,Soviet,aircraft
+Mi-8MT Hip H, Transport,2, 55 kt, 135 kt, 5.7 m, 5.7 m, 18.2 m, 0 kg, 7160 kg, 12000 kg, Red Army,1979, 2x TV2-117A,https://cmano-db.com/images/DB3000/aircraft_616.jpg,Soviet,aircraft
+Mi-8MTV Hip H, Transport,2, 55 kt, 135 kt, 5.7 m, 5.7 m, 18.2 m, 0 kg, 7160 kg, 12000 kg, Red Army,1991, 2x TV2-117A,https://cmano-db.com/images/DB3000/aircraft_2672.jpg,Soviet,aircraft
+Mi-8PP Hip K, Electronic Warfare,2, 55 kt, 135 kt, 5.7 m, 5.7 m, 18.2 m, 0 kg, 7160 kg, 12000 kg, Red Army,0, 2x TV2-117A,https://cmano-db.com/images/DB3000/aircraft_2541.jpg,Soviet,aircraft
+Mi-8PPA Hip K, Electronic Warfare,2, 55 kt, 135 kt, 5.7 m, 5.7 m, 18.2 m, 0 kg, 7160 kg, 12000 kg, Red Army,1982, 2x TV2-117A,https://cmano-db.com/images/DB3000/aircraft_2539.jpg,Soviet,aircraft
+Mi-8SMV Hip J, Electronic Warfare,2, 55 kt, 135 kt, 5.7 m, 5.7 m, 18.2 m, 0 kg, 7160 kg, 12000 kg, Red Army,0, 2x TV2-117A,https://cmano-db.com/images/DB3000/aircraft_1788.jpg,Soviet,aircraft
+Mi-8T Hip C, Transport,2, 55 kt, 135 kt, 5.7 m, 5.7 m, 18.2 m, 0 kg, 7160 kg, 12000 kg, Red Army,1968, 2x TV2-117A,https://cmano-db.com/images/DB3000/aircraft_1784.jpg,Soviet,aircraft
+Mi-8TB Hip E, Transport,2, 55 kt, 135 kt, 5.7 m, 5.7 m, 18.2 m, 0 kg, 7160 kg, 12000 kg, Red Army,1976, 2x TV2-117A,https://cmano-db.com/images/DB3000/aircraft_1786.jpg,Soviet,aircraft
+MiG-21MT Fishbed K, Fighter,1, 350 kt, 920 kt, 7.2 m, 4.1 m, 14.1 m, 0 kg, 5700 kg, 10100 kg, Frontal Aviation [VVS],1974, 1x R-13F-300,https://cmano-db.com/images/DB3000/aircraft_167.jpg,Soviet,aircraft
+MiG-21S Fishbed J, Fighter,1, 350 kt, 920 kt, 7.2 m, 4.1 m, 14.1 m, 0 kg, 5650 kg, 9100 kg, Frontal Aviation [VVS],1968, 1x R-11F2S-300,https://cmano-db.com/images/DB3000/aircraft_2716.jpg,Soviet,aircraft
+MiG-21SM Fishbed J, Fighter,1, 350 kt, 920 kt, 7.2 m, 4.1 m, 14.2 m, 0 kg, 5998 kg, 9400 kg, Frontal Aviation [VVS],1972, 1x R-13F-300,https://cmano-db.com/images/DB3000/aircraft_2717.jpg,Soviet,aircraft
+MiG-21bis Fishbed L, Fighter,1, 350 kt, 920 kt, 7.2 m, 4.1 m, 14.1 m, 0 kg, 5895 kg, 10420 kg, Air Defence Troops [PVO],1973, 1x R-25-300,https://cmano-db.com/images/DB3000/aircraft_2719.jpg,Soviet,aircraft
+MiG-21bis Fishbed N, Fighter,1, 350 kt, 920 kt, 7.2 m, 4.1 m, 14.1 m, 0 kg, 5895 kg, 10420 kg, Frontal Aviation [VVS],1973, 1x R-25-300,https://cmano-db.com/images/DB3000/aircraft_148.jpg,Soviet,aircraft
+MiG-23BN Flogger H, Attack,1, 350 kt, 920 kt, 14.0 m, 4.4 m, 15.3 m, 3000 kg, 10440 kg, 20000 kg, Frontal Aviation [VVS],1974, 1x R-29B-300,https://cmano-db.com/images/DB3000/aircraft_2608.jpg,Soviet,aircraft
+MiG-23M Flogger B, Fighter,1, 350 kt, 920 kt, 14.0 m, 4.8 m, 16.7 m, 2000 kg, 10890 kg, 18400 kg, Frontal Aviation [VVS],1985, 1x R-29-300,https://cmano-db.com/images/DB3000/aircraft_878.jpg,Soviet,aircraft
+MiG-23ML Flogger G, Fighter,1, 350 kt, 920 kt, 14.0 m, 4.8 m, 16.7 m, 2000 kg, 10230 kg, 17800 kg, Frontal Aviation [VVS],1985, 1x R-35-300,https://cmano-db.com/images/DB3000/aircraft_208.jpg,Soviet,aircraft
+MiG-23MLD Flogger K, Fighter,1, 350 kt, 920 kt, 14.0 m, 4.8 m, 16.7 m, 2000 kg, 10230 kg, 17800 kg, Frontal Aviation [VVS],1984, 1x R-35-300,https://cmano-db.com/images/DB3000/aircraft_672.jpg,Soviet,aircraft
+MiG-23P Flogger G, Fighter,1, 350 kt, 920 kt, 14.0 m, 4.8 m, 16.6 m, 1500 kg, 9620 kg, 12500 kg, Air Defence Troops [PVO],1983, 1x R-35-300,https://cmano-db.com/images/DB3000/aircraft_2158.jpg,Soviet,aircraft
+MiG-23PD Flogger K, Fighter,1, 350 kt, 920 kt, 14.0 m, 4.8 m, 16.6 m, 2000 kg, 10215 kg, 16520 kg, Air Defence Troops [PVO],1989, 1x R-35-300,https://cmano-db.com/images/DB3000/aircraft_2159.jpg,Soviet,aircraft
+MiG-25BM Foxbat F, Wild Weasel,1, 350 kt, 1350 kt, 13.4 m, 6.0 m, 22.7 m, 4000 kg, 20755 kg, 36720 kg, Frontal Aviation [VVS],1988, 2x R-15BD-300,https://cmano-db.com/images/DB3000/aircraft_466.jpg,Soviet,aircraft
+MiG-25P Foxbat A, Fighter,1, 350 kt, 1350 kt, 14.0 m, 6.3 m, 19.75 m, 3000 kg, 20020 kg, 36720 kg, Air Defence Troops [PVO],1972, 2x R-15B-300,https://cmano-db.com/images/DB3000/aircraft_1222.jpg,Soviet,aircraft
+MiG-25PD Foxbat E, Fighter,1, 350 kt, 1350 kt, 14.0 m, 6.3 m, 19.75 m, 3000 kg, 20020 kg, 36720 kg, Air Defence Troops [PVO],1984, 2x R-15BD-300,https://cmano-db.com/images/DB3000/aircraft_227.jpg,Soviet,aircraft
+MiG-25PDS Foxbat E, Fighter,1, 350 kt, 1350 kt, 14.0 m, 6.3 m, 19.75 m, 3000 kg, 20020 kg, 36720 kg, Air Defence Troops [PVO],1984, 2x R-15BD-300,https://cmano-db.com/images/DB3000/aircraft_2433.jpg,Soviet,aircraft
+MiG-25RB Foxbat B, Recon,1, 350 kt, 1350 kt, 13.4 m, 6.3 m, 21.6 m, 4000 kg, 20755 kg, 41200 kg, Frontal Aviation [VVS],1972, 2x R-15BD-300,https://cmano-db.com/images/DB3000/aircraft_226.jpg,Soviet,aircraft
+MiG-25RBF Foxbat D, Recon,1, 350 kt, 1350 kt, 13.4 m, 6.3 m, 21.6 m, 4000 kg, 20755 kg, 41200 kg, Frontal Aviation [VVS],1981, 2x R-15BD-300,https://cmano-db.com/images/DB3000/aircraft_989.jpg,Soviet,aircraft
+MiG-25RBK Foxbat B, Recon,1, 350 kt, 1350 kt, 13.4 m, 6.3 m, 21.6 m, 4000 kg, 20755 kg, 39830 kg, Frontal Aviation [VVS],1976, 2x R-15BD-300,https://cmano-db.com/images/DB3000/aircraft_987.jpg,Soviet,aircraft
+MiG-25RBS Foxbat D, Recon,1, 350 kt, 1350 kt, 13.4 m, 6.3 m, 21.6 m, 4000 kg, 20755 kg, 39830 kg, Frontal Aviation [VVS],1982, 2x R-15BD-300,https://cmano-db.com/images/DB3000/aircraft_988.jpg,Soviet,aircraft
+MiG-25RBSh Foxbat D, Recon,1, 350 kt, 1350 kt, 13.4 m, 6.3 m, 21.6 m, 4000 kg, 20755 kg, 39830 kg, Frontal Aviation [VVS],1982, 2x R-15BD-300,https://cmano-db.com/images/DB3000/aircraft_440.jpg,Soviet,aircraft
+MiG-25RBT Foxbat B, Recon,1, 350 kt, 1350 kt, 13.4 m, 6.3 m, 21.6 m, 4000 kg, 20755 kg, 39830 kg, Frontal Aviation [VVS],1984, 2x R-15BD-300,https://cmano-db.com/images/DB3000/aircraft_986.jpg,Soviet,aircraft
+MiG-27 Flogger D, Attack,1, 350 kt, 920 kt, 14.0 m, 4.4 m, 15.5 m, 35000 kg, 11910 kg, 20670 kg, Frontal Aviation [VVS],1976, 1x R-29B-300,https://cmano-db.com/images/DB3000/aircraft_218.jpg,Soviet,aircraft
+MiG-27K Flogger J, Attack,1, 350 kt, 920 kt, 14.0 m, 4.4 m, 15.5 m, 35000 kg, 11910 kg, 20670 kg, Frontal Aviation [VVS],1985, 1x R-29B-300,https://cmano-db.com/images/DB3000/aircraft_874.jpg,Soviet,aircraft
+MiG-27M Flogger J, Attack,1, 350 kt, 920 kt, 14.0 m, 4.4 m, 15.5 m, 35000 kg, 11910 kg, 20670 kg, Frontal Aviation [VVS],1985, 1x R-29B-300,https://cmano-db.com/images/DB3000/aircraft_78.jpg,Soviet,aircraft
+MiG-29 Fulcrum A, Multirole (Fighter/Attack),1, 350 kt, 920 kt, 11.4 m, 4.73 m, 17.3 m, 0 kg, 10200 kg, 18500 kg, Frontal Aviation [VVS],1984, 2x RD-33,https://cmano-db.com/images/DB3000/aircraft_740.jpg,Soviet,aircraft
+MiG-29 Fulcrum C, Multirole (Fighter/Attack),1, 350 kt, 920 kt, 11.4 m, 4.73 m, 17.3 m, 0 kg, 10900 kg, 18500 kg, Frontal Aviation [VVS],1987, 2x RD-33,https://cmano-db.com/images/DB3000/aircraft_741.jpg,Soviet,aircraft
+MiG-29S Fulcrum C, Multirole (Fighter/Attack),1, 350 kt, 920 kt, 11.4 m, 4.73 m, 17.3 m, 0 kg, 11200 kg, 18500 kg, Frontal Aviation [VVS],1987, 2x RD-33,https://cmano-db.com/images/DB3000/aircraft_843.jpg,Soviet,aircraft
+MiG-29UB Fulcrum B, Trainer,2, 350 kt, 920 kt, 11.4 m, 4.73 m, 17.3 m, 0 kg, 10200 kg, 18500 kg, Frontal Aviation [VVS],1987, 2x RD-33,https://cmano-db.com/images/DB3000/aircraft_849.jpg,Soviet,aircraft
+MiG-31 Foxhound, Fighter,2, 350 kt, 1350 kt, 13.5 m, 6.2 m, 22.7 m, 5000 kg, 21825 kg, 46200 kg, Air Defence Troops [PVO],1982, 2x D-30F6,https://cmano-db.com/images/DB3000/aircraft_15.jpg,Soviet,aircraft
+Su-15MF Flagon D, Fighter,1, 350 kt, 920 kt, 9.3 m, 5.0 m, 22.1 m, 1500 kg, 10060 kg, 16520 kg, Air Defence Troops [PVO],1972, 2x R-11F2-300,https://cmano-db.com/images/DB3000/aircraft_2506.jpg,Soviet,aircraft
+Su-15TM Flagon E/F, Fighter,1, 350 kt, 920 kt, 9.3 m, 4.8 m, 19.6 m, 1500 kg, 10760 kg, 17900 kg, Air Defence Troops [PVO],1979, 2x R-13F2-300,https://cmano-db.com/images/DB3000/aircraft_688.jpg,Soviet,aircraft
+Su-17 Fitter B, Attack,1, 350 kt, 920 kt, 13.7 m, 5.1 m, 17.3 m, 0 kg, 10880 kg, 19500 kg, Frontal Aviation [VVS],1985, 1x AL-7F-1,https://cmano-db.com/images/DB3000/aircraft_1621.jpg,Soviet,aircraft
+Su-17M Fitter C, Attack,1, 350 kt, 920 kt, 13.7 m, 5.1 m, 17.3 m, 0 kg, 10880 kg, 19500 kg, Frontal Aviation [VVS],1985, 1x AL-21F-3,https://cmano-db.com/images/DB3000/aircraft_1619.jpg,Soviet,aircraft
+Su-17M-2 Fitter D, Attack,1, 350 kt, 920 kt, 13.7 m, 5.1 m, 17.3 m, 0 kg, 10880 kg, 19500 kg, Frontal Aviation [VVS],1985, 1x AL-21F-3,https://cmano-db.com/images/DB3000/aircraft_1620.jpg,Soviet,aircraft
+Su-17M-3 Fitter H, Attack,1, 350 kt, 920 kt, 13.7 m, 5.1 m, 17.3 m, 0 kg, 10880 kg, 19500 kg, Frontal Aviation [VVS],1985, 1x AL-21F-3,https://cmano-db.com/images/DB3000/aircraft_689.jpg,Soviet,aircraft
+Su-17M-3R Fitter H, Recon,1, 350 kt, 920 kt, 13.7 m, 5.1 m, 17.3 m, 0 kg, 10880 kg, 19500 kg, Frontal Aviation [VVS],1978, 1x AL-21F-3,https://cmano-db.com/images/DB3000/aircraft_2666.jpg,Soviet,aircraft
+Su-17M-4 Fitter K, Attack,1, 350 kt, 920 kt, 13.7 m, 5.1 m, 17.3 m, 0 kg, 10880 kg, 19500 kg, Frontal Aviation [VVS],1985, 1x AL-21F-3,https://cmano-db.com/images/DB3000/aircraft_1177.jpg,Soviet,aircraft
+Su-17M-4R Fitter K, Recon,1, 350 kt, 920 kt, 13.7 m, 5.1 m, 17.3 m, 0 kg, 10880 kg, 19500 kg, Frontal Aviation [VVS],1985, 1x AL-21F-3,https://cmano-db.com/images/DB3000/aircraft_2667.jpg,Soviet,aircraft
+Su-24 Fencer B, Attack,2, 350 kt, 750 kt, 17.6 m, 5.9 m, 22.7 m, 7000 kg, 21150 kg, 37900 kg, Frontal Aviation [VVS],1985, 2x AL-21F-3,https://cmano-db.com/images/DB3000/aircraft_714.jpg,Soviet,aircraft
+Su-24 Fencer C, Attack,2, 350 kt, 750 kt, 17.6 m, 5.9 m, 22.7 m, 8100 kg, 21150 kg, 37900 kg, Frontal Aviation [VVS],1981, 2x AL-21F-3A,https://cmano-db.com/images/DB3000/aircraft_469.jpg,Soviet,aircraft
+Su-24M Fencer D, Attack,2, 350 kt, 750 kt, 17.6 m, 6.2 m, 24.6 m, 8100 kg, 21150 kg, 39570 kg, Frontal Aviation [VVS],1985, 2x AL-21F-3A,https://cmano-db.com/images/DB3000/aircraft_470.jpg,Soviet,aircraft
+Su-24MP Fencer F, Electronic Intelligence (ELINT),2, 350 kt, 750 kt, 17.6 m, 6.2 m, 24.6 m, 8100 kg, 21150 kg, 39570 kg, Frontal Aviation [VVS],1990, 2x AL-21F-3A,https://cmano-db.com/images/DB3000/aircraft_619.jpg,Soviet,aircraft
+Su-24MR Fencer E, Recon,2, 350 kt, 750 kt, 17.6 m, 6.2 m, 24.6 m, 8100 kg, 22320 kg, 39570 kg, Frontal Aviation [VVS],1988, 2x AL-21F-3A,https://cmano-db.com/images/DB3000/aircraft_472.jpg,Soviet,aircraft
+Su-25 Frogfoot A, Attack,1, 270 kt, 520 kt, 14.4 m, 4.8 m, 15.5 m, 4400 kg, 9510 kg, 17530 kg, Frontal Aviation [VVS],1984, 2x R-19S,https://cmano-db.com/images/DB3000/aircraft_307.jpg,Soviet,aircraft
+Su-27P Flanker B, Fighter,1, 350 kt, 920 kt, 14.7 m, 5.9 m, 21.9 m, 5220 kg, 16300 kg, 30450 kg, Air Defence Troops [PVO],1987, 2x AL-31F,https://cmano-db.com/images/DB3000/aircraft_2156.jpg,Soviet,aircraft
+Su-27S Flanker B, Fighter,1, 350 kt, 920 kt, 14.7 m, 5.9 m, 21.9 m, 8000 kg, 16300 kg, 30450 kg, Frontal Aviation [VVS],1987, 2x AL-31F,https://cmano-db.com/images/DB3000/aircraft_134.jpg,Soviet,aircraft
+Tu-123 UAV [DBR-1 Yastreb], Unmanned Aerial Vehicle (UAV),0, 350 kt, 1450 kt, 8.4 m, 4.8 m, 27.8 m, 0 kg, 11450 kg, 35610 kg, Frontal Aviation [VVS],1964, 1x KR-15-300,https://cmano-db.com/images/DB3000/aircraft_2570.jpg,Soviet,aircraft
+Tu-126 Moss, Airborne Early Warning (AEW),17, 250 kt, 420 kt, 51.1 m, 15.5 m, 57.3 m, 908 kg, 103000 kg, 171000 kg, Air Defence Troops [PVO],1965, 4x NK-12MV,https://cmano-db.com/images/DB3000/aircraft_217.jpg,Soviet,aircraft
+Tu-128 Fiddler A, Attack,1, 350 kt, 920 kt, 18.1 m, 7.0 m, 27.2 m, 6000 kg, 24500 kg, 43700 kg, Air Defence Troops [PVO],1970, 2x AL-7F-2,https://cmano-db.com/images/DB3000/aircraft_2505.jpg,Soviet,aircraft
+Tu-128M Fiddler B, Attack,1, 350 kt, 920 kt, 18.1 m, 7.0 m, 27.2 m, 6000 kg, 24500 kg, 43700 kg, Air Defence Troops [PVO],1980, 2x AL-7F-2,https://cmano-db.com/images/DB3000/aircraft_685.jpg,Soviet,aircraft
+Tu-141 UAV [VR-2 Strizh], Unmanned Aerial Vehicle (UAV),0, 350 kt, 540 kt, 3.9 m, 2.4 m, 14.3 m, 0 kg, 0 kg, 5370 kg, Frontal Aviation [VVS],1979, 1x KR-17A,https://cmano-db.com/images/DB3000/aircraft_2569.jpg,Soviet,aircraft
+Tu-142A Bear F Mod 1, Maritime Patrol Aircraft (MPA),11, 250 kt, 470 kt, 53.1 m, 12.2 m, 49.5 m, 15000 kg, 91800 kg, 155000 kg, Naval Aviation [AV-MF],1972, 4x NK-12MA,https://cmano-db.com/images/DB3000/aircraft_621.jpg,Soviet,aircraft
+Tu-142M Bear F Mod 2, Maritime Patrol Aircraft (MPA),11, 250 kt, 470 kt, 53.1 m, 12.2 m, 49.5 m, 15000 kg, 91800 kg, 155000 kg, Naval Aviation [AV-MF],1981, 4x NK-12MA,https://cmano-db.com/images/DB3000/aircraft_1643.jpg,Soviet,aircraft
+Tu-142MK Bear F Mod 3, Maritime Patrol Aircraft (MPA),11, 250 kt, 470 kt, 53.1 m, 12.2 m, 49.5 m, 15000 kg, 91800 kg, 155000 kg, Naval Aviation [AV-MF],1983, 4x NK-12MA,https://cmano-db.com/images/DB3000/aircraft_61.jpg,Soviet,aircraft
+Tu-142MR Bear J, Airborne Command Post (ACP),11, 250 kt, 470 kt, 53.1 m, 12.2 m, 49.5 m, 15000 kg, 91800 kg, 155000 kg, Naval Aviation [AV-MF],1987, 4x NK-12MA,https://cmano-db.com/images/DB3000/aircraft_477.jpg,Soviet,aircraft
+Tu-143 UAV [VR-3 Reys], Unmanned Aerial Vehicle (UAV),0, 350 kt, 510 kt, 2.2 m, 1.5 m, 8.1 m, 0 kg, 0 kg, 1230 kg, Frontal Aviation [VVS],1976, 1x TR3-117,https://cmano-db.com/images/DB3000/aircraft_2568.jpg,Soviet,aircraft
+Tu-160 Blackjack, Bomber,4, 350 kt, 920 kt, 50.7 m, 13.1 m, 54.1 m, 45000 kg, 118000 kg, 275000 kg, Long Range Aviation [DA],1989, 4x NK-32,https://cmano-db.com/images/DB3000/aircraft_280.jpg,Soviet,aircraft
+Tu-16K-10-26P Badger C Mod, Bomber,8, 300 kt, 520 kt, 33.0 m, 10.4 m, 36.2 m, 13000 kg, 36600 kg, 79000 kg, Naval Aviation [AV-MF],1985, 2x RD-3M,https://cmano-db.com/images/DB3000/aircraft_154.jpg,Soviet,aircraft
+Tu-16K-10P Badger C, Bomber,8, 300 kt, 520 kt, 33.0 m, 10.4 m, 36.2 m, 13000 kg, 36600 kg, 79000 kg, Naval Aviation [AV-MF],1985, 2x RD-3M,https://cmano-db.com/images/DB3000/aircraft_2514.jpg,Soviet,aircraft
+Tu-16K-26PM Badger G Mod, Bomber,8, 300 kt, 520 kt, 33.0 m, 10.4 m, 34.8 m, 13000 kg, 36600 kg, 79000 kg, Naval Aviation [AV-MF],1985, 2x RD-3M,https://cmano-db.com/images/DB3000/aircraft_155.jpg,Soviet,aircraft
+Tu-16N Badger A, Tanker (Air Refueling),8, 300 kt, 550 kt, 33.0 m, 10.4 m, 34.8 m, 0 kg, 36600 kg, 79000 kg, Long Range Aviation [DA],1964, 2x RD-3M,https://cmano-db.com/images/DB3000/aircraft_128.jpg,Soviet,aircraft
+Tu-16P Badger H, Electronic Warfare,10, 300 kt, 550 kt, 33.0 m, 10.4 m, 34.8 m, 0 kg, 36600 kg, 79000 kg, Naval Aviation [AV-MF],1963, 2x RD-3M,https://cmano-db.com/images/DB3000/aircraft_127.jpg,Soviet,aircraft
+Tu-16P Badger J, Electronic Warfare,10, 300 kt, 550 kt, 33.0 m, 10.4 m, 34.8 m, 0 kg, 36600 kg, 79000 kg, Naval Aviation [AV-MF],1963, 2x RD-3M,https://cmano-db.com/images/DB3000/aircraft_126.jpg,Soviet,aircraft
+Tu-16R Badger E, Recon,10, 300 kt, 550 kt, 33.0 m, 10.4 m, 34.8 m, 0 kg, 36600 kg, 79000 kg, Naval Aviation [AV-MF],1962, 2x RD-3M,https://cmano-db.com/images/DB3000/aircraft_1139.jpg,Soviet,aircraft
+Tu-16R Badger F, Recon,10, 300 kt, 550 kt, 33.0 m, 10.4 m, 34.8 m, 0 kg, 36600 kg, 79000 kg, Naval Aviation [AV-MF],1979, 2x RD-3M,https://cmano-db.com/images/DB3000/aircraft_2252.jpg,Soviet,aircraft
+Tu-16RM-1/2 Badger D, Recon,10, 300 kt, 550 kt, 33.0 m, 10.4 m, 34.8 m, 0 kg, 36600 kg, 79000 kg, Naval Aviation [AV-MF],1967, 2x RD-3M,https://cmano-db.com/images/DB3000/aircraft_1321.jpg,Soviet,aircraft
+Tu-16Ye Badger K, Recon,10, 300 kt, 550 kt, 33.0 m, 10.4 m, 34.8 m, 0 kg, 36600 kg, 79000 kg, Naval Aviation [AV-MF],1981, 2x RD-3M,https://cmano-db.com/images/DB3000/aircraft_2288.jpg,Soviet,aircraft
+Tu-22KD Blinder B, Bomber,3, 400 kt, 750 kt, 23.6 m, 10.0 m, 41.6 m, 12000 kg, 47300 kg, 94000 kg, Long Range Aviation [DA],1985, 2x RD-7M-2,https://cmano-db.com/images/DB3000/aircraft_1664.jpg,Soviet,aircraft
+Tu-22KPD Blinder B, Bomber,3, 400 kt, 750 kt, 23.6 m, 10.0 m, 41.6 m, 12000 kg, 47300 kg, 94000 kg, Long Range Aviation [DA],1985, 2x RD-7M-2,https://cmano-db.com/images/DB3000/aircraft_2675.jpg,Soviet,aircraft
+Tu-22M-2 Backfire B, Bomber,4, 400 kt, 920 kt, 34.3 m, 11.1 m, 41.5 m, 24000 kg, 54000 kg, 122000 kg, Long Range Aviation [DA],1985, 2x NK-22,https://cmano-db.com/images/DB3000/aircraft_1666.jpg,Soviet,aircraft
+Tu-22MR Backfire C, Recon,4, 400 kt, 920 kt, 34.3 m, 11.1 m, 42.5 m, 0 kg, 54000 kg, 124000 kg, Long Range Aviation [DA],1989, 2x NK-25,https://cmano-db.com/images/DB3000/aircraft_1674.jpg,Soviet,aircraft
+Tu-22PD Blinder E, Electronic Warfare,3, 400 kt, 750 kt, 23.6 m, 10.0 m, 41.6 m, 0 kg, 47300 kg, 92000 kg, Naval Aviation [AV-MF],1963, 2x RD-7M-2,https://cmano-db.com/images/DB3000/aircraft_2116.jpg,Soviet,aircraft
+Tu-22RD Blinder C, Recon,3, 400 kt, 750 kt, 23.6 m, 10.0 m, 41.6 m, 12000 kg, 47300 kg, 94000 kg, Naval Aviation [AV-MF],1985, 2x RD-7M-2,https://cmano-db.com/images/DB3000/aircraft_1665.jpg,Soviet,aircraft
+Tu-22RDK Blinder C, Recon,3, 400 kt, 750 kt, 23.6 m, 10.0 m, 41.6 m, 12000 kg, 47300 kg, 94000 kg, Naval Aviation [AV-MF],1985, 2x RD-7M-2,https://cmano-db.com/images/DB3000/aircraft_2112.jpg,Soviet,aircraft
+Tu-22RDM Blinder C, Recon,3, 400 kt, 750 kt, 23.6 m, 10.0 m, 41.6 m, 12000 kg, 47300 kg, 94000 kg, Naval Aviation [AV-MF],1983, 2x RD-7M-2,https://cmano-db.com/images/DB3000/aircraft_2115.jpg,Soviet,aircraft
+Tu-243 UAV [VR-3 Reys-D], Unmanned Aerial Vehicle (UAV),0, 350 kt, 510 kt, 2.2 m, 1.5 m, 8.4 m, 0 kg, 0 kg, 1230 kg, Frontal Aviation [VVS],1989, 1x TR3-117,https://cmano-db.com/images/DB3000/aircraft_2571.jpg,Soviet,aircraft
+Tu-95K-22 Bear G, Bomber,9, 250 kt, 470 kt, 50.0 m, 12.2 m, 49.1 m, 15000 kg, 79600 kg, 182000 kg, Long Range Aviation [DA],1988, 4x NK-12MV,https://cmano-db.com/images/DB3000/aircraft_771.jpg,Soviet,aircraft
+Tu-95KM Bear C, Bomber,9, 250 kt, 470 kt, 50.0 m, 12.2 m, 46.2 m, 15000 kg, 79600 kg, 182000 kg, Long Range Aviation [DA],1969, 4x NK-12MV,https://cmano-db.com/images/DB3000/aircraft_643.jpg,Soviet,aircraft
+Tu-95MR Bear E, Recon,9, 250 kt, 470 kt, 50.0 m, 12.2 m, 46.2 m, 0 kg, 79600 kg, 182000 kg, Naval Aviation [AV-MF],1966, 4x NK-12MV,https://cmano-db.com/images/DB3000/aircraft_444.jpg,Soviet,aircraft
+Tu-95MS-16 Bear H, Bomber,7, 250 kt, 470 kt, 50.0 m, 12.2 m, 49.1 m, 15000 kg, 94400 kg, 155000 kg, Long Range Aviation [DA],1987, 4x NK-12MP,https://cmano-db.com/images/DB3000/aircraft_62.jpg,Soviet,aircraft
+Tu-95MS-6 Bear H, Bomber,7, 250 kt, 470 kt, 50.0 m, 12.2 m, 49.1 m, 15000 kg, 94400 kg, 155000 kg, Long Range Aviation [DA],1984, 4x NK-12MP,https://cmano-db.com/images/DB3000/aircraft_1611.jpg,Soviet,aircraft
+Tu-95RT Bear D, Recon,11, 250 kt, 470 kt, 50.0 m, 12.2 m, 46.2 m, 0 kg, 98000 kg, 180850 kg, Naval Aviation [AV-MF],1966, 4x NK-12MV,https://cmano-db.com/images/DB3000/aircraft_129.jpg,Soviet,aircraft
+Yak-28P Firebar, Fighter,2, 350 kt, 920 kt, 11.64 m, 4.3 m, 20.55 m, 3000 kg, 9970 kg, 17845 kg, Air Defence Troops [PVO],1965, 2x R-11AF2-300,https://cmano-db.com/images/DB3000/aircraft_2165.jpg,Soviet,aircraft
+Yak-28PP Brewer E, Electronic Warfare,2, 350 kt, 920 kt, 11.64 m, 4.3 m, 20.34 m, 0 kg, 9970 kg, 17845 kg, Frontal Aviation [VVS],1971, 2x R-11AF2-300,https://cmano-db.com/images/DB3000/aircraft_2120.jpg,Soviet,aircraft
+Yak-28R Brewer D, Recon,2, 350 kt, 920 kt, 11.64 m, 4.3 m, 20.34 m, 0 kg, 9970 kg, 17645 kg, Frontal Aviation [VVS],1967, 2x R-11AF2-300,https://cmano-db.com/images/DB3000/aircraft_2166.jpg,Soviet,aircraft
+Yak-38 Forger A, Attack,1, 350 kt, 570 kt, 7.3 m, 4.3 m, 16.4 m, 2000 kg, 7700 kg, 10300 kg, Naval Aviation [AV-MF],1977," 1x R-27V, 2x RD-36-35FVR",https://cmano-db.com/images/DB3000/aircraft_1856.jpg,Soviet,aircraft
+Yak-38M Forger A, Attack,1, 350 kt, 570 kt, 7.3 m, 4.3 m, 16.4 m, 2000 kg, 7385 kg, 11300 kg, Naval Aviation [AV-MF],1986," 1x R-28V-300, 2x RD-38",https://cmano-db.com/images/DB3000/aircraft_59.jpg,Soviet,aircraft
+A-10A Thunderbolt II, Attack,1, 180 kt, 390 kt, 17.5 m, 4.5 m, 16.3 m, 7260 kg, 11321 kg, 23000 kg, Air Force,1986, 2x TF34-GE-100A,https://cmano-db.com/images/DB3000/aircraft_445.jpg,US,aircraft
+A-12A Avenger II, Attack,2, 350 kt, 570 kt, 21.4 m, 3.4 m, 13.2 m, 4600 kg, 17700 kg, 36300 kg, Navy,1999, 2x F412-GE-400,https://cmano-db.com/images/DB3000/aircraft_3484.jpg,US,aircraft
+A-29B Super Tucano [EMB-314], Attack,2, 220 kt, 330 kt, 11.1 m, 3.9 m, 11.4 m, 1500 kg, 3200 kg, 5400 kg, Air Force,2008, 1x PT6A-68C,0,US,aircraft
+A-37B Dragonfly [Super Tweet], Attack,2, 320 kt, 460 kt, 10.9 m, 2.7 m, 8.6 m, 2179 kg, 2817 kg, 6350 kg, Army,1968, 2x J85-GE-17A,https://cmano-db.com/images/DB3000/aircraft_1428.jpg,US,aircraft
+A-4M Skyhawk, Attack,1, 300 kt, 570 kt, 8.4 m, 4.6 m, 12.3 m, 8318 kg, 5678 kg, 11136 kg, Marine Corps,1976, 1x J52-P-408,https://cmano-db.com/images/DB3000/aircraft_658.jpg,US,aircraft
+A-6E Intruder, Attack,2, 300 kt, 570 kt, 16.2 m, 4.8 m, 16.7 m, 15870 kg, 12070 kg, 27500 kg, Navy,1989, 2x J52-P-409,https://cmano-db.com/images/DB3000/aircraft_43.jpg,US,aircraft
+A-6F Intruder II, Attack,2, 350 kt, 580 kt, 16.2 m, 4.8 m, 16.7 m, 15870 kg, 12600 kg, 27500 kg, Navy,1995, 2x F404-GE-400D,0,US,aircraft
+A-7B Corsair II, Attack,1, 300 kt, 570 kt, 11.8 m, 4.9 m, 14.1 m, 6810 kg, 8840 kg, 19050 kg, Navy,1975, 1x TF30-PW-408,https://cmano-db.com/images/DB3000/aircraft_903.jpg,US,aircraft
+A-7D Corsair II, Attack,1, 300 kt, 570 kt, 11.8 m, 4.9 m, 14.1 m, 6810 kg, 8840 kg, 19050 kg, Air National Guard,1976, 1x TF41-A-1,https://cmano-db.com/images/DB3000/aircraft_480.jpg,US,aircraft
+A-7D Corsair II [FLIR], Attack,1, 300 kt, 570 kt, 11.8 m, 4.9 m, 14.1 m, 6810 kg, 8840 kg, 19050 kg, Air National Guard,1989, 1x TF41-A-1,https://cmano-db.com/images/DB3000/aircraft_3029.jpg,US,aircraft
+A-7E Corsair II, Attack,1, 300 kt, 570 kt, 11.8 m, 4.9 m, 14.1 m, 6810 kg, 8840 kg, 19050 kg, Navy,1986, 1x TF41-A-2,https://cmano-db.com/images/DB3000/aircraft_478.jpg,US,aircraft
+A-7E Corsair II [FLIR], Attack,1, 300 kt, 570 kt, 11.8 m, 4.9 m, 14.1 m, 6810 kg, 8840 kg, 19050 kg, Navy,1987, 1x TF41-A-2,https://cmano-db.com/images/DB3000/aircraft_479.jpg,US,aircraft
+"A-7K Corsair II [TA-7D, FLIR]", Attack,1, 300 kt, 570 kt, 11.8 m, 4.9 m, 14.1 m, 6810 kg, 8840 kg, 19050 kg, Air Force,1989, 1x TF41-A-1,https://cmano-db.com/images/DB3000/aircraft_3028.jpg,US,aircraft
+A-7K Corsair II [TA-7D], Attack,1, 300 kt, 570 kt, 11.8 m, 4.9 m, 14.1 m, 6810 kg, 8840 kg, 19050 kg, Air Force,1984, 1x TF41-A-1,https://cmano-db.com/images/DB3000/aircraft_491.jpg,US,aircraft
+A/F-117X Sea Hawk, Attack,2, 350 kt, 590 kt, 19.74 m, 3.8 m, 20.1 m, 3629 kg, 20000 kg, 33230 kg, Navy,1999, 2x F414-GE-400,https://cmano-db.com/images/DB3000/aircraft_3743.jpg,US,aircraft
+AC-130A Pave Pronto, Attack,5, 180 kt, 325 kt, 39.7 m, 11.9 m, 29.3 m, 16000 kg, 34400 kg, 55500 kg, Air Force,1969, 4x T56-A-9,https://cmano-db.com/images/DB3000/aircraft_622.jpg,US,aircraft
+AC-130H Pave Spectre II, Attack,5, 180 kt, 325 kt, 40.4 m, 11.6 m, 29.8 m, 19090 kg, 34400 kg, 70300 kg, Air Force,1975, 4x T56-A-15,https://cmano-db.com/images/DB3000/aircraft_1141.jpg,US,aircraft
+AC-130U Spooky, Attack,5, 180 kt, 325 kt, 40.4 m, 11.6 m, 29.8 m, 19090 kg, 34400 kg, 70300 kg, Air Force,1997, 4x T56-A-15,https://cmano-db.com/images/DB3000/aircraft_429.jpg,US,aircraft
+AC-130W Stinger II, Area Surveillance,5, 180 kt, 325 kt, 40.4 m, 11.6 m, 29.8 m, 19090 kg, 34400 kg, 70300 kg, Air Force,2011, 4x T56-A-15,https://cmano-db.com/images/DB3000/aircraft_3105.jpg,US,aircraft
+AH-1F Cobra, Attack,2, 55 kt, 125 kt, 3.3 m, 4.4 m, 13.6 m, 0 kg, 2630 kg, 4535 kg, Army,1981, 1x T53-L-703,https://cmano-db.com/images/DB3000/aircraft_2106.jpg,US,aircraft
+AH-1J Sea Cobra, Attack,2, 55 kt, 160 kt, 3.3 m, 4.4 m, 13.6 m, 0 kg, 2990 kg, 4540 kg, Marine Corps,1983, 1x T400-CP-400,https://cmano-db.com/images/DB3000/aircraft_206.jpg,US,aircraft
+AH-1S Cobra, Attack,2, 55 kt, 125 kt, 3.3 m, 4.4 m, 13.6 m, 0 kg, 2630 kg, 4535 kg, Army,1978, 1x T53-L-703,https://cmano-db.com/images/DB3000/aircraft_108.jpg,US,aircraft
+AH-1T Sea Cobra, Attack,2, 55 kt, 160 kt, 3.3 m, 4.4 m, 13.6 m, 0 kg, 2630 kg, 6356 kg, Marine Corps,1983, 1x T400-CP-402,https://cmano-db.com/images/DB3000/aircraft_1486.jpg,US,aircraft
+AH-1W Super Cobra, Attack,2, 55 kt, 180 kt, 4.3 m, 4.2 m, 13.9 m, 0 kg, 4630 kg, 6690 kg, Marine Corps,2000, 2x T700-GE-401,https://cmano-db.com/images/DB3000/aircraft_301.jpg,US,aircraft
+AH-1Z Viper [Super Cobra], Attack,2, 55 kt, 180 kt, 4.3 m, 4.2 m, 13.9 m, 0 kg, 5540 kg, 8390 kg, Marine Corps,2009, 2x T700-GE-401,https://cmano-db.com/images/DB3000/aircraft_336.jpg,US,aircraft
+AH-64A Apache, Attack,2, 55 kt, 160 kt, 5.2 m, 4.6 m, 14.96 m, 0 kg, 5165 kg, 10450 kg, Army,1992, 2x T700-GE-701C,https://cmano-db.com/images/DB3000/aircraft_284.jpg,US,aircraft
+AH-64AS Sea Apache, Attack,2, 55 kt, 160 kt, 5.2 m, 4.6 m, 14.96 m, 0 kg, 5165 kg, 10450 kg, Marine Corps,1990, 2x T700-GE-701C,0,US,aircraft
+AH-64D Apache Longbow, Attack,2, 55 kt, 160 kt, 4.9 m, 4.9 m, 14.96 m, 0 kg, 5360 kg, 10450 kg, Army,2008, 2x T700-GE-701C,https://cmano-db.com/images/DB3000/aircraft_246.jpg,US,aircraft
+AH-64E Apache Guardian, Attack,2, 55 kt, 160 kt, 4.9 m, 4.9 m, 14.96 m, 0 kg, 5360 kg, 10450 kg, Army,2014, 2x T700-GE-701D,0,US,aircraft
+AH-6C Little Bird [MD-500D], Attack,2, 55 kt, 135 kt, 1.9 m, 2.6 m, 7.6 m, 454 kg, 560 kg, 1361 kg, Army,1972, 1x T63-A-5A,https://cmano-db.com/images/DB3000/aircraft_1591.jpg,US,aircraft
+AH-6F Little Bird [MD-500MG], Attack,2, 55 kt, 135 kt, 1.9 m, 2.6 m, 7.6 m, 454 kg, 560 kg, 1361 kg, Army,1985, 1x T63-A-5A,https://cmano-db.com/images/DB3000/aircraft_1595.jpg,US,aircraft
+AH-6G Little Bird [MD-530MG], Attack,2, 55 kt, 150 kt, 1.9 m, 3.0 m, 7.3 m, 454 kg, 560 kg, 1610 kg, Army,1990, 1x 250-C20B,https://cmano-db.com/images/DB3000/aircraft_1596.jpg,US,aircraft
+AH-6J Little Bird [MD-530MG], Attack,2, 55 kt, 150 kt, 1.9 m, 3.0 m, 7.3 m, 454 kg, 560 kg, 1610 kg, Army,0, 1x 250-C20B,https://cmano-db.com/images/DB3000/aircraft_1587.jpg,US,aircraft
+AH-6M Little Bird MELB [MD-530F], Attack,2, 55 kt, 150 kt, 1.9 m, 3.0 m, 7.3 m, 454 kg, 896 kg, 2367 kg, Army,0, 1x 250-C30/R3,https://cmano-db.com/images/DB3000/aircraft_1593.jpg,US,aircraft
+AL-1A Airborne Laser, Airborne Laser Platform,3, 230 kt, 520 kt, 64.4 m, 19.4 m, 70.6 m, 0 kg, 178755 kg, 396890 kg, Air Force,0, 4x CF6-80C2,https://cmano-db.com/images/DB3000/aircraft_718.jpg,US,aircraft
+AN/TPS-63 LASS Aerostat, Aerostat,0, 0 kt, 0 kt, 10.0 m, 10.0 m, 71.0 m, 2300 kg, 0 kg, 0 kg, Customs,1986, Aerostat Cable,https://cmano-db.com/images/DB3000/aircraft_2656.jpg,US,aircraft
+AT-6E Wolverine, Attack,1, 220 kt, 325 kt, 10.4 m, 3.25 m, 10.16 m, 1865 kg, 2670 kg, 4535 kg, Air Force,2021, 1x PT6A-68D,0,US,aircraft
+AT-802U Sky Warden, Attack,2, 90 kt, 210 kt, 18.04 m, 3.9 m, 11.43 m, 4000 kg, 3703 kg, 7257 kg, Air Force,2023, 1x PT6A-67F,0,US,aircraft
+AV-8A Harrier, Attack,1, 350 kt, 540 kt, 7.7 m, 3.4 m, 14.4 m, 0 kg, 5535 kg, 11168 kg, Marine Corps,1978, 1x Pegasus 11 Mk.103,https://cmano-db.com/images/DB3000/aircraft_2399.jpg,US,aircraft
+AV-8B Harrier II [Day-Only], Attack,1, 350 kt, 570 kt, 9.3 m, 3.6 m, 14.5 m, 0 kg, 6340 kg, 15980 kg, Marine Corps,1986, 1x F402-RR-406A/Pegasus 11-21 Mk.105,https://cmano-db.com/images/DB3000/aircraft_1565.jpg,US,aircraft
+AV-8B Harrier II [Night Attack], Attack,1, 350 kt, 570 kt, 9.3 m, 3.6 m, 14.5 m, 0 kg, 6340 kg, 15980 kg, Marine Corps,1992, 1x F402-RR-406A/Pegasus 11-21 Mk.105,https://cmano-db.com/images/DB3000/aircraft_855.jpg,US,aircraft
+AV-8C Harrier, Attack,1, 350 kt, 540 kt, 7.7 m, 3.4 m, 14.4 m, 0 kg, 5535 kg, 11168 kg, Marine Corps,1982, 1x Pegasus 11 Mk.103,https://cmano-db.com/images/DB3000/aircraft_205.jpg,US,aircraft
+Altius 600 UAV, Unmanned Aerial Vehicle (UAV),0, 45 kt, 80 kt, 2.54 m, 0.0 m, 1.0 m, 3 kg, 12 kg, 15 kg, Army,2020, 1x Piston Engine,0,US,aircraft
+B-1B Lancer, Bomber,4, 350 kt, 700 kt, 41.7 m, 10.4 m, 47.8 m, 34019 kg, 86183 kg, 214650 kg, Air Force,1991, 4x F101-GE102,https://cmano-db.com/images/DB3000/aircraft_113.jpg,US,aircraft
+B-21 Raider, Bomber,3, 280 kt, 540 kt, 41.15 m, 3.66 m, 18.2 m, 0 kg, 53775 kg, 170600 kg, Air Force,2027, 2x F135-PW-100,0,US,aircraft
+B-2A Spirit Blk 20, Bomber,3, 280 kt, 540 kt, 52.4 m, 5.2 m, 21.0 m, 0 kg, 71700 kg, 170600 kg, Air Force,1997, 4x F118-GE-110,https://cmano-db.com/images/DB3000/aircraft_267.jpg,US,aircraft
+B-2A Spirit Blk 30, Bomber,3, 280 kt, 540 kt, 52.4 m, 5.2 m, 21.0 m, 0 kg, 71700 kg, 170600 kg, Air Force,1999, 4x F118-GE-110,https://cmano-db.com/images/DB3000/aircraft_286.jpg,US,aircraft
+B-52D Stratofortress, Bomber,6, 280 kt, 510 kt, 56.4 m, 12.4 m, 48.5 m, 0 kg, 74960 kg, 204300 kg, Air Force,1975, 8x J57-P-29WA,https://cmano-db.com/images/DB3000/aircraft_1928.jpg,US,aircraft
+B-52G Stratofortress, Bomber,6, 280 kt, 510 kt, 56.4 m, 12.4 m, 48.5 m, 0 kg, 81730 kg, 221550 kg, Air Force,1985, 8x J57-P-43WB,https://cmano-db.com/images/DB3000/aircraft_204.jpg,US,aircraft
+B-70A Valkyrie, Bomber,4, 400 kt, 1800 kt, 31.4 m, 9.3 m, 56.6 m, 28000 kg, 85427 kg, 252473 kg, Air Force,1980, 6x YJ93-GE-3,0,US,aircraft
+BQM-167A Skeeter UAV, Target Drone,0, 350 kt, 610 kt, 3.2 m, 1.2 m, 6.1 m, 292 kg, 313 kg, 646 kg, Air Force,2008, 1x Tri 60-5+ Turbojet,0,US,aircraft
+BQM-74C Chukar III UAV, Target Drone,0, 350 kt, 500 kt, 1.8 m, 0.7 m, 4.0 m, 0 kg, 199 kg, 0 kg, Navy,1981, 1x J400-WR-402/3,https://cmano-db.com/images/DB3000/aircraft_943.jpg,US,aircraft
+BQM-74E Chukar III UAV, Target Drone,0, 350 kt, 550 kt, 1.8 m, 0.7 m, 4.0 m, 0 kg, 211 kg, 0 kg, Navy,1993, 1x J400-WR-404,https://cmano-db.com/images/DB3000/aircraft_2691.jpg,US,aircraft
+BQM-74F Chukar III UAV, Target Drone,0, 350 kt, 610 kt, 2.1 m, 0.7 m, 4.5 m, 0 kg, 280 kg, 0 kg, Navy,2007, 1x J400-WR-40x,https://cmano-db.com/images/DB3000/aircraft_2692.jpg,US,aircraft
+Boeing 747-ALBM [ALBM Carrier Aircraft], Bomber,3, 230 kt, 520 kt, 59.6 m, 19.3 m, 70.6 m, 0 kg, 178100 kg, 377840 kg, Air Force,1986, 4x JT9D-7,0,US,aircraft
+Boeing 747-CMCA [Cruise Missile Carrier Aircraft], Bomber,3, 230 kt, 520 kt, 59.6 m, 19.3 m, 70.6 m, 0 kg, 178100 kg, 377840 kg, Air Force,1988, 4x JT9D-7,0,US,aircraft
+C-130E Hercules, Transport,5, 180 kt, 325 kt, 39.7 m, 11.9 m, 29.3 m, 19090 kg, 34400 kg, 69750 kg, Air Force,1963, 4x T56-A-7A,https://cmano-db.com/images/DB3000/aircraft_1614.jpg,US,aircraft
+C-130H Hercules, Transport,5, 180 kt, 325 kt, 40.4 m, 11.6 m, 29.8 m, 19090 kg, 34400 kg, 70300 kg, Air Force,1976, 4x T56-A-15,https://cmano-db.com/images/DB3000/aircraft_251.jpg,US,aircraft
+C-130J Hercules, Transport,5, 210 kt, 350 kt, 40.4 m, 11.8 m, 29.8 m, 20000 kg, 34200 kg, 79200 kg, Air Force,2017, 4x AE2100D3,0,US,aircraft
+C-130J-30 Hercules, Transport,5, 210 kt, 350 kt, 40.4 m, 11.8 m, 29.8 m, 20000 kg, 34200 kg, 79200 kg, Air Force,2017, 4x AE2100D3,0,US,aircraft
+C-141A Starlifter, Transport,6, 250 kt, 490 kt, 48.8 m, 12.0 m, 44.2 m, 30000 kg, 65542 kg, 147000 kg, Air Force,1966, 4x TF33-PW-7,https://cmano-db.com/images/DB3000/aircraft_1855.jpg,US,aircraft
+C-141B Starlifter, Transport,6, 250 kt, 490 kt, 48.7 m, 12.0 m, 51.3 m, 30000 kg, 65542 kg, 147000 kg, Air Force,1980, 4x TF33-PW-7,https://cmano-db.com/images/DB3000/aircraft_213.jpg,US,aircraft
+C-141B Starlifter SOLL, Transport,6, 250 kt, 490 kt, 48.7 m, 12.0 m, 51.3 m, 30000 kg, 65542 kg, 147000 kg, Air Force,1994, 4x TF33-PW-7,https://cmano-db.com/images/DB3000/aircraft_1929.jpg,US,aircraft
+C-141C Starlifter, Transport,6, 250 kt, 490 kt, 48.7 m, 12.0 m, 51.3 m, 30000 kg, 65542 kg, 147000 kg, Air Force,2000, 4x TF33-PW-7,https://cmano-db.com/images/DB3000/aircraft_485.jpg,US,aircraft
+C-145A Combat Coyote [An-28 Copy], Transport,3, 130 kt, 190 kt, 22.06 m, 4.9 m, 13.1 m, 2300 kg, 4100 kg, 7500 kg, Air Force,2007, 2x PT6A-65B,0,US,aircraft
+C-17A Globemaster III, Transport,3, 250 kt, 480 kt, 51.8 m, 16.8 m, 53.0 m, 77500 kg, 128100 kg, 265350 kg, Air Force,1994, 4x F117-PW-100,https://cmano-db.com/images/DB3000/aircraft_288.jpg,US,aircraft
+C-17A Globemaster III SOLL, Transport,3, 250 kt, 480 kt, 51.8 m, 16.8 m, 53.0 m, 77500 kg, 128100 kg, 265350 kg, Air Force,2003, 4x F117-PW-100,https://cmano-db.com/images/DB3000/aircraft_1932.jpg,US,aircraft
+C-212-200 Aviocar [C-41A], Maritime Patrol Aircraft (MPA),2, 140 kt, 200 kt, 20.3 m, 6.3 m, 16.2 m, 2960 kg, 3780 kg, 7700 kg, Air Force,1985, 2x TPE331-10R-511C,0,US,aircraft
+C-22B [Boeing 727-35], Transport,3, 230 kt, 520 kt, 32.9 m, 10.4 m, 40.6 m, 0 kg, 36560 kg, 77000 kg, Air Force,0, 3x JT8D-1,0,US,aircraft
+C-2A Greyhound, Transport,3, 200 kt, 335 kt, 24.6 m, 4.9 m, 17.3 m, 4500 kg, 15310 kg, 24655 kg, Navy,1967, 2x T56-A-425,https://cmano-db.com/images/DB3000/aircraft_633.jpg,US,aircraft
+C-2A(R) Greyhound, Transport,3, 200 kt, 335 kt, 24.6 m, 4.9 m, 17.3 m, 4500 kg, 15310 kg, 24655 kg, Navy,1986, 2x T56-A-425,https://cmano-db.com/images/DB3000/aircraft_2891.jpg,US,aircraft
+C-32A [Boeing 757-200ER], Transport,16, 230 kt, 520 kt, 38.05 m, 10.4 m, 47.32 m, 0 kg, 57840 kg, 115680 kg, Air Force,1998, 2x PW2037,0,US,aircraft
+C-32B [Boeing 757-200ER+], Transport,16, 230 kt, 520 kt, 38.05 m, 10.4 m, 47.32 m, 0 kg, 57840 kg, 115680 kg, Air Force,0, 2x PW2037,0,US,aircraft
+C-40A Clipper [Boeing 737-700C], Transport,5, 230 kt, 500 kt, 34.31 m, 12.55 m, 33.63 m, 17544 kg, 37648 kg, 70080 kg, Navy,2001, 2x CFM56-7-B20,0,US,aircraft
+C-40B Clipper [Boeing 737-700C], Transport,5, 230 kt, 500 kt, 34.31 m, 12.55 m, 33.63 m, 17544 kg, 37648 kg, 70080 kg, Air Force,2003, 2x CFM56-7-B20,0,US,aircraft
+C-40C Clipper [Boeing 737-700C], Transport,5, 230 kt, 500 kt, 34.31 m, 12.55 m, 33.63 m, 17544 kg, 37648 kg, 70080 kg, Air Force,2003, 2x CFM56-7-B20,0,US,aircraft
+C-47T Turbo Dakota [DC-3], Transport,3, 120 kt, 190 kt, 29.4 m, 5.2 m, 19.4 m, 2700 kg, 8038 kg, 14061 kg, Air Force,2002, 2x PT6A-65R,0,US,aircraft
+C-5A Galaxy, Transport,8, 250 kt, 480 kt, 67.9 m, 19.9 m, 75.5 m, 86260 kg, 172370 kg, 381000 kg, Air Force,1971, 4x TF39-GE-1C,https://cmano-db.com/images/DB3000/aircraft_2889.jpg,US,aircraft
+C-5B Galaxy, Transport,8, 250 kt, 480 kt, 67.9 m, 19.9 m, 75.5 m, 122470 kg, 172370 kg, 381000 kg, Air Force,1987, 4x TF39-GE-1C,https://cmano-db.com/images/DB3000/aircraft_287.jpg,US,aircraft
+C-5B Galaxy SOLL, Transport,8, 250 kt, 480 kt, 67.9 m, 19.9 m, 75.5 m, 122470 kg, 172370 kg, 381000 kg, Air Force,1981, 4x TF39-GE-1C,https://cmano-db.com/images/DB3000/aircraft_1930.jpg,US,aircraft
+C-5M Super Galaxy, Transport,8, 250 kt, 480 kt, 67.9 m, 19.9 m, 75.5 m, 122470 kg, 172370 kg, 381000 kg, Air Force,2010, 4x F138-GE-100,https://cmano-db.com/images/DB3000/aircraft_1931.jpg,US,aircraft
+C-9A Nightingale [DC-9-30], Transport,8, 230 kt, 480 kt, 28.47 m, 8.38 m, 36.37 m, 0 kg, 29638 kg, 48600 kg, Air Force,1968, 2x JT8D-9A,0,US,aircraft
+C-9B Skytrain II [DC-9-30], Transport,2, 230 kt, 480 kt, 28.47 m, 8.38 m, 36.37 m, 0 kg, 27080 kg, 49900 kg, Navy,1973, 2x JT8D-9A,0,US,aircraft
+C-9C [DC-9-30], Transport,2, 230 kt, 480 kt, 28.47 m, 8.38 m, 36.37 m, 0 kg, 27080 kg, 49900 kg, Air Force,1977, 2x JT8D-9A,0,US,aircraft
+CH-46D Sea Knight, Transport,3, 55 kt, 150 kt, 4.5 m, 5.1 m, 13.7 m, 3000 kg, 6287 kg, 10442 kg, Marine Corps,1967, 2x T58-GE-10,https://cmano-db.com/images/DB3000/aircraft_917.jpg,US,aircraft
+CH-46E Sea Knight, Transport,3, 55 kt, 150 kt, 4.5 m, 5.1 m, 13.9 m, 3000 kg, 6287 kg, 11000 kg, Marine Corps,1979, 2x T58-GE-16,https://cmano-db.com/images/DB3000/aircraft_918.jpg,US,aircraft
+CH-46E Sea Knight [Extended Range Mod], Transport,3, 55 kt, 150 kt, 4.5 m, 5.1 m, 13.9 m, 3000 kg, 6287 kg, 11000 kg, Marine Corps,2007, 2x T58-GE-16,https://cmano-db.com/images/DB3000/aircraft_2195.jpg,US,aircraft
+CH-46F Sea Knight, Transport,3, 55 kt, 150 kt, 4.5 m, 5.1 m, 13.7 m, 3000 kg, 6287 kg, 11000 kg, Marine Corps,1969, 2x T58-GE-10,https://cmano-db.com/images/DB3000/aircraft_865.jpg,US,aircraft
+CH-47C Chinook, Transport,3, 55 kt, 140 kt, 3.8 m, 5.8 m, 15.9 m, 6810 kg, 10615 kg, 20865 kg, Army,1969, 2x T55-L-11C,https://cmano-db.com/images/DB3000/aircraft_514.jpg,US,aircraft
+CH-47D Chinook, Transport,3, 55 kt, 155 kt, 3.8 m, 5.8 m, 15.9 m, 10886 kg, 10615 kg, 22668 kg, Army,1983, 2x T55-L-712,https://cmano-db.com/images/DB3000/aircraft_512.jpg,US,aircraft
+CH-47F Chinook, Transport,3, 55 kt, 155 kt, 3.8 m, 5.8 m, 15.9 m, 10896 kg, 10615 kg, 22668 kg, Army,2008, 2x T55-L-714A,https://cmano-db.com/images/DB3000/aircraft_2890.jpg,US,aircraft
+CH-53C Sea Stallion, Transport,3, 50 kt, 155 kt, 9.0 m, 7.6 m, 22.3 m, 8000 kg, 10740 kg, 19100 kg, Air Force,1969, 3x T64-GE-7,0,US,aircraft
+CH-53D Sea Stallion, Transport,3, 50 kt, 155 kt, 9.0 m, 7.6 m, 22.3 m, 8000 kg, 10740 kg, 19100 kg, Marine Corps,1971, 3x T64-GE-413A,https://cmano-db.com/images/DB3000/aircraft_776.jpg,US,aircraft
+CH-53E Super Stallion, Transport,3, 50 kt, 170 kt, 9.0 m, 8.5 m, 22.3 m, 16000 kg, 15071 kg, 33300 kg, Navy,1981, 3x T64-GE-416A,0,US,aircraft
+CH-53K King Stallion, Transport,3, 50 kt, 195 kt, 9.0 m, 8.5 m, 22.3 m, 16000 kg, 15071 kg, 38400 kg, Marine Corps,2022, 3x T408 [GE38-1B],0,US,aircraft
+CMV-22B Osprey, Transport,4, 140 kt, 305 kt, 14.0 m, 5.5 m, 17.5 m, 9000 kg, 15032 kg, 27400 kg, Navy,2022, 2x T406-AD-400,0,US,aircraft
+CV-22A Osprey, Transport,3, 140 kt, 305 kt, 14.0 m, 5.5 m, 17.5 m, 9000 kg, 15032 kg, 27400 kg, Air Force,2009, 2x T406-AD-400,https://cmano-db.com/images/DB3000/aircraft_296.jpg,US,aircraft
+DARPA TERN UCAV, Unmanned Aerial Vehicle (UAV),0, 55 kt, 140 kt, 12.0 m, 3.0 m, 3.0 m, 1065 kg, 1210 kg, 2722 kg, Navy,2019, 1x 250-C47E,0,US,aircraft
+Dash-8 Foxhound, Area Surveillance,2, 180 kt, 295 kt, 27.43 m, 7.49 m, 25.68 m, 5138 kg, 11791 kg, 19500 kg, Army,2014, 2x PW123B,0,US,aircraft
+E-11A BACN [Bombardier Global 6000], Airborne Command Post (ACP),4, 220 kt, 520 kt, 28.65 m, 7.8 m, 30.3 m, 2617 kg, 23691 kg, 45132 kg, Air Force,2005, 2x BR710A1-10,0,US,aircraft
+E-2C Hawkeye 2000, Airborne Early Warning (AEW),5, 200 kt, 335 kt, 24.6 m, 5.6 m, 17.6 m, 0 kg, 18090 kg, 26083 kg, Navy,2003, 2x T56-A-427,https://cmano-db.com/images/DB3000/aircraft_694.jpg,US,aircraft
+E-2C Hawkeye Basic, Airborne Early Warning (AEW),5, 200 kt, 335 kt, 24.6 m, 5.6 m, 17.6 m, 0 kg, 18090 kg, 26083 kg, Navy,1974, 2x T56-A-425,https://cmano-db.com/images/DB3000/aircraft_270.jpg,US,aircraft
+E-2C Hawkeye Group 0, Airborne Early Warning (AEW),5, 200 kt, 335 kt, 24.6 m, 5.6 m, 17.6 m, 0 kg, 18090 kg, 26083 kg, Navy,1984, 2x T56-A-425,https://cmano-db.com/images/DB3000/aircraft_557.jpg,US,aircraft
+E-2C Hawkeye Group I, Airborne Early Warning (AEW),5, 200 kt, 335 kt, 24.6 m, 5.6 m, 17.6 m, 0 kg, 18090 kg, 26083 kg, Navy,1990, 2x T56-A-427,https://cmano-db.com/images/DB3000/aircraft_13.jpg,US,aircraft
+E-2C Hawkeye Group II, Airborne Early Warning (AEW),5, 200 kt, 335 kt, 24.6 m, 5.6 m, 17.6 m, 0 kg, 18090 kg, 26083 kg, Navy,1995, 2x T56-A-427,https://cmano-db.com/images/DB3000/aircraft_268.jpg,US,aircraft
+E-2D Advanced Hawkeye, Airborne Early Warning (AEW),5, 200 kt, 335 kt, 24.6 m, 5.6 m, 17.6 m, 0 kg, 18090 kg, 26083 kg, Navy,2016, 2x T56-A-427A,https://cmano-db.com/images/DB3000/aircraft_690.jpg,US,aircraft
+E-3A Sentry, Airborne Early Warning (AEW),17, 230 kt, 520 kt, 44.4 m, 12.6 m, 46.6 m, 0 kg, 73480 kg, 147000 kg, Air Force,1980, 4x TF33-PW-100A/JT3D-3B,https://cmano-db.com/images/DB3000/aircraft_764.jpg,US,aircraft
+E-3B Sentry, Airborne Early Warning (AEW),17, 230 kt, 520 kt, 44.4 m, 12.6 m, 46.6 m, 0 kg, 73480 kg, 147000 kg, Air Force,1985, 4x TF33-PW-100A/JT3D-3B,https://cmano-db.com/images/DB3000/aircraft_765.jpg,US,aircraft
+E-3D Sentry, Airborne Early Warning (AEW),14, 230 kt, 520 kt, 44.4 m, 12.6 m, 46.6 m, 0 kg, 83990 kg, 151636 kg, Navy,2022, 4x CFM56-2A3,0,US,aircraft
+E-3G Sentry, Airborne Early Warning (AEW),17, 230 kt, 520 kt, 44.4 m, 12.6 m, 46.6 m, 0 kg, 73480 kg, 147000 kg, Air Force,2015, 4x TF33-PW-100A/JT3D-3B,https://cmano-db.com/images/DB3000/aircraft_3853.jpg,US,aircraft
+E-4B NAOC, Airborne Command Post (ACP),8, 230 kt, 520 kt, 59.6 m, 19.3 m, 70.6 m, 0 kg, 174000 kg, 377840 kg, Air Force,1984, 4x CF6-50-E2,https://cmano-db.com/images/DB3000/aircraft_695.jpg,US,aircraft
+E-6A Mercury, Airborne Command Post (ACP),23, 230 kt, 520 kt, 45.2 m, 12.9 m, 45.8 m, 0 kg, 66406 kg, 154400 kg, Navy,1990, 4x F108-CF-100/CFM56-2A,https://cmano-db.com/images/DB3000/aircraft_289.jpg,US,aircraft
+E-6B Mercury, Airborne Command Post (ACP),23, 230 kt, 520 kt, 45.2 m, 12.9 m, 45.8 m, 0 kg, 66406 kg, 154400 kg, Navy,1998, 4x F108-CF-100/CFM56-2A,https://cmano-db.com/images/DB3000/aircraft_592.jpg,US,aircraft
+E-7A Wedgetail, Airborne Early Warning (AEW),10, 230 kt, 520 kt, 35.8 m, 12.5 m, 33.6 m, 19830 kg, 46606 kg, 77565 kg, Air Force,2027, 2x CFM56-7B27A,0,US,aircraft
+E-8A Joint STARS, Area Surveillance,15, 230 kt, 520 kt, 44.4 m, 12.9 m, 46.6 m, 0 kg, 77564 kg, 152409 kg, Air Force,1991, 4x TF33-PW-100A/JT3D-3B,https://cmano-db.com/images/DB3000/aircraft_590.jpg,US,aircraft
+E-8C Joint STARS, Area Surveillance,15, 230 kt, 520 kt, 44.4 m, 12.9 m, 46.6 m, 0 kg, 77564 kg, 152409 kg, Air Force,1997, 4x TF33-PW-100A/JT3D-3B,https://cmano-db.com/images/DB3000/aircraft_290.jpg,US,aircraft
+E-9A Joint STARS, Electronic Warfare,15, 220 kt, 520 kt, 28.5 m, 7.9 m, 29.4 m, 2800 kg, 21800 kg, 41300 kg, Air Force,2022, 2x BR710A1-10,0,US,aircraft
+E-9A Widget [Dash-8-100], Maritime Patrol Aircraft (MPA),2, 180 kt, 295 kt, 25.9 m, 7.49 m, 22.3 m, 4200 kg, 10483 kg, 16470 kg, Air Force,1988, 2x PW120A,0,US,aircraft
+EA-18G Growler, Electronic Warfare,2, 350 kt, 920 kt, 13.6 m, 0.0 m, 18.3 m, 8050 kg, 13880 kg, 29937 kg, Navy,2016, 2x F414-GE-400,https://cmano-db.com/images/DB3000/aircraft_343.jpg,US,aircraft
+EA-3B Skywarrior, Electronic Warfare,3, 300 kt, 550 kt, 22.1 m, 7.0 m, 23.3 m, 0 kg, 17876 kg, 37195 kg, Navy,1963, 2x J57-P-10,https://cmano-db.com/images/DB3000/aircraft_755.jpg,US,aircraft
+EA-6A Electric Intruder, Electronic Warfare,2, 300 kt, 570 kt, 16.2 m, 4.8 m, 16.7 m, 15870 kg, 12070 kg, 27500 kg, Marine Corps,1966, 2x J52-P-6,https://cmano-db.com/images/DB3000/aircraft_960.jpg,US,aircraft
+EA-6A Electric Intruder RECAP, Electronic Warfare,2, 300 kt, 570 kt, 16.2 m, 4.8 m, 16.7 m, 15870 kg, 12070 kg, 27500 kg, Navy,1989, 2x J52-P-6,https://cmano-db.com/images/DB3000/aircraft_2249.jpg,US,aircraft
+EA-6B Prowler EXCAP, Electronic Warfare,4, 300 kt, 570 kt, 16.2 m, 4.8 m, 18.2 m, 13320 kg, 14600 kg, 27920 kg, Navy,1975, 2x J52-P-408A,https://cmano-db.com/images/DB3000/aircraft_2210.jpg,US,aircraft
+EC-130E Commando Solo I, Airborne Command Post (ACP),5, 180 kt, 325 kt, 39.7 m, 11.9 m, 29.3 m, 19090 kg, 34400 kg, 69750 kg, Air Force,1979, 4x T56-A-7A,https://cmano-db.com/images/DB3000/aircraft_225.jpg,US,aircraft
+EC-130E Commando Solo II, Airborne Command Post (ACP),5, 180 kt, 325 kt, 39.7 m, 11.9 m, 29.3 m, 19090 kg, 34400 kg, 69750 kg, Air Force,1993, 4x T56-A-7A,https://cmano-db.com/images/DB3000/aircraft_2879.jpg,US,aircraft
+EC-130G Hercules TACAMO, Electronic Warfare,5, 180 kt, 325 kt, 39.7 m, 11.9 m, 29.3 m, 19090 kg, 34400 kg, 69750 kg, Navy,1964, 4x T56-A-7A,https://cmano-db.com/images/DB3000/aircraft_319.jpg,US,aircraft
+EC-130H Compass Call, Electronic Warfare,5, 180 kt, 325 kt, 40.4 m, 11.6 m, 29.8 m, 19090 kg, 34400 kg, 70300 kg, Air Force,1983, 4x T56-A-15,https://cmano-db.com/images/DB3000/aircraft_320.jpg,US,aircraft
+EC-130H Compass Call [Baseline 1], Electronic Warfare,5, 180 kt, 325 kt, 40.4 m, 11.6 m, 29.8 m, 19090 kg, 34400 kg, 70300 kg, Air Force,2011, 4x T56-A-15,0,US,aircraft
+EC-130J Commando Solo III, Transport,5, 210 kt, 350 kt, 40.4 m, 11.8 m, 29.8 m, 20000 kg, 34200 kg, 79200 kg, Air Force,2004, 4x AE2100D3,https://cmano-db.com/images/DB3000/aircraft_2880.jpg,US,aircraft
+EC-130J TACAMO, Airborne Command Post (ACP),5, 210 kt, 350 kt, 40.4 m, 11.8 m, 29.8 m, 20000 kg, 34200 kg, 79200 kg, Navy,2026, 4x AE2100D3,0,US,aircraft
+EC-130Q TACAMO, Electronic Warfare,5, 180 kt, 325 kt, 39.7 m, 11.9 m, 29.3 m, 19090 kg, 34400 kg, 69750 kg, Navy,1968, 4x T56-A-15,https://cmano-db.com/images/DB3000/aircraft_2881.jpg,US,aircraft
+EC-130SJ Commando Solo III, Transport,5, 210 kt, 350 kt, 40.4 m, 11.8 m, 29.8 m, 20000 kg, 34200 kg, 79200 kg, Air Force,2022, 4x AE2100D3,0,US,aircraft
+EC-130V Hercules, Airborne Early Warning (AEW),5, 180 kt, 325 kt, 40.4 m, 11.6 m, 29.8 m, 19090 kg, 34400 kg, 70300 kg, Coast Guard,1991, 4x T56-A-15,0,US,aircraft
+EC-37B Compass Call, Electronic Warfare,2, 220 kt, 520 kt, 28.5 m, 7.9 m, 29.4 m, 2800 kg, 21800 kg, 41300 kg, Air Force,2021, 2x BR710A1-10,0,US,aircraft
+EF-111A Raven, Electronic Warfare,2, 350 kt, 920 kt, 19.2 m, 6.1 m, 23.5 m, 11500 kg, 25073 kg, 40370 kg, Air Force,1983, 2x TF30-PW-3,https://cmano-db.com/images/DB3000/aircraft_475.jpg,US,aircraft
+F-14E Super Tomcat-21 [ST-21], Fighter,2, 350 kt, 920 kt, 19.6 m, 4.9 m, 19.2 m, 5900 kg, 20292 kg, 34470 kg, Navy,2018, 2x F110-GE-400,0,US,aircraft
+F-14E Tomcat Quickstrike, Fighter,2, 350 kt, 920 kt, 19.6 m, 4.9 m, 19.2 m, 5900 kg, 19838 kg, 33720 kg, Navy,1999, 2x F110-GE-400,https://cmano-db.com/images/DB3000/aircraft_3492.jpg,US,aircraft
+F-14E Tomcat Quickstrike Blk III, Fighter,2, 350 kt, 920 kt, 19.6 m, 4.9 m, 19.2 m, 5900 kg, 19838 kg, 33720 kg, Navy,2023, 2x F110-GE-400,0,US,aircraft
+F-15A Eagle, Fighter,1, 350 kt, 920 kt, 13.1 m, 4.65 m, 19.3 m, 7260 kg, 12710 kg, 25400 kg, Air Force,1984, 2x F100-PW-100,https://cmano-db.com/images/DB3000/aircraft_203.jpg,US,aircraft
+F-15A Eagle ASAT, Anti-Satellite Interceptor (ASAT),1, 350 kt, 920 kt, 13.1 m, 4.65 m, 19.3 m, 7260 kg, 12710 kg, 25400 kg, Air Force,1985, 2x F100-PW-100,https://cmano-db.com/images/DB3000/aircraft_1994.jpg,US,aircraft
+F-15C Eagle, Fighter,1, 350 kt, 920 kt, 13.1 m, 4.65 m, 19.3 m, 7260 kg, 13240 kg, 30845 kg, Air Force,1984, 2x F100-PW-220E,https://cmano-db.com/images/DB3000/aircraft_211.jpg,US,aircraft
+F-15E Strike Eagle, Multirole (Fighter/Attack),2, 350 kt, 920 kt, 13.1 m, 4.65 m, 19.3 m, 7260 kg, 14390 kg, 32000 kg, Air Force,1995, 2x F100-PW-229,https://cmano-db.com/images/DB3000/aircraft_6.jpg,US,aircraft
+F-15EX Eagle II, Multirole (Fighter/Attack),2, 350 kt, 920 kt, 13.1 m, 4.65 m, 19.3 m, 7260 kg, 14390 kg, 32000 kg, Air Force,2023, 2x F110-GE-129,0,US,aircraft
+F-15N-PHX, Fighter,1, 350 kt, 920 kt, 13.1 m, 4.65 m, 19.3 m, 7260 kg, 12710 kg, 25400 kg, Navy,1977, 2x F100-PW-100,0,US,aircraft
+F-15NX Advanced Eagle, Multirole (Fighter/Attack),1, 350 kt, 920 kt, 13.1 m, 4.65 m, 19.3 m, 7260 kg, 14390 kg, 32000 kg, Navy,0, 2x F110-GE-129,0,US,aircraft
+F-16A Falcon, Multirole (Fighter/Attack),1, 350 kt, 920 kt, 9.5 m, 4.8 m, 14.5 m, 6894 kg, 7395 kg, 19200 kg, Air Force,1981, 1x F100-PW-200,https://cmano-db.com/images/DB3000/aircraft_158.jpg,US,aircraft
+F-16B Falcon, Multirole (Fighter/Attack),2, 350 kt, 920 kt, 9.5 m, 4.8 m, 14.5 m, 6894 kg, 7395 kg, 19200 kg, Air Force,1981, 1x F100-PW-200,0,US,aircraft
+F-16C Blk 25 Falcon, Multirole (Fighter/Attack),1, 350 kt, 920 kt, 9.5 m, 4.8 m, 14.5 m, 6894 kg, 8280 kg, 19200 kg, Air Force,1985, 1x F100-PW-220,https://cmano-db.com/images/DB3000/aircraft_223.jpg,US,aircraft
+F-16C Blk 30 Falcon, Multirole (Fighter/Attack),1, 350 kt, 920 kt, 9.5 m, 4.8 m, 14.5 m, 6894 kg, 8280 kg, 19200 kg, Air National Guard,2003, 1x F110-GE-100,https://cmano-db.com/images/DB3000/aircraft_198.jpg,US,aircraft
+F-16CG Blk 42 Falcon, Multirole (Fighter/Attack),1, 350 kt, 920 kt, 9.5 m, 4.8 m, 14.5 m, 6894 kg, 8280 kg, 19200 kg, Air Force,1995, 1x F100-PW-220,https://cmano-db.com/images/DB3000/aircraft_664.jpg,US,aircraft
+F-16CM Blk 42 Falcon, Multirole (Fighter/Attack),1, 350 kt, 920 kt, 9.5 m, 4.8 m, 14.5 m, 6894 kg, 8280 kg, 19200 kg, Air Force,2003, 1x F100-PW-220,https://cmano-db.com/images/DB3000/aircraft_1752.jpg,US,aircraft
+F-22A Raptor, Multirole (Fighter/Attack),1, 350 kt, 1000 kt, 13.6 m, 5.08 m, 18.9 m, 4500 kg, 14365 kg, 38000 kg, Air Force,2019, 2x F119-PW-100,https://cmano-db.com/images/DB3000/aircraft_2201.jpg,US,aircraft
+F-23A Black Widow II, Multirole (Fighter/Attack),1, 350 kt, 1000 kt, 13.28 m, 4.23 m, 20.54 m, 4500 kg, 13100 kg, 29000 kg, Air Force,2006, 2x F119-PW-100,0,US,aircraft
+"F-24A Hellcat II [NATF, Lockheed Proposal]", Fighter,2, 350 kt, 1000 kt, 19.5 m, 5.08 m, 18.9 m, 4500 kg, 14365 kg, 38000 kg, Navy,2002, 2x F119-PW-100,0,US,aircraft
+F-35A Lightning II, Multirole (Fighter/Attack),1, 350 kt, 920 kt, 10.7 m, 4.33 m, 15.67 m, 6810 kg, 13300 kg, 31800 kg, Air Force,2017, 1x F135-PW-100,https://cmano-db.com/images/DB3000/aircraft_278.jpg,US,aircraft
+F-35C Lightning II, Multirole (Fighter/Attack),1, 350 kt, 920 kt, 10.7 m, 4.33 m, 15.6 m, 6810 kg, 15800 kg, 31800 kg, Navy,2019, 1x F135-PW-100,https://cmano-db.com/images/DB3000/aircraft_824.jpg,US,aircraft
+F-4C Phantom II, Multirole (Fighter/Attack),2, 350 kt, 920 kt, 11.7 m, 5.02 m, 19.2 m, 8000 kg, 13245 kg, 27500 kg, Air Force,1972, 2x J79-GE-15,https://cmano-db.com/images/DB3000/aircraft_864.jpg,US,aircraft
+F-5E Tiger II [DACT], Multirole (Fighter/Attack),1, 350 kt, 920 kt, 8.0 m, 4.1 m, 14.4 m, 0 kg, 4349 kg, 11214 kg, Air Force,1975, 2x J85-GE-21,0,US,aircraft
+F/A-18A Hornet, Multirole (Fighter/Attack),1, 350 kt, 920 kt, 11.4 m, 4.88 m, 17.1 m, 7030 kg, 10455 kg, 23500 kg, Navy,1986, 2x F404-GE-400,https://cmano-db.com/images/DB3000/aircraft_47.jpg,US,aircraft
+F/A-18A+ Hornet, Multirole (Fighter/Attack),1, 350 kt, 920 kt, 11.4 m, 4.88 m, 17.1 m, 7030 kg, 10810 kg, 23500 kg, Navy,2003, 2x F404-GE-402,https://cmano-db.com/images/DB3000/aircraft_2035.jpg,US,aircraft
+F/A-18C Hornet, Multirole (Fighter/Attack),1, 350 kt, 920 kt, 11.4 m, 4.88 m, 17.1 m, 7030 kg, 10810 kg, 23500 kg, Marine Corps,2003, 2x F404-GE-402,https://cmano-db.com/images/DB3000/aircraft_825.jpg,US,aircraft
+F/A-18D Hornet, Multirole (Fighter/Attack),2, 350 kt, 920 kt, 11.4 m, 4.88 m, 17.1 m, 7030 kg, 10810 kg, 23500 kg, Marine Corps,2022, 2x F404-GE-402,0,US,aircraft
+F/A-18D Hornet [ATARS Recon], Multirole (Fighter/Attack),2, 350 kt, 920 kt, 11.4 m, 4.88 m, 17.1 m, 7030 kg, 10810 kg, 23500 kg, Marine Corps,2002, 2x F404-GE-402,https://cmano-db.com/images/DB3000/aircraft_4100.jpg,US,aircraft
+F/A-18E Super Hornet, Multirole (Fighter/Attack),1, 350 kt, 920 kt, 13.6 m, 4.88 m, 18.3 m, 8050 kg, 13880 kg, 29937 kg, Navy,2002, 2x F414-GE-400,https://cmano-db.com/images/DB3000/aircraft_342.jpg,US,aircraft

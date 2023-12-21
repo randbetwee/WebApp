@@ -9,6 +9,9 @@ import com.spring.databaseApp.service.implement.UserService;
 import com.spring.databaseApp.util.JsonResult;
 import com.spring.databaseApp.entity.User;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 @RequestMapping("users")
@@ -33,6 +36,11 @@ public class UserController extends BaseController{
         return new JsonResult<User>(200, user);
     }
 
+    @RequestMapping("Forgetpassword")
+    public JsonResult<String> ChangingPasswordbyemail(String email,String password) {
+        int a=userService.change_password(email, password);
+        return new JsonResult<String>(200,"修改成功");
+    }
     
 
 }

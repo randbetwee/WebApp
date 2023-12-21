@@ -19,5 +19,7 @@ public interface UserMapper {
     @Select("select * from app_user")
     public List<User> find_all(); 
 
+    public int update_password(String password,String email);
+
     int count();
 }

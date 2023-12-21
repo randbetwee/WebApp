@@ -6,14 +6,14 @@ public class Aircraft extends Vehicle{
     private String name;
     private String Type;
     private int	Crew;
-    private String min_Speed;
-    private String	Max_speed;
-    private String	Wingspan;
+    private String min_speed;
+    private String	max_speed;
+    private String	wing_span;
     private String	Height;
     private String	Length;
-    private String	Max_payload;
-    private String	Empty_weight;
-    private String	Max_weight;
+    private String	max_payload;
+    private String	empty_weight;
+    private String	max_weight;
     private String	Operator;
     private String	Commissioned;
     private String	Propulsion;
@@ -22,21 +22,21 @@ public class Aircraft extends Vehicle{
     public Aircraft() {
     }
 
-    public void setAircraft(String name,String Type,int Crew,String min_Speed,
+    public void setAircraft(String name,String Type,int Crew,String min_speed,
                                 String max_speed,String wingspan,String height,
                                 String length,String max_payload,String empty_weight,
                                 String max_weight,String operator,String commision,String propulsion){
             this.name=name;
             this.Type=Type;
             this.Crew=Crew;
-            this.min_Speed=min_Speed;
-            this.Max_speed=max_speed;
-            this.Wingspan=wingspan;
+            this.min_speed=min_speed;
+            this.max_speed=max_speed;
+            this.wing_span=wingspan;
             this.Height=height;
             this.Length=length;
-            this.Max_payload=max_payload;
-            this.Empty_weight=empty_weight;
-            this.Max_weight=max_weight;
+            this.max_payload=max_payload;
+            this.empty_weight=empty_weight;
+            this.max_weight=max_weight;
             this.Operator=operator;
             this.Commissioned=commision;
             this.Propulsion=propulsion;
@@ -60,23 +60,23 @@ public class Aircraft extends Vehicle{
     public void setCrew(int crew) {
         Crew = crew;
     }
-    public String getMin_Speed() {
-        return min_Speed;
+    public String getmin_speed() {
+        return min_speed;
     }
-    public void setMin_Speed(String min_Speed) {
-        this.min_Speed = min_Speed;
+    public void setmin_speed(String min_speed) {
+        this.min_speed = min_speed;
     }
-    public String getMax_speed() {
-        return Max_speed;
+    public String getmax_speed() {
+        return max_speed;
     }
-    public void setMax_speed(String max_speed) {
-        Max_speed = max_speed;
+    public void setmax_speed(String max_speed) {
+        max_speed = max_speed;
     }
-    public String getWingspan() {
-        return Wingspan;
+    public String getwing_span() {
+        return wing_span;
     }
-    public void setWingspan(String wingspan) {
-        Wingspan = wingspan;
+    public void setwing_span(String wingspan) {
+        wing_span = wingspan;
     }
     public String getHeight() {
         return Height;
@@ -90,23 +90,23 @@ public class Aircraft extends Vehicle{
     public void setLength(String length) {
         Length = length;
     }
-    public String getMax_payload() {
-        return Max_payload;
+    public String getmax_payload() {
+        return max_payload;
     }
-    public void setMax_payload(String max_payload) {
-        Max_payload = max_payload;
+    public void setmax_payload(String max_payload) {
+        max_payload = max_payload;
     }
-    public String getEmpty_weight() {
-        return Empty_weight;
+    public String getempty_weight() {
+        return empty_weight;
     }
-    public void setEmpty_weight(String empty_weight) {
-        Empty_weight = empty_weight;
+    public void setempty_weight(String empty_weight) {
+        empty_weight = empty_weight;
     }
-    public String getMax_weight() {
-        return Max_weight;
+    public String getmax_weight() {
+        return max_weight;
     }
-    public void setMax_weight(String max_weight) {
-        Max_weight = max_weight;
+    public void setmax_weight(String max_weight) {
+        max_weight = max_weight;
     }
     public String getOperator() {
         return Operator;

@@ -13,12 +13,18 @@ public class UserServiceTest {
     @Test
     void testRegister() {
         
-        userService.register("user001","6296393","169@qq.com");
+        userService.register("guan","Chong@246","1206697063@qq.com");
     }
 
     @Test
     void testLogin() {
-        User user=userService.login(1, "Chong@246");
+        User user=userService.login(1, "6296393");
+        System.out.println(user);   
+    }
+
+    @Test
+    void testChanging() {
+        int user=userService.change_password("1206697063@qq.com", "6296393");
         System.out.println(user);   
     }
 }

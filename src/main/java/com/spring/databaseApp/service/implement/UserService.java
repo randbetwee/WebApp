@@ -67,6 +67,17 @@ public class UserService {
     }
 
 
+    public int change_password(String email,String password){
+        User user=user_mapper.find_by_email(email);
+        if(user==null){
+            throw new UserNotFound("邮箱未注册");
+        }
+        String salt=user.getSalt();
+        String md5Form=getMD5Password(password, salt);
+        int result=user_mapper.update_password(md5Form, email);
+        return result;
+    }
+
     private String getMD5Password(String password,String salt) {
         for (int i = 0; i < 3; i++) {
             password = DigestUtils.md5DigestAsHex((salt + password + salt).getBytes()).toUpperCase();

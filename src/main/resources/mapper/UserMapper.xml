@@ -23,4 +23,8 @@
     select count(id) from app_user
   </select>
 
+  <update id="update_password">
+    update app_user set password=#{password} where email_address=#{email}
+  </update>
+
 </mapper>
