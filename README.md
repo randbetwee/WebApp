@@ -53,7 +53,7 @@ public JsonResult<List<PhotoWall>> showPhotoWall(@PathVariable("vid") Integer vi
 ```
 public JsonResult<List<Comment>> showComment(@PathVariable("vid") Integer vid)
 ```
-### `/{vid}/comment` 发起评论，传入一个Comment结构体的数据类，进行评论
+### `/{vid}/comment` 发起评论，传入一个Comment结构体的数据类，进行评论（POST）
 ```
 public JsonResult<Void> commentrequest(Comment c)
 ```
@@ -69,11 +69,11 @@ public JsonResult<List<Vehicle>> search_by_cate(@PathVariable("cate") String cat
 ```
 public JsonResult<List<Vehicle>> search_by_nat(@PathVariable("Nat") String Nat)
 ```
-### `/user/reg`      用户注册
+### `/users/reg`      用户注册
 ```
 public JsonResult<Void> reg(String user,String password,String email)
 ```
-### `/user/login`    用户登录
+### `/users/login`    用户登录
 ```
 public JsonResult<User> login(int UserID,String password,HttpSession session)
 ```
@@ -84,7 +84,7 @@ public JsonResult<User> login(int UserID,String password,HttpSession session)
 ```
 public JsonResult<Void> AuditPhoto(int id,String address)
 ```
-### `/upload/photo`     用户上传图片
+### `/upload/photo`     用户上传图片（POST）
 ```
 public JsonResult<String> upload_Photo(MultipartFile uploadFile,int vid,HttpServletRequest request)
 ```
