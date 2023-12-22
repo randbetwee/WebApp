@@ -12,7 +12,24 @@ spring:
 
 server:
   port: 8080
-  
+  ssl:
+    enabled: true
+    #指定证书
+    key-store: classpath:test.keystore
+    #使用上面方法生成的格式为JKS
+    key-store-type: JKS
+    #默认为TLS，
+    protocol: TLS
+    #别名
+    key-alias: test
+    #私钥密码
+    key-password: 123456
+    #store文件密码
+    key-store-password: 123456
+  servlet:
+    session:
+      cookie:
+        secure: true
 
 mybatis:
   # 配置XML映射文件中指定的实体类别名路径
