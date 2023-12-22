@@ -9,8 +9,6 @@ import com.spring.databaseApp.service.implement.UserService;
 import com.spring.databaseApp.util.JsonResult;
 import com.spring.databaseApp.entity.User;
 import jakarta.servlet.http.HttpSession;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController

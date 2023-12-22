@@ -18,7 +18,7 @@ public class LoginInterceptor implements HandlerInterceptor{
                             Object handler) throws IOException{
     Object obj=request.getSession().getAttribute("id");
     if(obj==null){
-        response.sendRedirect("/");
+        response.sendRedirect("/err/notLogin");
         return false;
     }
     return true;

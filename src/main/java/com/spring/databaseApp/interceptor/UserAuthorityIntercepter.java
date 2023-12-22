@@ -19,8 +19,12 @@ public class UserAuthorityIntercepter implements HandlerInterceptor{
     Object obj=request.getSession().getAttribute("type");
     Object t=true;
     //用户不是管理员
+    if(obj==null){
+         response.sendRedirect("/err/noAuthority");
+        return false;
+    }
     if(obj.equals(t)){
-        response.sendRedirect("/");
+        response.sendRedirect("/err/noAuthority");
         return false;
     }
     return true;

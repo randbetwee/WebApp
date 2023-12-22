@@ -59,6 +59,7 @@ public class BaseController {
         return result;
     }
     
+    
 
     public final Integer getUidFromSession(HttpSession session) {
         //getAttribute返回的是Object对象,需要转换为字符串再转换为包装类
