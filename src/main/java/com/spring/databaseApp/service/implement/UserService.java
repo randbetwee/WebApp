@@ -75,6 +75,7 @@ public class UserService {
         String salt=user.getSalt();
         String md5Form=getMD5Password(password, salt);
         int result=user_mapper.update_password(md5Form, email);
+        if(result!=0)result=user.getId();
         return result;
     }
 

@@ -21,10 +21,10 @@ public class UserController extends BaseController{
     private UserService userService;
 
     @RequestMapping("reg") 
-    public JsonResult<Void> reg(String user,String password,String email){
+    public JsonResult<Integer> reg(String user,String password,String email){
        
-        userService.register(user, password, email);
-        return new JsonResult<Void>(200);
+        Integer id=userService.register(user, password, email);
+        return new JsonResult<Integer>(200,id);
     }
 
     @RequestMapping("login")
@@ -37,9 +37,9 @@ public class UserController extends BaseController{
     }
 
     @RequestMapping("Forgetpassword")
-    public JsonResult<String> ChangingPasswordbyemail(String email,String password) {
-        int a=userService.change_password(email, password);
-        return new JsonResult<String>(200,"修改成功");
+    public JsonResult<Integer> ChangingPasswordbyemail(String email,String password) {
+        Integer a=userService.change_password(email, password);
+        return new JsonResult<Integer>(200,a);
     }
     
 

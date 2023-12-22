@@ -70,13 +70,13 @@ public class Aircraft extends Vehicle{
         return max_speed;
     }
     public void setmax_speed(String max_speed) {
-        max_speed = max_speed;
+        this.max_speed = max_speed;
     }
     public String getwing_span() {
         return wing_span;
     }
     public void setwing_span(String wingspan) {
-        wing_span = wingspan;
+        this.wing_span = wingspan;
     }
     public String getHeight() {
         return Height;
@@ -94,19 +94,19 @@ public class Aircraft extends Vehicle{
         return max_payload;
     }
     public void setmax_payload(String max_payload) {
-        max_payload = max_payload;
+        this.max_payload = max_payload;
     }
     public String getempty_weight() {
         return empty_weight;
     }
     public void setempty_weight(String empty_weight) {
-        empty_weight = empty_weight;
+        this.empty_weight = empty_weight;
     }
     public String getmax_weight() {
         return max_weight;
     }
     public void setmax_weight(String max_weight) {
-        max_weight = max_weight;
+        this.max_weight = max_weight;
     }
     public String getOperator() {
         return Operator;

@@ -18,7 +18,7 @@ public class UserServiceTest {
 
     @Test
     void testLogin() {
-        User user=userService.login(1, "6296393");
+        User user=userService.login(2, "6296393");
         System.out.println(user);   
     }
 

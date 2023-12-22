@@ -35,7 +35,7 @@ public class CommentController extends BaseController{
     
 
     
-    @RequestMapping("comment/{vid}")         //接受某个飞机的评论区
+    @RequestMapping("comment/{vid}")         //接受某个飞机的评论
     public JsonResult<Void> commentrequest(Comment c,HttpServletRequest request){
         Object a=request.getSession().getAttribute("id");
         c.setUserID(Integer.parseInt(a.toString()));
