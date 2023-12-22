@@ -53,7 +53,7 @@ public JsonResult<List<PhotoWall>> showPhotoWall(@PathVariable("vid") Integer vi
 ```
 public JsonResult<List<Comment>> showComment(@PathVariable("vid") Integer vid)
 ```
-### `/{vid}/comment` 发起评论，传入一个Comment结构体的数据类，进行评论（POST）
+### `/comment/{vid}` 发起评论，传入一个Comment结构体的数据类，进行评论（POST）
 ```
 public JsonResult<Void> commentrequest(Comment c)
 ```
@@ -77,8 +77,13 @@ public JsonResult<Void> reg(String user,String password,String email)
 ```
 public JsonResult<User> login(int UserID,String password,HttpSession session)
 ```
+### `/users/Forgetpassword`   修改密码
+```
+public JsonResult<Integer> ChangingPasswordbyemail(String email,String password)
+```
 ### `/admin/auditview`  管理员的审核视图，发一些未经审核的图片到页面
-```public JsonResult<List<PhotoWall>> auditView()
+```
+public JsonResult<List<PhotoWall>> auditView()
 ```
 ### `/admin/audit`    管理员的审核操作，传入某个图片的地址和id
 ```
