@@ -18,7 +18,7 @@
   </delete>
 
   <update id="changeComment">
-        update comment set Content=#{content} where id=#{vID} and userID=#{uID}
+        update comment set Content=#{content}, point=#{point} where id=#{vID} and userID=#{uID}
   </update>
 
   <select id="mean" resultType="java.lang.Integer">

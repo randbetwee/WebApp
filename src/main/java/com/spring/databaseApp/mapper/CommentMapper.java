@@ -18,8 +18,8 @@ public interface CommentMapper {
     @Select("select * from comment where id=#{vID} and userID=#{uID}")
     Comment selectbyUser(int vID,int uID);
 
-    int changeComment(int vID,int uID,String content);
-    
+    int changeComment(int vID,int uID,String content,int point);
+
     Integer mean(int vID);
 
     //返回只有id和point有意义

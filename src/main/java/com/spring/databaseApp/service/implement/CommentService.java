@@ -35,17 +35,19 @@ public class CommentService {
         if(comment.getContent()==null){
             throw new UserNotFound("不允许空评论内容");
         }
+
         if(commentMapper.selectbyUser(vID,uID)==null){
         return commentMapper.insertContent(comment);
         }
         else{
-            return change(vID,uID,comment.getContent());
+            return change(vID,uID,comment.getContent(),comment.getPoint());
         }
     }
 
-    public int change(int vID,int uID,String content){
-        return commentMapper.changeComment(vID, uID,content);
+    public int change(int vID,int uID,String content,int Point){
+        return commentMapper.changeComment(vID, uID,content,Point);
     }
+
 
     public int delete(int vID,int uID){
         return commentMapper.deleteComment(vID, uID);
