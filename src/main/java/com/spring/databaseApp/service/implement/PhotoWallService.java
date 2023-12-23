@@ -52,11 +52,19 @@ public class PhotoWallService {
         return photoWallMapper.deletePhoto(id, addr);
     }
 
-    public List<PhotoWall> show_detail(int id){
+    public List<PhotoWall> show_detail_valid(int id){ // 已重构该方法名称
         Vehicle temp_v=vehicleMapper.find_by_id(id);
         if(temp_v==null){
             throw new UserNotFound("找不到该载具");
         }
         return photoWallMapper.select_by_id_valid(id);
+    }
+
+    public List<PhotoWall> show_detail(int id){
+        Vehicle temp_v=vehicleMapper.find_by_id(id);
+        if(temp_v==null){
+            throw new UserNotFound("找不到该载具");
+        }
+        return photoWallMapper.select_by_id(id);
     }
 }

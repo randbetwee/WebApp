@@ -13,6 +13,7 @@ public interface PhotoWallMapper {
 
     int deletePhoto(int id,String address);
 
+    @Select("select * from photowall where id=#{id}")
     List<PhotoWall> select_by_id(int id);
 
     @Select("select * from photowall where id=#{id} and valid=true")

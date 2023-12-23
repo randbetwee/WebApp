@@ -38,7 +38,7 @@ public class PhotoWallController extends BaseController{
 
      @RequestMapping("{vid}/photowall")              //打开某个飞机的照片墙
     public JsonResult<List<PhotoWall>> showPhotoWall(@PathVariable("vid") Integer vid){
-        List<PhotoWall> photowall=photoWallService.show_detail(vid);  //只发送审核通过的
+        List<PhotoWall> photowall=photoWallService.show_detail(vid);  //无需审核
         return new JsonResult<List<PhotoWall>>(200,photowall); 
     }
 

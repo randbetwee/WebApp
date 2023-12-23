@@ -9,9 +9,9 @@
             values (#{id},#{address},#{valid})
   </insert>
 
-  <select id="select_by_id" resultType="com.spring.databaseApp.entity.PhotoWall">
-    select * from photowall where id = #{id}
-  </select>
+<!--  <select id="select_by_id" resultType="com.spring.databaseApp.entity.PhotoWall">-->
+<!--    select * from photowall where id = #{id}-->
+<!--  </select>-->
 
   <delete id="deletePhoto">
     delete photowall where id=#{id} and address=#{address}
