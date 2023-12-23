@@ -21,7 +21,7 @@ public class IntercepterConfig implements WebMvcConfigurer{
         List<String> patterns = new ArrayList<>();
         
         //注册白名单放行url
-        patterns.add("/538/**");
+//        patterns.add("/538/**");
 
         registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/comment/**")   //拦截名单
                 .excludePathPatterns(patterns);        //白名单
@@ -35,7 +35,7 @@ public class IntercepterConfig implements WebMvcConfigurer{
                 //是否发送Cookie
                 .allowCredentials(true)
                 //放行哪些原始域
-                .allowedOriginPatterns("https://localhost:*/")
+                .allowedOriginPatterns("https://localhost*", "https://8.134.198.180*")
                 .allowedMethods(new String[]{"OPTIONS","GET", "POST", "PUT", "DELETE"})
                 .allowedHeaders("*")
                 .exposedHeaders("*");
