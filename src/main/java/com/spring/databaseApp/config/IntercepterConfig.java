@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import com.spring.databaseApp.interceptor.LoginInterceptor;
 import com.spring.databaseApp.interceptor.UserAuthorityIntercepter;
@@ -38,6 +39,11 @@ public class IntercepterConfig implements WebMvcConfigurer{
                 .allowedMethods(new String[]{"OPTIONS","GET", "POST", "PUT", "DELETE"})
                 .allowedHeaders("*")
                 .exposedHeaders("*");
+    }
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/Data/**").addResourceLocations("file:./Data/");
     }
 
 }

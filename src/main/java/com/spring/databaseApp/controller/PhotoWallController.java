@@ -1,5 +1,6 @@
 package com.spring.databaseApp.controller;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -7,16 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.spring.databaseApp.service.exception.FileUploadFailed;
 import com.spring.databaseApp.service.implement.PhotoWallService;
 import com.spring.databaseApp.service.implement.VehicleService;
 import com.spring.databaseApp.util.JsonResult;
-
 import jakarta.servlet.http.HttpServletRequest;
-
 import com.spring.databaseApp.entity.PhotoWall;
-
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -34,7 +31,8 @@ public class PhotoWallController extends BaseController{
     VehicleService vehicleService;
 
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd/");
-    static final String uploadPath="./Data";
+    static final String uploadPath="./Data/";
+    static final String PathStrip="Data/";
 
      @RequestMapping("{vid}/photowall")              //打开某个飞机的照片墙
     public JsonResult<List<PhotoWall>> showPhotoWall(@PathVariable("vid") Integer vid){
@@ -84,7 +82,7 @@ public class PhotoWallController extends BaseController{
 
             // 返回上传文件的访问路径
             String filePath = request.getScheme() + "://" + request.getServerName()
-                    + ":" + request.getServerPort()  +"/"+ format + newName;
+                    + ":" + request.getServerPort()  +"/"+ PathStrip + format + newName;
             
             //将文件路径写入
             PhotoWall photo=new PhotoWall(vid, filePath, false);
