@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:8888/postgres?currentSchema=the_great_project&amp;
+    url: jdbc:postgresql://8.134.198.180:8888/postgres?currentSchema=the_great_project&amp;
     username: guan  
     password: Chong@123
     driver-class-name: org.postgresql.Driver
@@ -15,13 +15,13 @@ server:
   ssl:
     enabled: true
     #指定证书
-    key-store: classpath:www.cold-front.cn.pfx
+    key-store: classpath:cold-front.top.pfx
     #使用上面方法生成的格式为JKS
     key-store-type: PKCS12
     #默认为TLS，
     protocol: TLS
     #别名
-    key-alias: alias
+    key-alias: 1
     #私钥密码
     # key-password: m3o830ip
     #store文件密码
