@@ -15,17 +15,17 @@ server:
   ssl:
     enabled: true
     #指定证书
-    key-store: classpath:test.keystore
+    key-store: classpath:www.cold-front.cn.pfx
     #使用上面方法生成的格式为JKS
-    key-store-type: JKS
+    key-store-type: PKCS12
     #默认为TLS，
     protocol: TLS
     #别名
-    key-alias: test
+    key-alias: alias
     #私钥密码
-    key-password: 123456
+    # key-password: m3o830ip
     #store文件密码
-    key-store-password: 123456
+    key-store-password: m3o830ip
   servlet:
     session:
       cookie:

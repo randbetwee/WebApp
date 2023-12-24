@@ -35,7 +35,7 @@ public class IntercepterConfig implements WebMvcConfigurer{
                 //是否发送Cookie
                 .allowCredentials(true)
                 //放行哪些原始域
-                .allowedOriginPatterns("https://localhost*", "https://8.134.198.180*")
+                .allowedOriginPatterns("https://localhost*", "https://8.134.198.180*", "https://www.cold-front.cn*")
                 .allowedMethods(new String[]{"OPTIONS","GET", "POST", "PUT", "DELETE"})
                 .allowedHeaders("*")
                 .exposedHeaders("*");
